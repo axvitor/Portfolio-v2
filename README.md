@@ -2,6 +2,12 @@
 
 Static site. No build step, no dependencies.
 
+## Live
+
+Deployed with GitHub Pages from `main` at the repository root.
+`.nojekyll` is present so Pages serves the files as-is instead of running
+them through Jekyll.
+
 ## Run
 
 ```bash
