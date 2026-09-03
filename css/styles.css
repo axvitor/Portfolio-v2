@@ -51,7 +51,14 @@ body{
   font-weight:400;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;
+  /* `clip`, never `hidden`. overflow-x:hidden forces overflow-y to compute as
+     `auto`, which turns <body> into a scroll container and breaks
+     position:sticky for everything inside it — including the hero stage.
+     Desktop browsers mask this by propagating body overflow to the viewport;
+     mobile Safari does not, so the hero video scrolled away instead of
+     pinning. `clip` guards against horizontal overflow without creating a
+     scroll container. */
+  overflow-x:clip;
 }
 
 img,video{ display:block; max-width:100%; }
@@ -297,7 +304,11 @@ em{ font-style:italic; color:var(--fg); }
 .hero__track{ height:450vh; }
 .hero__stage{
   position:sticky; top:0;
-  height:100vh; height:100svh;
+  /* lvh, not svh: svh is the viewport with mobile browser chrome VISIBLE, so
+     once the address bar collapses on scroll the stage falls short and the
+     next section shows through the gap. lvh always covers. */
+  height:100vh;
+  height:100lvh;
   overflow:hidden;
   display:grid;
   place-items:center;
