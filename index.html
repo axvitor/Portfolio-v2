@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Vitor Xavier · Product Designer</title>
+<meta name="description" content="Vitor Xavier is a senior product designer based in Florianópolis, Brazil. Ten years and 300+ projects across transit, healthcare, marketplaces and accessibility. Looking for a team to build the next decade with." />
+<meta name="theme-color" content="#050505" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
+<meta property="og:title" content="Vitor Xavier · Product Designer" />
+<meta property="og:description" content="Let's skyrocket your company." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ═══════════════════ PRELOADER ═══════════════════ -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__inner">
+    <div class="boot__row">
+      <span class="mono boot__label">Preparing launch sequence</span>
+      <span class="mono boot__pct" id="bootPct">0</span>
+    </div>
+    <div class="boot__track"><i class="boot__fill" id="bootFill"></i></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<header class="nav" id="nav">
+ <div class="nav__shell">
+  <a href="#top" class="nav__mark" aria-label="Home">Vitor Xavier</a>
+
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#about" data-nav>About</a>
+    <a href="#experience" data-nav>Experience</a>
+    <a href="#work" data-nav>Work</a>
+  </nav>
+
+  <div class="nav__end">
+    <a href="https://www.linkedin.com/in/vitoraxavier" class="btn btn--sm"
+       target="_blank" rel="noopener noreferrer" data-magnetic>
+      <span class="btn__label">LinkedIn</span>
+      <span class="btn__icon" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+    <i></i><i></i>
+  </button>
+ </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a href="#about" data-nav><span class="mono">01</span> About</a>
+  <a href="#experience" data-nav><span class="mono">02</span> Experience</a>
+  <a href="#capabilities" data-nav><span class="mono">03</span> Capabilities</a>
+  <a href="#work" data-nav><span class="mono">04</span> Work</a>
+  <a href="#contact" data-nav><span class="mono">05</span> Contact</a>
+</div>
+
+<main id="top">
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero__track" id="heroTrack">
+    <div class="hero__stage">
+
+      <div class="hero__frame" id="heroFrame">
+        <video
+          class="hero__video" id="heroVideo"
+          src="assets/hero-rocket.mp4"
+          muted playsinline preload="auto"
+          disablepictureinpicture disableremoteplayback
+          tabindex="-1" aria-hidden="true"></video>
+        <div class="hero__grain" aria-hidden="true"></div>
+        <div class="hero__scrim" id="heroScrim" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__copy" id="heroCopy">
+        <h1 class="hero__title">
+          <span class="line"><span class="line__in">Let's <em>skyrocket</em></span></span>
+          <span class="line"><span class="line__in">your company.</span></span>
+        </h1>
+
+        <p class="hero__sub">
+          Senior product designer with ten years and 300+ projects behind me,
+          from transit screens in San Francisco to patient intake, marketplaces
+          and accessibility.
+          <span class="hero__subLine">Looking for a team to build the next decade with.</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<section class="about" id="about">
+  <div class="shell">
+    <div class="about__grid">
+      <div class="about__lead">
+        <h2 class="about__title" data-reveal>About me</h2>
+        <figure class="about__photo" data-reveal>
+          <img src="assets/avatar.jpg" alt="Vitor Xavier"
+               width="323" height="323" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+      <div class="about__body">
+        <p data-reveal>
+          I'm Vitor Xavier, a Senior Product Designer with nearly a decade of
+          experience crafting thoughtful, user-centered solutions and leading
+          projects that blend strategy with creativity. I consistently deliver
+          fast results without compromising on quality.
+        </p>
+        <p data-reveal>
+          Based in Florianópolis, Brazil, I'm looking to join a team where I can
+          bring my expertise and make a meaningful impact.
+        </p>
+
+        <ul class="facts" data-reveal>
+          <li><span class="mono facts__k">Based</span><span class="facts__v">Florianópolis, Brazil · working globally</span></li>
+          <li><span class="mono facts__k">Tools</span><span class="facts__v">Figma, Photoshop, WCAG, AI, a bit of code</span></li>
+          <li><span class="mono facts__k">Off hours</span><span class="facts__v">Photography, surfing, gym</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+<section class="xp" id="experience">
+  <div class="shell">
+    <div class="sec__head">
+      <h2 class="sec__title" data-reveal>The route so far.</h2>
+    </div>
+
+    <ol class="timeline" id="timeline"></ol>
+  </div>
+</section>
+
+<!-- ═══════════════════ CAPABILITIES ═══════════════════ -->
+<section class="caps" id="capabilities">
+  <div class="shell">
+    <div class="sec__head">
+      <h2 class="sec__title" data-reveal>What I'm actually good at.</h2>
+    </div>
+    <ul class="caps__list" id="caps"></ul>
+  </div>
+</section>
+
+<!-- ═══════════════════ NUMBERS ═══════════════════ -->
+<section class="stats" id="numbers">
+  <div class="shell">
+    <div class="sec__head">
+      <h2 class="sec__title" data-reveal>The short version.</h2>
+    </div>
+    <ul class="stats__list">
+      <li class="stat">
+        <span class="stat__n"><em>+</em><i data-to="300">0</i></span>
+        <span class="stat__k mono">Projects done</span>
+      </li>
+      <li class="stat">
+        <span class="stat__n"><em>+</em><i data-to="60">0</i></span>
+        <span class="stat__k mono">Clients worldwide</span>
+      </li>
+      <li class="stat">
+        <span class="stat__n"><em>+</em><i data-to="10">0</i></span>
+        <span class="stat__k mono">Years of experience</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════ SELECTED WORK ═══════════════════ -->
+<section class="work" id="work">
+  <div class="shell">
+    <div class="sec__head">
+      <h2 class="sec__title" data-reveal>Selected work.</h2>
+      <p class="sec__lede" data-reveal>
+        Seven from the last decade. Transit screens in San Francisco,
+        accessibility research, marketplace and dashboard redesigns.
+      </p>
+    </div>
+  </div>
+
+  <div class="shell shell--wide">
+    <ol class="projects" id="projects"></ol>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section class="cta" id="contact">
+  <div class="shell">
+    <h2 class="cta__title">
+      <span class="line"><span class="line__in">Have a product</span></span>
+      <span class="line"><span class="line__in">worth skyrocketing?</span></span>
+    </h2>
+    <p class="cta__sub" data-reveal>
+      I'm open to new opportunities and looking to join a team where I can
+      bring a decade of product design and make a meaningful impact.
+      If you're hiring, I'd love to hear about what you're building.
+    </p>
+
+    <div class="cta__actions" data-reveal>
+      <a class="btn btn--lg" href="https://www.linkedin.com/in/vitoraxavier"
+         target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span class="btn__label">Connect on LinkedIn</span>
+        <span class="btn__icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <ul class="cta__meta mono" data-reveal>
+      <li><span class="dim">Status</span> Open to new opportunities</li>
+      <li><span class="dim">Based</span> Florianópolis, Brazil</li>
+      <li><span class="dim">Timezone</span> BRT, working globally</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <span class="mono">© 2026 Vitor Xavier · Product Designer</span>
+    <ul class="foot__social mono">
+      <li><a href="https://www.linkedin.com/in/vitoraxavier"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <button class="foot__top mono" id="toTop">Back to top ↑</button>
+  </div>
+</footer>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Local tooling — the ffmpeg build used to re-encode the hero video.
+# See README for how to reproduce the encode; the binary itself is not source.
+ffmpeg-*.zip
+ffmpeg
+
+# Editor / agent config (contains machine-specific absolute paths)
+.claude/
+
+# Node, if it ever gets used here
+node_modules/
