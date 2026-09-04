@@ -737,6 +737,38 @@ em{ font-style:italic; color:var(--fg); }
   overflow:hidden;
 }
 
+.cta .shell{ position:relative; }
+
+/* Option A's proportions: ~76px headline rather than running to 124px, and a
+   steady ~26px between headline, sub and button. */
+.cta__title{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 116,"wght" 800;
+  font-size:clamp(32px,5.4vw,78px);
+  line-height:.9;
+  letter-spacing:-.045em;
+}
+.cta__title .line{ display:block; overflow:hidden; padding-block:.03em; }
+.cta__title .line__in{
+  display:block; transform:translateY(105%);
+  transition:transform 1.05s var(--ease);
+}
+.cta.in .line:nth-child(1) .line__in{ transition-delay:.05s; }
+.cta.in .line:nth-child(2) .line__in{ transition-delay:.15s; }
+.cta.in .line__in{ transform:translateY(0); }
+
+.cta__sub{
+  margin-top:clamp(18px,2.6vh,26px);
+  max-width:52ch;
+  color:var(--fg-2);
+  font-size:clamp(15px,1.1vw,17px);
+}
+.cta__actions{
+  display:flex; align-items:center; gap:clamp(20px,3vw,40px);
+  flex-wrap:wrap;
+  margin-top:clamp(20px,3vh,28px);
+}
+
 /* The last frame of the hero video, so the page closes on the same rocket it
    opened with. */
 .cta__still{
