@@ -748,7 +748,16 @@ em{ font-style:italic; color:var(--fg); }
   line-height:.9;
   letter-spacing:-.045em;
 }
-.cta__title .line{ display:block; overflow:hidden; padding-block:.03em; }
+.cta__title .line{
+  display:block; overflow:hidden;
+  /* This element is a reveal mask, so its overflow is hidden. With
+     line-height .9 the content area is taller than the line box and the
+     descender on "skyrocketing" fell ~7px outside it and got clipped.
+     Metrics need >=.173em below; the negative margin keeps the line
+     spacing where it was. */
+  padding-block:.04em .2em;
+  margin-bottom:-.17em;
+}
 .cta__title .line__in{
   display:block; transform:translateY(105%);
   transition:transform 1.05s var(--ease);
