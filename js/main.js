@@ -63,7 +63,7 @@ const PROJECTS = [
     role: 'Product Designer',
     client: 'Element',
     year: '2024 to 2025',
-    outcome: "Within the first day of going out, the client's own team was calling it a huge upgrade.",
+    outcome: 'Within the first day of going live, the clients were already calling it a huge upgrade.',
     art: 'bars'
   },
   {
