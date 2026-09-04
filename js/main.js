@@ -442,7 +442,7 @@ video.addEventListener('error', () => { seeking = false; });
    Only touch a property when its value actually changed; the hero repaints
    on every scroll tick and most of these hold steady between ticks. */
 
-const painted = { so:'', fo:'', op:'', tr:'' };
+const painted = { so:'', op:'', tr:'' };
 
 function paintHero(p){
   /* Scrim in three beats: heavy while the headline is up and needs contrast,
@@ -455,8 +455,10 @@ function paintHero(p){
   ).toFixed(3);
   if (so !== painted.so){ scrim.style.setProperty('--so', so); painted.so = so; }
 
-  const fo = (1 - norm(p, 0.9, 1)).toFixed(3);
-  if (fo !== painted.fo){ frame.style.opacity = fo; painted.fo = fo; }
+  /* No fade-out. The stage stays pinned to the end of the track, so fading
+     the video left a full black screen before About scrolled up over it.
+     About has an opaque background and sits above the stage, so it simply
+     slides over the still-visible frame — no dead space. */
 
   /* The copy leaves early — within the first couple of screens of scrolling —
      handing the frame to the rocket for the rest of the track. */
@@ -489,33 +491,12 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
-['[data-reveal]', '.project', '.tl', '.cap', '.stat', '.cta'].forEach(sel => {
+['[data-reveal]', '.project', '.tl', '.cap', '.cta'].forEach(sel => {
   $$(sel).forEach((el, i) => {
     el.style.transitionDelay = `${Math.min(i, 5) * 60}ms`;
     io.observe(el);
   });
 });
-
-/* ═══════════ NUMBERS COUNT UP ═══════════ */
-
-const counters = $$('.stat__n [data-to]');
-if (counters.length){
-  const countIO = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      countIO.unobserve(e.target);
-      const el = e.target, to = +el.dataset.to;
-      if (REDUCED){ el.textContent = to; return; }
-      const t0 = performance.now(), dur = 1500;
-      (function step(now){
-        const p = clamp((now - t0) / dur);
-        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));   /* ease-out cubic */
-        if (p < 1) requestAnimationFrame(step);
-      })(t0);
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => countIO.observe(c));
-}
 
 /* ═══════════ PORTRAIT: COLOUR → MONO ═══════════ */
 
