@@ -1290,6 +1290,16 @@ em{ font-style:italic; color:var(--fg); }
 .pnext__link:hover .pnext__t{ color:var(--accent); }
 
 @media (max-width:640px){
+  /* The base clamp's 7.2vw term never engages on a phone — at 375px it works
+     out to 27px, so the headline sat on the 30px floor with 114px of unused
+     width beside it. The lines are nowrap (the break is authored), so the
+     ceiling is whatever keeps the longer one on one line: ~45px at 375px,
+     ~38px at 320px. 11vw clears both, and lands on 46px at 640px, which is
+     exactly what the base rule gives there — so the two meet without a jump. */
+  .hero__title{ font-size:clamp(30px,11vw,46px); }
+}
+
+@media (max-width:640px){
   .pnext__pair{ flex-direction:column; gap:clamp(26px,4.4vh,36px); }
   .pnext__link--next{ text-align:left; }
 }
