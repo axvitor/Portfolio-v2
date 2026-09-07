@@ -667,7 +667,8 @@ em{ font-style:italic; color:var(--fg); }
 }
 .tl__co b{ color:var(--accent); font-weight:400; }
 .tl__note{
-  margin-top:16px; max-width:56ch;
+  /* no measure cap: the note runs the width of its column */
+  margin-top:16px;
   color:var(--fg-3); font-size:15px; line-height:1.58;
 }
 
