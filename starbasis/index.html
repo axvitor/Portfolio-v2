@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Working at StarBasis</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0b;
+  --bg-2:#0e0e10;
+  --card:#141416;
+  --line:rgba(255,255,255,.08);
+  --text:#f4f4f5;
+  --muted:#8b8b93;
+  --pink:#ff2e63;
+  --pink-2:#ff5b86;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Bricolage Grotesque',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+
+/* ---------------- NAV ---------------- */
+.nav-outer{position:fixed;top:18px;left:0;right:0;z-index:100;display:flex;justify-content:center;padding:0 16px}
+.nav{
+  width:min(760px,100%);
+  background:rgba(20,20,22,.82);
+  backdrop-filter:blur(14px);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:9px 9px 9px 22px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.08em;font-size:15px}
+.logo .word{display:inline-flex}
+.logo .i{color:var(--pink)}
+.logo .star{color:var(--pink);font-size:17px;line-height:1;transform:translateY(-1px)}
+.logo .i{color:var(--pink)}
+.btn{
+  border:0;cursor:pointer;font-family:inherit;font-weight:600;
+  background:var(--pink);color:#fff;border-radius:999px;
+  padding:10px 22px;font-size:14px;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, background .25s;
+}
+.btn:hover{background:var(--pink-2);transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,46,99,.35)}
+
+/* ---------------- HERO ---------------- */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:140px 0 90px;
+  /* lifts at the top and settles into the page background before the section ends,
+     so there is no seam where the hero meets Benefits */
+  background:linear-gradient(180deg,#1c1c22 0%,#151519 26%,#0f0f12 52%,var(--bg) 82%);
+}
+.rings{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.rings span{
+  position:absolute;border:1px solid rgba(255,255,255,.045);border-radius:50%;
+  animation:ringIn 1.6s cubic-bezier(.2,.8,.2,1) both;
+}
+.rings span:nth-child(1){width:520px;height:520px;animation-delay:.05s}
+.rings span:nth-child(2){width:760px;height:760px;animation-delay:.15s}
+.rings span:nth-child(3){width:1020px;height:1020px;animation-delay:.25s}
+.rings span:nth-child(4){width:1320px;height:1320px;animation-delay:.35s}
+.rings span:nth-child(5){width:1660px;height:1660px;animation-delay:.45s}
+@keyframes ringIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+
+.blobs{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.hero-bg{
+  width:min(940px,94vw);max-width:none;
+  opacity:.8;
+  will-change:transform;
+  animation:bgIn 1.5s cubic-bezier(.2,.8,.2,1) both, floatBg 19s ease-in-out infinite alternate;
+}
+@keyframes bgIn{from{opacity:0;transform:scale(.86)}to{opacity:.8}}
+@keyframes floatBg{0%{translate:0 0}50%{translate:-11px -22px}100%{translate:9px -7px}}
+
+.hero-inner{position:relative;z-index:3;text-align:center}
+.hero h1{
+  font-size:clamp(38px,6.2vw,68px);font-weight:800;letter-spacing:-.02em;line-height:1.05;
+}
+.hero p{margin-top:16px;color:#c9c9d1;font-size:clamp(14px,1.6vw,17px);font-weight:300;max-width:560px;margin-inline:auto;text-wrap:pretty}
+.hero .btn{margin-top:26px;padding:12px 26px}
+
+/* floating job cards */
+.job-card{
+  position:absolute;z-index:2;
+  display:block;text-decoration:none;color:inherit;cursor:pointer;
+  background:#151517;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;
+  padding:12px 18px 14px;
+  box-shadow:0 24px 60px rgba(0,0,0,.65);
+  will-change:transform;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .3s, filter .4s ease;
+}
+.job-card .meta{display:block;font-size:10px;color:#8e8e97;letter-spacing:.02em;margin-bottom:3px;font-weight:300}
+.job-card .role{display:block;font-size:clamp(15px,1.9vw,21px);font-weight:700;white-space:nowrap;letter-spacing:-.01em}
+.job-card:focus-visible{outline:2px solid var(--pink);outline-offset:4px}
+.job-card:hover{box-shadow:0 30px 70px rgba(255,46,99,.18),0 24px 60px rgba(0,0,0,.65);filter:none}
+
+.c1{top:26%;left:21%;--rot:-6deg;filter:blur(1.8px) brightness(.55);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.c2{top:24%;right:19%;--rot:5deg}
+.c3{bottom:28%;left:19%;--rot:-8deg}
+.c4{bottom:27%;right:19%;--rot:4deg;filter:blur(1.1px) brightness(.8);box-shadow:0 18px 46px rgba(0,0,0,.55)}
+
+@media(max-width:1180px){
+  .c1{left:13%}.c2{right:11%}.c3{left:11%}.c4{right:11%}
+  .job-card .role{font-size:17px}
+}
+@media(max-width:900px){
+  .hero{flex-direction:column;justify-content:center;padding:120px 0 70px}
+  .hero-inner{order:-1;padding:0 20px}
+  .job-card{position:static;margin:9px auto 0;transform:none!important;width:min(300px,84vw)}
+  .job-card .role{white-space:normal;font-size:18px}
+  .c1,.c4{filter:none}
+  .hero-bg{opacity:.5}
+}
+
+/* ---------------- SECTIONS ---------------- */
+section.block{padding:110px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:860px){
+  .split{grid-template-columns:1fr;gap:48px}
+  /* outer-ring avatars sit centred on the ring and overhang the box; leave them room
+     so they neither clip nor push the layout viewport wider than the screen */
+  .orbit{width:88%}
+  .photo-orb{width:94%}
+}
+
+.tag{
+  display:inline-block;background:#1c1c20;border:1px solid var(--line);
+  color:#d5d5db;font-size:12px;font-weight:500;padding:6px 13px;border-radius:8px;margin-bottom:18px;
+}
+h2.section-title{font-size:clamp(28px,3.6vw,38px);font-weight:800;letter-spacing:-.02em}
+.section-copy{margin-top:14px;color:#9a9aa3;font-size:14px;line-height:1.65;font-weight:300;max-width:420px;text-wrap:pretty}
+.block .btn{margin-top:26px}
+
+/* shared orbital motion */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
+
+/* Benefits — ring orb with tracing accent arc */
+.photo-orb{position:relative;display:grid;place-items:center;aspect-ratio:1;max-width:420px;margin-inline:auto;width:100%}
+.photo-orb .glow{position:absolute;width:62%;height:62%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,46,99,.16),transparent 70%);filter:blur(34px)}
+.photo-orb .ring{position:absolute;border:1px solid rgba(255,255,255,.07);border-radius:50%}
+.photo-orb .ring.r1{width:68%;height:68%;border-style:dashed;border-color:rgba(255,255,255,.09)}
+.photo-orb .ring.r2{width:86%;height:86%}
+.photo-orb .ring.r3{width:100%;height:100%}
+.photo-orb .arc{position:absolute;border-radius:50%}
+.photo-orb .arc.a1{width:100%;height:100%;
+  background:conic-gradient(from 0deg,transparent 0 60%,var(--pink) 78%,transparent 90%);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));
+  animation:spin 14s linear infinite}
+.photo-orb .arc.a2{width:86%;height:86%;
+  background:conic-gradient(from 0deg,transparent 0 72%,rgba(255,255,255,.35) 84%,transparent 92%);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 1px),#000 calc(100% - 1px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 1px),#000 calc(100% - 1px));
+  animation:spin 26s linear infinite reverse}
+.photo-orb .tick{position:absolute;border-radius:50%}
+.photo-orb .tick.t-top{top:-3px;left:50%;width:6px;height:6px;background:var(--pink);translate:-50% 0}
+.photo-orb .tick.t-br{bottom:7%;right:8%;width:4px;height:4px;background:rgba(255,255,255,.4)}
+.photo-orb figure{width:63%;aspect-ratio:1;border-radius:50%;overflow:hidden;position:relative;z-index:2;
+  border:1px solid rgba(255,255,255,.09);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.photo-orb figure img{width:100%;height:100%;object-fit:cover}
+.photo-orb:hover figure{transform:scale(1.04)}
+
+/* Team — live orbit. Ring radii are 14/25/37/50cqi; avatar radii are sized so that
+   the sum of any two neighbouring radii stays under the gap between their rings,
+   which is what keeps faces from ever touching as the rings drift out of phase. */
+.orbit{position:relative;aspect-ratio:1;max-width:460px;width:100%;margin-inline:auto;container-type:inline-size}
+.orbit .core{position:absolute;inset:0;margin:auto;width:10px;height:10px;border-radius:50%;
+  background:var(--pink);animation:pulse 3.2s ease-in-out infinite}
+.orbit .track{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px solid rgba(255,255,255,.07)}
+.orbit .t1{width:28%;height:28%}
+.orbit .t2{width:50%;height:50%}
+.orbit .t3{width:74%;height:74%}
+.orbit .t4{width:100%;height:100%}
+.orbit .cw{animation:spin var(--dur) linear infinite}
+.orbit .ccw{animation:spin var(--dur) linear infinite reverse}
+.orbit .cw .hold{animation:spin var(--dur) linear infinite reverse}
+.orbit .ccw .hold{animation:spin var(--dur) linear infinite}
+.orbit .arm{position:absolute;inset:0;transform:rotate(var(--a))}
+.orbit .pin{position:absolute;left:50%;top:0;transform:translate(-50%,-50%) rotate(calc(var(--a) * -1))}
+.orbit .av{display:block;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  border:2px solid #0a0a0b;box-shadow:0 8px 24px rgba(0,0,0,.6);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.orbit .av img{width:100%;height:100%;object-fit:cover;display:block}
+.orbit .t1 .av{width:10cqi}
+.orbit .t2 .av{width:8.2cqi}
+.orbit .t3 .av{width:9cqi}
+.orbit .t4 .av{width:8.6cqi}
+.orbit .av-lead{box-shadow:0 0 0 3px rgba(255,46,99,.2),0 8px 24px rgba(0,0,0,.6)}
+.orbit .av:hover{transform:scale(1.12);box-shadow:0 0 0 4px rgba(255,46,99,.3),0 10px 28px rgba(0,0,0,.7)}
+
+/* ---------------- POSITIONS ---------------- */
+.positions{padding:60px 0 120px;text-align:center}
+.positions h2{font-size:clamp(28px,3.6vw,36px);font-weight:800;letter-spacing:-.02em}
+.filters{display:flex;gap:14px;justify-content:center;margin:30px 0 54px;flex-wrap:wrap}
+.field{
+  display:flex;align-items:center;gap:10px;
+  background:transparent;border:1px solid var(--line);border-radius:999px;
+  padding:11px 18px;transition:border-color .25s;
+}
+.field:focus-within{border-color:rgba(255,46,99,.5)}
+.field input,.field select{
+  background:transparent;border:0;outline:0;color:var(--text);
+  font-family:inherit;font-size:14px;font-weight:300;
+}
+.field input{width:210px}
+.field input::placeholder{color:#77777f}
+.field select{width:130px;color:#b6b6be;cursor:pointer;appearance:none}
+.field select option{background:#151517;color:#eee}
+.ico{color:var(--pink);display:grid;place-items:center;flex:none}
+
+.job-list{display:grid;grid-template-columns:150px 1fr;gap:0 34px;text-align:left;max-width:820px;margin:0 auto}
+.cat{color:var(--pink);font-weight:700;font-size:15px;padding-top:22px}
+.cat-jobs{display:flex;flex-direction:column}
+.job-row{
+  position:relative;isolation:isolate;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:19px 4px;border-bottom:1px solid rgba(255,255,255,.07);
+}
+/* element+class beats the bare .reveal rule further down, which would otherwise
+   replace this transition list and leave the hover snapping */
+a.job-row{
+  transition:padding-left .38s cubic-bezier(.2,.8,.2,1),
+             border-color .38s ease,
+             opacity .9s cubic-bezier(.2,.8,.2,1),
+             transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.cat-jobs:last-child .job-row:last-child{border-bottom:0}
+
+/* soft pink wash, fading out to the right */
+a.job-row::after{
+  content:'';position:absolute;inset:-1px -14px;z-index:-1;
+  background:linear-gradient(90deg,rgba(255,46,99,.09),rgba(255,46,99,.02) 45%,transparent 70%);
+  opacity:0;transition:opacity .38s ease;
+}
+a.job-row:hover::after{opacity:1}
+
+.job-row:hover{padding-left:14px;border-color:rgba(255,46,99,.22)}
+.job-row h3{font-size:15px;font-weight:700;transition:color .3s ease}
+.job-row:hover h3{color:#fff}
+.job-row span{display:block;font-size:12px;color:#84848c;font-weight:300;margin-top:3px;transition:color .3s ease}
+.job-row:hover span{color:#a2a2ab}
+.job-row .arrow{color:var(--pink);flex:none;transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+.job-row:hover .arrow{transform:translate(4px,-4px) scale(1.12)}
+.empty{grid-column:1/-1;color:var(--muted);text-align:center;padding:40px 0;font-weight:300}
+@media(max-width:640px){
+  .job-list{grid-template-columns:1fr;gap:0}
+  .cat{padding-top:26px;padding-bottom:6px}
+}
+
+/* ---------------- FOOTER ---------------- */
+footer{border-top:1px solid rgba(255,255,255,.07);padding:52px 0 46px;background:#0c0c0e}
+.foot{display:grid;grid-template-columns:1.4fr .6fr .6fr;gap:40px}
+@media(max-width:720px){.foot{grid-template-columns:1fr 1fr;gap:32px}.foot .brand{grid-column:1/-1}}
+.socials{display:flex;gap:16px;margin:18px 0 14px}
+.socials a{color:#9a9aa3;transition:color .25s,transform .25s}
+.socials a:hover{color:var(--pink);transform:translateY(-2px)}
+.copy{font-size:12px;color:#77777f;font-weight:300}
+.foot h4{font-size:13px;font-weight:600;margin-bottom:16px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.foot ul a{font-size:13px;color:#8f8f98;font-weight:300;transition:color .2s}
+.foot ul a:hover{color:var(--pink)}
+
+/* ---------------- ENTRANCE ANIMATIONS ---------------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-34px)}
+.reveal-l.in{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(34px)}
+.reveal-r.in{opacity:1;transform:none}
+.reveal-s{opacity:0;transform:scale(.9)}
+.reveal-s.in{opacity:1;transform:none}
+.reveal-l,.reveal-r,.reveal-s{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+
+.hero-anim{opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.nav-anim{opacity:0;animation:down .8s cubic-bezier(.2,.8,.2,1) .1s forwards}
+@keyframes down{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:none}}
+
+.job-card{opacity:0;animation:cardIn 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes cardIn{from{opacity:0;transform:translateY(40px) scale(.9) rotate(var(--rot))}to{opacity:1}}
+.c1{animation-delay:.55s}
+.c2{animation-delay:.7s}
+.c3{animation-delay:.85s}
+.c4{animation-delay:1s}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal,.reveal-l,.reveal-r,.reveal-s,.job-card,.hero-anim,.nav-anim{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-outer">
+  <nav class="nav nav-anim">
+    <div class="logo"><span class="star">✦</span><span class="word">STARBAS<span class="i">I</span>S</span></div>
+    <button class="btn">Sign In</button>
+  </nav>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="rings"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="blobs">
+    <img class="hero-bg" src="hero-bg.svg" alt="" data-depth="16">
+  </div>
+
+  <a class="job-card c1" href="#positions" data-depth="20" style="transform:rotate(-6deg)"
+     aria-label="Product Manager &ndash; see open positions">
+    <span class="meta">Remote &middot; Full-time</span>
+    <span class="role">Product Manager</span>
+  </a>
+  <a class="job-card c2" href="#positions" data-depth="36" style="transform:rotate(5deg)"
+     aria-label="Product Designer &ndash; see open positions">
+    <span class="meta">Remote &middot; Full-time</span>
+    <span class="role">Product Designer</span>
+  </a>
+  <a class="job-card c3" href="#positions" data-depth="44" style="transform:rotate(-8deg)"
+     aria-label="Back-end Developer &ndash; see open positions">
+    <span class="meta">Remote &middot; Full-time</span>
+    <span class="role">Back-end Developer</span>
+  </a>
+  <a class="job-card c4" href="#positions" data-depth="22" style="transform:rotate(4deg)"
+     aria-label="Front-end Developer &ndash; see open positions">
+    <span class="meta">Remote &middot; Full-time</span>
+    <span class="role">Front-end Developer</span>
+  </a>
+
+  <div class="hero-inner">
+    <h1 class="hero-anim" style="animation-delay:.2s">Working at StarBasis</h1>
+    <p class="hero-anim" style="animation-delay:.34s">We build the tools creators use to turn an audience into a business. Come build them with us.</p>
+    <div class="hero-anim" style="animation-delay:.46s"><a href="#positions"><button class="btn">Check Positions</button></a></div>
+  </div>
+</header>
+
+<!-- BENEFITS -->
+<section class="block">
+  <div class="wrap split">
+    <div class="reveal-l">
+      <span class="tag">Benefits</span>
+      <h2 class="section-title">Freedom</h2>
+      <p class="section-copy">Nearly every role here is remote. Work from wherever you do your best thinking &mdash; we care about what you ship, not what timezone you ship it from.</p>
+      <a href="#positions"><button class="btn">See Open Positions</button></a>
+    </div>
+    <div class="photo-orb reveal-s">
+      <div class="glow"></div>
+      <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
+      <div class="arc a1"></div><div class="arc a2"></div>
+      <span class="tick t-top"></span><span class="tick t-br"></span>
+      <figure>
+        <img src="freedom.jpg" width="1000" height="1000" loading="lazy" decoding="async"
+             alt="Two colleagues working on laptops outdoors under string lights">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="block">
+  <div class="wrap split">
+    <div class="orbit reveal-s">
+      <span class="core"></span>
+      <div class="track t1 ccw" style="--dur:54s"><div class="arm" style="--a:0deg"><div class="pin"><div class="hold"><span class="av av-lead"><img src="https://i.pravatar.cc/200?img=9" alt="Team member"></span></div></div></div></div>
+      <div class="track t2 cw"  style="--dur:68s"><div class="arm" style="--a:144deg"><div class="pin"><div class="hold"><span class="av"><img src="https://i.pravatar.cc/200?img=12" alt="Team member"></span></div></div></div></div>
+      <div class="track t3 ccw" style="--dur:86s"><div class="arm" style="--a:288deg"><div class="pin"><div class="hold"><span class="av"><img src="https://i.pravatar.cc/200?img=26" alt="Team member"></span></div></div></div></div>
+      <div class="track t4 cw"  style="--dur:104s"><div class="arm" style="--a:72deg"><div class="pin"><div class="hold"><span class="av"><img src="https://i.pravatar.cc/200?img=32" alt="Team member"></span></div></div></div><div class="arm" style="--a:252deg"><div class="pin"><div class="hold"><span class="av"><img src="https://i.pravatar.cc/200?img=5" alt="Team member"></span></div></div></div></div>
+    </div>
+    <div class="reveal-r">
+      <span class="tag">Team</span>
+      <h2 class="section-title">Great Team</h2>
+      <p class="section-copy">We hire people, not r&eacute;sum&eacute;s. Bring the whole self, say the difficult thing early, and help us keep this a place worth staying at.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIONS -->
+<section class="positions" id="positions">
+  <div class="wrap">
+    <h2 class="reveal">Open Positions</h2>
+    <div class="filters reveal">
+      <label class="field">
+        <input type="text" id="search" placeholder="Search" />
+        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg></span>
+      </label>
+      <label class="field">
+        <select id="role">
+          <option value="">Select a role</option>
+          <option>Engineering</option>
+          <option>Product</option>
+          <option>Growth</option>
+          <option>Operations</option>
+          <option>Other</option>
+        </select>
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      </label>
+    </div>
+
+    <div class="job-list" id="jobList"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="brand">
+      <div class="logo"><span class="star">✦</span><span class="word">STARBAS<span class="i">I</span>S</span></div>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.3 10h-6.5l-5-6.1L4.6 21H1.4l7.5-8.6L1 3h6.7l4.6 5.6L17.5 3zm-1.1 16h1.8L7.7 4.8H5.8L16.4 19z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.2c0-1.24-.02-2.83-1.8-2.83-1.8 0-2.08 1.34-2.08 2.74V21h-4z"/></svg></a>
+      </div>
+      <p class="copy">&copy; 2025 StarBasis, Inc. All rights reserved.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Sign In</a></li>
+        <li><a href="#">Go to the Marketplace</a></li>
+        <li><a href="#">Become a seller</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Hero cursor parallax ----------
+   Two different behaviours on purpose:
+   the cards RECOIL from the cursor, quickly and each at its own depth;
+   the capsule artwork DRIFTS TOWARD it, slowly, with a little roll and swell,
+   so the background reads as a separate, heavier layer rather than more cards. */
+(function(){
+  const cards = document.querySelectorAll('.job-card[data-depth]');
+  const bg    = document.querySelector('.hero-bg');
+  const hero  = document.querySelector('.hero');
+  let tx = 0, ty = 0, cx = 0, cy = 0, bx = 0, by = 0, raf;
+
+  const CARD_EASE = 0.085;   // crisp
+  const BG_EASE   = 0.022;   // lags well behind, keeps gliding after the cards settle
+  const BG_SHIFT  = 30;      // px of travel, with the cursor
+  const BG_ROLL   = 2.2;     // deg of roll across the hero
+  const BG_SWELL  = 0.05;    // how much it breathes on the vertical
+
+  function onMove(e){
+    const r = hero.getBoundingClientRect();
+    tx = (e.clientX - r.width / 2) / r.width;
+    ty = (e.clientY - r.height / 2) / r.height;
+    if (!raf) raf = requestAnimationFrame(loop);
+  }
+
+  function loop(){
+    cx += (tx - cx) * CARD_EASE;
+    cy += (ty - cy) * CARD_EASE;
+    bx += (tx - bx) * BG_EASE;
+    by += (ty - by) * BG_EASE;
+
+    cards.forEach(el => {
+      const d = parseFloat(el.dataset.depth);
+      const rot = (getComputedStyle(el).getPropertyValue('--rot') || '0deg').trim();
+      el.style.transform =
+        'translate3d(' + (-cx * d).toFixed(2) + 'px,' + (-cy * d).toFixed(2) + 'px,0) rotate(' + rot + ')';
+    });
+
+    if (bg) {
+      bg.style.transform =
+        'translate3d(' + (bx * BG_SHIFT).toFixed(2) + 'px,' + (by * BG_SHIFT * 0.6).toFixed(2) + 'px,0)' +
+        ' rotate(' + (bx * BG_ROLL).toFixed(3) + 'deg)' +
+        ' scale(' + (1 + Math.abs(by) * BG_SWELL).toFixed(4) + ')';
+    }
+
+    const settled = Math.abs(tx - cx) < 0.0005 && Math.abs(ty - cy) < 0.0005 &&
+                    Math.abs(tx - bx) < 0.0005 && Math.abs(ty - by) < 0.0005;
+    raf = settled ? null : requestAnimationFrame(loop);
+  }
+
+  const small = window.matchMedia('(max-width:900px)');
+  if (!small.matches) window.addEventListener('mousemove', onMove, {passive:true});
+  window.addEventListener('mouseleave', () => { tx = 0; ty = 0; if(!raf) raf = requestAnimationFrame(loop); });
+})();
+
+/* ---------- Card tilt on hover ---------- */
+document.querySelectorAll('.job-card').forEach(card => {
+  card.addEventListener('mouseenter', () => card.style.zIndex = 5);
+});
+
+/* ---------- Open positions ---------- */
+const JOBS = [
+  {cat:'Engineering', title:'Senior Software Engineer, Android', loc:'Remote'},
+  {cat:'Engineering', title:'Senior Software Engineer, iOS',     loc:'Remote'},
+  {cat:'Engineering', title:'Senior Software Engineer, Web',     loc:'Remote'},
+  {cat:'Product',     title:'Product Manager',                   loc:'Remote'},
+  {cat:'Product',     title:'Senior Product Designer',           loc:'Remote'},
+  {cat:'Growth',      title:'Creator Partnerships Lead',         loc:'Remote'},
+  {cat:'Operations',  title:'Senior People Business Partner',    loc:'Remote'},
+  {cat:'Other',       title:'Join our Talent Network',           loc:'Remote'}
+];
+const ARROW = '<span class="arrow"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>';
+const list = document.getElementById('jobList');
+const search = document.getElementById('search');
+const roleSel = document.getElementById('role');
+
+function render(){
+  const q = search.value.trim().toLowerCase();
+  const r = roleSel.value;
+  const rows = JOBS.filter(j => (!r || j.cat === r) && (!q || j.title.toLowerCase().includes(q)));
+  list.innerHTML = '';
+  if (!rows.length){ list.innerHTML = '<p class="empty">No positions match your search.</p>'; return; }
+  const cats = [...new Set(rows.map(j => j.cat))];
+  cats.forEach((cat, ci) => {
+    const label = document.createElement('div');
+    label.className = 'cat reveal';
+    label.textContent = cat;
+    const group = document.createElement('div');
+    group.className = 'cat-jobs';
+    rows.filter(j => j.cat === cat).forEach((j, i) => {
+      const a = document.createElement('a');
+      a.href = '#';
+      a.className = 'job-row reveal';
+      a.style.transitionDelay = ((ci * 2 + i) * 0.05) + 's';
+      a.innerHTML = `<div><h3>${j.title}</h3><span>${j.loc}</span></div>${ARROW}`;
+      group.appendChild(a);
+    });
+    list.appendChild(label);
+    list.appendChild(group);
+  });
+  observeAll();
+}
+search.addEventListener('input', render);
+roleSel.addEventListener('change', render);
+
+/* ---------- Scroll entrance animations ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    io.unobserve(e.target);
+    // the inline reveal stagger applies to every property, so leaving it in place
+    // would also delay the row's hover transition — drop it once the reveal is done
+    if (e.target.style.transitionDelay) {
+      setTimeout(() => { e.target.style.transitionDelay = ''; }, 1400);
+    }
+  });
+}, {threshold:.15, rootMargin:'0px 0px -60px 0px'});
+
+function observeAll(){
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-s').forEach(el => {
+    if (!el.classList.contains('in')) io.observe(el);
+  });
+}
+render();
+observeAll();
+</script>
+</body>
+</html>

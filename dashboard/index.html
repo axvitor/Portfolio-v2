@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Element — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7.5 14.5l3-3.2 2.4 2.2 3.6-4.2"/></symbol>
+  <symbol id="i-product" viewBox="0 0 24 24"><path d="M4 8h16l-1 11.5a1.6 1.6 0 0 1-1.6 1.5H6.6A1.6 1.6 0 0 1 5 19.5Z"/><path d="M8.6 8V6.4a3.4 3.4 0 0 1 6.8 0V8"/></symbol>
+  <symbol id="i-tx" viewBox="0 0 24 24"><path d="M3.5 17.5 9.6 11l3.6 3.4L20.5 7"/><path d="M15.6 6.9h5v5"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10.5h18"/><circle cx="16.8" cy="14.8" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-subs" viewBox="0 0 24 24"><circle cx="9.2" cy="9" r="3.2"/><path d="M3.4 19.2c.5-3 2.9-4.7 5.8-4.7s5.3 1.7 5.8 4.7"/><path d="M16.2 7.2a2.9 2.9 0 0 1 0 5.6"/><path d="M17.6 15.2c2.1.5 3.3 1.9 3.6 4"/></symbol>
+  <symbol id="i-ref" viewBox="0 0 24 24"><circle cx="10" cy="8.6" r="3.4"/><path d="M3.6 19.4c.6-3.2 3.2-5 6.4-5s5.8 1.8 6.4 5"/><path d="M18.8 7.4v5.2M21.4 10h-5.2"/></symbol>
+  <symbol id="i-res" viewBox="0 0 24 24"><rect x="4.5" y="3.5" width="15" height="17" rx="2.6"/><path d="M9 8.4h6M9 12h6M9 15.6h3.6"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M12 3.4v17.2M4.6 7.7l14.8 8.6M19.4 7.7 4.6 16.3"/></symbol>
+  <symbol id="i-discord" viewBox="0 0 24 24"><path d="M8.4 7.4a13 13 0 0 1 7.2 0M7.6 17.1a13 13 0 0 0 8.8 0"/><path d="M8.4 7.4C6 8.2 4.6 10 4.2 13.2c-.2 1.7.1 2.9.9 3.6 1 .9 2.3.6 2.9-.4M15.6 7.4c2.4.8 3.8 2.6 4.2 5.8.2 1.7-.1 2.9-.9 3.6-1 .9-2.3.6-2.9-.4"/><circle cx="9.6" cy="13" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.4" cy="13" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.1"/><path d="M19.6 14.4a1.5 1.5 0 0 0 .3 1.7l.1.1a1.8 1.8 0 1 1-2.6 2.6l-.1-.1a1.5 1.5 0 0 0-1.7-.3 1.5 1.5 0 0 0-.9 1.4v.2a1.8 1.8 0 1 1-3.6 0v-.1a1.5 1.5 0 0 0-1-1.4 1.5 1.5 0 0 0-1.7.3l-.1.1a1.8 1.8 0 1 1-2.6-2.6l.1-.1a1.5 1.5 0 0 0 .3-1.7 1.5 1.5 0 0 0-1.4-.9h-.2a1.8 1.8 0 1 1 0-3.6h.1a1.5 1.5 0 0 0 1.4-1 1.5 1.5 0 0 0-.3-1.7l-.1-.1a1.8 1.8 0 1 1 2.6-2.6l.1.1a1.5 1.5 0 0 0 1.7.3h.1a1.5 1.5 0 0 0 .9-1.4v-.2a1.8 1.8 0 1 1 3.6 0v.1a1.5 1.5 0 0 0 .9 1.4 1.5 1.5 0 0 0 1.7-.3l.1-.1a1.8 1.8 0 1 1 2.6 2.6l-.1.1a1.5 1.5 0 0 0-.3 1.7v.1a1.5 1.5 0 0 0 1.4.9h.2a1.8 1.8 0 1 1 0 3.6h-.1a1.5 1.5 0 0 0-1.4.9Z"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M14.5 4.5h3.1A2.4 2.4 0 0 1 20 6.9v10.2a2.4 2.4 0 0 1-2.4 2.4h-3.1"/><path d="M10.4 15.7 14 12l-3.6-3.7M14 12H4.4"/></symbol>
+  <symbol id="i-money" viewBox="0 0 24 24"><path d="M12 6.2v11.6"/><path d="M14.9 9.1a2.6 2.6 0 0 0-2.6-1.5h-.9a2.2 2.2 0 0 0-.4 4.3l2.3.5a2.2 2.2 0 0 1-.4 4.4h-.8a2.6 2.6 0 0 1-2.6-1.6"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8.4h14l-.9 10.2a1.5 1.5 0 0 1-1.5 1.4H7.4a1.5 1.5 0 0 1-1.5-1.4Z"/><path d="M9 8.4V7a3 3 0 0 1 6 0v1.4"/></symbol>
+  <symbol id="i-userplus" viewBox="0 0 24 24"><circle cx="10" cy="8.6" r="3.2"/><path d="M4 19c.6-2.9 3-4.6 6-4.6 1.2 0 2.3.3 3.2.8"/><path d="M18 13.6v5M20.5 16.1h-5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M6.5 17V11M12 17V7M17.5 17v-4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9.4" cy="9" r="3.1"/><path d="M3.8 18.8c.5-2.9 2.8-4.6 5.6-4.6s5.1 1.7 5.6 4.6"/><path d="M16.4 7.3a2.8 2.8 0 0 1 0 5.4M17.7 15.1c2 .5 3.2 1.8 3.5 3.7"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.6h7.2L18.5 8v12.4H6.5Z"/><path d="M13.4 3.8V8.2h4.8"/><path d="M9.4 12.6h5.2M9.4 15.8h5.2"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="12" cy="5.4" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="18.6" r="1.5" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8.6a6 6 0 1 0-12 0c0 5.1-1.6 6.6-1.6 6.6h15.2S18 13.7 18 8.6"/><path d="M13.7 19a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+</svg>
+
+<div class="app">
+
+  <!-- ============ MOBILE TOP BAR ============ -->
+  <header class="m-topbar">
+    <span class="m-topbar__brand">
+      <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true">
+        <path d="M14 4.2 16.9 10.3 23.5 11.2 18.7 15.9 19.9 22.5 14 19.4 8.1 22.5 9.3 15.9 4.5 11.2 11.1 10.3Z"
+              fill="#2F90FF" stroke="#2F90FF" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      Element
+    </span>
+    <button class="m-bell" aria-label="Notifications">
+      <svg class="ic"><use href="#i-bell"/></svg><i class="m-bell__dot"></i>
+    </button>
+  </header>
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true">
+        <path d="M14 4.2 16.9 10.3 23.5 11.2 18.7 15.9 19.9 22.5 14 19.4 8.1 22.5 9.3 15.9 4.5 11.2 11.1 10.3Z"
+              fill="#2F90FF" stroke="#2F90FF" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__name">Element</span>
+    </div>
+
+    <nav class="nav">
+      <a class="nav__item is-active" href="#"><svg class="ic"><use href="#i-dashboard"/></svg><span>Dashboard</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-product"/></svg><span>Product</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-tx"/></svg><span>Transactions</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-wallet"/></svg><span>Wallet</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-subs"/></svg><span>Subscribers</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-ref"/></svg><span>Referrals</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-res"/></svg><span>Resolution Center</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-zap"/></svg><span>Zapier</span></a>
+      <a class="nav__item" href="#"><svg class="ic"><use href="#i-discord"/></svg><span>Discord</span></a>
+    </nav>
+
+    <div class="user">
+      <img class="user__avatar" alt="John Lee"
+           src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23768396'/%3E%3Cstop offset='1' stop-color='%233c4757'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='80' height='80' fill='url(%23g)'/%3E%3Ccircle cx='40' cy='31' r='14' fill='%23dfe4ea'/%3E%3Cpath d='M12 80c3-17 14-26 28-26s25 9 28 26z' fill='%23dfe4ea'/%3E%3C/svg%3E" />
+      <div class="user__meta">
+        <p class="user__name">John Lee</p>
+        <p class="user__handle">/Jolee</p>
+      </div>
+      <button class="user__btn" aria-label="Settings"><svg class="ic"><use href="#i-gear"/></svg></button>
+      <button class="user__btn" aria-label="Log out"><svg class="ic"><use href="#i-logout"/></svg></button>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- greeting + revenue + the first stat read as one rounded
+         sheet on mobile; on desktop this wrapper is display:contents
+         so it has zero effect on the grid/flex layout above -->
+    <div class="sheet">
+
+    <div class="m-greeting">
+      <p class="m-greeting__hi">Hey, <b>John Lee</b> <span aria-hidden="true">&#128075;</span></p>
+      <p class="m-greeting__date">Friday, August 19</p>
+    </div>
+
+    <section class="stats">
+      <article class="card stat">
+        <div class="stat__body">
+          <p class="stat__label">Total Active Subscribers</p>
+          <div class="stat__row">
+            <span class="stat__value">+3,052</span>
+            <span class="pill pill--down">-14%</span>
+          </div>
+        </div>
+        <span class="stat__icon"><svg class="ic"><use href="#i-users"/></svg></span>
+      </article>
+
+      <article class="card stat">
+        <div class="stat__body">
+          <p class="stat__label">Projected Revenue</p>
+          <div class="stat__row">
+            <span class="stat__value">$53,478.75</span>
+            <span class="pill pill--up">+55%</span>
+          </div>
+        </div>
+        <span class="stat__icon"><svg class="ic"><use href="#i-chart"/></svg></span>
+      </article>
+
+      <article class="card stat">
+        <div class="stat__body">
+          <p class="stat__label">Today's Money</p>
+          <div class="stat__row">
+            <span class="stat__value">$53,000</span>
+            <span class="pill pill--up">+12%</span>
+          </div>
+        </div>
+        <span class="stat__icon"><svg class="ic"><use href="#i-users"/></svg></span>
+      </article>
+    </section>
+
+    <!-- Revenue -->
+    <section class="card revenue">
+      <header class="revenue__head">
+        <div>
+          <h2 class="revenue__value"><span class="revenue__cur">$</span><span id="revenueTotal">335,274.94</span></h2>
+          <p class="revenue__label"><span class="only-desktop">Total Revenue</span><span class="only-mobile">Total Earnings This Month</span></p>
+        </div>
+        <div class="segmented" data-segmented>
+          <button type="button">Today</button>
+          <button type="button">Week</button>
+          <button type="button">Month</button>
+          <button type="button" class="is-active">Year</button>
+        </div>
+      </header>
+      <div class="chart chart--bar" id="barChart"></div>
+    </section>
+
+    </div><!-- /.sheet -->
+
+    <!-- Overview -->
+    <section class="card overview">
+      <header class="overview__head">
+        <h2 class="card__title">Overview</h2>
+        <div class="segmented" data-segmented>
+          <button type="button" class="is-active">Today</button>
+          <button type="button">Week</button>
+          <button type="button">Month</button>
+          <button type="button">Year</button>
+        </div>
+      </header>
+
+      <div class="overview__body">
+        <ul class="metrics">
+          <li class="metric" data-series="0">
+            <span class="metric__icon metric__icon--green"><svg class="ic"><use href="#i-money"/></svg></span>
+            <div class="metric__meta">
+              <p class="metric__label">Total Transactions</p>
+              <div class="metric__row"><span class="metric__value">37</span><span class="pill pill--up">+55%</span></div>
+            </div>
+          </li>
+          <li class="metric" data-series="1">
+            <span class="metric__icon metric__icon--amber"><svg class="ic"><use href="#i-bag"/></svg></span>
+            <div class="metric__meta">
+              <p class="metric__label">New Customers</p>
+              <div class="metric__row"><span class="metric__value">21</span><span class="pill pill--up">+12%</span></div>
+            </div>
+          </li>
+          <li class="metric" data-series="2">
+            <span class="metric__icon metric__icon--blue"><svg class="ic"><use href="#i-userplus"/></svg></span>
+            <div class="metric__meta">
+              <p class="metric__label">New Subscribers</p>
+              <div class="metric__row"><span class="metric__value">8</span><span class="pill pill--down">-12%</span></div>
+            </div>
+          </li>
+        </ul>
+        <div class="chart chart--line" id="lineChart"></div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="card projects">
+      <header class="projects__head">
+        <div>
+          <h2 class="card__title">Projects</h2>
+          <p class="projects__sub"><span class="dot"></span>20 done this month</p>
+        </div>
+        <button class="icon-btn" aria-label="More"><svg class="ic"><use href="#i-dots"/></svg></button>
+      </header>
+
+      <table class="table">
+        <thead>
+          <tr><th>Companies</th><th>Members</th><th>Budget</th><th>Completion</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="proj"><span class="proj__logo proj__logo--blue"><svg class="ic"><use href="#i-dashboard"/></svg></span>NBA Weekly</span></td>
+            <td><span class="stack"><i></i><i></i><i></i><i></i></span></td>
+            <td>$14,000</td>
+            <td><div class="progress"><span class="progress__pct">60%</span><span class="progress__track"><span class="progress__bar" style="--p:60%"></span></span></div></td>
+          </tr>
+          <tr>
+            <td><span class="proj"><span class="proj__logo proj__logo--amber"><svg class="ic"><use href="#i-bag"/></svg></span>Element Store</span></td>
+            <td><span class="stack"><i></i><i></i><i></i></span></td>
+            <td>$3,000</td>
+            <td><div class="progress"><span class="progress__pct">10%</span><span class="progress__track"><span class="progress__bar" style="--p:10%"></span></span></div></td>
+          </tr>
+          <tr>
+            <td><span class="proj"><span class="proj__logo proj__logo--green"><svg class="ic"><use href="#i-money"/></svg></span>Payouts v2</span></td>
+            <td><span class="stack"><i></i><i></i></span></td>
+            <td>Not set</td>
+            <td><div class="progress"><span class="progress__pct">100%</span><span class="progress__track"><span class="progress__bar" style="--p:100%"></span></span></div></td>
+          </tr>
+          <tr>
+            <td><span class="proj"><span class="proj__logo proj__logo--slate"><svg class="ic"><use href="#i-doc"/></svg></span>Docs Refresh</span></td>
+            <td><span class="stack"><i></i><i></i><i></i><i></i></span></td>
+            <td>$32,000</td>
+            <td><div class="progress"><span class="progress__pct">75%</span><span class="progress__track"><span class="progress__bar" style="--p:75%"></span></span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- ============ ACTIVITY ============ -->
+  <aside class="activity">
+    <header class="activity__head">
+      <button class="icon-btn icon-btn--ghost" aria-label="Collapse"><svg class="ic"><use href="#i-chevron"/></svg></button>
+      <h2 class="activity__title">Recent Activity</h2>
+      <span class="live"><i></i>LIVE</span>
+    </header>
+    <ul class="feed" id="feed"></ul>
+  </aside>
+
+  <!-- ============ MOBILE TAB BAR ============ -->
+  <nav class="m-tabbar">
+    <button class="m-tab is-active" aria-label="Dashboard"><svg class="ic"><use href="#i-dashboard"/></svg></button>
+    <button class="m-tab" aria-label="Subscribers"><svg class="ic"><use href="#i-users"/></svg></button>
+    <button class="m-tab" aria-label="Create"><svg class="ic"><use href="#i-plus"/></svg></button>
+    <button class="m-tab" aria-label="Product"><svg class="ic"><use href="#i-bag"/></svg></button>
+    <button class="m-tab m-tab--me" aria-label="Profile">
+      <img alt="" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23C98A6B'/%3E%3Cstop offset='1' stop-color='%237B4B3A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='80' height='80' fill='url(%23g)'/%3E%3Ccircle cx='40' cy='31' r='14' fill='%23F3DDD0'/%3E%3Cpath d='M12 80c3-17 14-26 28-26s25 9 28 26z' fill='%23F3DDD0'/%3E%3C/svg%3E" />
+    </button>
+  </nav>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

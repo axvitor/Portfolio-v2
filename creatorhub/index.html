@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreatorHub — Book experiences with the creators you follow</title>
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        dark: '#1e2026',
+                        darker: '#17181c',
+                        cardDark: '#282a32',
+                        brand: '#e11d48'
+                    },
+                    borderRadius: {
+                        card: '1.5rem',
+                        media: '1rem',
+                        hero: '2rem'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ---- Design tokens ------------------------------------------------
+           radius:   hero 32px · card 24px · media 16px · pill 999px
+           rhythm:   section gap 80px · header gap 32px · grid gap 24px
+           type:     h1 48/56 semibold · h2 24 semibold · body 14 · meta 12
+        ------------------------------------------------------------------- */
+        /* The fixed nav sizes to the initial containing block, which includes the
+           scrollbar gutter, so it can sit ~16px wider than the document and let the
+           page scroll sideways — exposing a strip past the full-bleed dark sections.
+           Clip at the root so no horizontal scroll is possible. */
+        html {
+            background-color: #fcfcfc;
+            overflow-x: hidden;
+        }
+
+        /* Subject gradients. Deeper stops than a stock 400/500 pair so the
+           white labels still clear 4.5:1 at both ends of every ramp. */
+        :root {
+            --subject-technology: linear-gradient(100deg, #2563eb, #4338ca);
+            --subject-technology-glow: rgba(37,99,235, 0.38);
+            --subject-design: linear-gradient(100deg, #e11d48, #c2410c);
+            --subject-design-glow: rgba(225,29,72, 0.38);
+            --subject-development: linear-gradient(100deg, #047857, #0f766e);
+            --subject-development-glow: rgba(5,150,105, 0.38);
+            --subject-photography: linear-gradient(100deg, #7e22ce, #be185d);
+            --subject-photography-glow: rgba(126,34,206, 0.38);
+            --subject-business: linear-gradient(100deg, #b45309, #c2410c);
+            --subject-business-glow: rgba(180,83,9, 0.38);
+            --subject-marketing: linear-gradient(100deg, #0e7490, #1d4ed8);
+            --subject-marketing-glow: rgba(14,116,144, 0.38);
+            --subject-finance: linear-gradient(100deg, #374151, #111827);
+            --subject-finance-glow: rgba(55,65,81, 0.38);
+            --subject-music: linear-gradient(100deg, #be185d, #9f1239);
+            --subject-music-glow: rgba(190,24,93, 0.38);
+            --subject-film: linear-gradient(100deg, #6d28d9, #5b21b6);
+            --subject-film-glow: rgba(109,40,217, 0.38);
+            --subject-fitness: linear-gradient(100deg, #b91c1c, #9f1239);
+            --subject-fitness-glow: rgba(185,28,28, 0.38);
+            --subject-writing: linear-gradient(100deg, #1d4ed8, #155e75);
+            --subject-writing-glow: rgba(29,78,216, 0.38);
+            --subject-gaming: linear-gradient(100deg, #0f766e, #065f46);
+            --subject-gaming-glow: rgba(15,118,110, 0.38);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc;
+            color: #111827;
+            overflow-x: hidden;
+        }
+
+        /* Carousel page dots: 6px of ink, 44px of target */
+        .track-dot {
+            height: 44px;
+            width: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: 0;
+            cursor: pointer;
+        }
+        .track-dot > span {
+            display: block;
+            height: 6px;
+            width: 24px;
+            border-radius: 999px;
+            background: #d1d5db;
+            /* scaleX rather than width: the dot grows without triggering layout */
+            transform: scaleX(0.25);
+            transition: transform .3s ease, background-color .3s ease;
+        }
+        .track-dot:hover > span { background: #9ca3af; }
+        .track-dot.is-active > span { transform: none; background: #1f2937; }
+        .dark .track-dot > span { background: rgba(255, 255, 255, 0.3); }
+        .dark .track-dot:hover > span { background: rgba(255, 255, 255, 0.5); }
+        .dark .track-dot.is-active > span { background: #fff; }
+
+        /* Hero dots: 6px of ink, 44px of target */
+        .hero-dot {
+            height: 44px;
+            width: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: 0;
+            cursor: pointer;
+        }
+        .hero-dot > span {
+            display: block;
+            height: 6px;
+            width: 24px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.5);
+            /* scaleX rather than width: the dot grows without triggering layout */
+            transform: scaleX(0.25);
+            transition: transform .3s ease, background-color .3s ease;
+        }
+        .hero-dot:hover > span { background: #fff; }
+        .hero-dot.is-active > span { transform: none; background: #fff; }
+
+        .skip-link {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -120%);
+            z-index: 60;
+            padding: 10px 20px;
+            border-radius: 0 0 12px 12px;
+            background: #111827;
+            color: #fff;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: transform .2s ease;
+        }
+        .skip-link:focus { transform: translate(-50%, 0); }
+
+        /* Carousel edge fades: hide the cut where a track runs past its container */
+        .track-fade { position: relative; --bleed: 32px; }
+        .track-fade::before,
+        .track-fade::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s ease;
+        }
+        .track-fade::before {
+            left: calc(-1 * var(--bleed));
+            background: linear-gradient(to right, var(--fade), var(--fade-0));
+        }
+        .track-fade::after {
+            right: calc(-1 * var(--bleed));
+            background: linear-gradient(to left, var(--fade), var(--fade-0));
+        }
+        .track-fade.fade-start::before { opacity: 1; }
+        .track-fade.fade-end::after    { opacity: 1; }
+
+        /* Subject chips: filled by default, and the gradient retracts to its disc
+           on hover. The ::before IS the disc — one clip-path circle, full bleed at
+           rest and 18px on hover — so the sweep runs out of and back into the disc. */
+        .subject-chip {
+            position: relative;
+            isolation: isolate;
+            flex: 0 0 calc(50% - 5px);
+            scroll-snap-align: start;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 20px 0 6px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            background: #fff;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+            transition: border-color .35s ease, box-shadow .35s ease,
+                        transform .35s cubic-bezier(.2, .8, .2, 1);
+        }
+        @media (min-width: 640px)  { .subject-chip { flex-basis: calc(33.333% - 6.667px); } }
+        @media (min-width: 1024px) { .subject-chip { flex-basis: calc(20% - 8px); } }
+
+        .subject-chip::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            z-index: -1;
+            border-radius: inherit;
+            background: var(--c);
+            clip-path: circle(150% at 25px 50%);
+            transition: clip-path .45s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .subject-disc {
+            width: 36px;
+            height: 36px;
+            flex: none;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.22);
+            transition: background-color .35s ease;
+        }
+
+        .subject-label { color: #fff; transition: color .35s ease; }
+
+        /* Selected stays filled, and earns the coloured glow to separate it
+           from the twelve chips that are merely at rest. */
+        .subject-chip[aria-pressed="true"] {
+            box-shadow: 0 10px 20px -6px var(--ring);
+            transform: translateY(-2px);
+        }
+
+        /* Hover retracts to the white pill. Listed last so it wins over selection. */
+        .subject-chip:hover {
+            border-color: #eceef1;
+            box-shadow: 0 8px 20px -6px rgba(17, 24, 39, 0.20);
+            transform: translateY(-2px);
+        }
+        .subject-chip:hover::before { clip-path: circle(18.5px at 25px 50%); }
+        .subject-chip:hover .subject-disc { background: transparent; }
+        .subject-chip:hover .subject-label { color: #4b5563; }
+
+        /* Floating nav: glass over whatever scrolls beneath it */
+        /* At the top the bar sits flat on the page; once the page scrolls under it
+           the bar lifts: more opaque, brighter edge, and a real shadow. */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            box-shadow: none;
+            transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+        }
+        .nav-glass.is-stuck {
+            background: rgba(255, 255, 255, 0.60);
+            border-color: rgba(255, 255, 255, 0.7);
+            box-shadow:
+                0 10px 40px rgba(17, 24, 39, 0.10),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        /* Floating nav drop in. Must sit on the nav itself, not a wrapper:
+           a transformed ancestor becomes the backdrop root and kills the blur. */
+        .nav-drop { opacity: 0; animation: navDown 0.8s cubic-bezier(.2,.8,.2,1) 0.1s forwards; }
+        @keyframes navDown {
+            from { opacity: 0; transform: translateY(-22px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        /* Hide scrollbar for carousels */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Subtle border gradient on hover */
+        .border-gradient-wrapper {
+            position: relative;
+            border-radius: 1.5rem;
+            background: #fff;
+            z-index: 0;
+        }
+        .border-gradient-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(225,29,72,0.55), rgba(59,130,246,0.45), rgba(255,255,255,0));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .border-gradient-wrapper:hover::before,
+        .border-gradient-wrapper:focus-within::before { opacity: 1; }
+        .dark .border-gradient-wrapper { background: #282a32; }
+
+        /* Hero panel glass.
+           The blur must NOT sit on the rounded element itself — Chrome fails to clip
+           the backdrop region to its own border-radius and paints a hard square block
+           behind the card. Instead the panel clips (overflow + radius) and a child
+           layer carries the blur, so the parent's overflow does the rounding. */
+        .glass {
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: transparent;
+        }
+        .glass::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            backdrop-filter: blur(18px) saturate(135%);
+            -webkit-backdrop-filter: blur(18px) saturate(135%);
+            background:
+                linear-gradient(135deg, rgba(16, 16, 20, 0.52) 0%, rgba(16, 16, 20, 0.30) 100%),
+                radial-gradient(120% 140% at 0% 0%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 60%);
+        }
+        .hero-panel-in { position: relative; z-index: 1; }
+        .glass-light {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Hero slides */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.7s ease, visibility 0.7s;
+        }
+        .hero-slide.is-active { opacity: 1; visibility: visible; }
+        /* The entrance animation must NOT sit on .hero-panel: animating transform on
+           the element that carries backdrop-filter makes Chrome drop its backdrop
+           sampling, so the glass renders as a flat dark slab until a later repaint. */
+        .hero-slide.is-active .hero-panel-in { animation: panelIn 0.7s cubic-bezier(.2,.7,.2,1) both; }
+        .hero-slide.is-active .hero-media { animation: mediaIn 8s linear both; }
+
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes mediaIn {
+            from { transform: scale(1.02); }
+            to   { transform: scale(1.10); }
+        }
+
+        /* Focus ring, consistent across the page */
+        a:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 2px solid #e11d48;
+            outline-offset: 3px;
+        }
+
+        /* Heading reveal. Wrappers must not clip descenders. */
+        .reveal-word {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            padding-bottom: 0.12em;
+            margin-bottom: -0.12em;
+        }
+        .reveal-inner {
+            display: inline-block;
+            transform: translateY(110%);
+            transition: transform .8s cubic-bezier(.2, .8, .2, 1);
+        }
+        .is-revealed .reveal-inner { transform: none; }
+
+        /* Reduced motion: drop the decorative movement, keep the state feedback
+           (chip fills, focus, edge fades) that tells you what just happened. */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slide .hero-media,
+            .hero-slide .hero-panel-in,
+            .nav-drop { animation: none !important; }
+            .nav-drop { opacity: 1; }
+            .hero-slide { transition-duration: 0.01ms; }
+            .reveal-inner { transition: none; transform: none !important; }
+            img { transition: none !important; }
+            html { scroll-behavior: auto; }
+            [data-track] { scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rose-100 selection:text-rose-900">
+
+    <!-- Navigation: floating pill, aligned to the page content width -->
+    <div class="fixed top-4 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="nav-glass nav-drop w-full h-16 px-4 sm:px-5 rounded-full flex items-center justify-between gap-2 sm:gap-4">
+                <a href="#" class="flex items-center gap-2 shrink-0">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand to-rose-400 flex items-center justify-center text-white">
+                        <iconify-icon icon="solar:star-fall-linear" width="20"></iconify-icon>
+                    </span>
+                    <span class="text-lg sm:text-xl tracking-tight font-semibold text-gray-900">CreatorHub</span>
+                </a>
+
+                <div class="hidden md:flex flex-1 max-w-md mx-6 relative group">
+                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <iconify-icon icon="solar:magnifer-linear" class="text-gray-400 group-focus-within:text-brand transition-colors" width="18"></iconify-icon>
+                    </span>
+                    <input type="search" placeholder="Search creators, classes, experiences" aria-label="Search"
+                        class="w-full bg-white/50 border border-gray-900/[0.07] text-gray-900 text-sm rounded-full focus:ring-4 focus:ring-rose-500/10 focus:border-rose-400 focus:bg-white block pl-10 pr-4 py-2 transition-all outline-none placeholder:text-gray-500">
+                </div>
+
+                <div class="flex items-center gap-2 shrink-0">
+                    <button class="text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-white/60 px-3 sm:px-4 h-11 rounded-full transition-colors">Log in</button>
+                    <button class="text-sm font-medium text-white bg-brand hover:bg-rose-700 px-4 sm:px-5 h-11 rounded-full transition-all shadow-sm shadow-rose-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-rose-200">Sign up</button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10">
+        <h1 class="sr-only">CreatorHub — book classes, calls and one off experiences with the creators you follow</h1>
+
+
+        <!-- ===================== HERO CAROUSEL ===================== -->
+        <section id="hero" class="relative w-full aspect-[4/5] sm:aspect-[21/9] min-h-[520px] sm:min-h-[460px] rounded-hero overflow-hidden mb-20 bg-gray-900"
+                 aria-roledescription="carousel" aria-label="Featured experiences">
+
+            <!-- Slide 1 -->
+            <article class="hero-slide is-active" data-slide role="group" aria-roledescription="slide" aria-label="1 of 3">
+                <img loading="eager" fetchpriority="high" decoding="async" src="images/hero-followback.jpg"
+                     alt="Marcus Vale on the field" class="hero-media absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/25"></div>
+                <div class="hero-panel absolute bottom-14 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-auto sm:max-w-xl glass rounded-card p-5 sm:p-8">
+                <div class="hero-panel-in">
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-[1.1] mb-3">
+                        Instagram followback by <span class="font-bold">Marcus Vale</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-white/80 font-light max-w-md line-clamp-3">One of the league's surest hands, following you back and dropping a note on your latest post.</p>
+                    <div class="flex items-center justify-between gap-4 mt-4 pt-4 border-t border-white/15">
+                        <div class="flex items-center gap-3">
+                            <img loading="lazy" decoding="async" src="images/marcus-avatar.jpg" class="w-9 h-9 rounded-full object-cover border border-white/25" alt="">
+                            <span class="text-sm text-white font-medium">Marcus Vale<span class="block text-xs text-white/60 font-normal">Tight end</span></span>
+                        </div>
+                        <button class="w-11 h-11 shrink-0 rounded-full bg-white text-gray-900 flex items-center justify-center hover:scale-105 transition-transform" aria-label="Open Instagram followback by Marcus Vale">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="22"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                </div>
+                <span class="absolute top-6 left-6 glass-light rounded-full px-4 py-1.5 text-xs font-medium text-gray-900 shadow-sm flex items-center gap-2">
+                    $200.00<span class="hidden sm:inline"> · one time</span>
+                </span>
+            </article>
+
+            <!-- Slide 2 -->
+            <article class="hero-slide" data-slide role="group" aria-roledescription="slide" aria-label="2 of 3">
+                <img loading="eager" decoding="async" src="images/hero-photo-class.webp"
+                     alt="Clark Mahoney shooting on location" class="hero-media absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/25"></div>
+                <div class="hero-panel absolute bottom-14 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-auto sm:max-w-xl glass rounded-card p-5 sm:p-8">
+                <div class="hero-panel-in">
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-[1.1] mb-3">
+                        Photography class with <span class="font-bold">Clark Mahoney</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-white/80 font-light max-w-md line-clamp-3">Six live sessions on light, framing and grading, so your shots stop looking like snapshots.</p>
+                    <div class="flex items-center justify-between gap-4 mt-4 pt-4 border-t border-white/15">
+                        <div class="flex items-center gap-3">
+                            <img loading="lazy" decoding="async" src="images/avatar-clark.jpg" class="w-9 h-9 rounded-full object-cover border border-white/25" alt="">
+                            <span class="text-sm text-white font-medium">Clark Mahoney<span class="block text-xs text-white/60 font-normal">Editorial photographer</span></span>
+                        </div>
+                        <button class="w-11 h-11 shrink-0 rounded-full bg-white text-gray-900 flex items-center justify-center hover:scale-105 transition-transform" aria-label="Open photography class with Clark Mahoney">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="22"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                </div>
+                <span class="absolute top-6 left-6 glass-light rounded-full px-4 py-1.5 text-xs font-medium text-gray-900 shadow-sm flex items-center gap-2">
+                    $1,200.00<span class="hidden sm:inline"> · 6 sessions</span>
+                </span>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="hero-slide" data-slide role="group" aria-roledescription="slide" aria-label="3 of 3">
+                <img loading="eager" decoding="async" src="images/hero-visualization.jpg"
+                     alt="Rendered architectural interior" class="hero-media absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/25"></div>
+                <div class="hero-panel absolute bottom-14 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-auto sm:max-w-xl glass rounded-card p-5 sm:p-8">
+                <div class="hero-panel-in">
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-[1.1] mb-3">
+                        Visualization masterclass by <span class="font-bold">Julian Reyes</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-white/80 font-light max-w-md line-clamp-3">Build photoreal interiors from a blank scene, with every project file and a personal review of your final render.</p>
+                    <div class="flex items-center justify-between gap-4 mt-4 pt-4 border-t border-white/15">
+                        <div class="flex items-center gap-3">
+                            <img loading="lazy" decoding="async" src="images/avatar-julian.jpg" class="w-9 h-9 rounded-full object-cover border border-white/25" alt="">
+                            <span class="text-sm text-white font-medium">Julian Reyes<span class="block text-xs text-white/60 font-normal">Lead 3D artist</span></span>
+                        </div>
+                        <button class="w-11 h-11 shrink-0 rounded-full bg-white text-gray-900 flex items-center justify-center hover:scale-105 transition-transform" aria-label="Open visualization masterclass by Julian Reyes">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="22"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                </div>
+                <span class="absolute top-6 left-6 glass-light rounded-full px-4 py-1.5 text-xs font-medium text-gray-900 shadow-sm flex items-center gap-2">
+                    $99.00<span class="hidden sm:inline"> · lifetime</span>
+                </span>
+            </article>
+
+            <!-- Controls -->
+            <div class="absolute top-6 right-6 flex gap-2 z-10">
+                <button data-hero-toggle class="w-11 h-11 rounded-full glass-light text-gray-900 flex items-center justify-center hover:bg-white transition-colors shadow-sm" aria-label="Pause the slideshow" aria-pressed="false">
+                    <iconify-icon data-hero-toggle-icon icon="solar:pause-linear" width="18"></iconify-icon>
+                </button>
+                <button data-hero-prev class="w-11 h-11 rounded-full glass-light text-gray-900 flex items-center justify-center hover:bg-white transition-colors shadow-sm" aria-label="Previous slide">
+                    <iconify-icon icon="solar:arrow-left-linear" width="20"></iconify-icon>
+                </button>
+                <button data-hero-next class="w-11 h-11 rounded-full glass-light text-gray-900 flex items-center justify-center hover:bg-white transition-colors shadow-sm" aria-label="Next slide">
+                    <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+                </button>
+            </div>
+
+            <div data-hero-dots class="absolute bottom-1 left-1/2 -translate-x-1/2 sm:bottom-6 sm:left-auto sm:right-6 sm:translate-x-0 flex items-center gap-1.5 z-10"></div>
+        </section>
+
+        <!-- ===================== CATEGORIES ===================== -->
+        <section class="mb-20" aria-label="Browse by subject">
+            <div class="flex items-end justify-between gap-6 mb-5">
+                <div>
+                    <h2 class="text-2xl font-semibold tracking-tight text-gray-900 reveal-heading">Browse by subject</h2>
+                    <p class="text-sm text-gray-500 mt-1">Twelve rooms. Pick where you want to spend the afternoon.</p>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <button data-track-prev="subjects" class="w-11 h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-600 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition" aria-label="Scroll subjects left">
+                        <iconify-icon icon="solar:arrow-left-linear" width="18"></iconify-icon>
+                    </button>
+                    <button data-track-next="subjects" class="w-11 h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-600 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition" aria-label="Scroll subjects right">
+                        <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div>
+            <div data-track="subjects"
+                class="flex gap-2.5 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth -mx-1.5 px-1.5 scroll-px-1.5 -my-9 py-9">
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-technology); --ring: var(--subject-technology-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="3"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.2"/><path d="M9 3.5v2.5M15 3.5v2.5M9 18v2.5M15 18v2.5M3.5 9H6M3.5 15H6M18 9h2.5M18 15h2.5"/></svg>
+                        </span>
+                        <span class="subject-label">Technology</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-design); --ring: var(--subject-design-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0 0 17c1.2 0 1.9-.8 1.9-1.8 0-.9-.7-1.5-.7-2.3 0-.8.7-1.4 1.6-1.4h1.3a4.4 4.4 0 0 0 4.4-4.4C20.5 6.6 16.7 3.5 12 3.5Z"/><circle cx="8" cy="10.5" r="1.1"/><circle cx="12" cy="8" r="1.1"/><circle cx="16" cy="10.5" r="1.1"/></svg>
+                        </span>
+                        <span class="subject-label">Design arts</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-development); --ring: var(--subject-development-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M10 9.5 7.5 12l2.5 2.5M14 9.5 16.5 12 14 14.5"/></svg>
+                        </span>
+                        <span class="subject-label">Development</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-photography); --ring: var(--subject-photography-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5a3 3 0 0 1 3-3h.8c.6 0 1.2-.35 1.5-.9l.6-1.1c.3-.5.85-.85 1.45-.85h2.3c.6 0 1.15.35 1.45.85l.6 1.1c.3.55.9.9 1.5.9h.8a3 3 0 0 1 3 3v6.5a3.5 3.5 0 0 1-3.5 3.5h-9a3.5 3.5 0 0 1-3.5-3.5Z"/><circle cx="12" cy="12.75" r="3.25"/></svg>
+                        </span>
+                        <span class="subject-label">Photography</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-business); --ring: var(--subject-business-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="7" width="18.4" height="13" rx="3.5"/><path d="M8.5 7V5.8A2.3 2.3 0 0 1 10.8 3.5h2.4A2.3 2.3 0 0 1 15.5 5.8V7M2.8 12.5h18.4M11 12.5h2"/></svg>
+                        </span>
+                        <span class="subject-label">Business</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-marketing); --ring: var(--subject-marketing-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5h17M6 17V11M11 17V6.5M16 17v-4M19.5 4.5 16 8l-2.5-2L10 9.5"/></svg>
+                        </span>
+                        <span class="subject-label">Marketing</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-finance); --ring: var(--subject-finance-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5a3 3 0 0 1 3-3h9.8a3 3 0 0 1 3 3"/><rect x="3.5" y="8.5" width="17" height="11.5" rx="3.5"/><circle cx="16" cy="14.25" r="1.3"/></svg>
+                        </span>
+                        <span class="subject-label">Finance</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-music); --ring: var(--subject-music-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17.5V6.2c0-.5.35-.95.85-1.05l7-1.5c.65-.14 1.25.35 1.25 1v11.1"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="15.6" cy="15.75" r="2.5"/></svg>
+                        </span>
+                        <span class="subject-label">Music</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-film); --ring: var(--subject-film-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="3.5"/><path d="M8.5 4.5v15M15.5 4.5v15M3 12h18M3 8.25h5.5M3 15.75h5.5M15.5 8.25H21M15.5 15.75H21"/></svg>
+                        </span>
+                        <span class="subject-label">Film</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-fitness); --ring: var(--subject-fitness-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 9v6M4 10.5v3M17.5 9v6M20 10.5v3M6.5 12h11"/></svg>
+                        </span>
+                        <span class="subject-label">Fitness</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-writing); --ring: var(--subject-writing-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16.4 3.9 3.7 3.7c.5.5.5 1.3 0 1.8L9.4 20.1c-.2.2-.5.35-.8.4l-4.2.7.7-4.2c.05-.3.2-.6.4-.8L14.6 3.9c.5-.5 1.3-.5 1.8 0Z"/><path d="m13.7 6.5 3.8 3.8"/></svg>
+                        </span>
+                        <span class="subject-label">Writing</span>
+                    </button>
+                    <button type="button" aria-pressed="false" data-subject class="subject-chip"
+                        style="--c: var(--subject-gaming); --ring: var(--subject-gaming-glow);">
+                        <span class="subject-disc">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff"
+                                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 7.5h7a5.5 5.5 0 0 1 5.4 6.5l-.5 2.6a3 3 0 0 1-5.3 1.3l-.8-1a1.5 1.5 0 0 0-1.2-.6h-2.2a1.5 1.5 0 0 0-1.2.6l-.8 1a3 3 0 0 1-5.3-1.3L3.1 14A5.5 5.5 0 0 1 8.5 7.5Z"/><path d="M7.5 12.5h2.2M8.6 11.4v2.2M15 12h.01M17 14h.01"/></svg>
+                        </span>
+                        <span class="subject-label">Gaming</span>
+                    </button>
+            </div>
+            </div>
+        </section>
+
+        <!-- ===================== LATEST RELEASES ===================== -->
+        <section class="mb-20" aria-label="Latest releases">
+            <div class="flex items-end justify-between gap-6 mb-8">
+                <div>
+                    <h2 class="text-2xl font-semibold tracking-tight text-gray-900 reveal-heading">Latest releases</h2>
+                    <p class="text-sm text-gray-500 mt-1">Fresh drops from creators you already follow.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="hidden sm:flex text-sm font-medium text-brand hover:text-rose-700 items-center gap-1 transition-colors mr-2">
+                        View all <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                    </a>
+                    <button data-track-prev="releases" class="w-11 h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-600 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition" aria-label="Scroll releases left">
+                        <iconify-icon icon="solar:arrow-left-linear" width="18"></iconify-icon>
+                    </button>
+                    <button data-track-next="releases" class="w-11 h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-600 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition" aria-label="Scroll releases right">
+                        <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="track-fade" style="--fade: #fcfcfc; --fade-0: rgba(252,252,252,0);">
+            <div data-track="releases" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth -mx-8 px-8 -my-9 py-9 scroll-px-8">
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/abstract-3d.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Abstract 3D motion">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">Design</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Abstract 3D motion</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Master Cinema 4D and Octane to build looping animations that people watch twice.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-elena.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">Elena Rossi</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 4.9 <span class="text-gray-500">(84)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$45.00</span>
+                                <span class="text-xs text-gray-500">/course</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Abstract 3D motion">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/minimalist-spaces.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Minimalist spaces">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">Architecture</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Minimalist spaces</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">The principles behind quiet interiors, plus the rendering setup that sells them.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-sarah.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">Sarah Jenkins</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 5.0 <span class="text-gray-500">(120)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$120.00</span>
+                                <span class="text-xs text-gray-500">/bundle</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Minimalist spaces">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/startup-funding.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Startup funding 101">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">Finance</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Startup funding 101</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Build the pitch deck and the story that gets you to a second meeting.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-david.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">David Chen</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 4.8 <span class="text-gray-500">(56)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$89.00</span>
+                                <span class="text-xs text-gray-500">/course</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Startup funding 101">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/creative-coding.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Creative coding">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">Technology</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Creative coding</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Write shaders and build audio reactive visuals that run in any browser.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-mia.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">Mia Wong</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 4.9 <span class="text-gray-500">(210)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$65.00</span>
+                                <span class="text-xs text-gray-500">/course</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Creative coding">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/course-color-for-screens.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Color for screens">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">Design</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Color for screens</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Build palettes that survive dark mode, low contrast displays and real users.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-elena.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">Elena Rossi</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 4.7 <span class="text-gray-500">(38)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$39.00</span>
+                                <span class="text-xs text-gray-500">/course</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Color for screens">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/course-realtime-graphics.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Realtime graphics">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">Technology</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Realtime graphics</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">From first triangle to a full scene, with the performance budget kept honest.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-mia.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">Mia Wong</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 4.9 <span class="text-gray-500">(97)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$110.00</span>
+                                <span class="text-xs text-gray-500">/bundle</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Realtime graphics">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/course-interface-craft.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Interface craft">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">Product</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Interface craft</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Spacing, type and states, the small decisions that make a product feel finished.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-sarah.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">Sarah Jenkins</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 5.0 <span class="text-gray-500">(64)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$75.00</span>
+                                <span class="text-xs text-gray-500">/course</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Interface craft">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="border-gradient-wrapper snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)] p-3 shadow-sm hover:shadow-lg transition-shadow group">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/course-hard-surface.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Hard surface modeling">
+                        <span class="absolute top-3 left-3 glass-light rounded-full px-3 py-1 text-xs font-medium text-gray-700">3D</span>
+                    </div>
+                    <div class="px-2 pb-1 flex flex-col">
+                        <h3 class="text-base font-medium text-gray-900 mb-1.5 tracking-tight truncate">Hard surface modeling</h3>
+                        <p class="text-xs leading-relaxed text-gray-500 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Model props that hold up in close renders without drowning in geometry.</p>
+
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <img loading="lazy" decoding="async" src="images/avatar-julian.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                                <span class="text-xs text-gray-600 truncate">Julian Reyes</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                                <iconify-icon icon="solar:star-bold" class="text-amber-400"></iconify-icon> 4.8 <span class="text-gray-500">(151)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-gray-900">$95.00</span>
+                                <span class="text-xs text-gray-500">/course</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-gray-50 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Open Hard surface modeling">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            </div>
+
+            <div data-dots="releases" class="flex justify-center gap-1.5 mt-8"></div>
+        </section>
+    </main>
+
+    <!-- ===================== BENTO ===================== -->
+    <section class="bg-darker py-20 dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex items-end justify-between gap-6 mb-8">
+                <div>
+                    <h2 class="text-2xl font-semibold tracking-tight text-white reveal-heading">Browse by craft</h2>
+                    <p class="text-sm text-gray-400 mt-1">Five rooms, one door each. Pick where you want to spend the afternoon.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 md:h-[500px]">
+                <a href="#" class="md:col-span-1 md:row-span-2 h-64 md:h-auto rounded-card overflow-hidden relative group">
+                    <img loading="lazy" decoding="async" src="images/visual-arts.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Visual arts">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="text-2xl font-semibold text-white tracking-tight">Visual arts</h3>
+                            <span class="text-white bg-white/20 rounded-full w-10 h-10 shrink-0 inline-flex items-center justify-center backdrop-blur group-hover:bg-white group-hover:text-gray-900 transition-colors">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="md:col-span-2 md:row-span-1 h-64 md:h-auto rounded-card overflow-hidden relative group">
+                    <img loading="lazy" decoding="async" src="images/future-tech.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Future tech">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent flex flex-col justify-end p-6">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="text-2xl font-semibold text-white tracking-tight">Future tech</h3>
+                            <span class="text-white bg-white/20 rounded-full w-10 h-10 shrink-0 inline-flex items-center justify-center backdrop-blur group-hover:bg-white group-hover:text-gray-900 transition-colors">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="md:col-span-1 md:row-span-1 h-64 md:h-auto rounded-card overflow-hidden relative group">
+                    <img loading="lazy" decoding="async" src="images/interface-design.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Interface design">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent flex flex-col justify-end p-6">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="text-xl font-semibold text-white tracking-tight">Interface design</h3>
+                            <span class="text-white bg-white/20 rounded-full w-10 h-10 shrink-0 inline-flex items-center justify-center backdrop-blur group-hover:bg-white group-hover:text-gray-900 transition-colors">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="md:col-span-1 md:row-span-1 h-64 md:h-auto rounded-card overflow-hidden relative group">
+                    <img loading="lazy" decoding="async" src="images/3d-modeling.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="3D modeling">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent flex flex-col justify-end p-6">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="text-xl font-semibold text-white tracking-tight">3D modeling</h3>
+                            <span class="text-white bg-white/20 rounded-full w-10 h-10 shrink-0 inline-flex items-center justify-center backdrop-blur group-hover:bg-white group-hover:text-gray-900 transition-colors">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="md:col-start-4 md:row-start-1 md:row-span-2 h-64 md:h-auto rounded-card overflow-hidden relative bg-gradient-to-br from-rose-400 via-purple-500 to-indigo-600 flex items-center justify-center group">
+                    <div class="text-center px-6">
+                        <h3 class="text-2xl font-semibold text-white tracking-tight mb-4 leading-tight">Explore all<br>categories</h3>
+                        <span class="w-14 h-14 rounded-full bg-white text-gray-900 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="24"></iconify-icon>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== EXCLUSIVE EXPERIENCES ===================== -->
+    <section class="bg-dark py-20 dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-end justify-between gap-6 mb-8">
+                <div>
+                    <h2 class="text-2xl font-semibold tracking-tight text-white reveal-heading">Exclusive experiences</h2>
+                    <p class="text-sm text-gray-400 mt-1">Time with a creator, booked directly. Limited seats every month.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="hidden sm:flex text-sm font-medium text-rose-400 hover:text-rose-300 items-center gap-1 transition-colors mr-2">
+                        View all <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                    </a>
+                    <button data-track-prev="services" class="w-11 h-11 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-gray-200 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition" aria-label="Scroll experiences left">
+                        <iconify-icon icon="solar:arrow-left-linear" width="18"></iconify-icon>
+                    </button>
+                    <button data-track-next="services" class="w-11 h-11 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-gray-200 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition" aria-label="Scroll experiences right">
+                        <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="track-fade" style="--fade: #1e2026; --fade-0: rgba(30,32,38,0);">
+            <div data-track="services" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth -mx-8 px-8 -my-9 py-9 scroll-px-8">
+                <article class="bg-cardDark rounded-card p-3 border border-gray-700/50 hover:border-gray-500 transition-colors group snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)]">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/photo-walk.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Photo walk and critique">
+                        <span class="absolute top-3 left-3 bg-black/50 backdrop-blur rounded-full px-3 py-1 text-xs font-medium text-white border border-white/10">Private call</span>
+                    </div>
+                    <div class="px-2 pb-1">
+                        <div class="flex items-center gap-2 mb-2 min-w-0">
+                            <img loading="lazy" decoding="async" src="images/avatar-clark.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                            <span class="text-xs text-gray-400 truncate">Clark Mahoney</span>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-1.5 tracking-tight truncate">Photo walk and critique</h3>
+                        <p class="text-xs leading-relaxed text-gray-400 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Ninety minutes shooting together, then a frame by frame read of what you brought.</p>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-700/50">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-white">$1,200.00</span>
+                                <span class="text-xs text-gray-400">/session</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-white/10 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-300 transition-colors" aria-label="Book Photo walk and critique">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-cardDark rounded-card p-3 border border-gray-700/50 hover:border-gray-500 transition-colors group snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)]">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/followback.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Instagram followback">
+                        <span class="absolute top-3 left-3 bg-black/50 backdrop-blur rounded-full px-3 py-1 text-xs font-medium text-white border border-white/10">Social</span>
+                    </div>
+                    <div class="px-2 pb-1">
+                        <div class="flex items-center gap-2 mb-2 min-w-0">
+                            <img loading="lazy" decoding="async" src="images/marcus-avatar.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                            <span class="text-xs text-gray-400 truncate">Marcus Vale</span>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-1.5 tracking-tight truncate">Instagram followback</h3>
+                        <p class="text-xs leading-relaxed text-gray-400 font-light mb-4 line-clamp-2 min-h-[2.6rem]">A follow, a story reply and a comment on the post of your choice.</p>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-700/50">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-white">$200.00</span>
+                                <span class="text-xs text-gray-400">/one time</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-white/10 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-300 transition-colors" aria-label="Book Instagram followback">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-cardDark rounded-card p-3 border border-gray-700/50 hover:border-gray-500 transition-colors group snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)]">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/architecture-teardown.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Architecture teardown">
+                        <span class="absolute top-3 left-3 bg-black/50 backdrop-blur rounded-full px-3 py-1 text-xs font-medium text-white border border-white/10">Code review</span>
+                    </div>
+                    <div class="px-2 pb-1">
+                        <div class="flex items-center gap-2 mb-2 min-w-0">
+                            <img loading="lazy" decoding="async" src="images/avatar-mia.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                            <span class="text-xs text-gray-400 truncate">Mia Wong</span>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-1.5 tracking-tight truncate">Architecture teardown</h3>
+                        <p class="text-xs leading-relaxed text-gray-400 font-light mb-4 line-clamp-2 min-h-[2.6rem]">I read your codebase, find the bottlenecks and hand back a plan you can ship.</p>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-700/50">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-white">$250.00</span>
+                                <span class="text-xs text-gray-400">/review</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-white/10 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-300 transition-colors" aria-label="Book Architecture teardown">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-cardDark rounded-card p-3 border border-gray-700/50 hover:border-gray-500 transition-colors group snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)]">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/pitch-deck.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Live pitch deck teardown">
+                        <span class="absolute top-3 left-3 bg-black/50 backdrop-blur rounded-full px-3 py-1 text-xs font-medium text-white border border-white/10">Workshop</span>
+                    </div>
+                    <div class="px-2 pb-1">
+                        <div class="flex items-center gap-2 mb-2 min-w-0">
+                            <img loading="lazy" decoding="async" src="images/avatar-david.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                            <span class="text-xs text-gray-400 truncate">David Chen</span>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-1.5 tracking-tight truncate">Live pitch deck teardown</h3>
+                        <p class="text-xs leading-relaxed text-gray-400 font-light mb-4 line-clamp-2 min-h-[2.6rem]">A small group session where we take real decks apart and rebuild them on the spot.</p>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-700/50">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-white">$75.00</span>
+                                <span class="text-xs text-gray-400">/seat</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-white/10 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-300 transition-colors" aria-label="Book Live pitch deck teardown">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-cardDark rounded-card p-3 border border-gray-700/50 hover:border-gray-500 transition-colors group snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)]">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/mentorship-3d.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Monthly 3D mentorship">
+                        <span class="absolute top-3 left-3 bg-black/50 backdrop-blur rounded-full px-3 py-1 text-xs font-medium text-white border border-white/10">Mentorship</span>
+                    </div>
+                    <div class="px-2 pb-1">
+                        <div class="flex items-center gap-2 mb-2 min-w-0">
+                            <img loading="lazy" decoding="async" src="images/avatar-julian.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                            <span class="text-xs text-gray-400 truncate">Julian Reyes</span>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-1.5 tracking-tight truncate">Monthly 3D mentorship</h3>
+                        <p class="text-xs leading-relaxed text-gray-400 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Weekly syncs, assignment reviews and open access to my personal asset library.</p>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-700/50">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-white">$499.00</span>
+                                <span class="text-xs text-gray-400">/month</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-white/10 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-300 transition-colors" aria-label="Book Monthly 3D mentorship">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                <article class="bg-cardDark rounded-card p-3 border border-gray-700/50 hover:border-gray-500 transition-colors group snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(25%-18px)]">
+                    <div class="relative aspect-[4/3] rounded-media overflow-hidden mb-4">
+                        <img loading="lazy" decoding="async" src="images/portfolio-review.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Portfolio review and strategy">
+                        <span class="absolute top-3 left-3 bg-black/50 backdrop-blur rounded-full px-3 py-1 text-xs font-medium text-white border border-white/10">Portfolio</span>
+                    </div>
+                    <div class="px-2 pb-1">
+                        <div class="flex items-center gap-2 mb-2 min-w-0">
+                            <img loading="lazy" decoding="async" src="images/avatar-sarah.jpg" class="w-6 h-6 rounded-full object-cover shrink-0" alt="">
+                            <span class="text-xs text-gray-400 truncate">Sarah Jenkins</span>
+                        </div>
+                        <h3 class="text-base font-medium text-white mb-1.5 tracking-tight truncate">Portfolio review and strategy</h3>
+                        <p class="text-xs leading-relaxed text-gray-400 font-light mb-4 line-clamp-2 min-h-[2.6rem]">Honest feedback on your case studies and a roadmap for the next twelve months.</p>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-700/50">
+                            <div class="min-w-0">
+                                <span class="text-lg font-semibold text-white">$150.00</span>
+                                <span class="text-xs text-gray-400">/session</span>
+                            </div>
+                            <button class="w-11 h-11 shrink-0 rounded-full bg-white/10 group-hover:bg-brand group-hover:text-white flex items-center justify-center text-gray-300 transition-colors" aria-label="Book Portfolio review and strategy">
+                                <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            </div>
+
+            <div data-dots="services" class="flex justify-center gap-1.5 mt-8"></div>
+        </div>
+    </section>
+
+    <!-- ===================== TOP CREATORS ===================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" aria-label="Top creators">
+
+        <div class="flex flex-col md:flex-row gap-12 items-start">
+            <div class="w-full md:w-1/4 md:pt-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl" aria-hidden="true">🏆</span>
+                    <h2 class="text-3xl font-semibold tracking-tight text-gray-900 leading-tight reveal-heading">Top three this month</h2>
+                </div>
+                <p class="text-sm text-gray-500 leading-relaxed">Ranked by bookings, repeat buyers and the reviews people actually wrote out.</p>
+                <a href="#" class="inline-flex items-center gap-1 text-sm font-medium text-brand hover:text-rose-700 mt-4 transition-colors">
+                    See the full leaderboard <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+                </a>
+            </div>
+
+            <div class="w-full md:w-3/4 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <a href="#" class="border-gradient-wrapper p-1 group block">
+                    <div class="w-full aspect-[3/4] rounded-[1.35rem] overflow-hidden relative">
+                        <img loading="lazy" decoding="async" src="images/avatar-elena.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Elena Rossi">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent flex flex-col justify-end p-6">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-full bg-amber-400 text-amber-900 flex items-center justify-center text-xs font-bold">1</span>
+                                <h3 class="text-xl font-semibold text-white tracking-tight">Elena Rossi</h3>
+                            </div>
+                            <p class="text-sm text-gray-300">Motion design · 151 bookings</p>
+                        </div>
+                        <span class="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-white">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="24"></iconify-icon>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="#" class="border-gradient-wrapper p-1 group block">
+                    <div class="w-full aspect-[3/4] rounded-[1.35rem] overflow-hidden relative">
+                        <img loading="lazy" decoding="async" src="images/avatar-julian.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Julian Reyes">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent flex flex-col justify-end p-6">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-full bg-gray-300 text-gray-800 flex items-center justify-center text-xs font-bold">2</span>
+                                <h3 class="text-xl font-semibold text-white tracking-tight">Julian Reyes</h3>
+                            </div>
+                            <p class="text-sm text-gray-300">3D environments · 84 bookings</p>
+                        </div>
+                        <span class="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-white">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="24"></iconify-icon>
+                        </span>
+                    </div>
+                </a>
+
+                <a href="#" class="border-gradient-wrapper p-1 group block">
+                    <div class="w-full aspect-[3/4] rounded-[1.35rem] overflow-hidden relative">
+                        <img loading="lazy" decoding="async" src="images/studio-aura.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" alt="Studio Aura">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent flex flex-col justify-end p-6">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-full bg-amber-700 text-white flex items-center justify-center text-xs font-bold">3</span>
+                                <h3 class="text-xl font-semibold text-white tracking-tight">Studio Aura</h3>
+                            </div>
+                            <p class="text-sm text-gray-300">Creative agency · 63 bookings</p>
+                        </div>
+                        <span class="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-white">
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="24"></iconify-icon>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-darker text-gray-400 py-16 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="w-6 h-6 rounded bg-brand flex items-center justify-center text-white">
+                        <iconify-icon icon="solar:star-fall-linear" width="14"></iconify-icon>
+                    </span>
+                    <span class="text-lg tracking-tight font-semibold text-white">CreatorHub</span>
+                </div>
+                <p class="text-sm max-w-xs leading-relaxed">Book classes, calls and one off experiences with the people whose work you already follow.</p>
+                <div class="flex gap-4 mt-6">
+                    <a href="#" class="hover:text-white transition-colors" aria-label="Instagram"><iconify-icon icon="solar:camera-linear" width="20"></iconify-icon></a>
+                    <a href="#" class="hover:text-white transition-colors" aria-label="Newsletter"><iconify-icon icon="solar:letter-linear" width="20"></iconify-icon></a>
+                    <a href="#" class="hover:text-white transition-colors" aria-label="YouTube"><iconify-icon icon="solar:video-frame-linear" width="20"></iconify-icon></a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-white font-medium mb-4 text-sm">Company</h3>
+                <ul class="text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors block py-1.5">Sign in</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors block py-1.5">Marketplace</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors block py-1.5">Become a creator</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-white font-medium mb-4 text-sm">Help</h3>
+                <ul class="text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors block py-1.5">Contact us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors block py-1.5">Terms</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors block py-1.5">Privacy policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-xs text-center">
+            &copy; 2026 CreatorHub, Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        /* ---------------- Hero carousel ---------------- */
+        (function heroCarousel() {
+            var hero = document.getElementById('hero');
+            if (!hero) return;
+
+            var slides = Array.prototype.slice.call(hero.querySelectorAll('[data-slide]'));
+            var dotsWrap = hero.querySelector('[data-hero-dots]');
+            var prev = hero.querySelector('[data-hero-prev]');
+            var next = hero.querySelector('[data-hero-next]');
+            if (slides.length < 2) return;
+
+            var index = 0;
+            var timer = null;
+            var DELAY = 7000;
+
+            var dots = slides.map(function (slide, i) {
+                var dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'hero-dot';
+                dot.innerHTML = '<span></span>';
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.addEventListener('click', function () { go(i); restart(); });
+                dotsWrap.appendChild(dot);
+                return dot;
+            });
+
+            function render() {
+                slides.forEach(function (slide, i) {
+                    slide.classList.toggle('is-active', i === index);
+                    slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+                    slide.querySelectorAll('a, button').forEach(function (el) {
+                        el.tabIndex = i === index ? 0 : -1;
+                    });
+                });
+                dots.forEach(function (dot, i) {
+                    dot.classList.toggle('is-active', i === index);
+                    dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+                });
+            }
+
+            function go(i) { index = (i + slides.length) % slides.length; render(); }
+            function nextSlide() { go(index + 1); }
+            var userPaused = false;
+            function stop() { if (timer) { clearInterval(timer); timer = null; } }
+            function start() { if (!reduceMotion && !userPaused && !timer) timer = setInterval(nextSlide, DELAY); }
+            function restart() { stop(); start(); }
+
+            next.addEventListener('click', function () { go(index + 1); restart(); });
+            prev.addEventListener('click', function () { go(index - 1); restart(); });
+
+            hero.addEventListener('mouseenter', stop);
+            hero.addEventListener('mouseleave', start);
+            hero.addEventListener('focusin', stop);
+            hero.addEventListener('focusout', start);
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) { stop(); } else { start(); }
+            });
+
+            var toggle = hero.querySelector('[data-hero-toggle]');
+            var toggleIcon = hero.querySelector('[data-hero-toggle-icon]');
+            if (reduceMotion) {
+                toggle.hidden = true;
+            } else {
+                toggle.addEventListener('click', function () {
+                    userPaused = !userPaused;
+                    if (userPaused) { stop(); } else { start(); }
+                    toggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+                    toggle.setAttribute('aria-label', userPaused ? 'Play the slideshow' : 'Pause the slideshow');
+                    toggleIcon.setAttribute('icon', userPaused ? 'solar:play-linear' : 'solar:pause-linear');
+                });
+            }
+
+            hero.tabIndex = 0;
+            hero.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') { go(index + 1); restart(); }
+                if (e.key === 'ArrowLeft') { go(index - 1); restart(); }
+            });
+
+            /* Touch swipe */
+            var startX = null;
+            hero.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; stop(); }, { passive: true });
+            hero.addEventListener('touchend', function (e) {
+                if (startX === null) return;
+                var dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 45) { go(index + (dx < 0 ? 1 : -1)); }
+                startX = null;
+                start();
+            });
+
+            render();
+            start();
+        })();
+
+        /* ---------------- Scroll carousels (releases, experiences) ---------------- */
+        document.querySelectorAll('[data-track]').forEach(function (track) {
+            var name = track.getAttribute('data-track');
+            var prev = document.querySelector('[data-track-prev="' + name + '"]');
+            var next = document.querySelector('[data-track-next="' + name + '"]');
+            var dotsWrap = document.querySelector('[data-dots="' + name + '"]');
+            var isDark = !!track.closest('.dark');
+            var dots = [];
+
+            /* The track carries padding so hover shadows are not clipped by the
+               scroll container, so page maths is derived from the cards, never
+               from clientWidth. */
+            function metrics() {
+                var card = track.firstElementChild;
+                var cs = getComputedStyle(track);
+                var gap = parseFloat(cs.columnGap) || 0;
+                var padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+                var view = track.clientWidth - padX;
+                var cardW = card ? card.getBoundingClientRect().width : view;
+                var perPage = Math.max(1, Math.round((view + gap) / (cardW + gap)));
+                return {
+                    pageW: perPage * (cardW + gap),
+                    pages: Math.max(1, Math.ceil(track.children.length / perPage))
+                };
+            }
+            function currentPage() {
+                return Math.round(track.scrollLeft / metrics().pageW);
+            }
+            function goToPage(page) {
+                track.scrollTo({
+                    left: Math.round(page * metrics().pageW),
+                    behavior: reduceMotion ? 'auto' : 'smooth'
+                });
+            }
+            function buildDots() {
+                if (!dotsWrap) return;
+                var total = metrics().pages;
+                if (dots.length === total) return;
+                dotsWrap.innerHTML = '';
+                dots = [];
+                if (total < 2) return;
+                for (var i = 0; i < total; i++) {
+                    (function (page) {
+                        var dot = document.createElement('button');
+                        dot.type = 'button';
+                        dot.className = 'track-dot';
+                        dot.innerHTML = '<span></span>';
+                        dot.setAttribute('aria-label', 'Go to page ' + (page + 1));
+                        dot.addEventListener('click', function () { goToPage(page); });
+                        dotsWrap.appendChild(dot);
+                        dots.push(dot);
+                    })(i);
+                }
+            }
+            function sync() {
+                var page = currentPage();
+                var maxScroll = track.scrollWidth - track.clientWidth;
+                var atStart = track.scrollLeft <= 2;
+                var atEnd = track.scrollLeft >= maxScroll - 2;
+                if (prev) prev.disabled = atStart;
+                if (next) next.disabled = atEnd;
+                var wrap = track.parentElement;
+                if (wrap && wrap.classList.contains('track-fade')) {
+                    wrap.classList.toggle('fade-start', !atStart);
+                    wrap.classList.toggle('fade-end', !atEnd);
+                }
+                dots.forEach(function (dot, i) {
+                    dot.classList.toggle('is-active', i === page);
+                    dot.setAttribute('aria-current', i === page ? 'true' : 'false');
+                });
+            }
+
+            if (prev) prev.addEventListener('click', function () { goToPage(currentPage() - 1); });
+            if (next) next.addEventListener('click', function () { goToPage(currentPage() + 1); });
+
+            var ticking = false;
+            track.addEventListener('scroll', function () {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(function () { sync(); ticking = false; });
+            }, { passive: true });
+
+            window.addEventListener('resize', function () { buildDots(); sync(); });
+            buildDots();
+            sync();
+        });
+
+        /* ---------------- Nav lifts once the page scrolls under it ---------------- */
+        (function stickyNav() {
+            var nav = document.querySelector('.nav-glass');
+            if (!nav) return;
+            var ticking = false;
+            function sync() {
+                nav.classList.toggle('is-stuck', window.scrollY > 8);
+                ticking = false;
+            }
+            window.addEventListener('scroll', function () {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(sync);
+            }, { passive: true });
+            sync();
+        })();
+
+        /* ---------------- Subject filters ---------------- */
+        var subjects = document.querySelectorAll('[data-subject]');
+        subjects.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                subjects.forEach(function (t) { t.setAttribute('aria-pressed', 'false'); });
+                tab.setAttribute('aria-pressed', 'true');
+            });
+        });
+
+        /* ---------------- Masked text reveal ---------------- */
+        if (!reduceMotion && 'IntersectionObserver' in window) {
+            var headings = document.querySelectorAll('.reveal-heading');
+            headings.forEach(function (element) {
+                var words = element.textContent.trim().split(/\s+/);
+                element.textContent = '';
+                words.forEach(function (word, i) {
+                    var wrap = document.createElement('span');
+                    wrap.className = 'reveal-word';
+                    var inner = document.createElement('span');
+                    inner.className = 'reveal-inner';
+                    inner.style.transitionDelay = (i * 0.04) + 's';
+                    inner.textContent = word;
+                    wrap.appendChild(inner);
+                    element.appendChild(wrap);
+                    if (i < words.length - 1) element.appendChild(document.createTextNode(' '));
+                });
+            });
+
+            var revealer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        revealer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -12% 0px' });
+
+            headings.forEach(function (h) { revealer.observe(h); });
+        }
+
+    })();
+    </script>
+</body>
+</html>
