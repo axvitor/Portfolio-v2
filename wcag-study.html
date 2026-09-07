@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>WCAG Study · Vitor Xavier</title>
+<meta name="description" content="A WCAG compliant redesign of Uber, for senior users — a case study by Vitor Xavier, senior product designer." />
+<meta name="theme-color" content="#050505" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
+<meta property="og:title" content="WCAG Study · Vitor Xavier" />
+<meta property="og:description" content="A WCAG compliant redesign of Uber, for senior users" />
+<meta property="og:type" content="article" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+ <div class="nav__shell">
+  <a href="index.html" class="nav__mark" aria-label="Home">Vitor Xavier</a>
+
+  <nav class="nav__links" aria-label="Primary">
+    <a href="index.html#about">About</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#work">Work</a>
+  </nav>
+
+  <div class="nav__end">
+    <a href="https://www.linkedin.com/in/vitoraxavier" class="btn btn--sm"
+       target="_blank" rel="noopener noreferrer" data-magnetic>
+      <span class="btn__label">LinkedIn</span>
+      <span class="btn__icon" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+    <i></i><i></i>
+  </button>
+ </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a href="index.html#about"><span class="mono">01</span> About</a>
+  <a href="index.html#experience"><span class="mono">02</span> Experience</a>
+  <a href="index.html#capabilities"><span class="mono">03</span> Capabilities</a>
+  <a href="index.html#work"><span class="mono">04</span> Work</a>
+  <a href="index.html#contact"><span class="mono">05</span> Contact</a>
+</div>
+
+<main id="top">
+
+<section class="ph">
+  <div class="shell">
+    <a href="index.html#work" class="ph__back mono">← All work</a>
+    <h1 class="ph__title">WCAG Study</h1>
+    <p class="ph__lede">A WCAG compliant redesign of Uber, for senior users</p>
+    <figure class="ph__art ph__art--photo">
+      <img src="assets/projects/wcag/hero.jpg" width="1600" height="630" alt="" loading="eager" decoding="async" />
+    </figure>
+  </div>
+</section>
+
+<section class="pfacts">
+  <div class="shell">
+    <dl>
+      <div><dt>Role</dt><dd>UX Researcher &amp; Designer</dd></div>
+      <div><dt>Focus</dt><dd>WCAG 2.2 accessibility audit</dd></div>
+      <div><dt>Timeline</dt><dd>2021</dd></div>
+      <div><dt>Platform</dt><dd>Mobile app · Uber</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Overview</h2>
+    <p class="lead" data-reveal>Today, more than ever, usability is essential for making interfaces accessible to everyone. As humans, we each have unique needs, and technology should reflect that. With this in mind, a research study was conducted to evaluate the Uber app's compliance with WCAG standards.</p>
+    <p class="" data-reveal>The current Uber app was analyzed, identifying its strengths and weaknesses, and exploring ways to make it more appealing and accessible for senior users.</p>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Findings</h2>
+    <p class="" data-reveal>Bad legibility. Unclear actions. Arrival times that aren't clear. No obvious way to change a payment method. Small frictions that add up for any rider, and add up faster for a senior one.</p>
+    <div class="fcar" data-fcar data-reveal>
+      <div class="fcar__shots">
+        <figure class="fcar__shot is-on" data-fcar-shot>
+          <img src="assets/projects/wcag/analysis-1.png" alt="Uber&#39;s home screen, annotated: &ldquo;Lack of focus on the action to call an Uber.&rdquo;" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/wcag/analysis-2.png" alt="The ride selection screen, annotated: bad legibility, unclear actions, no explanation of the ride types, unclear arrival time, and no sign the payment method can be changed." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/wcag/analysis-3.png" alt="The account menu at a large system font size, annotated: &ldquo;The app does not work properly with a bigger font.&rdquo;" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/wcag/analysis-4.png" alt="The address search screen, annotated: the &ldquo;from&rdquo; field arrives pre-filled, and the results list fails the contrast ratio." loading="lazy" decoding="async" />
+        </figure>
+      </div>
+
+      <div class="fcar__side">
+        <div class="fcar__copies">
+        <div class="fcar__copy is-on" data-fcar-copy id="fcar-p1" role="tabpanel" aria-labelledby="fcar-t1" tabindex="0">
+          <span class="fcar__screen mono">Home</span>
+          <p class="fcar__finding">Lack of focus on the action to call a ride.</p>
+          <p class="fcar__detail">The primary action sits below a promotional banner and four category tiles, so the thing most riders opened the app to do is the hardest thing to find.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="fcar-p2" role="tabpanel" aria-labelledby="fcar-t2" tabindex="0">
+          <span class="fcar__screen mono">Ride selection</span>
+          <p class="fcar__finding">Bad legibility, and actions that aren&rsquo;t clear.</p>
+          <p class="fcar__detail">Map labels are hard to read, the ride tiers carry no explanation of what separates them, the arrival time is ambiguous, and nothing signals that the payment method can be changed.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="fcar-p3" role="tabpanel" aria-labelledby="fcar-t3" tabindex="0">
+          <span class="fcar__screen mono">Account menu</span>
+          <p class="fcar__finding">The app doesn&rsquo;t work properly with a bigger font.</p>
+          <p class="fcar__detail">At the system font sizes a senior user is most likely to have set, labels truncate mid-word and the panel collides with the content behind it.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="fcar-p4" role="tabpanel" aria-labelledby="fcar-t4" tabindex="0">
+          <span class="fcar__screen mono">Address search</span>
+          <p class="fcar__finding">The &ldquo;from&rdquo; field arrives already filled in.</p>
+          <p class="fcar__detail">Pre-filling the origin moves faster than a senior rider expects, and the list below it falls under the contrast ratio WCAG asks for.</p>
+        </div>
+        </div>
+
+        <ol class="fcar__tabs" role="tablist" aria-label="Findings">
+        <li>
+          <button class="fcar__tab is-on" data-fcar-tab id="fcar-t1" role="tab"
+                  aria-controls="fcar-p1" aria-selected="true" tabindex="0">
+            <span class="fcar__n mono">01</span>
+            <span class="fcar__label">No focus on the primary action</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="fcar-t2" role="tab"
+                  aria-controls="fcar-p2" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">02</span>
+            <span class="fcar__label">Legibility, actions, payment</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="fcar-t3" role="tab"
+                  aria-controls="fcar-p3" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">03</span>
+            <span class="fcar__label">Breaks at a bigger font</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="fcar-t4" role="tab"
+                  aria-controls="fcar-p4" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">04</span>
+            <span class="fcar__label">Pre-filled field, low contrast</span>
+          </button>
+        </li>
+        </ol>
+
+        <div class="fcar__nav">
+          <button class="fcar__arrow" data-fcar-prev type="button" aria-label="Previous finding">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button class="fcar__arrow" data-fcar-next type="button" aria-label="Next finding">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+          <span class="fcar__count mono" data-fcar-count aria-hidden="true">01 / 04</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>What WCAG is</h2>
+    <p class="" data-reveal>WCAG (Web Content Accessibility Guidelines) is a set of international standards created by the W3C to make digital content more accessible to people with disabilities. It provides guidance on how to design websites and apps that are usable by everyone, including users with visual, auditory, motor, or cognitive impairments. In this particular research, the primary focus was on senior users.</p>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Guidelines applied</h2>
+    <ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">1.4.3</span><h3 class="pnum__t">Contrast (minimum)</h3><p class="pnum__d">Text and interactive elements were checked against WCAG's minimum contrast ratio, so content stays legible for users with low vision.</p></li>
+      <li data-reveal><span class="pnum__n mono">1.3.5</span><h3 class="pnum__t">Identify input purpose</h3><p class="pnum__d">Form fields were labeled so their purpose can be determined programmatically, helping autofill and assistive technology do their job.</p></li>
+      <li data-reveal><span class="pnum__n mono">2.4.6</span><h3 class="pnum__t">Headings &amp; labels</h3><p class="pnum__d">Headings and labels describe topic or purpose clearly, so screen reader users can navigate without guessing.</p></li>
+    </ol>
+    <div class="ftrack" data-ftrack data-reveal>
+      <div class="ftrack__scroller" data-ftrack-scroller role="group"
+           aria-label="Wireframes of the redesigned flow — scrollable" tabindex="0">
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/wireframe-1.png" alt="Wireframe of the home screen: a map above a single primary &ldquo;Pedir Uber&rdquo; button, with delivery, parcel and grocery tiles demoted below it." loading="lazy" decoding="async" />
+          <figcaption>Home — one primary action</figcaption>
+        </figure>
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/wireframe-2.png" alt="Wireframe of the origin picker, headed &ldquo;Onde estamos?&rdquo;, with a search field and a list of saved places." loading="lazy" decoding="async" />
+          <figcaption>Origin — where we are</figcaption>
+        </figure>
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/wireframe-3.png" alt="Wireframe of the destination picker, headed &ldquo;Para onde vamos?&rdquo;, with tabs for suggestions, recent trips and favourites." loading="lazy" decoding="async" />
+          <figcaption>Destination — where we&rsquo;re going</figcaption>
+        </figure>
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/wireframe-4.png" alt="Wireframe of the ride selection, headed &ldquo;Selecione a modalidade&rdquo;, listing each ride type with its arrival time, price and the payment method." loading="lazy" decoding="async" />
+          <figcaption>Ride type, time and payment</figcaption>
+        </figure>
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/wireframe-5.png" alt="Wireframe of the confirmation screen, summarising origin, destination and total, with a way to correct the details." loading="lazy" decoding="async" />
+          <figcaption>Confirm, or go back and correct</figcaption>
+        </figure>
+      </div>
+      <div class="ftrack__nav">
+        <button class="ftrack__arrow" data-ftrack-prev type="button" aria-label="Scroll wireframes left">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button class="ftrack__arrow" data-ftrack-next type="button" aria-label="Scroll wireframes right">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Proposal</h2>
+    <p class="" data-reveal>Bigger touch targets, clearer primary actions, larger type. The redesigned interface carries those changes through to a screen that is ready to ship, across the request flow, the origin and destination pickers, and ride confirmation.</p>
+    <div class="fcar" data-fcar data-reveal>
+      <div class="fcar__shots">
+        <figure class="fcar__shot is-on" data-fcar-shot>
+          <img src="assets/projects/wcag/proposal-1.png" alt="The current home screen beside the suggestion, annotated: &ldquo;Main focus in requesting a Uber&rdquo; and &ldquo;Bigger touch area&rdquo;." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/wcag/proposal-2.png" alt="The current account menu beside the suggested destination screen, annotated: &ldquo;Better behavior with bigger fonts&rdquo;." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/wcag/proposal-3.png" alt="The current ride selection beside the suggestion, annotated: better legibility, the expected action described with a helper, clearer information, a highlighted section, and a clear way back." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/wcag/proposal-4.png" alt="The current destination search beside the suggestion, annotated: &ldquo;Clear Steps&rdquo;, &ldquo;Better contrast (4.5:1)&rdquo; and &ldquo;Clear option to go back&rdquo;." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/wcag/proposal-5.png" alt="The current origin picker beside the suggestion, annotated: &ldquo;Clear Steps&rdquo;, &ldquo;Better contrast (4.5:1)&rdquo; and &ldquo;Clear option to get back&rdquo;." loading="lazy" decoding="async" />
+        </figure>
+      </div>
+
+      <div class="fcar__side">
+        <div class="fcar__copies">
+        <div class="fcar__copy is-on" data-fcar-copy id="pcar-p1" role="tabpanel" aria-labelledby="pcar-t1" tabindex="0">
+          <span class="fcar__screen mono">Home</span>
+          <p class="fcar__finding">One primary action, and a bigger target.</p>
+          <p class="fcar__detail">Requesting a ride becomes the largest thing on the screen, and the remaining services drop to secondary tiles with more room to hit.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="pcar-p2" role="tabpanel" aria-labelledby="pcar-t2" tabindex="0">
+          <span class="fcar__screen mono">Destination</span>
+          <p class="fcar__finding">Behaves properly at a bigger font.</p>
+          <p class="fcar__detail">Labels wrap instead of truncating, so the screen still works at the system font sizes a senior rider is most likely to have set.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="pcar-p3" role="tabpanel" aria-labelledby="pcar-t3" tabindex="0">
+          <span class="fcar__screen mono">Ride selection</span>
+          <p class="fcar__finding">Better legibility, and the action spelled out.</p>
+          <p class="fcar__detail">Arrival is stated in plain words with a helper beside it, prices and times sit clear of one another, the payment method is given its own section, and there is an obvious way back.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="pcar-p4" role="tabpanel" aria-labelledby="pcar-t4" tabindex="0">
+          <span class="fcar__screen mono">Destination search</span>
+          <p class="fcar__finding">Contrast raised to 4.5:1.</p>
+          <p class="fcar__detail">The results list meets the minimum contrast ratio, the step names itself at the top, and going back is a visible option rather than a guess.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="pcar-p5" role="tabpanel" aria-labelledby="pcar-t5" tabindex="0">
+          <span class="fcar__screen mono">Origin picker</span>
+          <p class="fcar__finding">The step names itself, and nothing arrives pre-filled.</p>
+          <p class="fcar__detail">&ldquo;Where we are?&rdquo; asks the question outright and the rider chooses from the list, at the same 4.5:1 contrast, with the way back always in view.</p>
+        </div>
+        </div>
+
+        <ol class="fcar__tabs" role="tablist" aria-label="Proposed changes">
+        <li>
+          <button class="fcar__tab is-on" data-fcar-tab id="pcar-t1" role="tab"
+                  aria-controls="pcar-p1" aria-selected="true" tabindex="0">
+            <span class="fcar__n mono">01</span>
+            <span class="fcar__label">Focus and touch area</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="pcar-t2" role="tab"
+                  aria-controls="pcar-p2" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">02</span>
+            <span class="fcar__label">Holds up at a bigger font</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="pcar-t3" role="tab"
+                  aria-controls="pcar-p3" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">03</span>
+            <span class="fcar__label">Legibility and clearer actions</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="pcar-t4" role="tab"
+                  aria-controls="pcar-p4" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">04</span>
+            <span class="fcar__label">Contrast and clear steps</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="pcar-t5" role="tab"
+                  aria-controls="pcar-p5" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">05</span>
+            <span class="fcar__label">Named step, no pre-fill</span>
+          </button>
+        </li>
+        </ol>
+
+        <div class="fcar__nav">
+          <button class="fcar__arrow" data-fcar-prev type="button" aria-label="Previous change">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button class="fcar__arrow" data-fcar-next type="button" aria-label="Next change">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+          <span class="fcar__count mono" data-fcar-count aria-hidden="true">01 / 05</span>
+        </div>
+      </div>
+    </div>
+    <div class="ftrack ftrack--final" data-ftrack data-reveal>
+      <div class="ftrack__scroller" data-ftrack-scroller role="group"
+           aria-label="The shipped screens — scrollable" tabindex="0">
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/final-1.png" alt="The shipped home screen: a map above a single, full-width request button." loading="lazy" decoding="async" />
+          <figcaption>Home: request flow</figcaption>
+        </figure>
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/final-2.png" alt="The shipped origin picker, with the step named at the top and a list of nearby places." loading="lazy" decoding="async" />
+          <figcaption>Origin picker</figcaption>
+        </figure>
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/final-3.png" alt="The shipped destination picker, with suggestions, recent trips and favourites." loading="lazy" decoding="async" />
+          <figcaption>Destination picker</figcaption>
+        </figure>
+        <figure class="pshot ftrack__item">
+          <img src="assets/projects/wcag/final-5.png" alt="The shipped confirmation screen, summarising the ride, the price and the payment method." loading="lazy" decoding="async" />
+          <figcaption>Ride confirmation</figcaption>
+        </figure>
+      </div>
+      <div class="ftrack__nav">
+        <button class="ftrack__arrow" data-ftrack-prev type="button" aria-label="Scroll screens left">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button class="ftrack__arrow" data-ftrack-next type="button" aria-label="Scroll screens right">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pnext">
+  <div class="shell">
+    <nav class="pnext__pair">
+      <a class="pnext__link pnext__link--prev" href="careers-page.html" data-reveal>
+        <span class="pnext__k mono">Previous project</span>
+        <span class="pnext__t">Careers Page</span>
+      </a>
+      <a class="pnext__link pnext__link--next" href="creatorhub.html" data-reveal>
+        <span class="pnext__k mono">Next project</span>
+        <span class="pnext__t">CreatorHub</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<section class="cta cta--plain" id="contact">
+  <div class="shell">
+    <h2 class="cta__title">
+      <span class="line"><span class="line__in">Have a product</span></span>
+      <span class="line"><span class="line__in">worth skyrocketing?</span></span>
+    </h2>
+    <p class="cta__sub" data-reveal>
+      I'm open to new opportunities and looking to join a team where I can
+      bring a decade of product design and make a meaningful impact.
+      If you're hiring, I'd love to hear about what you're building.
+    </p>
+
+    <div class="cta__actions" data-reveal>
+      <a class="btn btn--lg" href="https://www.linkedin.com/in/vitoraxavier"
+         target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span class="btn__label">Connect on LinkedIn</span>
+        <span class="btn__icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <span class="mono">© 2026 Vitor Xavier · Product Designer</span>
+    <ul class="foot__social mono">
+      <li><a href="https://www.linkedin.com/in/vitoraxavier"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <button class="foot__top mono" id="toTop">Back to top ↑</button>
+  </div>
+</footer>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Gym&Bet · Vitor Xavier</title>
+<meta name="description" content="Betting with friends to make fitness fun — a case study by Vitor Xavier, senior product designer." />
+<meta name="theme-color" content="#050505" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
+<meta property="og:title" content="Gym&Bet · Vitor Xavier" />
+<meta property="og:description" content="Betting with friends to make fitness fun" />
+<meta property="og:type" content="article" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+ <div class="nav__shell">
+  <a href="index.html" class="nav__mark" aria-label="Home">Vitor Xavier</a>
+
+  <nav class="nav__links" aria-label="Primary">
+    <a href="index.html#about">About</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#work">Work</a>
+  </nav>
+
+  <div class="nav__end">
+    <a href="https://www.linkedin.com/in/vitoraxavier" class="btn btn--sm"
+       target="_blank" rel="noopener noreferrer" data-magnetic>
+      <span class="btn__label">LinkedIn</span>
+      <span class="btn__icon" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+    <i></i><i></i>
+  </button>
+ </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a href="index.html#about"><span class="mono">01</span> About</a>
+  <a href="index.html#experience"><span class="mono">02</span> Experience</a>
+  <a href="index.html#capabilities"><span class="mono">03</span> Capabilities</a>
+  <a href="index.html#work"><span class="mono">04</span> Work</a>
+  <a href="index.html#contact"><span class="mono">05</span> Contact</a>
+</div>
+
+<main id="top">
+
+<section class="ph">
+  <div class="shell">
+    <a href="index.html#work" class="ph__back mono">← All work</a>
+    <h1 class="ph__title">Gym&amp;Bet</h1>
+    <p class="ph__lede">Betting with friends to make fitness fun</p>
+    <figure class="ph__art ph__art--photo">
+      <img src="assets/projects/gymbet/hero.jpg" width="1600" height="1066" alt="" loading="eager" decoding="async" />
+    </figure>
+  </div>
+</section>
+
+<section class="pfacts">
+  <div class="shell">
+    <dl>
+      <div><dt>Role</dt><dd>Product Designer</dd></div>
+      <div><dt>Scope</dt><dd>Wireframes to final UI, mobile app</dd></div>
+      <div><dt>Timeline</dt><dd>2 weeks</dd></div>
+      <div><dt>Platform</dt><dd>Mobile app · iOS</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Overview</h2>
+    <p class="lead" data-reveal>Gym&amp;Bet is a mobile app for monitoring health and fitness progress, with social betting to encourage exercise participation.</p>
+    <p class="" data-reveal>Regular exercise is crucial for maintaining both physical and mental wellbeing. This is where betting with friends can make a significant difference. By turning exercise into a social activity and incorporating an element of friendly competition, it becomes more dynamic and enjoyable.</p>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Scope</h2>
+    <p class="" data-reveal>The design project took 2 weeks to complete, focusing solely on essential features to deliver value to the user before being implemented by the engineering team.</p>
+    </div>
+
+  <div class="ftrack ftrack--bleed" data-ftrack data-reveal>
+    <div class="ftrack__scroller" data-ftrack-scroller role="group"
+         aria-label="Wireframes of the flow — scrollable" tabindex="0">
+      <figure class="pshot ftrack__item">
+        <img src="assets/projects/gymbet/wireframe-1.png" alt="The home screen: a month strip, activity rings for the day, step and distance totals, and the friends list." loading="lazy" decoding="async" />
+        <figcaption><span class="ftrack__n mono">01</span>Home &amp; friends</figcaption>
+      </figure>
+      <figure class="pshot ftrack__item">
+        <img src="assets/projects/gymbet/wireframe-2.png" alt="A running bet: steps against target, the stake, a day-by-day breakdown, heart rate and map." loading="lazy" decoding="async" />
+        <figcaption><span class="ftrack__n mono">02</span>Bet detail: progress</figcaption>
+      </figure>
+      <figure class="pshot ftrack__item">
+        <img src="assets/projects/gymbet/wireframe-3.png" alt="A group bet invitation: terms, dates, every member's progress, and accept or refuse." loading="lazy" decoding="async" />
+        <figcaption><span class="ftrack__n mono">03</span>Group bet: response</figcaption>
+      </figure>
+      <figure class="pshot ftrack__item">
+        <img src="assets/projects/gymbet/wireframe-4.png" alt="Starting a bet: pick the challenge type, then continue." loading="lazy" decoding="async" />
+        <figcaption><span class="ftrack__n mono">04</span>New bet: setup</figcaption>
+      </figure>
+    </div>
+    <div class="shell">
+      <div class="ftrack__nav">
+        <button class="ftrack__arrow" data-ftrack-prev type="button" aria-label="Scroll wireframes left">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button class="ftrack__arrow" data-ftrack-next type="button" aria-label="Scroll wireframes right">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Screens</h2>
+    <ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Home</h3><p class="pnum__d">Weekly activity rings, streaks, and a single check in.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Bet detail</h3><p class="pnum__d">Daily progress against the terms both sides agreed to.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Group bet</h3><p class="pnum__d">Responding to an invitation from the group.</p></li>
+      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">New bet</h3><p class="pnum__d">Setting the terms, the stake, and who is in.</p></li>
+    </ol>
+    <div class="fcar" data-fcar data-reveal>
+      <div class="fcar__shots">
+        <figure class="fcar__shot is-on" data-fcar-shot>
+          <img src="assets/projects/gymbet/final-1.jpg" alt="The home screen: activity rings for the day, a date strip, and one check-in button." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/gymbet/final-2.jpg" alt="The profile screen, listing bet requests, friend requests and current friends." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/gymbet/final-3.jpg" alt="A bet detail screen: steps against target, the stake, and a day-by-day list." loading="lazy" decoding="async" />
+        </figure>
+        <figure class="fcar__shot" data-fcar-shot>
+          <img src="assets/projects/gymbet/final-4.jpg" alt="The friends screen, with suggestions, contact list and friends tabs over a search field." loading="lazy" decoding="async" />
+        </figure>
+      </div>
+
+      <div class="fcar__side">
+        <div class="fcar__copies">
+        <div class="fcar__copy is-on" data-fcar-copy id="gcar-p1" role="tabpanel" aria-labelledby="gcar-t1" tabindex="0">
+          <h3 class="fcar__finding">Weekly activity &amp; streaks</h3>
+          <p class="fcar__detail">Activity rings for the day, a week-by-week date strip, and a single check-in button.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="gcar-p2" role="tabpanel" aria-labelledby="gcar-t2" tabindex="0">
+          <h3 class="fcar__finding">Profile &amp; requests</h3>
+          <p class="fcar__detail">Incoming bet invitations and friend requests, each accepted or added in one tap.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="gcar-p3" role="tabpanel" aria-labelledby="gcar-t3" tabindex="0">
+          <h3 class="fcar__finding">Bet detail, daily progress</h3>
+          <p class="fcar__detail">Steps against the target for a running bet, with the stake and a day-by-day breakdown.</p>
+        </div>
+        <div class="fcar__copy" data-fcar-copy id="gcar-p4" role="tabpanel" aria-labelledby="gcar-t4" tabindex="0">
+          <h3 class="fcar__finding">Manage your friends</h3>
+          <p class="fcar__detail">Suggestions, contacts and current friends in one searchable list.</p>
+        </div>
+        </div>
+
+        <ol class="fcar__tabs" role="tablist" aria-label="Screens">
+        <li>
+          <button class="fcar__tab is-on" data-fcar-tab id="gcar-t1" role="tab"
+                  aria-controls="gcar-p1" aria-selected="true" tabindex="0">
+            <span class="fcar__n mono">01</span>
+            <span class="fcar__label">Weekly activity &amp; streaks</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="gcar-t2" role="tab"
+                  aria-controls="gcar-p2" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">02</span>
+            <span class="fcar__label">Profile &amp; requests</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="gcar-t3" role="tab"
+                  aria-controls="gcar-p3" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">03</span>
+            <span class="fcar__label">Bet detail, daily progress</span>
+          </button>
+        </li>
+        <li>
+          <button class="fcar__tab" data-fcar-tab id="gcar-t4" role="tab"
+                  aria-controls="gcar-p4" aria-selected="false" tabindex="-1">
+            <span class="fcar__n mono">04</span>
+            <span class="fcar__label">Manage your friends</span>
+          </button>
+        </li>
+        </ol>
+
+        <div class="fcar__nav">
+          <button class="fcar__arrow" data-fcar-prev type="button" aria-label="Previous screen">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button class="fcar__arrow" data-fcar-next type="button" aria-label="Next screen">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+          <span class="fcar__count mono" data-fcar-count aria-hidden="true">01 / 04</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pnext">
+  <div class="shell">
+    <nav class="pnext__pair">
+      <a class="pnext__link pnext__link--prev" href="digital-signage.html" data-reveal>
+        <span class="pnext__k mono">Previous project</span>
+        <span class="pnext__t">Digital Signage Interfaces</span>
+      </a>
+      <a class="pnext__link pnext__link--next" href="muni.html" data-reveal>
+        <span class="pnext__k mono">Next project</span>
+        <span class="pnext__t">MUNI</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<section class="cta cta--plain" id="contact">
+  <div class="shell">
+    <h2 class="cta__title">
+      <span class="line"><span class="line__in">Have a product</span></span>
+      <span class="line"><span class="line__in">worth skyrocketing?</span></span>
+    </h2>
+    <p class="cta__sub" data-reveal>
+      I'm open to new opportunities and looking to join a team where I can
+      bring a decade of product design and make a meaningful impact.
+      If you're hiring, I'd love to hear about what you're building.
+    </p>
+
+    <div class="cta__actions" data-reveal>
+      <a class="btn btn--lg" href="https://www.linkedin.com/in/vitoraxavier"
+         target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span class="btn__label">Connect on LinkedIn</span>
+        <span class="btn__icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <span class="mono">© 2026 Vitor Xavier · Product Designer</span>
+    <ul class="foot__social mono">
+      <li><a href="https://www.linkedin.com/in/vitoraxavier"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <button class="foot__top mono" id="toTop">Back to top ↑</button>
+  </div>
+</footer>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

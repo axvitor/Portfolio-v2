@@ -10,7 +10,7 @@
   --bg-3:      #101013;
   --fg:        #F2F1EE;
   --fg-2:      #9A9AA2;
-  --fg-3:      #5C5C66;
+  --fg-3:      #9A9AA2;   /* was #5C5C66 — only 3.08:1 on the page black, under AA */
   --fg-4:      #33333B;
   --line:      rgba(255,255,255,.08);
   --line-2:    rgba(255,255,255,.14);
@@ -62,6 +62,9 @@ body{
 }
 
 img,video{ display:block; max-width:100%; }
+/* The rule above is an author rule, so it outranks the browser's own
+   [hidden]{display:none} and would keep a hidden <video> on screen. */
+[hidden]{ display:none !important; }
 a{ color:inherit; text-decoration:none; }
 button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
 ul,ol{ list-style:none; margin:0; padding:0; }
@@ -90,7 +93,6 @@ em{ font-style:italic; color:var(--fg); }
   margin-inline:auto;
   padding-inline:var(--pad);
 }
-.shell--wide{ max-width:1560px; }
 
 /* ── section furniture ───────────────────────────────── */
 .sec__head{ margin-bottom:clamp(48px,8vh,96px); }
@@ -432,117 +434,79 @@ em{ font-style:italic; color:var(--fg); }
 /* ══════════ WORK ══════════ */
 .work{ padding-block:var(--sec-y); border-top:1px solid var(--line); }
 
-.projects{
-  display:flex; flex-direction:column;
-  gap:clamp(80px,14vh,190px);
-}
-.project{
+/* Bento: tile size carries the hierarchy, so the strongest work reads first.
+   The spans (set per project as --w/--h) tile a 4-column grid exactly. */
+.bento{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:clamp(28px,4vw,72px);
-  align-items:center;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:clamp(140px,15.5vw,220px);
+  gap:clamp(9px,.85vw,14px);
 }
-.project:nth-child(even) .project__visual{ order:2; }
-
-.project__visual{
+.bento__item{
+  grid-column:span var(--w,1);
+  grid-row:span var(--h,1);
+  min-width:0;
+}
+.bento__link{
   position:relative;
-  aspect-ratio:4/3;
-  border-radius:6px;
+  display:block;
+  width:100%; height:100%;
+  border:1px solid var(--line);
+  border-radius:8px;
   overflow:hidden;
   background:var(--bg-2);
-  border:1px solid var(--line);
+  color:inherit;
   isolation:isolate;
 }
-.project__visual svg{
-  width:100%; height:100%; display:block;
+.bento__img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
   translate:0 var(--py,0px);
-  scale:1.09;
-  transition:scale 1.1s var(--ease);
+  scale:1.06;
+  filter:saturate(.86) contrast(1.04) brightness(.5);
+  transition:scale 1.1s var(--ease), filter .8s var(--ease);
   will-change:translate,scale;
 }
-.project:hover .project__visual svg{ scale:1.14; }
-.project__visual::before{
-  content:""; position:absolute; inset:0; z-index:1;
-  background:radial-gradient(72% 62% at 50% 44%, rgba(255,255,255,.055), transparent 72%);
-  pointer-events:none;
-}
-.project__visual::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(140deg, rgba(74,134,255,.09), transparent 46%);
-  opacity:0; transition:opacity .7s var(--ease);
-  pointer-events:none;
-}
-.project:hover .project__visual::after{ opacity:1; }
-.project__visual .pv-scan{
-  position:absolute; inset:0; pointer-events:none;
-  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.028) 0 1px, transparent 1px 3px);
-  mix-blend-mode:overlay;
-}
+.bento__link:hover .bento__img{ scale:1.12; filter:saturate(1) contrast(1) brightness(.72); }
 
-.project__idx{
-  position:absolute; top:16px; left:18px; z-index:2;
-  color:var(--fg-2);
-  letter-spacing:.16em;
+.bento__scrim{
+  position:absolute; inset:0;
+  background:linear-gradient(to top,
+    rgba(5,5,6,.9) 0%, rgba(5,5,6,.2) 58%, rgba(5,5,6,0) 100%);
 }
-.project__tag{
-  position:absolute; top:16px; right:18px; z-index:2;
-  padding:5px 10px;
-  border:1px solid var(--line-2);
-  border-radius:100px;
-  color:var(--fg-2);
+.bento__idx{
+  position:absolute; top:13px; left:15px;
+  color:rgba(242,241,238,.55);
   font-size:10px;
-  background:rgba(5,5,6,.5);
-  backdrop-filter:blur(6px);
 }
-
-.project__body{ max-width:52ch; }
-.project__name{
+.bento__body{
+  position:absolute; left:0; right:0; bottom:0;
+  display:flex; flex-direction:column; gap:6px;
+  padding:clamp(14px,1.5vw,20px) clamp(15px,1.6vw,22px);
+}
+.bento__name{
   font-family:var(--display);
   font-variation-settings:"wdth" 112,"wght" 700;
-  font-size:clamp(32px,4.4vw,62px);
-  line-height:.94;
-  letter-spacing:-.04em;
-  margin-bottom:16px;
+  /* scales with the tile: a 2-wide tile gets a bigger name than a 1-wide */
+  font-size:calc(13px + var(--w,1) * 5px + var(--h,1) * 4px);
+  line-height:.98;
+  letter-spacing:-.035em;
 }
-.project__desc{
-  color:var(--fg-2);
-  font-size:clamp(15px,1.1vw,17.5px);
-  line-height:1.6;
-  margin-bottom:clamp(24px,3vw,34px);
-  max-width:44ch;
+.bento__meta{
+  color:rgba(242,241,238,.6);
+  font-size:9.5px;
 }
-.project__meta{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:20px 16px;
-  padding-block:22px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  margin-bottom:24px;
-}
-.project__meta dt{
-  color:var(--fg-3);
-  font-family:var(--mono); font-size:10px;
-  letter-spacing:.14em; text-transform:uppercase;
-  margin-bottom:7px;
-}
-.project__meta dd{ margin:0; font-size:14.5px; color:var(--fg); line-height:1.35; }
 
-.project__out{
-  display:flex; align-items:flex-start; gap:14px;
+@media (max-width:1080px){
+  .bento{ grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:clamp(150px,26vw,210px); }
+  /* nothing may span wider than the 2 columns that remain */
+  .bento__item{ grid-column:span min(var(--w,1), 2); }
 }
-.project__outK{
-  flex:none; margin-top:2px;
-  color:var(--accent);
-  font-family:var(--mono); font-size:10px;
-  letter-spacing:.14em; text-transform:uppercase;
-}
-.project__outV{
-  font-family:var(--display);
-  font-variation-settings:"wdth" 100,"wght" 600;
-  font-size:clamp(17px,1.5vw,22px);
-  line-height:1.28;
-  letter-spacing:-.02em;
+@media (max-width:640px){
+  .bento{ grid-template-columns:1fr; grid-auto-rows:clamp(190px,54vw,240px); }
+  .bento__item{ grid-column:span 1; grid-row:span 1; }
+  .bento__name{ font-size:24px; }
 }
 
 /* ══════════ ABOUT ══════════ */
@@ -726,6 +690,610 @@ em{ font-style:italic; color:var(--fg); }
   font-style:normal;
   color:var(--accent);
 }
+/* Reused on a project page, where `.pblock p` is (0,1,1) and would otherwise
+   win over this single class and drop the line back to body copy. */
+.pblock .stats__line{
+  font-size:clamp(30px,4.3vw,58px);
+  line-height:1.14;
+  color:var(--fg-3);
+  /* This line is display type, so it needs more air beneath it than the body
+     copy a carousel usually follows. Scoped here rather than widening .fcar's
+     own top margin, which every other carousel shares. Note this margin
+     COLLAPSES with the carousel's 40px top margin rather than adding to it,
+     so the value below is the whole gap, not an increment. */
+  margin-bottom:clamp(56px,10vh,110px);
+}
+
+/* ══════════ PROJECT PAGES ══════════ */
+/* Same tokens, same type ramp, same rhythm as the home page — only the
+   arrangement differs. */
+
+.ph{
+  position:relative; z-index:4;
+  background:var(--bg);
+  /* The old bottom padding here plus .pfacts's own padding used to split
+     unevenly around the facts row (a big gap above, a thin one below). That
+     whole budget now lives on .pfacts, which centers the row inside it, so
+     this section's bottom edge sits flush against the hero art. */
+  padding-block:clamp(120px,17vh,180px) 0;
+}
+.ph__back{
+  display:inline-flex; align-items:center; gap:9px;
+  color:var(--fg-3);
+  margin-bottom:clamp(34px,6vh,64px);
+  transition:color .3s, gap .4s var(--ease);
+}
+.ph__back:hover{ color:var(--fg); gap:14px; }
+.ph__title{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 114,"wght" 800;
+  font-size:clamp(40px,7vw,104px);
+  line-height:.92;
+  letter-spacing:-.045em;
+  margin-bottom:clamp(18px,2.6vh,28px);
+}
+.ph__lede{
+  /* No measure cap: the subtitles run 40-71 characters, so at this size they
+     sit on one or two lines across the full shell rather than in a narrow
+     column. */
+  font-family:var(--display);
+  font-variation-settings:"wdth" 100,"wght" 400;
+  font-size:clamp(20px,2.6vw,36px);
+  line-height:1.24;
+  letter-spacing:-.025em;
+  color:var(--fg-3);
+}
+.ph__art{
+  margin-top:clamp(44px,7vh,84px);
+  /* No fixed ratio: the frame takes each image's own shape, so every hero
+     shows whole instead of being cropped to a house ratio. The <img> carries
+     width/height attributes — that is what reserves the right space before
+     it loads, and without them this would shift the page on every project. */
+  /* figure carries a UA default margin-bottom (1em) that nothing here had
+     reset; with .ph's own bottom padding now at 0 it collapsed straight
+     through and leaked out as an extra ~17px above .pfacts, unbalancing the
+     centering below. */
+  margin-bottom:0;
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+  background:var(--bg-2);
+  position:relative;
+}
+.ph__art svg{ width:100%; height:100%; display:block; }
+/* hero holding a real photograph rather than generated art */
+.ph__art--photo{ margin-left:0; margin-right:0; }
+.ph__art--photo img{
+  width:100%; height:auto; display:block;
+  filter:saturate(.9) contrast(1.03);
+}
+
+/* Opt-in band. Two heroes read better cropped than at full height: the
+   signage mockup is nearly square (1600x1200) and ran to 886px, MUNI's
+   photo to 665px. Both are photographic rather than UI, so height is the
+   one thing they can lose without losing information. Must follow the rule
+   above — same specificity, so source order is what wins. */
+.ph__art--band{ aspect-ratio:16/7; }
+.ph__art--band img{ height:100%; object-fit:cover; }
+.ph__art::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.028) 0 1px, transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+
+/* ── try it yourself ───────────────────────────────────────────────────────
+   A live build sits on axvitor.com; this is the door to it. */
+.ptry{
+  border:1px solid var(--line-2);
+  border-radius:6px;
+  background:var(--bg-2);
+  padding:clamp(30px,4vw,56px);
+  display:flex; flex-direction:column; align-items:flex-start;
+  gap:clamp(14px,1.8vh,20px);
+}
+.ptry__k{ color:var(--accent); }
+.ptry__t{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 110,"wght" 700;
+  font-size:clamp(24px,3vw,40px);
+  line-height:1; letter-spacing:-.035em;
+}
+.ptry__d{ color:var(--fg-2); font-size:15.5px; line-height:1.6; }  /* no measure cap: the copy runs the width of the card */
+.ptry .btn{ margin-top:6px; }
+
+/* ── figures ───────────────────────────────────────────────────────────────
+   Same 6px frame and hairline border as the work cards, so screenshots read
+   as part of the system rather than pasted in. */
+.pfig-wrap{ margin-top:clamp(30px,4.5vh,52px); }
+.pshot{
+  margin:0;
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+  background:var(--bg-2);
+}
+.pshot img, .pshot video{
+  display:block; width:100%; height:auto;
+  /* the source shots are bright; settle them into the dark page */
+  filter:saturate(.92) contrast(1.02);
+}
+
+/* Portrait screenshots stretched to full column width ran taller than the
+   screen — the dashboard's activity shot came out 1118px, the feedback one
+   1700px, and Gym&Bet's wireframes over 1900px. Cap the height and let the
+   width follow, so a tall shot sits centred at a readable size instead of
+   swallowing the page. The figure hugs the image (fit-content) so no empty
+   panel shows beside it. Track cards size themselves and are exempt. */
+.pshot:not(.ftrack__item){
+  width:fit-content;
+  max-width:100%;
+  margin-inline:auto;
+}
+.pshot:not(.ftrack__item) img,
+.pshot:not(.ftrack__item) video{
+  width:auto;
+  max-width:100%;
+  max-height:clamp(340px,62vh,660px);
+}
+/* The figure is fit-content, so it sizes to its WIDEST child — and a caption
+   at its natural width is often wider than a height-capped portrait, which
+   left the image floating in a box 65px too wide on each side. Zero width
+   keeps the caption out of that calculation; min-width puts it back to the
+   figure's resolved width so it still wraps edge to edge. */
+.pshot:not(.ftrack__item) figcaption{
+  width:0;
+  min-width:100%;
+}
+.pshot figcaption{
+  padding:13px 16px;
+  border-top:1px solid var(--line);
+  color:var(--fg-3);
+  font-family:var(--mono); font-size:10px;
+  letter-spacing:.13em; text-transform:uppercase;
+}
+
+/* grid of shots — collapses to one column on small screens */
+.pgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+  gap:clamp(14px,1.8vw,24px);
+  margin-top:clamp(30px,4.5vh,52px);
+}
+.pgrid--2{ grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr)); }
+/* phone screens: many narrow portraits, so allow more per row */
+.pgrid--phone{ grid-template-columns:repeat(auto-fit,minmax(min(190px,45%),1fr)); }
+
+/* a shot paired with its explanation */
+.ppair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(22px,3vw,52px);
+  align-items:center;
+  margin-top:clamp(30px,4.5vh,52px);
+}
+/* Inside a pair the shots sit next to a three-line caption, so they take a
+   tighter cap than a standalone shot: it keeps the four walkthrough rows at
+   comparable heights instead of alternating 300px and 560px. */
+.ppair .pshot img{ max-height:clamp(300px,46vh,480px); }
+/* A narrow portrait centred in a half-width column floats with nothing to
+   line up against. Pin each shot to the OUTER edge of its column so every
+   image meets the page margin, whichever side the row puts it on. */
+.ppair .pshot{ margin-inline:0 auto; }
+.ppair:nth-of-type(even) .pshot{ margin-inline:auto 0; }
+
+.ppair__t{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 106,"wght" 600;
+  font-size:clamp(19px,1.9vw,26px);
+  letter-spacing:-.03em;
+  margin-bottom:12px;
+}
+.ppair__d{ color:var(--fg-2); font-size:15px; line-height:1.6; }
+.ppair:nth-of-type(even) .pshot{ order:2; }
+
+@media (max-width:760px){
+  .ppair{ grid-template-columns:1fr; }
+  .ppair:nth-of-type(even) .pshot{ order:0; }
+}
+
+/* quick facts */
+/* No divider under the hero: the facts strip's own column rules already
+   open the section, so a full-width line above them just doubled up. */
+/* Vertically centers the facts row inside the same total space the hero's
+   old bottom padding + this section's old padding used to add up to
+   (unchanged sum, just redistributed): min-height carries that budget, and
+   flex centers whatever height the row turns out to be — 1 line here,
+   3 when a value wraps, same either way. */
+.pfacts{
+  display:flex; flex-direction:column; justify-content:center;
+  min-height:calc(17px + clamp(48px,7vh,84px) + clamp(40px,6vh,72px) + clamp(40px,6vh,72px));
+  /* the 17px folds in that same figure margin so the total space is
+     identical to before, just centered instead of front-loaded. */
+}
+
+/* A spec strip rather than a run of labels: every fact sits under its own
+   hairline, the label drops back into mono, and the value is carried in the
+   display face so it reads at a glance. Column gaps break the rules apart,
+   which is what makes the row scan as separate fields. */
+.pfacts dl{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  column-gap:clamp(20px,2.6vw,44px);
+  row-gap:0;
+  margin:0;
+}
+.pfacts dl > div{
+  position:relative;
+  padding:clamp(17px,2.3vh,23px) 0 clamp(4px,.8vh,9px);
+  border-top:1px solid var(--line);
+}
+/* Same gesture as .cap: the accent wipes along the rule on hover. */
+.pfacts dl > div::after{
+  content:""; position:absolute; left:0; right:0; top:-1px; height:1px;
+  background:var(--accent);
+  transform:scaleX(0); transform-origin:0 50%;
+  transition:transform .55s var(--ease);
+}
+.pfacts dl > div:hover::after{ transform:scaleX(1); }
+.pfacts dt{
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--fg-3);
+  margin-bottom:clamp(10px,1.4vh,14px);
+  transition:color .45s;
+}
+.pfacts dl > div:hover dt{ color:var(--accent); }
+.pfacts dd{
+  margin:0;
+  font-family:var(--display);
+  font-variation-settings:"wdth" 106,"wght" 500;
+  font-size:clamp(17px,1.5vw,21px);
+  line-height:1.3; letter-spacing:-.02em;
+  color:var(--fg);
+}
+
+/* prose blocks */
+.pblock{ padding-block:clamp(52px,8vh,110px); }
+.pblock__h{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 110,"wght" 700;
+  font-size:clamp(26px,3.4vw,46px);
+  line-height:1;
+  letter-spacing:-.035em;
+  margin-bottom:clamp(22px,3.4vh,38px);
+}
+.pblock p{
+  color:var(--fg-2);
+  font-size:clamp(15.5px,1.15vw,18px);
+  line-height:1.62;
+  margin-bottom:18px;
+}
+.pblock p:last-child{ margin-bottom:0; }
+.pblock p.lead{ color:var(--fg); }
+/* One sentence carrying a section — the client's reaction opening "The
+   result". Display face at the scale of .ppair__t, so it reads as a claim
+   rather than another line of body copy. */
+.pblock p.statement{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 106,"wght" 500;
+  font-size:clamp(23px,2.4vw,32px);
+  line-height:1.2;
+  letter-spacing:-.025em;
+  color:var(--fg);
+  margin-bottom:clamp(16px,2.2vh,22px);
+  text-wrap:pretty;
+}
+
+/* pull-out questions / notes */
+.pquotes{ margin:clamp(24px,3.4vh,34px) 0 0; border-top:1px solid var(--line); }
+.pquotes li{
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--fg);
+  font-family:var(--display);
+  font-variation-settings:"wdth" 100,"wght" 400;
+  font-size:clamp(16px,1.5vw,21px);
+  letter-spacing:-.02em;
+}
+
+/* numbered items — process steps, guidelines */
+/* Hairlines come from the items, not from a gap over a tinted background:
+   with 6 items in a 4-column auto-fit grid the two empty cells would
+   otherwise paint as a visible block. */
+.pnum{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.pnum li{
+  background:var(--bg);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:clamp(24px,3vw,36px);
+  transition:background .55s var(--ease);
+}
+.pnum li:hover{ background:var(--bg-3); }
+.pnum__n{ display:block; color:var(--accent); margin-bottom:clamp(30px,5vh,58px); }
+.pnum__t{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 106,"wght" 600;
+  font-size:clamp(17px,1.6vw,22px);
+  letter-spacing:-.03em;
+  margin-bottom:11px;
+}
+.pnum__d{ color:var(--fg-2); font-size:14.5px; line-height:1.58; }
+
+/* impact figures */
+.pfig{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:clamp(26px,3.4vw,48px);
+}
+.pfig__v{
+  display:block;
+  font-family:var(--display);
+  font-variation-settings:"wdth" 114,"wght" 700;
+  font-size:clamp(34px,4.4vw,64px);
+  line-height:.95; letter-spacing:-.045em;
+  font-variant-numeric:tabular-nums;
+  margin-bottom:12px;
+}
+.pfig__k{ color:var(--fg-3); }
+
+/* ── findings carousel (WCAG study) ──────────────────────
+   Evidence on the left, the finding set as real type on the right.
+   The audit diagrams are mixed ratios (833x900 to 900x690), so they
+   are contained on the panel rather than cropped — cropping would cut
+   off the annotation that IS the finding. */
+.fcar{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(28px,4vw,52px);
+  align-items:start;
+  margin-top:clamp(30px,4.5vh,52px);
+}
+
+/* Both stacks are single-cell grids: every panel occupies the same
+   cell, so the container keeps the height of the TALLEST one and
+   nothing below it shifts as you move between findings. */
+.fcar__shots,
+.fcar__copies{ display:grid; }
+.fcar__shot,
+.fcar__copy{
+  grid-area:1 / 1;
+  opacity:0; visibility:hidden;
+  transition:opacity .5s var(--ease), visibility .5s;
+}
+.fcar__shot.is-on,
+.fcar__copy.is-on{ opacity:1; visibility:visible; }
+
+.fcar__shots{
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--bg-2);
+  overflow:hidden;
+  touch-action:pan-y;          /* leaves room for the horizontal swipe */
+}
+.fcar__shot{
+  margin:0;
+  height:clamp(320px,46vh,520px);
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(16px,2vw,26px);
+}
+.fcar__shot img,
+.fcar__shot video{
+  max-width:100%; max-height:100%;
+  width:auto; height:auto;
+  object-fit:contain;
+  filter:saturate(.92) contrast(1.02);
+  border-radius:3px;
+  /* native image dragging would otherwise hijack the swipe gesture */
+  -webkit-user-drag:none; user-select:none;
+}
+
+.fcar__side{ display:flex; flex-direction:column; padding-top:4px; }
+
+.fcar__screen{ color:var(--fg-3); margin-bottom:clamp(16px,2.2vh,22px); }
+/* `.pblock p` is (0,1,1) and would otherwise win over a single class,
+   dropping this back to body copy — hence the doubled selector. */
+.fcar .fcar__finding{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 106,"wght" 500;
+  font-size:clamp(23px,2.4vw,32px);
+  line-height:1.18;
+  letter-spacing:-.025em;
+  color:var(--fg);
+  margin:0 0 clamp(16px,2.2vh,22px);
+  text-wrap:pretty;
+}
+.fcar .fcar__detail{
+  color:var(--fg-2);
+  font-size:clamp(15px,1.1vw,16px);
+  line-height:1.6;
+  margin:0;
+}
+.fcar__copy:focus-visible{ outline:2px solid var(--accent); outline-offset:6px; }
+
+.fcar__tabs{ margin-top:clamp(28px,4vh,42px); border-top:1px solid var(--line); }
+.fcar__tab{
+  display:flex; gap:16px; align-items:baseline;
+  width:100%; text-align:left;
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--fg-3);
+  font-size:15px; line-height:1.4;
+  transition:color .45s var(--ease), padding-left .55s var(--ease);
+}
+.fcar__tab:hover{ color:var(--fg); }
+.fcar__tab.is-on{ color:var(--fg); padding-left:14px; }
+.fcar__n{ flex:none; color:var(--fg-3); transition:color .45s var(--ease); }
+.fcar__tab.is-on .fcar__n{ color:var(--accent); }
+
+.fcar__nav{ display:flex; align-items:center; gap:10px; margin-top:clamp(26px,3.6vh,34px); }
+.fcar__arrow,
+.ftrack__arrow{
+  width:46px; height:46px; flex:none;
+  border-radius:50%;
+  border:1px solid var(--line);
+  color:var(--fg-3);
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .4s var(--ease), color .4s var(--ease);
+}
+.fcar__arrow:hover,
+.ftrack__arrow:hover{ border-color:var(--line-2); color:var(--fg); }
+.fcar__arrow svg,
+.ftrack__arrow svg{
+  width:17px; height:17px;
+  fill:none; stroke:currentColor; stroke-width:1.5;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.fcar__count{ color:var(--fg-3); margin-left:8px; }
+
+@media (max-width:900px){
+  .fcar{ grid-template-columns:1fr; gap:clamp(24px,4vh,34px); }
+}
+@media (prefers-reduced-motion:reduce){
+  .fcar__shot,
+  .fcar__copy,
+  .fcar__tab,
+  .fcar__n,
+  .fcar__arrow{ transition:none; }
+}
+
+/* ── wireframe track ─────────────────────────────────────
+   The wireframes are true 9:19.5 phone portraits, so one at a time
+   would leave most of the column empty. A snapping track shows the
+   flow in sequence instead, and reuses .pshot for each frame so the
+   cards stay identical to the rest of the page. */
+.ftrack{
+  margin-top:clamp(30px,4.5vh,52px);
+  /* every frame in a track shares one ratio so the cards stay in step */
+  --ftrack-ratio:415 / 900;
+}
+.ftrack--final{ --ftrack-ratio:461 / 900; }
+/* The shipped screens are the payoff of the study, so they get more size
+   than the wireframes — which also keeps four of them overflowing the
+   shell rather than sitting still in it. */
+.ftrack--final .ftrack__item{ width:clamp(240px,24vw,320px); }
+.ftrack__scroller{
+  display:flex;
+  gap:clamp(12px,1.4vw,18px);
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  cursor:grab;
+  /* the arrows and keyboard are the visible affordances; the bar isn't */
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.ftrack__scroller::-webkit-scrollbar{ display:none; }
+.ftrack__scroller:active{ cursor:grabbing; }
+.ftrack__scroller:focus-visible{ outline:2px solid var(--accent); outline-offset:6px; border-radius:8px; }
+
+.ftrack__item{
+  flex:none;
+  /* Sized so roughly four of five sit in the shell: small enough that the
+     track genuinely scrolls, large enough that the wireframes are
+     readable — which is the whole reason for moving off the grid. */
+  width:clamp(215px,21vw,275px);
+  scroll-snap-align:start;
+}
+.ftrack__item img{
+  aspect-ratio:var(--ftrack-ratio);
+  object-fit:cover;
+  -webkit-user-drag:none; user-select:none;
+}
+
+.ftrack__nav{ display:flex; align-items:center; gap:10px; margin-top:clamp(20px,2.8vh,28px); }
+/* nothing to scroll (a wide viewport fits every frame) — drop the controls
+   rather than leave two dead buttons under the row */
+.ftrack.is-static .ftrack__nav{ display:none; }
+.ftrack__arrow:disabled{ opacity:.35; cursor:default; }
+.ftrack__arrow:disabled:hover{ border-color:var(--line); color:var(--fg-3); }
+
+@media (prefers-reduced-motion:reduce){
+  .ftrack__scroller{ scroll-behavior:auto; }
+}
+
+/* ── full-bleed wireframe strip ───────────────────────────
+   Scroll captures 375px wide but 782-1919px tall. Any layout that puts
+   four of those side by side inside the 1180px text column shrinks them
+   to ~115px — unreadable. This one leaves the column entirely: the strip
+   runs the full window width and each capture keeps its true proportions,
+   hanging from a common top edge, so the ragged bottoms read as what they
+   are — screens of genuinely different lengths. */
+.ftrack--bleed{ margin-top:clamp(30px,4.5vh,52px); }
+.ftrack--bleed .ftrack__scroller{
+  align-items:flex-start;          /* common top edge, ragged bottoms */
+  gap:clamp(12px,1.4vw,20px);
+  /* line the first card up with the heading above, then run to the window
+     edge. Percentages resolve against this element, which spans the page. */
+  padding-inline:max(var(--pad), calc((100% - var(--shell)) / 2 + var(--pad)));
+  /* scroll-snap ignores padding and would snap the first card flush to the
+     scrollport, scrolling the gutter away and breaking the alignment above.
+     scroll-padding is what makes snapping respect it. */
+  scroll-padding-inline:max(var(--pad), calc((100% - var(--shell)) / 2 + var(--pad)));
+}
+.ftrack--bleed .ftrack__item{
+  width:clamp(186px,17vw,244px);
+  align-self:flex-start;
+  scroll-snap-align:start;
+}
+/* the sized-track rules above assume a fixed ratio; here height is the
+   point, so hand it back to the image */
+.ftrack--bleed .ftrack__item img{
+  aspect-ratio:auto;
+  height:auto;
+  object-fit:fill;
+}
+/* Bottoms are ragged by design, which left the four captions 715px apart
+   vertically — you could not tell which screen was which without scrolling
+   the lot. column-reverse lifts each label to the TOP instead, so they line
+   up on one row while the bottoms stay honest. */
+.ftrack--bleed .ftrack__item{ display:flex; flex-direction:column-reverse; }
+.ftrack--bleed .ftrack__item figcaption{
+  display:flex; align-items:baseline; gap:10px;
+  border-top:0;
+  border-bottom:1px solid var(--line);
+}
+.ftrack__n{ color:var(--accent); flex:none; }
+.ftrack--bleed .ftrack__nav{ margin-top:clamp(18px,2.4vh,26px); }
+
+/* next project */
+.pnext{ padding-block:clamp(56px,9vh,120px); border-top:1px solid var(--line); }
+
+/* Two destinations now share the row, so the type comes down from the old
+   single-link scale to let both names sit on one line. */
+.pnext__pair{
+  /* space-between rather than two equal columns, so each link sits hard
+     against its own edge of the shell whatever the project names are. */
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:clamp(20px,4vw,64px);
+}
+.pnext__link{ display:block; min-width:0; }
+.pnext__link--next{ text-align:right; }
+.pnext__k{
+  display:block; color:var(--fg-3); margin-bottom:12px;
+  transition:color .4s var(--ease);
+}
+.pnext__link--prev .pnext__k::before{ content:"\2190\00a0"; }
+.pnext__link--next .pnext__k::after{ content:"\00a0\2192"; }
+.pnext__t{
+  display:block;
+  font-family:var(--display);
+  font-variation-settings:"wdth" 112,"wght" 700;
+  font-size:clamp(23px,3.3vw,48px);
+  line-height:1; letter-spacing:-.04em;
+  transition:color .4s var(--ease);
+}
+.pnext__link:hover .pnext__k,
+.pnext__link:hover .pnext__t{ color:var(--accent); }
+
+@media (max-width:640px){
+  .pnext__pair{ flex-direction:column; gap:clamp(26px,4.4vh,36px); }
+  .pnext__link--next{ text-align:left; }
+}
+
 
 /* ══════════ CTA ══════════ */
 .cta{
@@ -738,6 +1306,10 @@ em{ font-style:italic; color:var(--fg); }
 }
 
 .cta .shell{ position:relative; }
+
+/* Project pages close on this same CTA but without .cta__still behind it, so
+   the space the still would have occupied has to come back off the bottom. */
+.cta--plain{ padding-bottom:clamp(110px,17vh,190px); }
 
 /* Option A's proportions: ~76px headline rather than running to 124px, and a
    steady ~26px between headline, sub and button. */
@@ -812,6 +1384,86 @@ em{ font-style:italic; color:var(--fg); }
 .foot__top{ color:var(--fg-3); transition:color .3s; }
 .foot__top:hover{ color:var(--fg); }
 
+/* ══════════ LIGHTBOX ══════════
+   Screenshots on the project pages are capped so they don't run past the
+   viewport; clicking one opens it at full size. Built on <dialog>, so focus
+   trapping, Escape and the backdrop are the browser's job, not ours. */
+
+.zoom{ cursor:zoom-in; }
+.zoom:focus-visible{ outline:2px solid var(--accent); outline-offset:4px; border-radius:3px; }
+
+.lbox{
+  border:0; padding:0; margin:auto;
+  width:100vw; max-width:100vw;
+  height:100vh; height:100dvh; max-height:100dvh;
+  background:transparent;
+  overflow:hidden;
+}
+.lbox::backdrop{ background:rgba(5,5,6,.94); }
+
+.lbox__in{
+  box-sizing:border-box;
+  width:100%; height:100%;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:clamp(14px,2.2vh,22px);
+  padding:clamp(64px,9vh,88px) clamp(18px,5vw,72px) clamp(28px,5vh,56px);
+  cursor:zoom-out;                       /* the field around the image closes it */
+}
+.lbox__img,
+.lbox__vid{
+  max-width:100%; max-height:100%;
+  width:auto; height:auto;
+  object-fit:contain;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--bg-2);
+  cursor:default;
+}
+.lbox__cap{
+  flex:none;
+  color:var(--fg-3);
+  text-align:center;
+  max-width:78ch;
+  line-height:1.6;
+}
+.lbox__close,
+.lbox__step{
+  position:absolute;
+  width:46px; height:46px;
+  border-radius:50%;
+  border:1px solid var(--line-2);
+  background:var(--bg-2);
+  color:var(--fg-3);
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .4s var(--ease), color .4s var(--ease), opacity .3s;
+}
+.lbox__close{ top:clamp(14px,2.4vh,26px); right:clamp(14px,2.4vw,30px); }
+/* Stepping through a set while it is open — sits vertically centred on the
+   image, clear of the caption below it. */
+.lbox__step{ top:calc(50% - 34px); }
+.lbox__step--prev{ left:clamp(10px,1.6vw,22px); }
+.lbox__step--next{ right:clamp(10px,1.6vw,22px); }
+.lbox__close:hover,
+.lbox__step:hover{ border-color:var(--fg-3); color:var(--fg); }
+.lbox__close svg,
+.lbox__step svg{
+  width:17px; height:17px;
+  fill:none; stroke:currentColor; stroke-width:1.5;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+
+
+.lbox[open]{ animation:lboxIn .28s var(--ease); }
+.lbox[open]::backdrop{ animation:lboxFade .28s var(--ease); }
+@keyframes lboxIn{ from{ opacity:0; transform:scale(.985); } }
+@keyframes lboxFade{ from{ opacity:0; } }
+
+@media (prefers-reduced-motion:reduce){
+  .lbox[open], .lbox[open]::backdrop{ animation:none; }
+  .lbox__close, .lbox__step{ transition:none; }
+}
+
 /* ══════════ REVEALS ══════════ */
 [data-reveal]{
   opacity:0; transform:translateY(26px);
@@ -819,11 +1471,11 @@ em{ font-style:italic; color:var(--fg); }
 }
 [data-reveal].in{ opacity:1; transform:none; }
 
-.project{
-  opacity:0; transform:translateY(40px);
-  transition:opacity 1s var(--ease), transform 1s var(--ease);
+.bento__item{
+  opacity:0; transform:translateY(34px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
 }
-.project.in{ opacity:1; transform:none; }
+.bento__item.in{ opacity:1; transform:none; }
 .tl,.cap{
   opacity:0; transform:translateY(24px);
   transition:opacity .8s var(--ease), transform .8s var(--ease),
@@ -838,8 +1490,6 @@ em{ font-style:italic; color:var(--fg); }
   .nav__end .btn{ display:none; }
   .nav__shell{ padding:6px 6px 6px 14px; }
   .nav.is-stuck .nav__shell{ padding:6px 10px 6px 18px; }
-  .project{ grid-template-columns:1fr; gap:26px; }
-  .project:nth-child(even) .project__visual{ order:0; }
   .about__grid{ grid-template-columns:1fr; }
   .about__lead{ position:static; }
   .cap{ grid-template-columns:38px 1fr; }
@@ -847,7 +1497,6 @@ em{ font-style:italic; color:var(--fg); }
 }
 @media (max-width:720px){
   .hero__track{ height:380vh; }
-  .project__meta{ grid-template-columns:repeat(2,1fr); }
   .tl{ grid-template-columns:1fr; gap:10px; padding-left:22px; }
   .tl__yr{ padding-top:0; }
   .timeline{ padding-left:14px; }
@@ -873,5 +1522,5 @@ em{ font-style:italic; color:var(--fg); }
   .hero__track{ height:100vh; }
   .hero__title .line__in,.cta__title .line__in{ transform:none; opacity:1; }
   .hero__sub{ opacity:1; }
-  [data-reveal],.project,.tl,.cap{ opacity:1; transform:none; }
+  [data-reveal],.bento__item,.tl,.cap{ opacity:1; transform:none; }
 }

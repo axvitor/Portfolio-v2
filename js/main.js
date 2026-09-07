@@ -18,6 +18,9 @@ const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const PROJECTS = [
   {
     name: 'MUNI',
+    w: 2, h: 2,
+    img: 'assets/projects/muni/thumbnail.jpg',
+    url: 'muni.html',
     tag: 'Case study',
     desc: 'Digital signage interface developed to be displayed at bus stops in San Francisco, California, USA. Arrival times and route information for transit riders.',
     role: 'UI/UX Designer',
@@ -28,6 +31,9 @@ const PROJECTS = [
   },
   {
     name: 'Careers Page',
+    w: 1, h: 1,
+    img: 'assets/projects/starbasis/hero-desk.jpg',
+    url: 'careers-page.html',
     tag: 'Case study',
     desc: 'A careers page for a creator experience marketplace scaling fast, ahead of a platform pivot. Hero, benefits, team and open positions, all fully responsive, plus a coded interactive version beyond the original deliverable.',
     role: 'Product Designer',
@@ -38,6 +44,9 @@ const PROJECTS = [
   },
   {
     name: 'WCAG Study',
+    w: 1, h: 1,
+    img: 'assets/projects/wcag/hero.jpg',
+    url: 'wcag-study.html',
     tag: 'Study',
     desc: 'A WCAG-compliant redesign of the Uber app, focused on senior users. Contrast ratios, clearer labelling, larger touch targets, and an interface that survives increased font sizes.',
     role: 'UX Researcher & Designer',
@@ -48,6 +57,9 @@ const PROJECTS = [
   },
   {
     name: 'CreatorHub',
+    w: 2, h: 1,
+    img: 'assets/projects/creatorhub/hero-desk.jpg',
+    url: 'creatorhub.html',
     tag: 'Case study',
     desc: 'A marketplace redesign for a company selling experiences, courses and webinars with well known people. Built around trust, with transparent pricing, authentic photography and legible creator information.',
     role: 'Product Designer',
@@ -58,6 +70,9 @@ const PROJECTS = [
   },
   {
     name: 'Element Dashboard',
+    w: 1, h: 1,
+    img: 'assets/projects/dashboard/hero-desk.jpg',
+    url: 'element-dashboard.html',
     tag: 'Case study',
     desc: 'A dashboard redesign built around the numbers users actually needed, with a live activity feed. The metrics driving decisions moved up front instead of sitting several clicks deep.',
     role: 'Product Designer',
@@ -68,16 +83,22 @@ const PROJECTS = [
   },
   {
     name: 'Digital Signage Interfaces',
+    w: 2, h: 1,
+    img: 'assets/projects/signage/hero.jpg',
+    url: 'digital-signage.html',
     tag: 'Case study',
-    desc: '40+ fully responsive apps built for the OnSign TV platform, covering weather, news, exchange rates and social feeds, across landscape, portrait, bar and square screens.',
+    desc: '40+ fully responsive apps built for the OnSign platform, covering weather, news, exchange rates and social feeds, across landscape, portrait, bar and square screens.',
     role: 'UI Designer',
-    client: 'OnSign TV · Digital signage',
+    client: 'OnSign · Digital signage',
     year: '2019',
     outcome: 'More than 40 interfaces, all 100% responsive.',
     art: 'stack'
   },
   {
     name: 'Gym&Bet',
+    w: 1, h: 1,
+    img: 'assets/projects/gymbet/hero.jpg',
+    url: 'gym-and-bet.html',
     tag: 'Case study',
     desc: 'A mobile app that turns exercise into a friendly bet with friends. Health tracking combined with social competition, designed in two weeks.',
     role: 'Product Designer',
@@ -278,30 +299,20 @@ const ART = {
 
 /* ═══════════ RENDER ═══════════ */
 
-$('#projects').innerHTML = PROJECTS.map((p, i) => `
-  <li class="project">
-    <div class="project__visual">
-      ${ART[p.art]()}
-      <span class="pv-scan"></span>
-      <span class="project__idx mono">${String(i + 1).padStart(2, '0')} / ${String(PROJECTS.length).padStart(2, '0')}</span>
-      <span class="project__tag mono">${p.tag}</span>
-    </div>
-    <div class="project__body">
-      <h3 class="project__name">${p.name}</h3>
-      <p class="project__desc">${p.desc}</p>
-      <dl class="project__meta">
-        ${[['Role', p.role], ['Industry', p.client], ['Year', p.year]]
-            .filter(([, v]) => v)
-            .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
-      </dl>
-      ${p.outcome ? `<div class="project__out">
-        <span class="project__outK">Impact</span>
-        <span class="project__outV">${p.outcome}</span>
-      </div>` : ''}
-    </div>
+if ($('#projects')) $('#projects').innerHTML = PROJECTS.map((p, i) => `
+  <li class="bento__item" style="--w:${p.w};--h:${p.h}">
+    <a class="bento__link" href="${p.url}" aria-label="${p.name} case study">
+      <img class="bento__img" src="${p.img}" alt="" loading="lazy" decoding="async" />
+      <span class="bento__scrim" aria-hidden="true"></span>
+      <span class="bento__idx mono">${String(i + 1).padStart(2, '0')}</span>
+      <span class="bento__body">
+        <h3 class="bento__name">${p.name}</h3>
+        <span class="bento__meta mono">${[p.client, p.year].filter(Boolean).join(' · ')}</span>
+      </span>
+    </a>
   </li>`).join('');
 
-$('#timeline').innerHTML = TIMELINE.map(t => `
+if ($('#timeline')) $('#timeline').innerHTML = TIMELINE.map(t => `
   <li class="tl">
     <span class="tl__yr mono">${t.yr}</span>
     <div>
@@ -311,7 +322,7 @@ $('#timeline').innerHTML = TIMELINE.map(t => `
     </div>
   </li>`).join('');
 
-$('#caps').innerHTML = CAPS.map(([t, d], i) => `
+if ($('#caps')) $('#caps').innerHTML = CAPS.map(([t, d], i) => `
   <li class="cap">
     <span class="cap__n mono">${String(i + 1).padStart(2, '0')}</span>
     <h3 class="cap__t">${t}</h3>
@@ -319,13 +330,23 @@ $('#caps').innerHTML = CAPS.map(([t, d], i) => `
   </li>`).join('');
 
 
+/* project pages render their hero visual from the same generators */
+const artHost = $('[data-art]');
+if (artHost && ART[artHost.dataset.art]) artHost.innerHTML = ART[artHost.dataset.art]();
+
 /* ═══════════ BOOT SEQUENCE ═══════════ */
 
 const video = $('#heroVideo');
 const boot  = $('#boot');
 const bootFill = $('#bootFill');
 const bootPct  = $('#bootPct');
-document.documentElement.classList.add('is-booting');
+
+/* The hero belongs to the home page. On a project page none of that markup
+   exists, so every side effect below is gated on HAS_HERO — but the
+   declarations stay at top level, because the shared scroll loop further
+   down calls into them. */
+const HAS_HERO = !!(video && boot && $('#heroTrack'));
+if (HAS_HERO) document.documentElement.classList.add('is-booting');
 
 let shown = 0, booted = false;
 const started = performance.now();
@@ -366,8 +387,12 @@ function finishBoot(){
   setTimeout(() => boot.remove(), 900);
 }
 
-if (REDUCED){ finishBoot(); } else { requestAnimationFrame(bootTick); }
-video.load();
+if (HAS_HERO){
+  if (REDUCED){ finishBoot(); } else { requestAnimationFrame(bootTick); }
+  video.load();
+} else {
+  document.body.classList.add('is-ready');   /* nothing to preload */
+}
 
 /* ═══════════ SCROLL-DRIVEN HERO VIDEO ═══════════ */
 
@@ -386,9 +411,11 @@ function primeVideo(){
   if (p && p.then) p.then(() => video.pause()).catch(() => {});
   else { try { video.pause(); } catch {} }
 }
-['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev =>
-  addEventListener(ev, primeVideo, { once: true, passive: true }));
-video.addEventListener('loadeddata', () => { try { video.currentTime = 0.001; } catch {} });
+if (HAS_HERO){
+  ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(ev =>
+    addEventListener(ev, primeVideo, { once: true, passive: true }));
+  video.addEventListener('loadeddata', () => { try { video.currentTime = 0.001; } catch {} });
+}
 
 function heroProgress(){
   const h = track.offsetHeight - innerHeight;
@@ -432,11 +459,13 @@ function pump(){
 }
 function keepPumping(){ if (!raf) raf = requestAnimationFrame(pump); }
 
-video.addEventListener('seeked', () => {
-  seeking = false;
-  keepPumping();        /* the scroll has probably moved on */
-});
-video.addEventListener('error', () => { seeking = false; });
+if (HAS_HERO){
+  video.addEventListener('seeked', () => {
+    seeking = false;
+    keepPumping();      /* the scroll has probably moved on */
+  });
+  video.addEventListener('error', () => { seeking = false; });
+}
 
 /* ── painting ─────────────────────────────────────────────────────────────
    Only touch a property when its value actually changed; the hero repaints
@@ -475,7 +504,7 @@ function onScroll(){
   keepPumping();
 }
 
-if (REDUCED){
+if (HAS_HERO && REDUCED){
   video.addEventListener('loadeddata', () => { try { video.currentTime = 2.4; } catch {} });
   frame.style.opacity = 1;
   keepPumping = () => {};
@@ -491,7 +520,7 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
-['[data-reveal]', '.project', '.tl', '.cap', '.cta'].forEach(sel => {
+['[data-reveal]', '.bento__item', '.tl', '.cap', '.cta'].forEach(sel => {
   $$(sel).forEach((el, i) => {
     el.style.transitionDelay = `${Math.min(i, 5) * 60}ms`;
     io.observe(el);
@@ -516,7 +545,7 @@ function scrubPhoto(){
 
 /* ═══════════ PROJECT ART PARALLAX ═══════════ */
 
-const artNodes = $$('.project__visual svg');
+const artNodes = $$('.bento__img');
 function parallaxArt(){
   if (REDUCED) return;
   for (const el of artNodes){
@@ -606,12 +635,323 @@ if (!REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches){
   });
 }
 
+/* ═══════════ FINDINGS CAROUSEL ═══════════
+   Follows the WAI tabs pattern: the list of findings is the tablist,
+   each finding's copy is its panel, and the evidence panel swaps
+   alongside it. Declared top-level; only the call below is gated, so
+   nothing here is block-scoped away from other callers. */
+
+function initFindings(root){
+  const shots  = $$('[data-fcar-shot]', root);
+  const copies = $$('[data-fcar-copy]', root);
+  const tabs   = $$('[data-fcar-tab]', root);
+  const count  = $('[data-fcar-count]', root);
+  const list   = $('[role="tablist"]', root);
+  const stage  = $('.fcar__shots', root);
+  const n = tabs.length;
+  if (!n || shots.length !== n || copies.length !== n) return;
+
+  const pad = k => String(k).padStart(2, '0');
+  let i = 0;
+
+  const show = (next, focusTab) => {
+    i = (next + n) % n;
+    shots .forEach((el, k) => el.classList.toggle('is-on', k === i));
+    copies.forEach((el, k) => el.classList.toggle('is-on', k === i));
+    tabs  .forEach((el, k) => {
+      const on = k === i;
+      el.classList.toggle('is-on', on);
+      el.setAttribute('aria-selected', on ? 'true' : 'false');
+      /* roving tabindex — the whole list is one tab stop, arrows move within it */
+      el.tabIndex = on ? 0 : -1;
+    });
+    if (count) count.textContent = `${pad(i + 1)} / ${pad(n)}`;
+    /* Only the visible slide's video runs — five looping clips playing behind
+       a hidden panel is wasted CPU and battery for something nobody sees. */
+    shots.forEach((el, k) => {
+      const v = el.querySelector('video');
+      if (!v) return;
+      if (k === i) { const p = v.play(); if (p) p.catch(() => {}); }
+      else v.pause();
+    });
+    if (focusTab) tabs[i].focus();
+  };
+
+  tabs.forEach((tab, k) => tab.addEventListener('click', () => show(k)));
+
+  const prev = $('[data-fcar-prev]', root);
+  const next = $('[data-fcar-next]', root);
+  if (prev) prev.addEventListener('click', () => show(i - 1));
+  if (next) next.addEventListener('click', () => show(i + 1));
+
+  if (list) list.addEventListener('keydown', e => {
+    const to = { ArrowLeft: i - 1, ArrowRight: i + 1, Home: 0, End: n - 1 }[e.key];
+    if (to === undefined) return;
+    e.preventDefault();
+    show(to, true);
+  });
+
+  /* drag / swipe across the evidence panel */
+  if (stage){
+    let x0 = null;
+    stage.addEventListener('pointerdown', e => { x0 = e.clientX; });
+    stage.addEventListener('pointerup', e => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0;
+      x0 = null;
+      /* any real drag ends in a click on the image; don't let it zoom */
+      if (Math.abs(dx) > 6) swallowNextClick();
+      if (Math.abs(dx) > 40) show(dx < 0 ? i + 1 : i - 1);
+    });
+    stage.addEventListener('pointercancel', () => { x0 = null; });
+  }
+
+  show(0);
+}
+
+$$('[data-fcar]').forEach(initFindings);
+
+/* ═══════════ WIREFRAME TRACK ═══════════
+   Native scroll-snap does the scrolling; this only wires the arrows,
+   their end states, and pointer dragging on desktop (touch already
+   scrolls natively, and hijacking it would be worse than leaving it). */
+
+function initTrack(root){
+  const sc   = $('[data-ftrack-scroller]', root);
+  const prev = $('[data-ftrack-prev]', root);
+  const next = $('[data-ftrack-next]', root);
+  if (!sc) return;
+
+  const step = () => {
+    const first = sc.firstElementChild;
+    if (!first) return sc.clientWidth * 0.8;
+    const gap = parseFloat(getComputedStyle(sc).columnGap) || 0;
+    return first.getBoundingClientRect().width + gap;
+  };
+  const sync = () => {
+    const room = sc.scrollWidth - sc.clientWidth;
+    /* a viewport wide enough to fit every frame needs no controls at all */
+    root.classList.toggle('is-static', room < 2);
+    if (prev) prev.disabled = sc.scrollLeft <= 0;
+    if (next) next.disabled = sc.scrollLeft >= room - 1;
+  };
+  const nudge = dir => sc.scrollBy({ left: dir * step(), behavior: REDUCED ? 'auto' : 'smooth' });
+
+  if (prev) prev.addEventListener('click', () => nudge(-1));
+  if (next) next.addEventListener('click', () => nudge(1));
+
+  let ticking = false;
+  sc.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; sync(); });
+  }, { passive: true });
+
+  /* drag with a mouse or pen; touch keeps its native scrolling */
+  let from = null, at = 0;
+  sc.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'touch') return;
+    from = e.clientX; at = sc.scrollLeft;
+    sc.setPointerCapture(e.pointerId);
+  });
+  sc.addEventListener('pointermove', e => {
+    if (from === null) return;
+    sc.scrollLeft = at - (e.clientX - from);
+  });
+  const release = e => {
+    if (from === null) return;
+    if (Math.abs(e.clientX - from) > 6) swallowNextClick();
+    from = null;
+    try { sc.releasePointerCapture(e.pointerId); } catch (_) {}
+  };
+  sc.addEventListener('pointerup', release);
+  sc.addEventListener('pointercancel', release);
+
+  addEventListener('resize', sync, { passive: true });
+  sync();
+}
+
+$$('[data-ftrack]').forEach(initTrack);
+
+/* ═══════════ LIGHTBOX ═══════════
+   Project screenshots are capped so they don't run past the viewport, so
+   clicking one has to be able to show it whole. <dialog>.showModal() brings
+   focus trapping, Escape and the inert background with it. */
+
+/* A drag on either carousel ends in a click on the image underneath it;
+   this swallows that one click so a swipe never opens the lightbox. */
+let dragClick = false;
+function swallowNextClick(){
+  dragClick = true;
+  setTimeout(() => { dragClick = false; }, 0);
+}
+
+function initLightbox(){
+  const shots = $$('.ph__art--photo img, .pshot img, .pshot video, .fcar__shot img, .fcar__shot video');
+  if (!shots.length) return;
+
+  /* Best available name: the image's own alt, else its caption, else the
+     heading it is paired with. 16 project images still carry alt="". */
+  const nameOf = img => {
+    if (img.alt) return img.alt;
+    const aria = img.getAttribute('aria-label');   /* how a <video> carries its name */
+    if (aria) return aria;
+    const fig = img.closest('figure');
+    const cap = fig && fig.querySelector('figcaption');
+    if (cap && cap.textContent.trim()) return cap.textContent.trim();
+    const pair = img.closest('.ppair');
+    const pt = pair && pair.querySelector('.ppair__t');
+    if (pt) return pt.textContent.trim();
+    const shot = img.closest('[data-fcar-shot]');
+    if (shot){
+      const car = shot.closest('[data-fcar]');
+      const i = $$('[data-fcar-shot]', car).indexOf(shot);
+      const copy = $$('[data-fcar-copy]', car)[i];
+      const t = copy && copy.querySelector('.fcar__finding');
+      if (t) return t.textContent.trim();
+    }
+    /* the hero has no alt and no caption of its own — name it for the project */
+    if (img.closest('.ph__art')){
+      const h1 = $('.ph__title');
+      if (h1) return h1.textContent.trim() + ', hero image';
+    }
+    return 'Project image';
+  };
+
+  const dlg = document.createElement('dialog');
+  dlg.className = 'lbox';
+  dlg.innerHTML =
+    '<div class="lbox__in" data-lbox-field>' +
+      '<img class="lbox__img" alt="" />' +
+      '<video class="lbox__vid" controls loop muted playsinline hidden></video>' +
+      '<p class="lbox__cap mono" aria-hidden="true"></p>' +
+    '</div>' +
+    '<button class="lbox__close" type="button" aria-label="Close image">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" /></svg>' +
+    '</button>' +
+    '<button class="lbox__step lbox__step--prev" type="button" aria-label="Previous image">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>' +
+    '</button>' +
+    '<button class="lbox__step lbox__step--next" type="button" aria-label="Next image">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>' +
+    '</button>';
+  document.body.append(dlg);
+
+  const big   = $('.lbox__img', dlg);
+  const vid   = $('.lbox__vid', dlg);
+  const cap   = $('.lbox__cap', dlg);
+  const close = $('.lbox__close', dlg);
+  const stepPrev = $('.lbox__step--prev', dlg);
+  const stepNext = $('.lbox__step--next', dlg);
+  let opener = null;   /* the item the modal is currently showing */
+  let group = [];      /* the set it can be stepped through */
+
+  /* A set is the zoomable media inside one <section> — the carousel or grid
+     you opened from, rather than every image on the page. */
+  const groupOf = el => {
+    const sec = el.closest('section');
+    return sec ? shots.filter(x => x.closest('section') === sec) : [el];
+  };
+
+  const show = img => {
+    opener = img;
+    const name = names.get(img) || nameOf(img);
+    const isVideo = img.tagName === 'VIDEO';
+    big.hidden = isVideo;
+    vid.hidden = !isVideo;
+    if (isVideo){
+      /* the inline copy keeps running behind the modal otherwise */
+      img.pause();
+      vid.src = img.currentSrc || img.src;
+      vid.setAttribute('aria-label', name);
+      const play = vid.play(); if (play) play.catch(() => {});
+    } else {
+      big.src = img.currentSrc || img.src;
+      big.alt = name;
+    }
+    cap.textContent = name;
+
+    /* Keep the carousel underneath on the same slide, so closing lands the
+       reader where they left off — and leaves focus on a visible element. */
+    const shot = img.closest('[data-fcar-shot]');
+    if (shot){
+      const car = shot.closest('[data-fcar]');
+      const k = $$('[data-fcar-shot]', car).indexOf(shot);
+      const tab = $$('[data-fcar-tab]', car)[k];
+      if (tab && tab.getAttribute('aria-selected') !== 'true') tab.click();
+    }
+
+    const many = group.length > 1;
+    stepPrev.hidden = !many;
+    stepNext.hidden = !many;
+  };
+
+  const step = dir => {
+    if (group.length < 2) return;
+    const k = group.indexOf(opener);
+    show(group[(k + dir + group.length) % group.length]);
+  };
+
+  const open = img => {
+    if (dragClick) return;
+    group = groupOf(img);
+    show(img);
+    /* <dialog> makes the background inert but does not stop it scrolling */
+    document.documentElement.style.overflow = 'hidden';
+    dlg.showModal();
+    close.focus();
+  };
+
+  dlg.addEventListener('close', () => {
+    document.documentElement.style.overflow = '';
+    big.removeAttribute('src');
+    vid.pause();
+    vid.removeAttribute('src');
+    if (opener){
+      opener.focus();
+      /* hand playback back to the slide it came from, if it is still the live one */
+      if (opener.tagName === 'VIDEO' && opener.closest('.is-on')){
+        const p = opener.play(); if (p) p.catch(() => {});
+      }
+    }
+  });
+  close.addEventListener('click', () => dlg.close());
+  stepPrev.addEventListener('click', () => step(-1));
+  stepNext.addEventListener('click', () => step(1));
+  dlg.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft'){ e.preventDefault(); step(-1); }
+    else if (e.key === 'ArrowRight'){ e.preventDefault(); step(1); }
+  });
+  /* clicking the field around the image closes; clicking the image does not */
+  dlg.addEventListener('click', e => {
+    if (e.target === dlg || e.target.hasAttribute('data-lbox-field')) dlg.close();
+  });
+
+  /* Resolve each name BEFORE the loop rewrites aria-label — a <video> carries
+     its name there, so deriving it again afterwards would read back
+     "Enlarge: ..." and nest the prefix. */
+  const names = new Map(shots.map(el => [el, nameOf(el)]));
+
+  shots.forEach(img => {
+    img.classList.add('zoom');
+    img.setAttribute('role', 'button');
+    img.tabIndex = 0;
+    img.setAttribute('aria-label', 'Enlarge: ' + names.get(img));
+    img.addEventListener('click', () => open(img));
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); }
+    });
+  });
+}
+
+initLightbox();
+
 /* ═══════════ MASTER SCROLL LOOP ═══════════ */
 
 let pending = false;
 function scrollWork(){
   pending = false;
-  onScroll();        /* hero progress → paint → seek, first: latency matters */
+  if (HAS_HERO) onScroll();   /* hero progress → paint → seek, first: latency matters */
   navState();
   activeLink();
   scrubTimeline();

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>MUNI · Vitor Xavier</title>
+<meta name="description" content="Digital signage for San Francisco's transit riders — a case study by Vitor Xavier, senior product designer." />
+<meta name="theme-color" content="#050505" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="alternate icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
+<meta property="og:title" content="MUNI · Vitor Xavier" />
+<meta property="og:description" content="Digital signage for San Francisco's transit riders" />
+<meta property="og:type" content="article" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+ <div class="nav__shell">
+  <a href="index.html" class="nav__mark" aria-label="Home">Vitor Xavier</a>
+
+  <nav class="nav__links" aria-label="Primary">
+    <a href="index.html#about">About</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#work">Work</a>
+  </nav>
+
+  <div class="nav__end">
+    <a href="https://www.linkedin.com/in/vitoraxavier" class="btn btn--sm"
+       target="_blank" rel="noopener noreferrer" data-magnetic>
+      <span class="btn__label">LinkedIn</span>
+      <span class="btn__icon" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+    <i></i><i></i>
+  </button>
+ </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a href="index.html#about"><span class="mono">01</span> About</a>
+  <a href="index.html#experience"><span class="mono">02</span> Experience</a>
+  <a href="index.html#capabilities"><span class="mono">03</span> Capabilities</a>
+  <a href="index.html#work"><span class="mono">04</span> Work</a>
+  <a href="index.html#contact"><span class="mono">05</span> Contact</a>
+</div>
+
+<main id="top">
+
+<section class="ph">
+  <div class="shell">
+    <a href="index.html#work" class="ph__back mono">← All work</a>
+    <h1 class="ph__title">MUNI</h1>
+    <p class="ph__lede">Digital signage for San Francisco's transit riders</p>
+    <figure class="ph__art ph__art--photo ph__art--band">
+      <img src="assets/projects/muni/thumbnail.jpg" width="1600" height="900" alt="" loading="eager" decoding="async" />
+    </figure>
+  </div>
+</section>
+
+<section class="pfacts">
+  <div class="shell">
+    <dl>
+      <div><dt>Role</dt><dd>UI/UX Designer</dd></div>
+      <div><dt>Client</dt><dd>Digital signage hardware company, San Francisco</dd></div>
+      <div><dt>Timeline</dt><dd>Three months in design, live since 2022</dd></div>
+      <div><dt>Delivery</dt><dd>Fully remote</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Overview</h2>
+    <p class="lead" data-reveal>The client was an American company specializing in hardware for digital signage, based in San Francisco, California. Their goal was to create a UI to be displayed at bus stops throughout the city. The deadline for the UI was three months, and the entire project was conducted remotely.</p>
+    <figure class="pshot" data-reveal>
+        <img src="assets/projects/muni/bus-stop.jpg" alt="Riding the network: San Francisco, seen from a MUNI car" loading="lazy" decoding="async" />
+        <figcaption>Riding the network: San Francisco, seen from a MUNI car</figcaption>
+      </figure>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Briefing</h2>
+    <p class="" data-reveal>At this stage, data was gathered to inform a more precise design for the UI. Several questions were posed to the client before a single screen was sketched.</p>
+    <ul class="pquotes" data-reveal>
+      <li>Which information do we need to display?</li>
+      <li>What are the government's requirements?</li>
+      <li>Does it need to be ADA compliant?</li>
+      <li>Where will it run, and on which hardware?</li>
+    </ul>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>ADA compliance</h2>
+    <ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Font size &amp; scale</h3><p class="pnum__d">Type had to stay legible at street distance, sized to the Americans with Disabilities Act's accessible design standards.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Contrast ratios</h3><p class="pnum__d">Every pairing of text and background was checked against ADA contrast requirements before it shipped.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">A palette for colorblind riders</h3><p class="pnum__d">Route colors and status states were chosen to stay distinguishable for riders with color vision deficiency.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Process</h2>
+    <ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Understanding the constraints</h3><p class="pnum__d">Gathered the government, hardware, and accessibility requirements the interface would have to satisfy before any screen was drawn.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Working the layout by hand</h3><p class="pnum__d">Explored arrangements for routes, arrival times, and maps at low fidelity, before committing to any single direction.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Building the real UI</h3><p class="pnum__d">Turned the strongest sketches into detailed, polished screens, applying type, contrast, and color that met every ADA requirement.</p></li>
+      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">Client and government approval</h3><p class="pnum__d">Reviewed the mockups with both the client and the local government to confirm the design met every accessibility standard.</p></li>
+      <li data-reveal><span class="pnum__n mono">05</span><h3 class="pnum__t">From mockup to build</h3><p class="pnum__d">Handed off specs and assets, working closely through implementation to keep the shipped screens faithful to the design.</p></li>
+      <li data-reveal><span class="pnum__n mono">06</span><h3 class="pnum__t">Approved and deployed</h3><p class="pnum__d">A final round of approval from the client and the city cleared the interface for rollout across the network.</p></li>
+    </ol>
+      </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>The interface</h2>
+    <div class="pgrid pgrid--2">
+      <figure class="pshot" data-reveal>
+        <img src="assets/projects/muni/final-result-2.png" alt="Arrivals board" loading="lazy" decoding="async" />
+        <figcaption>Arrivals board</figcaption>
+      </figure>
+      <figure class="pshot" data-reveal>
+        <img src="assets/projects/muni/final-result-1.png" alt="Route map" loading="lazy" decoding="async" />
+        <figcaption>Route map</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Impact</h2>
+    <p class="stats__line" data-reveal>
+      <b>800<em>+</em></b> screens deployed,
+      approved by the client and the City of SF,
+      operational since <b>2022</b>.
+    </p>
+    <div class="pgrid">
+      <figure class="pshot" data-reveal>
+        <img src="assets/projects/muni/impl-1.jpg" alt="Routes 19 & 31, daylight" loading="lazy" decoding="async" />
+        <figcaption>Routes 19 & 31, daylight</figcaption>
+      </figure>
+      <figure class="pshot" data-reveal>
+        <img src="assets/projects/muni/impl-2.jpg" alt="Arrivals and map, close up" loading="lazy" decoding="async" />
+        <figcaption>Arrivals and map, close up</figcaption>
+      </figure>
+      <figure class="pshot" data-reveal>
+        <img src="assets/projects/muni/impl-3.jpg" alt="Route 49 stop, dusk" loading="lazy" decoding="async" />
+        <figcaption>Route 49 stop, dusk</figcaption>
+      </figure>
+      <figure class="pshot" data-reveal>
+        <img src="assets/projects/muni/impl-4.jpg" alt="Route 49, daylight" loading="lazy" decoding="async" />
+        <figcaption>Route 49, daylight</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="pblock">
+  <div class="shell">
+    <h2 class="pblock__h" data-reveal>Conclusion</h2>
+    <p class="" data-reveal>The UI was approved by both the client and the local government. Implementation began in 2022, and the project is now operational, featuring more than 800 screens across various locations, including several bus stops.</p>
+  </div>
+</section>
+
+<section class="pnext">
+  <div class="shell">
+    <nav class="pnext__pair">
+      <a class="pnext__link pnext__link--prev" href="gym-and-bet.html" data-reveal>
+        <span class="pnext__k mono">Previous project</span>
+        <span class="pnext__t">Gym&amp;Bet</span>
+      </a>
+      <a class="pnext__link pnext__link--next" href="careers-page.html" data-reveal>
+        <span class="pnext__k mono">Next project</span>
+        <span class="pnext__t">Careers Page</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<section class="cta cta--plain" id="contact">
+  <div class="shell">
+    <h2 class="cta__title">
+      <span class="line"><span class="line__in">Have a product</span></span>
+      <span class="line"><span class="line__in">worth skyrocketing?</span></span>
+    </h2>
+    <p class="cta__sub" data-reveal>
+      I'm open to new opportunities and looking to join a team where I can
+      bring a decade of product design and make a meaningful impact.
+      If you're hiring, I'd love to hear about what you're building.
+    </p>
+
+    <div class="cta__actions" data-reveal>
+      <a class="btn btn--lg" href="https://www.linkedin.com/in/vitoraxavier"
+         target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span class="btn__label">Connect on LinkedIn</span>
+        <span class="btn__icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <span class="mono">© 2026 Vitor Xavier · Product Designer</span>
+    <ul class="foot__social mono">
+      <li><a href="https://www.linkedin.com/in/vitoraxavier"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <button class="foot__top mono" id="toTop">Back to top ↑</button>
+  </div>
+</footer>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
