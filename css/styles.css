@@ -135,6 +135,32 @@ em{ font-style:italic; color:var(--fg); }
   transition:width .25s linear;
 }
 
+/* ══════════ SKIP LINK ══════════
+   2.4.1 Bypass Blocks: every page opened with the nav, so a keyboard or
+   screen-reader user tabbed through five links before reaching content.
+   Kept off-screen by a transform rather than display:none, which would
+   make it unfocusable and defeat the point. */
+.skip{
+  position:fixed;
+  top:12px; left:var(--pad);
+  z-index:300;
+  padding:13px 20px;
+  background:var(--fg);
+  color:var(--bg);
+  border-radius:6px;
+  font-family:var(--mono);
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  transform:translateY(calc(-100% - 20px));
+  transition:transform .22s var(--ease);
+}
+.skip:focus,
+.skip:focus-visible{
+  transform:translateY(0);
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion:reduce){ .skip{ transition:none; } }
+
 /* ══════════ NAV ══════════ */
 /* The bar is only a positioning rail — it stays full width and owns the
    hide-on-scroll transform. The shell inside it is what contracts into a
@@ -273,7 +299,23 @@ em{ font-style:italic; color:var(--fg); }
   padding:20px 36px;
   font-size:clamp(15px,1.3vw,18px);
 }
-.btn__icon{ transition:transform .45s var(--ease); }
+/* Inline SVG rather than arrow glyphs. U+2197 in particular falls back to
+   Apple Color Emoji on iOS, so the button arrows rendered as coloured emoji
+   instead of matching their label. currentColor keeps them on the text. */
+.ico{
+  width:1em; height:1em;
+  flex:none;
+  display:inline-block;
+  vertical-align:-.125em;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.75;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.btn__icon{ transition:transform .45s var(--ease); display:inline-flex; }
+.ph__back .ico{ width:1.15em; height:1.15em; }
+.foot__top .ico{ width:1.05em; height:1.05em; margin-left:2px; }
 .btn:hover .btn__icon{ transform:translate(3px,-3px); }
 
 .link{
@@ -1258,8 +1300,8 @@ em{ font-style:italic; color:var(--fg); }
   display:block; color:var(--fg-3); margin-bottom:12px;
   transition:color .4s var(--ease);
 }
-.pnext__link--prev .pnext__k::before{ content:"\2190\00a0"; }
-.pnext__link--next .pnext__k::after{ content:"\00a0\2192"; }
+.pnext__link--prev .pnext__k::before{ content:"\2190\FE0E\00a0"; }
+.pnext__link--next .pnext__k::after{ content:"\00a0\2192\FE0E"; }
 .pnext__t{
   display:block;
   font-family:var(--display);

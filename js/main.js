@@ -647,6 +647,10 @@ function initFindings(root){
   const tabs   = $$('[data-fcar-tab]', root);
   const count  = $('[data-fcar-count]', root);
   const list   = $('[role="tablist"]', root);
+  const toggle = $('[data-fcar-playpause]', root);
+  /* 2.2.2 Pause, Stop, Hide — a looping clip needs a way to stop it. Under
+     reduced motion it starts stopped. */
+  let paused = REDUCED;
   const stage  = $('.fcar__shots', root);
   const n = tabs.length;
   if (!n || shots.length !== n || copies.length !== n) return;
@@ -671,11 +675,28 @@ function initFindings(root){
     shots.forEach((el, k) => {
       const v = el.querySelector('video');
       if (!v) return;
-      if (k === i) { const p = v.play(); if (p) p.catch(() => {}); }
+      if (k === i && !paused) { const p = v.play(); if (p) p.catch(() => {}); }
       else v.pause();
     });
     if (focusTab) tabs[i].focus();
   };
+
+  const PAUSE_ICON = 'M9 5v14M15 5v14';
+  const PLAY_ICON  = 'M8 5l11 7-11 7Z';
+  const paintToggle = () => {
+    if (!toggle) return;
+    toggle.querySelector('path').setAttribute('d', paused ? PLAY_ICON : PAUSE_ICON);
+    toggle.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+  };
+  if (toggle){
+    toggle.addEventListener('click', () => {
+      paused = !paused;
+      const v = shots[i] && shots[i].querySelector('video');
+      if (v){ if (paused) v.pause(); else { const p = v.play(); if (p) p.catch(() => {}); } }
+      paintToggle();
+    });
+    paintToggle();
+  }
 
   tabs.forEach((tab, k) => tab.addEventListener('click', () => show(k)));
 
