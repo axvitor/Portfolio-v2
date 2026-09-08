@@ -104,7 +104,12 @@ const TIMELINE = [
   { yr: '2021 to 2022', role: 'UI/UX Designer',          co: 'Checklist Fácil', type: 'B2B SaaS',
     note: 'Worked with the product team on innovation projects and integration with different platforms, PLG (Product Led Growth), and improvements to the design system with a main focus on user experience.' },
   { yr: '2017 to 2021', role: 'UI/UX Designer',          co: 'OnSign',          type: 'Digital signage',
-    note: "Head of design, responsible for the whole company's digital products, including the widget for the OnSign platform, website, and system redesign, using User Interface and User Experience methodologies." },
+    note: "Head of design, responsible for the whole company's digital products, including the widget for the OnSign platform, website, and system redesign, using User Interface and User Experience methodologies.",
+    points: [
+      'Designed an ADA-compliant interface live on 800+ screens across San Francisco',
+      'Delivered 40+ responsive signage apps for the platform',
+      'Grew from intern to designer, setting design direction as the product scaled'
+    ] },
   { yr: '2014 to 2015', role: 'Research Project',        co: 'UFSC',            type: 'University research',
     note: 'Development of a new website and visual ID for the LIBRAS department at Universidade Federal de Santa Catarina (Federal University of Santa Catarina).' }
 ];
@@ -306,6 +311,7 @@ if ($('#timeline')) $('#timeline').innerHTML = TIMELINE.map(t => `
       <h3 class="tl__role">${t.role}</h3>
       <span class="tl__co"><b>${t.co}</b> · ${t.type}</span>
       <p class="tl__note">${t.note}</p>
+      ${t.points ? `<ul class="tl__points">${t.points.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
     </div>
   </li>`).join('');
 

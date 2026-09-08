@@ -671,6 +671,25 @@ em{ font-style:italic; color:var(--fg); }
   margin-top:16px;
   color:var(--fg-3); font-size:15px; line-height:1.58;
 }
+/* Named achievements under a role. A short accent rule rather than a bullet
+   dot — the page has no other dotted lists, and the rule echoes the hairlines
+   the rest of the layout is built from. */
+.tl__points{
+  margin-top:15px;
+  display:flex; flex-direction:column; gap:9px;
+}
+.tl__points li{
+  position:relative;
+  padding-left:20px;
+  color:var(--fg-2);
+  font-size:15px; line-height:1.58;
+}
+.tl__points li::before{
+  content:"";
+  position:absolute; left:0; top:.72em;
+  width:9px; height:1px;
+  background:var(--accent);
+}
 
 /* ══════════ CAPABILITIES ══════════ */
 .caps{ padding-block:var(--sec-y); border-top:1px solid var(--line); }
