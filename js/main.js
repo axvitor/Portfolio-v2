@@ -98,17 +98,34 @@ const PROJECTS = [
 
 const TIMELINE = [
   { yr: '2023 to Now',  role: 'Senior Product Designer', co: 'Awesomic',        type: 'Design talent marketplace',
-    note: 'Awesomic can be described as a Trello with top talent embedded inside. Companies from all around the world create diverse tasks, and designers work to deliver the best possible results. Only 1% of candidates secure a place on the platform.' },
+    /* the 1% line moved to the points below, where it read twice otherwise */
+    note: 'Awesomic can be described as a Trello with top talent embedded inside. Companies from all around the world create diverse tasks, and designers work to deliver the best possible results.',
+    points: [
+      "Rebuilt a client's analytics dashboard around the metrics that drive decisions, and added a real-time sales and disputes monitor. Contributed to 20% more conversions, with users reporting stronger confidence and legibility.",
+      'Partnered with engineering and QA through implementation so what shipped matched the approved designs.',
+      'Awesomic accepts roughly 1% of the designers who apply.'
+    ] },
   { yr: '2022 to 2023', role: 'Product Designer',        co: 'Soap Health',     type: 'Healthtech',
-    note: 'Integrated patient intake, risk assessment, and SOAP note recording for the optimal user experience, aiming to reduce diagnostic mistakes and provide a better patient history to improve medical decisions.' },
+    /* the intake/risk/SOAP sentence moved to the points, where it read twice */
+    note: 'Aimed at a better patient history, and better medical decisions taken from it.',
+    points: [
+      'Integrated patient intake, risk assessment and SOAP note recording into a single flow built to cut diagnostic mistakes.',
+      'Paired with engineering through implementation so the clinical detail survived the build.'
+    ] },
   { yr: '2021 to 2022', role: 'UI/UX Designer',          co: 'Checklist Fácil', type: 'B2B SaaS',
-    note: 'Worked with the product team on innovation projects and integration with different platforms, PLG (Product Led Growth), and improvements to the design system with a main focus on user experience.' },
+    /* the PLG / integrations / design-system list moved to the points below */
+    note: 'Worked with the product team, with a main focus on user experience.',
+    points: [
+      'Drove Product-Led Growth initiatives that increased conversions by 30%.',
+      'Ran innovation projects and third-party integrations with the product and engineering teams.',
+      'Expanded the design system as the product scaled.'
+    ] },
   { yr: '2017 to 2021', role: 'UI/UX Designer',          co: 'OnSign',          type: 'Digital signage',
     note: "Head of design, responsible for the whole company's digital products, including the widget for the OnSign platform, website, and system redesign, using User Interface and User Experience methodologies.",
     points: [
-      'Designed an ADA-compliant interface live on 800+ screens across San Francisco',
-      'Delivered 40+ responsive signage apps for the platform',
-      'Grew from intern to designer, setting design direction as the product scaled'
+      'Designed an ADA-compliant interface live on 800+ screens across San Francisco.',
+      'Delivered 40+ responsive signage apps for the platform.',
+      'Grew from intern to designer, setting design direction as the product scaled.'
     ] },
   { yr: '2014 to 2015', role: 'Research Project',        co: 'UFSC',            type: 'University research',
     note: 'Development of a new website and visual ID for the LIBRAS department at Universidade Federal de Santa Catarina (Federal University of Santa Catarina).' }
