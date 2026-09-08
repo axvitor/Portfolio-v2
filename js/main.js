@@ -522,19 +522,28 @@ if (HAS_HERO && REDUCED){
 
 /* ═══════════ REVEALS ═══════════ */
 
+/* The stagger is worked out when a batch enters, not up front: indexing by
+   position in the whole document meant everything past the sixth element
+   shared one delay and arrived together. Whatever crosses the threshold in
+   the same callback cascades in document order instead. */
+const REVEAL_STEP = 90;   /* ms between neighbours */
+const REVEAL_MAX  = 6;    /* stop compounding, so a long batch still lands */
+
 const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add('in');
-    io.unobserve(e.target);
-  });
+  const showing = entries.filter(e => e.isIntersecting);
+  if (!showing.length) return;
+
+  showing
+    .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+    .forEach((e, i) => {
+      if (!REDUCED) e.target.style.transitionDelay = `${Math.min(i, REVEAL_MAX) * REVEAL_STEP}ms`;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
 }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
 ['[data-reveal]', '.bento__item', '.tl', '.cap', '.cta'].forEach(sel => {
-  $$(sel).forEach((el, i) => {
-    el.style.transitionDelay = `${Math.min(i, 5) * 60}ms`;
-    io.observe(el);
-  });
+  $$(sel).forEach(el => io.observe(el));
 });
 
 /* ═══════════ PORTRAIT: COLOUR → MONO ═══════════ */
