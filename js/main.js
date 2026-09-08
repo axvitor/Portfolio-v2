@@ -17,19 +17,6 @@ const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const PROJECTS = [
   {
-    name: 'MUNI',
-    w: 2, h: 2,
-    img: 'assets/projects/muni/thumbnail.jpg',
-    url: 'muni.html',
-    tag: 'Case study',
-    desc: 'Digital signage interface developed to be displayed at bus stops in San Francisco, California, USA. Arrival times and route information for transit riders.',
-    role: 'UI/UX Designer',
-    client: 'Digital signage · San Francisco',
-    year: '2022',
-    outcome: '800+ screens deployed. Approved by the client and the City of San Francisco.',
-    art: 'flow'
-  },
-  {
     name: 'Careers Page',
     w: 1, h: 1,
     img: 'assets/projects/starbasis/hero-desk.jpg',
