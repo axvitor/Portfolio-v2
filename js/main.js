@@ -22,11 +22,11 @@ const PROJECTS = [
     img: 'assets/projects/starbasis/hero-desk.jpg',
     url: 'careers-page.html',
     tag: 'Case study',
-    desc: 'A careers page for a creator experience marketplace scaling fast, ahead of a platform pivot. Hero, benefits, team and open positions, all fully responsive, plus a coded interactive version beyond the original deliverable.',
+    desc: 'A careers page for a creator marketplace, ahead of a platform pivot.',
     role: 'Product Designer',
     client: 'StarBasis · Creator marketplace',
     year: '',
-    outcome: '',
+    outcome: 'The roles were filled, and the product released in full.',
     art: 'mesh'
   },
   {
@@ -35,7 +35,7 @@ const PROJECTS = [
     img: 'assets/projects/wcag/hero.jpg',
     url: 'wcag-study.html',
     tag: 'Study',
-    desc: 'A WCAG-compliant redesign of the Uber app, focused on senior users. Contrast ratios, clearer labelling, larger touch targets, and an interface that survives increased font sizes.',
+    desc: 'A WCAG-compliant redesign of the Uber app, built around senior users.',
     role: 'UX Researcher & Designer',
     client: 'Uber · Self-initiated',
     year: '2021',
@@ -48,11 +48,11 @@ const PROJECTS = [
     img: 'assets/projects/creatorhub/hero-desk.jpg',
     url: 'creatorhub.html',
     tag: 'Case study',
-    desc: 'A marketplace redesign for a company selling experiences, courses and webinars with well known people. Built around trust, with transparent pricing, authentic photography and legible creator information.',
+    desc: 'A marketplace redesign built around trust: transparent pricing, real photography, and creators you can read at a glance.',
     role: 'Product Designer',
     client: 'Experiences marketplace',
     year: '2025',
-    outcome: "The final design landed well with the company's team.",
+    outcome: 'Validated with the company and its users, then built out in full.',
     art: 'orbit'
   },
   {
@@ -61,11 +61,11 @@ const PROJECTS = [
     img: 'assets/projects/dashboard/hero-desk.jpg',
     url: 'element-dashboard.html',
     tag: 'Case study',
-    desc: 'A dashboard redesign built around the numbers users actually needed, with a live activity feed. The metrics driving decisions moved up front instead of sitting several clicks deep.',
+    desc: 'A dashboard rebuilt around the numbers users actually needed.',
     role: 'Product Designer',
     client: 'Element',
     year: '2024 to 2025',
-    outcome: 'Within the first day of going live, the clients were already calling it a huge upgrade.',
+    outcome: 'The redesign contributed to 20% more conversions.',
     art: 'bars'
   },
   {
@@ -74,11 +74,11 @@ const PROJECTS = [
     img: 'assets/projects/signage/hero.jpg',
     url: 'digital-signage.html',
     tag: 'Case study',
-    desc: '40+ fully responsive apps built for the OnSign platform, covering weather, news, exchange rates and social feeds, across landscape, portrait, bar and square screens.',
+    desc: 'Apps for the OnSign platform, across screens of any shape.',
     role: 'UI Designer',
     client: 'OnSign · Digital signage',
     year: '2019',
-    outcome: 'More than 40 interfaces, all 100% responsive.',
+    outcome: '40+ interfaces, all 100% responsive.',
     art: 'stack'
   },
   {
@@ -87,7 +87,7 @@ const PROJECTS = [
     img: 'assets/projects/gymbet/hero.jpg',
     url: 'gym-and-bet.html',
     tag: 'Case study',
-    desc: 'A mobile app that turns exercise into a friendly bet with friends. Health tracking combined with social competition, designed in two weeks.',
+    desc: 'A mobile app that turns exercise into a friendly bet with friends.',
     role: 'Product Designer',
     client: 'Health & fitness',
     year: '',
@@ -317,6 +317,7 @@ if ($('#projects')) $('#projects').innerHTML = PROJECTS.map((p, i) => `
       <span class="bento__body">
         <h3 class="bento__name">${p.name}</h3>
         <span class="bento__meta mono">${[p.client, p.year].filter(Boolean).join(' · ')}</span>
+        ${(p.outcome || p.desc) ? `<span class="bento__desc">${p.outcome || p.desc}</span>` : ''}
       </span>
     </a>
   </li>`).join('');
