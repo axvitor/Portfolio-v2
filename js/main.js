@@ -17,6 +17,19 @@ const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const PROJECTS = [
   {
+    name: 'Design System',
+    w: 2, h: 2,
+    img: 'assets/projects/design-system/card.jpg',
+    url: 'design-system.html',
+    tag: 'Case study',
+    desc: 'A neutral system for a whole product, built to be re-skinned.',
+    role: 'Product Designer',
+    client: 'EC Affiliates',
+    year: '',
+    outcome: 'The system outlived the product it was built for.',
+    art: 'stack'
+  },
+  {
     name: 'Careers Page',
     w: 1, h: 1,
     img: 'assets/projects/starbasis/hero-desk.jpg',
@@ -556,7 +569,7 @@ function scrubPhoto(){
   const r = photo.getBoundingClientRect();
   if (r.bottom < -100 || r.top > innerHeight + 100) return;
 
-  /* Full colour while it sits in the lower half — the reading position —
+  /* Full color while it sits in the lower half — the reading position —
      then desaturating as it travels up and out. */
   const centre = r.top + r.height / 2;
   const g = (1 - norm(centre, innerHeight * 0.06, innerHeight * 0.58)).toFixed(3);
@@ -988,6 +1001,17 @@ function initLightbox(){
 initLightbox();
 
 /* ═══════════ MASTER SCROLL LOOP ═══════════ */
+
+/* ═══════════ THEME COMPARE ═══════════
+   The range input is the whole interaction; all this does is mirror its value
+   onto the custom property the clip and the handle read. */
+$$('[data-cmp]').forEach(cmp => {
+  const range = $('.cmp__range', cmp);
+  if (!range) return;
+  const place = () => cmp.style.setProperty('--pos', range.value + '%');
+  range.addEventListener('input', place);
+  place();
+});
 
 let pending = false;
 function scrollWork(){

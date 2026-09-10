@@ -300,7 +300,7 @@ em{ font-style:italic; color:var(--fg); }
   font-size:clamp(15px,1.3vw,18px);
 }
 /* Inline SVG rather than arrow glyphs. U+2197 in particular falls back to
-   Apple Color Emoji on iOS, so the button arrows rendered as coloured emoji
+   Apple Color Emoji on iOS, so the button arrows rendered as colored emoji
    instead of matching their label. currentColor keeps them on the text. */
 .ico{
   width:1em; height:1em;
@@ -607,7 +607,7 @@ em{ font-style:italic; color:var(--fg); }
   display:block;
   width:100%; height:100%;
   object-fit:cover;
-  /* Full colour on arrival, draining to monochrome as the section scrolls
+  /* Full color on arrival, draining to monochrome as the section scrolls
      past. --gray is driven per-frame from JS; no transition on the filter or
      it would lag the scroll. */
   filter:grayscale(var(--gray,0)) contrast(calc(1 + var(--gray,0) * .05));
@@ -885,14 +885,14 @@ em{ font-style:italic; color:var(--fg); }
 /* ── figures ───────────────────────────────────────────────────────────────
    Same 6px frame and hairline border as the work cards, so screenshots read
    as part of the system rather than pasted in. */
-.pshot{
+.pshot,.cmpfig{
   margin:0;
   border:1px solid var(--line);
   border-radius:6px;
   overflow:hidden;
   background:var(--bg-2);
 }
-.pshot img, .pshot video{
+.pshot img, .pshot video, .cmpfig img{
   display:block; width:100%; height:auto;
   /* the source shots are bright; settle them into the dark page */
   filter:saturate(.92) contrast(1.02);
@@ -924,7 +924,7 @@ em{ font-style:italic; color:var(--fg); }
   width:0;
   min-width:100%;
 }
-.pshot figcaption{
+.pshot figcaption,.cmpfig figcaption{
   padding:13px 16px;
   border-top:1px solid var(--line);
   color:var(--fg-3);
@@ -1367,6 +1367,69 @@ em{ font-style:italic; color:var(--fg); }
   .pnext__link--next{ text-align:left; }
 }
 
+
+/* A paragraph caught between two figures. Neither figure carries a margin and
+   .pblock p only has margin-bottom, so without this the shot, the sentence and
+   the comparison run together as one undifferentiated block. Same step the
+   figure grids use, so the vertical rhythm stays the page's own. */
+.pblock .pshot + p{ margin-top:clamp(30px,4.5vh,52px); }
+.pblock p + .cmpfig{ margin-top:clamp(30px,4.5vh,52px); }
+
+/* ══════════ THEME COMPARE ══════════
+   Two exports of the same screen, the light one clipped over the dark one.
+   The drag is a native range input stretched across the figure rather than
+   pointer maths: it brings dragging, clicking, touch and the arrow keys for
+   free, and it announces itself to assistive tech as the slider it is. */
+.cmp{
+  position:relative;
+  overflow:hidden;
+  touch-action:none;      /* the range owns horizontal drags on touch */
+  isolation:isolate;
+}
+.cmp__top{
+  position:absolute; inset:0;
+  /* visible from the left edge out to the handle */
+  clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0);
+}
+.cmp__top img{ position:absolute; inset:0; width:100%; height:100%; }
+.cmp__range{
+  position:absolute; inset:0; z-index:3;
+  width:100%; height:100%; margin:0;
+  opacity:0; cursor:ew-resize;
+  -webkit-appearance:none; appearance:none; background:none;
+}
+.cmp__handle{
+  position:absolute; top:0; bottom:0; left:var(--pos,50%);
+  z-index:2; width:2px; margin-left:-1px;
+  background:var(--fg);
+  pointer-events:none;    /* the range underneath must keep the pointer */
+}
+.cmp__knob{
+  position:absolute; top:50%; left:50%;
+  translate:-50% -50%;
+  width:38px; height:38px;
+  display:grid; place-items:center;
+  border-radius:50%;
+  background:var(--fg); color:#08080A;
+  box-shadow:0 2px 14px rgba(0,0,0,.45);
+}
+.cmp__knob svg{
+  width:17px; height:17px;
+  fill:none; stroke:currentColor; stroke-width:2;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.cmp__range:focus-visible + .cmp__handle .cmp__knob{
+  outline:2px solid var(--accent-2); outline-offset:3px;
+}
+.cmp__tag{
+  position:absolute; top:12px; z-index:2;
+  padding:5px 10px; border-radius:100px;
+  background:rgba(5,5,6,.66); color:var(--fg);
+  font-size:9.5px;
+  pointer-events:none;
+}
+.cmp__tag--l{ left:12px; }
+.cmp__tag--d{ right:12px; }
 
 /* ══════════ CTA ══════════ */
 .cta{

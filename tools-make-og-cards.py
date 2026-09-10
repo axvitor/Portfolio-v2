@@ -37,7 +37,8 @@ CARDS=[('index','Let’s skyrocket your company.','Senior Product Designer','ass
  ('creatorhub','CreatorHub','Marketplace, built to be trusted','assets/projects/creatorhub/hero-desk.jpg',.5),
  ('element-dashboard','Element Dashboard','Dashboard redesign','assets/projects/dashboard/hero-desk.jpg',.5),
  ('digital-signage','Digital Signage Interfaces','40+ responsive apps','assets/projects/signage/hero.jpg',.5),
- ('gym-and-bet','Gym&Bet','Betting with friends, for fitness','assets/projects/gymbet/hero.jpg',.45)]
+ ('gym-and-bet','Gym&Bet','Betting with friends, for fitness','assets/projects/gymbet/hero.jpg',.45),
+ ('design-system','Design System','Neutral, white-label ready','assets/projects/design-system/ui-requests-dark.png',.30)]
 if __name__=='__main__':
     for s,t,k,i,f in CARDS: card(f'assets/og/{s}.jpg',t,k,i,f)
     def lin(c):
