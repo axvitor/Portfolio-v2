@@ -228,7 +228,16 @@
 
 <!-- ═══════════════════ CONTACT ═══════════════════ -->
 <section class="cta" id="contact">
-  <div class="cta__still" aria-hidden="true"></div>
+  <!-- The looping rocket. The browser plays the first source it can and downloads
+       only that one: HEVC where supported (Safari, and Chrome/Edge on most
+       machines), else H.264. main.js loads it only as it nears the screen. -->
+  <div class="cta__rocket" aria-hidden="true">
+    <video class="cta__vid" poster="assets/rocket-loop-poster.jpg"
+           muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source src="assets/rocket-loop.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
+      <source src="assets/rocket-loop.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="shell">
     <h2 class="cta__title">
       <span class="line"><span class="line__in">Have a company</span></span>

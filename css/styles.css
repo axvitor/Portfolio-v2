@@ -1433,9 +1433,12 @@ em{ font-style:italic; color:var(--fg); }
 
 /* ══════════ CTA ══════════ */
 .cta{
-  /* The bottom padding must exceed .cta__still's height, or the still rides
-     up over the button. Keep the two in step if either changes. */
-  padding-block:clamp(110px,17vh,190px) clamp(450px,70vh,760px);
+  /* The rocket loop fills the bottom --band of the section; the bottom padding
+     reserves that band plus a gap, so the rocket never rides up over the
+     button. --band is the clip's own height at this width (440/1920 of it), so
+     the video is never enlarged past its pixels. */
+  --band:clamp(240px, 22.9vw, 440px);
+  padding-block:clamp(110px,17vh,190px) calc(var(--band) + clamp(48px, 7vh, 90px));
   border-top:1px solid var(--line);
   position:relative;
   overflow:hidden;
@@ -1443,7 +1446,7 @@ em{ font-style:italic; color:var(--fg); }
 
 .cta .shell{ position:relative; }
 
-/* Project pages close on this same CTA but without .cta__still behind it, so
+/* Project pages close on this same CTA but without .cta__rocket behind it, so
    the space the still would have occupied has to come back off the bottom. */
 .cta--plain{ padding-bottom:clamp(110px,17vh,190px); }
 
@@ -1488,16 +1491,22 @@ em{ font-style:italic; color:var(--fg); }
 
 /* The last frame of the hero video, so the page closes on the same rocket it
    opened with. */
-.cta__still{
+/* The looping rocket. The clip is graded so its sky is the page's own black,
+   so there is no edge to hide: only a whisper of fade at the top for stars at
+   the frame's edge, and the trail below the flame dissolving into the black
+   just above the footer line. main.js plays it only while it is on screen. */
+.cta__rocket{
   position:absolute;
   left:0; right:0; bottom:0;
-  height:clamp(420px,64vh,720px);
-  background:url("../assets/rocket-still.jpg") center 22% / cover no-repeat;
-  /* Top edge only: fades the seam where the band meets the black. Sides and
-     bottom stay square. */
-  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 26%);
-          mask-image:linear-gradient(to bottom, transparent 0%, #000 26%);
+  height:var(--band);
   pointer-events:none;
+}
+.cta__vid{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:50% 50%;
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 76%, transparent 100%);
+          mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 76%, transparent 100%);
 }
 
 /* ══════════ FOOTER ══════════ */
@@ -1641,10 +1650,6 @@ em{ font-style:italic; color:var(--fg); }
   .foot__in{ display:flex; flex-wrap:wrap; justify-content:flex-start; gap:10px 22px; }
   .foot__social,.foot__top{ justify-self:auto; }
   .cta__actions{ gap:22px; }
-  /* keep the still shorter than the section's bottom padding so the rocket
-     never crowds the meta rows */
-  .cta{ padding-bottom:clamp(340px,50vh,460px); }
-  .cta__still{ height:clamp(280px,42vh,400px); }
   .btn--lg{ width:100%; justify-content:space-between; }
 }
 

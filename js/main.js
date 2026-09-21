@@ -1013,6 +1013,18 @@ $$('[data-cmp]').forEach(cmp => {
   place();
 });
 
+/* ═══════════ CTA ROCKET ═══════════
+   The closing rocket loop downloads nothing until it is near the screen, plays
+   only while it is, and never plays under reduced motion, where its poster
+   frame stands in as a still. */
+const ctaVid = $('.cta__vid');
+if (ctaVid && !REDUCED){
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting){ ctaVid.preload = 'auto'; ctaVid.play().catch(() => {}); }
+    else ctaVid.pause();
+  }, { rootMargin: '300px 0px' }).observe(ctaVid);
+}
+
 let pending = false;
 function scrollWork(){
   pending = false;
