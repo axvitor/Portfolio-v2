@@ -358,7 +358,9 @@ em{ font-style:italic; color:var(--fg); }
 /* Pure pacing now that seeks are cheap — how much scrolling the hero costs,
    nothing to do with smoothness. Was 900vh only to slow the demand on a
    badly-keyframed source. */
-.hero__track{ height:450vh; }
+/* 320vh, down from 450vh: on a mouse wheel the launch took ~32 notches, which
+   read as a slog. This is ~20. */
+.hero__track{ height:320vh; }
 .hero__stage{
   position:sticky; top:0;
   /* lvh, not svh: svh is the viewport with mobile browser chrome VISIBLE, so

@@ -465,21 +465,44 @@ let seeking = false, seekStartedAt = 0, sentTime = -1, raf = 0;
 const MIN_STEP = 1 / 60;    /* below a display frame, not worth a seek */
 const SEEK_TIMEOUT = 400;   /* watchdog: never deadlock on a lost `seeked` */
 
-function pump(){
+/* ── gliding over wheel notches ───────────────────────────────────────────
+   A trackpad moves the scroll a couple of video frames per display frame, and
+   following it exactly looks right. A mouse wheel moves it ~100px per notch in
+   one step, ~8 frames of video at once, so the rocket lurched forward in
+   stutters. Any gap wider than GLIDE_FRAMES is now closed over ~GLIDE_MS
+   instead of in one jump; anything smaller is followed exactly as before, so
+   trackpad scrolling is untouched. */
+const GLIDE_FRAMES = 3;     /* video frames: at or under this, follow exactly */
+const GLIDE_MS = 90;        /* time constant of the glide */
+const FPS = 24;
+let shownP = -1, lastPump = 0;
+
+function pump(now){
   raf = 0;
   const d = video.duration;
   if (!isFinite(d) || video.readyState < 1) return;
 
+  const dt = lastPump ? Math.min(64, now - lastPump) : 16;
+  lastPump = now;
+  const gapFrames = Math.abs(heroP - shownP) * d * FPS;
+  if (shownP < 0 || gapFrames <= GLIDE_FRAMES) shownP = heroP;
+  else shownP += (heroP - shownP) * (1 - Math.exp(-dt / GLIDE_MS));
+  const gliding = shownP !== heroP;
+
   /* a seek is still running — come back next frame rather than piling on */
   if (seeking && performance.now() - seekStartedAt < SEEK_TIMEOUT){ keepPumping(); return; }
 
-  const t = clamp(heroP * (d - 0.05), 0, d - 0.05);
-  if (Math.abs(t - sentTime) < MIN_STEP) return;
+  const t = clamp(shownP * (d - 0.05), 0, d - 0.05);
+  if (Math.abs(t - sentTime) < MIN_STEP){
+    if (gliding) keepPumping(); else lastPump = 0;
+    return;
+  }
 
   seeking = true;
   seekStartedAt = performance.now();
   sentTime = t;
   try { video.currentTime = t; } catch { seeking = false; }
+  if (gliding) keepPumping();
 }
 function keepPumping(){ if (!raf) raf = requestAnimationFrame(pump); }
 
