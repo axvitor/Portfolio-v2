@@ -473,7 +473,7 @@ const SEEK_TIMEOUT = 400;   /* watchdog: never deadlock on a lost `seeked` */
    instead of in one jump; anything smaller is followed exactly as before, so
    trackpad scrolling is untouched. */
 const GLIDE_FRAMES = 3;     /* video frames: at or under this, follow exactly */
-const GLIDE_MS = 90;        /* time constant of the glide */
+const GLIDE_MS = 180;       /* time constant: long enough that notches blend into one motion */
 const FPS = 24;
 let shownP = -1, lastPump = 0;
 
