@@ -1043,6 +1043,89 @@ $$('[data-cmp]').forEach(cmp => {
   place();
 });
 
+/* ═══════════ TESTIMONIALS STACK ═══════════
+   The stacking is CSS sticky. The entrance (each card rising and fading in, then
+   its lines one after another) is a scroll-driven CSS animation where supported,
+   running on the compositor; see styles.css. This file does two things:
+
+   - once, on load and resize, it converts the layout into the exact pixel ranges
+     those animations use, so each card is solid before it meets the card below;
+   - every scroll frame, the part CSS cannot express: each card shrinks and dims
+     by how far LATER cards have travelled onto it.
+
+   Browsers without scroll-driven animations get the whole entrance here instead.
+   All of it is opacity and transform on layers of their own; a value is written
+   only when it changes; and nothing runs unless the section is near the screen. */
+const tskList   = $('.tsk__list');
+const tskCards  = $$('[data-tsk-card]');
+const tskItems  = tskCards.map(c => c.parentElement);
+const tskShades = tskCards.map(c => $('.tsk__shade', c));
+const tskLines  = tskCards.map(c => [...c.children].filter(el => !el.classList.contains('tsk__shade')));
+const TSK_CSS   = window.CSS && CSS.supports('animation-timeline: view()');
+let tskTops = [], tskH = [];
+/* where a card must be solid by: before it touches the card it lands on */
+const tskSolidBy = (i, vh) => i === 0 ? vh * .55 : Math.min(tskTops[i - 1] + tskH[i - 1] + 20, vh - 40);
+const tskMeasure = () => {
+  /* The stack only works if every card fits under its sticky line: a taller
+     one (a long recommendation on a phone) would pin with its end below the
+     screen and be covered before it was read. Then the cards run as a plain
+     column instead, as they do under reduced motion. */
+  if (!tskList) return;                      /* no testimonials on this page */
+  tskList.classList.remove('tsk__list--flat');
+  const tooTall = tskItems.some((li, i) =>
+    tskCards[i].offsetHeight > innerHeight - parseFloat(getComputedStyle(li).top) - 16);
+  tskList.classList.toggle('tsk__list--flat', tooTall);
+  tskTops = tskItems.map(li => parseFloat(getComputedStyle(li).top));
+  tskH    = tskCards.map(c => c.offsetHeight);
+  if (!TSK_CSS) return;
+  const vh = innerHeight;
+  tskCards.forEach((card, i) => {
+    card.style.setProperty('--rise-end', `${Math.round(vh - tskSolidBy(i, vh))}px`);
+    const D = vh - tskTops[i];                 /* from entering the screen to coming to rest */
+    tskLines[i].forEach((line, k) => {
+      line.style.setProperty('--in-from', `${Math.round(D * .1875 * k)}px`);
+      line.style.setProperty('--in-to',   `${Math.round(D * (.625 + .1875 * k))}px`);
+    });
+  });
+};
+const smoothstep = t => t * t * (3 - 2 * t);
+const tskSeen = new WeakMap();
+const tskSet = (el, prop, v) => {           /* skip the write, and the style work, when nothing moved */
+  const last = tskSeen.get(el) || {};
+  if (last[prop] === v) return;
+  last[prop] = v; tskSeen.set(el, last);
+  el.style[prop] = v;
+};
+function stackTestimonials(){
+  if (!tskCards.length || REDUCED) return;
+  const vh = innerHeight;
+  const band = tskList.getBoundingClientRect();
+  if (band.top > vh + 200 || band.bottom < -200) return;   /* nowhere near: nothing to do */
+  const rects = tskItems.map(li => li.getBoundingClientRect());
+  tskCards.forEach((card, i) => {
+    const h = tskH[i], top = rects[i].top;
+    let cover = 0;
+    for (let k = i + 1; k < tskCards.length; k++){
+      cover += clamp((tskTops[i] + h - rects[k].top) / (h - (tskTops[k] - tskTops[i])));
+    }
+    tskSet(card, 'scale', (1 - .045 * cover).toFixed(4));
+    tskSet(tskShades[i], 'opacity', (Math.min(cover, 1) * .55).toFixed(3));
+    if (TSK_CSS) return;                       /* the entrance is the compositor's job */
+
+    /* fallback entrance, same curves as the CSS version */
+    const s = smoothstep(clamp((vh - top) / (vh - tskSolidBy(i, vh))));
+    const c = smoothstep(clamp((vh - top) / (vh - tskTops[i])));
+    tskSet(card, 'opacity', s.toFixed(3));
+    tskSet(card, 'translate', `0 ${((1 - s) * 80).toFixed(1)}px`);
+    tskLines[i].forEach((line, k) => {
+      const t = clamp(c * 1.6 - k * .3);
+      tskSet(line, 'opacity', t.toFixed(3));
+      tskSet(line, 'translate', `0 ${((1 - t) * 22).toFixed(1)}px`);
+    });
+  });
+}
+tskMeasure();
+
 /* ═══════════ CTA ROCKET ═══════════
    The closing rocket loop downloads nothing until it is near the screen, plays
    only while it is, and never plays under reduced motion, where its poster
@@ -1064,13 +1147,14 @@ function scrollWork(){
   scrubTimeline();
   scrubPhoto();
   parallaxArt();
+  stackTestimonials();
 }
 addEventListener('scroll', () => {
   if (pending) return;
   pending = true;
   requestAnimationFrame(scrollWork);
 }, { passive: true });
-addEventListener('resize', () => { sentTime = -1; scrollWork(); }, { passive: true });
+addEventListener('resize', () => { sentTime = -1; tskMeasure(); scrollWork(); }, { passive: true });
 scrollWork();
 
 })();

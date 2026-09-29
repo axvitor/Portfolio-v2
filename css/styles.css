@@ -487,6 +487,7 @@ em{ font-style:italic; color:var(--fg); }
 }
 /* the ask gets its own line, no extra gap */
 .hero__subLine{ display:block; }
+
 @keyframes heroFade{ to{ opacity:1; } }
 
 
@@ -1424,6 +1425,131 @@ em{ font-style:italic; color:var(--fg); }
 }
 .cmp__tag--l{ left:12px; }
 .cmp__tag--d{ right:12px; }
+
+/* ══════════ TESTIMONIALS ══════════
+   Three cards that stack as you scroll. Each is a sticky <li> landing a little
+   lower than the one before; main.js fades each one in and shrinks and dims
+   the ones it covers. */
+.tsk{ --stack-top:clamp(96px,14vh,140px); --peek:22px; --hold:16vh; --n:3; padding-bottom:clamp(40px,8vh,100px); }
+.tsk .sec__head{ margin-bottom:clamp(28px,5vh,56px); }
+/* the gap sets the scroll distance between arrivals. It is not part of any card's
+   margin box, so it does not change how long a card stays stuck. */
+.tsk__list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12vh; }
+/* the sticky element is the <li>; transforms go on the card inside it, so
+   scaling a covered card never disturbs where it is stuck */
+.tsk__item{
+  position:sticky;
+  top:calc(var(--stack-top) + var(--i) * var(--peek));
+  /* A sticky box stays stuck only while its margin box fits in the list. Earlier
+     cards stick higher, so they get one extra peek of margin per card after them:
+     every margin box then ends at the same line and the stack leaves as one piece,
+     offsets intact. --hold is the beat with all three settled. */
+  margin-bottom:calc(var(--hold) + (var(--n) - 1 - var(--i)) * var(--peek));
+}
+.tsk__card{
+  position:relative; margin:0;
+  height:min(520px, calc(100svh - var(--stack-top) - 2 * var(--peek) - 60px));
+  box-sizing:border-box;
+  display:flex; flex-direction:column; justify-content:space-between; gap:24px;
+  padding:clamp(28px,3.4vw,56px);
+  background:#0e0e11;
+  border:1px solid var(--line-2); border-radius:10px;
+  overflow:hidden;
+  transform-origin:50% 0;
+  will-change:translate, scale, opacity;
+}
+/* darkens a card as the next one covers it; opacity only, so it stays cheap */
+.tsk__shade{ position:absolute; inset:0; background:#050506; opacity:0; pointer-events:none; z-index:2; will-change:opacity; }
+/* The lines inside a card (label, quote, name) fade in one after another as it
+   arrives; main.js writes their opacity and transform. Each gets its own
+   compositor layer. Without that, every small change repaints the whole card,
+   text and all, at retina resolution, and that raster work is what stutters. */
+.tsk__card > .tsk__top,
+.tsk__card > .tsk__q,
+.tsk__card > .tsk__who{ will-change:opacity, translate; }
+.tsk__top{
+  display:flex; justify-content:space-between; gap:16px;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-3);
+}
+.tsk__idx{ color:var(--accent); }
+.tsk__q{ margin:0; }
+
+.tsk__q p{
+  margin:0; color:var(--fg); max-width:34ch;
+  font-family:var(--display); font-variation-settings:"wdth" 106,"wght" 500;
+  font-size:clamp(22px,2.5vw,36px); line-height:1.2; letter-spacing:-.025em; text-wrap:pretty;
+}
+/* A full-length recommendation, as written, in the site's body text: the card
+   grows to fit instead of clipping someone's words. */
+.tsk__card--long{ height:auto; min-height:min(520px, calc(100svh - var(--stack-top) - 2 * var(--peek) - 60px)); }
+.tsk__q--long p{
+  max-width:none; margin:0 0 .9em;
+  font-family:var(--sans); font-variation-settings:normal;
+  font-size:inherit; line-height:1.6; letter-spacing:0;
+  color:var(--fg);
+}
+.tsk__q--long p:last-child{ margin-bottom:0; }
+/* a card too tall for the stack (main.js decides): a plain column instead */
+.tsk__list--flat .tsk__item{ position:static; margin-bottom:0; }
+.tsk__who{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.tsk__av{
+  flex:none; width:46px; height:46px; border-radius:50%;
+  display:grid; place-items:center;
+  background:var(--bg); border:1px solid var(--line-2);
+  color:var(--fg-2); font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+}
+/* a photo when there is one, the initials when there is not */
+.tsk__av{ overflow:hidden; }
+.tsk__av img{ width:100%; height:100%; object-fit:cover; display:block; }
+.tsk__id{ display:flex; flex-direction:column; gap:3px; margin-right:auto; }
+.tsk__n{ color:var(--fg); font-family:var(--display); font-variation-settings:"wdth" 104,"wght" 600; font-size:16px; letter-spacing:-.015em; }
+.tsk__r{ color:var(--fg-3); font-size:13.5px; }
+.tsk__li{
+  position:relative; z-index:3;
+  display:inline-flex; align-items:center; gap:7px;
+  color:var(--fg-2); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+  transition:color .3s var(--ease);
+}
+.tsk__li:hover{ color:var(--accent-2); }
+.tsk__li svg{ width:14px; height:14px; }
+.tsk__in{ fill:currentColor; }
+.tsk__li .ico{ fill:none; stroke:currentColor; stroke-width:2; }
+
+/* The entrance, where the browser supports scroll-driven animations. These run on
+   the compositor, in lockstep with the scroll itself, so a rising card can never
+   lag a frame behind the page. That lag is what made the JavaScript version feel
+   rough. Every range is measured from the moment a card's top enters the bottom
+   of the screen, via its <li>'s view timeline. main.js sets the exact pixel
+   ranges from the layout once, on load and on resize, so each card is solid
+   before it meets the one below. Browsers without support fall back to
+   main.js. */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: view()){
+    .tsk__item{ view-timeline:--tsk block; }
+    .tsk__card{
+      animation:tsk-rise linear both;
+      animation-timing-function:cubic-bezier(.45,0,.55,1);
+      animation-timeline:--tsk;
+      animation-range:cover 0px cover var(--rise-end, 240px);
+    }
+    .tsk__card > .tsk__top,
+    .tsk__card > .tsk__q,
+    .tsk__card > .tsk__who{
+      animation:tsk-line linear both;
+      animation-timing-function:cubic-bezier(.45,0,.55,1);
+      animation-timeline:--tsk;
+      animation-range:cover var(--in-from, 0px) cover var(--in-to, 400px);
+    }
+  }
+}
+@keyframes tsk-rise{ from{ opacity:0; translate:0 80px; } }
+@keyframes tsk-line{ from{ opacity:0; translate:0 22px; } }
+
+@media (prefers-reduced-motion:reduce){
+  /* no pinning: three cards in a plain column */
+  .tsk__item{ position:static; margin-bottom:18px; }
+  .tsk__card{ height:auto; }
+}
 
 /* ══════════ CTA ══════════ */
 .cta{
