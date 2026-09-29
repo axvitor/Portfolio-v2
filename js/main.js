@@ -144,17 +144,6 @@ const TIMELINE = [
     note: 'Development of a new website and visual ID for the LIBRAS department at Universidade Federal de Santa Catarina (Federal University of Santa Catarina).' }
 ];
 
-const CAPS = [
-  ['Product Design',    'Owning a surface end to end, from the fuzzy problem to the shipped, measured thing.'],
-  ['UX / UI Design',    'Structure first, then the surface. Flows and hierarchy that hold up under real data.'],
-  ['Design Systems',    'Tokens, components and governance built to survive three years and four teams.'],
-  ['UX Research',       'Interviews, field studies, usability testing. Enough rigour to be trusted, enough speed to be useful.'],
-  ['Prototyping',       'High-fidelity, motion-accurate prototypes. If it can be felt, it can be judged before it is built.'],
-  ['Interaction Design','Timing, state and feedback. The layer that decides whether a product feels expensive or cheap.'],
-  ['Accessibility',     'WCAG 2.2 as a design constraint, not an audit bolted on at the end. Contrast, touch targets, and layouts that survive a doubled font size.']
-];
-
-
 /* ═══════════ GENERATIVE PROJECT ART ═══════════
    Abstract, on-brand visuals — no stock imagery. */
 
@@ -344,13 +333,6 @@ if ($('#timeline')) $('#timeline').innerHTML = TIMELINE.map(t => `
       <p class="tl__note">${t.note}</p>
       ${t.points ? `<ul class="tl__points">${t.points.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
     </div>
-  </li>`).join('');
-
-if ($('#caps')) $('#caps').innerHTML = CAPS.map(([t, d], i) => `
-  <li class="cap">
-    <span class="cap__n mono">${String(i + 1).padStart(2, '0')}</span>
-    <h3 class="cap__t">${t}</h3>
-    <p class="cap__d">${d}</p>
   </li>`).join('');
 
 
@@ -579,7 +561,7 @@ const io = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
-['[data-reveal]', '.bento__item', '.tl', '.cap', '.cta'].forEach(sel => {
+['[data-reveal]', '.bento__item', '.tl', '.cta'].forEach(sel => {
   $$(sel).forEach(el => io.observe(el));
 });
 
