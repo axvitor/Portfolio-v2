@@ -354,6 +354,31 @@ const bootPct  = $('#bootPct');
 const HAS_HERO = !!(video && boot && $('#heroTrack'));
 if (HAS_HERO) document.documentElement.classList.add('is-booting');
 
+/* Each title word in its own .w, numbered in reading order, for the focus-pull
+   entrance in styles.css. The h1 still reads as one sentence: only the element
+   boundaries change, and the serif word keeps its <em>. */
+if (HAS_HERO){
+  let wi = 0;
+  $$('.hero__title .line__in').forEach(line => {
+    [...line.childNodes].forEach(n => {
+      const word = w => { w.classList.add('w'); w.style.setProperty('--wi', wi++); return w; };
+      if (n.nodeType === 3){
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)){ frag.append(part); return; }
+          const w = document.createElement('span'); w.textContent = part;
+          frag.append(word(w));
+        });
+        n.replaceWith(frag);
+      } else {
+        const w = document.createElement('span');
+        n.replaceWith(w); w.append(n); word(w);
+      }
+    });
+  });
+}
+
 let shown = 0, booted = false;
 const started = performance.now();
 

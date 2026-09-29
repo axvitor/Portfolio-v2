@@ -448,28 +448,29 @@ em{ font-style:italic; color:var(--fg); }
   letter-spacing:-.015em;
 }
 .hero__title .line{
-  display:block; overflow:hidden;
+  display:block;
   /* extra room below: the serif italic descender on "skyrocket" hangs
-     further than Archivo's, and this element is a reveal mask */
+     further than Archivo's */
   padding-block:.04em .26em;
   margin-bottom:-.22em;
 }
 .hero__title .line__in{
   display:block;
-  /* the break is authored, not left to wrapping — each line stays intact
-     so the overflow mask reveals a whole line at a time */
+  /* the break is authored, not left to wrapping */
   white-space:nowrap;
-  transform:translateY(110%) rotate(3deg);
-  opacity:0;
 }
-.is-ready .hero__title .line__in{
-  animation:riseIn 1.15s var(--ease) forwards;
+/* Focus pull: main.js wraps each word in .w with its reading position in
+   --wi, and the words sharpen in place one after another. Only opacity,
+   filter and transform move, so it runs on the compositor. */
+.hero__title .w{
+  display:inline-block;
+  opacity:0; filter:blur(14px); transform:scale(1.04);
 }
-.is-ready .hero__title .line:nth-child(1) .line__in{ animation-delay:.08s; }
-.is-ready .hero__title .line:nth-child(2) .line__in{ animation-delay:.2s; }
-@keyframes riseIn{
-  to{ transform:translateY(0) rotate(0); opacity:1; }
+.is-ready .hero__title .w{
+  animation:heroFocus 1.1s var(--ease) forwards;
+  animation-delay:calc(var(--wi, 0) * 130ms + 80ms);
 }
+@keyframes heroFocus{ to{ opacity:1; filter:blur(0); transform:none; } }
 
 .hero__sub{
   margin:clamp(24px,3.6vh,40px) auto 0;
@@ -478,14 +479,15 @@ em{ font-style:italic; color:var(--fg); }
   font-size:clamp(15px,1.15vw,18.5px);
   line-height:1.6;
   text-shadow:0 1px 24px rgba(0,0,0,.8);
-  opacity:0; transform:translateY(20px);
+  opacity:0;
 }
+/* the sentence just fades in, both lines together, as the title settles */
 .is-ready .hero__sub{
-  animation:fadeUp .9s var(--ease) .62s forwards;
+  animation:heroFade .9s var(--ease) .95s forwards;
 }
 /* the ask gets its own line, no extra gap */
 .hero__subLine{ display:block; }
-@keyframes fadeUp{ to{ opacity:1; transform:none; } }
+@keyframes heroFade{ to{ opacity:1; } }
 
 
 /* ══════════ WORK ══════════ */
@@ -1651,7 +1653,8 @@ em{ font-style:italic; color:var(--fg); }
     transition-duration:.001ms !important;
   }
   .hero__track{ height:100vh; }
-  .hero__title .line__in,.cta__title .line__in{ transform:none; opacity:1; }
+  .cta__title .line__in{ transform:none; opacity:1; }
+  .hero__title .w{ opacity:1; filter:none; transform:none; animation:none; }
   .hero__sub{ opacity:1; }
   [data-reveal],.bento__item,.tl{ opacity:1; transform:none; }
 }
