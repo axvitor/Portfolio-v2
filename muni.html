@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="robots" content="noindex,follow" />
+<meta name="robots" content="noindex" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>MUNI — Digital signage for SF transit · Vitor Xavier</title>
 <meta name="description" content="Digital signage for San Francisco's transit riders — a case study by Vitor Xavier, senior product designer." />
@@ -108,59 +108,56 @@
   </div>
 </section>
 
-<section class="pblock">
+<nav class="psteps" aria-label="In this case study">
+  <div class="shell"><ol><li><a href="#problem"><span class="mono">01</span>Problem</a></li><li><a href="#approach"><span class="mono">02</span>Approach</a></li><li><a href="#solution"><span class="mono">03</span>Solution</a></li><li><a href="#results"><span class="mono">04</span>Results</a></li></ol></div>
+</nav>
+
+<section class="pblock pstage" id="problem">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Overview</h2>
-    <p class="lead" data-reveal>The client was an American company specializing in hardware for digital signage, based in San Francisco, California. Their goal was to create a UI to be displayed at bus stops throughout the city. The deadline for the UI was three months, and the entire project was conducted remotely.</p>
-    <figure class="pshot" data-reveal>
+    <div class="pstage__k mono" data-reveal><span>01</span>Problem</div>
+    <h2 class="pblock__h" data-reveal>Transit information every rider can read, from the curb</h2>
+    <p class="lead" data-reveal>The client, a San Francisco company specializing in hardware for digital signage, needed an interface for screens at bus stops across the city. The deadline was three months, and the whole project ran remotely.</p>
+    <p data-reveal>A bus stop screen is public infrastructure. It has to be legible at street distance, stay readable for riders with low vision or color vision deficiency, and win approval from the city as well as the client.</p>
+<figure class="pshot" data-reveal>
         <img src="assets/projects/muni/bus-stop.jpg" alt="Riding the network: San Francisco, seen from a MUNI car" loading="lazy" decoding="async" />
         <figcaption>Riding the network: San Francisco, seen from a MUNI car</figcaption>
       </figure>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="approach">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Briefing</h2>
-    <p class="" data-reveal>At this stage, data was gathered to inform a more precise design for the UI. Several questions were posed to the client before a single screen was sketched.</p>
-    <ul class="pquotes" data-reveal>
+    <div class="pstage__k mono" data-reveal><span>02</span>Approach</div>
+    <h2 class="pblock__h" data-reveal>Settle every constraint before drawing a screen</h2>
+    <p class="lead" data-reveal>Before sketching a single screen, I asked the client the questions that would shape everything else.</p>
+<ul class="pquotes" data-reveal>
       <li>Which information do we need to display?</li>
       <li>What are the government's requirements?</li>
       <li>Does it need to be ADA compliant?</li>
       <li>Where will it run, and on which hardware?</li>
     </ul>
-  </div>
-</section>
-
-<section class="pblock">
-  <div class="shell">
-    <h2 class="pblock__h" data-reveal>ADA compliance</h2>
-    <ol class="pnum">
-      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Font size &amp; scale</h3><p class="pnum__d">Type had to stay legible at street distance, sized to the Americans with Disabilities Act's accessible design standards.</p></li>
-      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Contrast ratios</h3><p class="pnum__d">Every pairing of text and background was checked against ADA contrast requirements before it shipped.</p></li>
-      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">A palette for colorblind riders</h3><p class="pnum__d">Route colors and status states were chosen to stay distinguishable for riders with color vision deficiency.</p></li>
+    <h3 class="pstage__sub" data-reveal>ADA requirements</h3>
+<ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">01</span><h4 class="pnum__t">Font size &amp; scale</h4><p class="pnum__d">Type had to stay legible at street distance, sized to the Americans with Disabilities Act's accessible design standards.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h4 class="pnum__t">Contrast ratios</h4><p class="pnum__d">I checked every pairing of text and background against ADA contrast requirements before it shipped.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h4 class="pnum__t">A palette for colorblind riders</h4><p class="pnum__d">I chose route colors and status states to stay distinguishable for riders with color vision deficiency.</p></li>
+    </ol>
+    <h3 class="pstage__sub" data-reveal>From constraints to rollout</h3>
+<ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">01</span><h4 class="pnum__t">Understanding the constraints</h4><p class="pnum__d">Gathered the government, hardware, and accessibility requirements the interface would have to satisfy before any screen was drawn.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h4 class="pnum__t">Working the layout by hand</h4><p class="pnum__d">Explored arrangements for routes, arrival times, and maps at low fidelity, before committing to any single direction.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h4 class="pnum__t">Building the real UI</h4><p class="pnum__d">Turned the strongest sketches into detailed, polished screens, applying type, contrast, and color that met every ADA requirement.</p></li>
+      <li data-reveal><span class="pnum__n mono">04</span><h4 class="pnum__t">Client and government approval</h4><p class="pnum__d">Reviewed the mockups with both the client and the local government to confirm the design met every accessibility standard.</p></li>
+      <li data-reveal><span class="pnum__n mono">05</span><h4 class="pnum__t">From mockup to build</h4><p class="pnum__d">Handed off specs and assets, working closely through implementation to keep the shipped screens faithful to the design.</p></li>
+      <li data-reveal><span class="pnum__n mono">06</span><h4 class="pnum__t">Approved and deployed</h4><p class="pnum__d">A final round of approval from the client and the city cleared the interface for rollout across the network.</p></li>
     </ol>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="solution">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Process</h2>
-    <ol class="pnum">
-      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Understanding the constraints</h3><p class="pnum__d">Gathered the government, hardware, and accessibility requirements the interface would have to satisfy before any screen was drawn.</p></li>
-      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Working the layout by hand</h3><p class="pnum__d">Explored arrangements for routes, arrival times, and maps at low fidelity, before committing to any single direction.</p></li>
-      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Building the real UI</h3><p class="pnum__d">Turned the strongest sketches into detailed, polished screens, applying type, contrast, and color that met every ADA requirement.</p></li>
-      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">Client and government approval</h3><p class="pnum__d">Reviewed the mockups with both the client and the local government to confirm the design met every accessibility standard.</p></li>
-      <li data-reveal><span class="pnum__n mono">05</span><h3 class="pnum__t">From mockup to build</h3><p class="pnum__d">Handed off specs and assets, working closely through implementation to keep the shipped screens faithful to the design.</p></li>
-      <li data-reveal><span class="pnum__n mono">06</span><h3 class="pnum__t">Approved and deployed</h3><p class="pnum__d">A final round of approval from the client and the city cleared the interface for rollout across the network.</p></li>
-    </ol>
-      </div>
-</section>
-
-<section class="pblock">
-  <div class="shell">
-    <h2 class="pblock__h" data-reveal>The interface</h2>
-    <div class="pgrid pgrid--2">
+    <div class="pstage__k mono" data-reveal><span>03</span>Solution</div>
+    <h2 class="pblock__h" data-reveal>An arrivals board and a route map, built to ADA standards</h2>
+    <p class="lead" data-reveal>Type sized for street distance, contrast checked on every pairing, and a palette that stays distinguishable for colorblind riders.</p>
+<div class="pgrid pgrid--2">
       <figure class="pshot" data-reveal>
         <img src="assets/projects/muni/final-result-2.png" alt="Arrivals board" loading="lazy" decoding="async" />
         <figcaption>Arrivals board</figcaption>
@@ -172,16 +169,12 @@
     </div>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="results">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Impact</h2>
-    <p class="stats__line" data-reveal>
-      <b>800<em>+</em></b> screens deployed,
-      approved by the client and the City of SF,
-      operational since <b>2022</b>.
-    </p>
-    <div class="pgrid">
+    <div class="pstage__k mono" data-reveal><span>04</span>Results</div>
+    <h2 class="pblock__h" data-reveal>Approved by the city, and running since 2022</h2>
+<p data-reveal>The screens run in various locations across the city, bus stops among them.</p>
+<div class="pgrid">
       <figure class="pshot" data-reveal>
         <img src="assets/projects/muni/impl-1.jpg" alt="Routes 19 & 31, daylight" loading="lazy" decoding="async" />
         <figcaption>Routes 19 & 31, daylight</figcaption>
@@ -199,13 +192,11 @@
         <figcaption>Route 49, daylight</figcaption>
       </figure>
     </div>
-  </div>
-</section>
-
-<section class="pblock">
-  <div class="shell">
-    <h2 class="pblock__h" data-reveal>Conclusion</h2>
-    <p class="" data-reveal>The UI was approved by both the client and the local government. Implementation began in 2022, and the project is now operational, featuring more than 800 screens across various locations, including several bus stops.</p>
+<p class="stats__line" data-reveal>
+      <b>800<em>+</em></b> screens deployed,
+      approved by the client and the City of SF,
+      operational since <b>2022</b>.
+    </p>
   </div>
 </section>
 
@@ -224,7 +215,17 @@
   </div>
 </section>
 
-<section class="cta cta--plain" id="contact">
+<section class="cta" id="contact">
+  <!-- The looping rocket, as on the home page. The browser plays the first
+       source it can and downloads only that one; main.js loads it only as it
+       nears the screen. -->
+  <div class="cta__rocket" aria-hidden="true">
+    <video class="cta__vid" poster="assets/rocket-loop-poster.jpg"
+           muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source src="assets/rocket-loop.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
+      <source src="assets/rocket-loop.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="shell">
     <h2 class="cta__title">
       <span class="line"><span class="line__in">Have a company</span></span>

@@ -100,26 +100,24 @@
   <div class="shell">
     <dl>
       <div><dt>Role</dt><dd>UX Researcher &amp; Designer</dd></div>
-      <div><dt>Focus</dt><dd>WCAG 2.2 accessibility audit</dd></div>
+      <div><dt>Focus</dt><dd>WCAG 2.1 accessibility audit</dd></div>
       <div><dt>Timeline</dt><dd>2021</dd></div>
       <div><dt>Platform</dt><dd>Mobile app · Uber</dd></div>
     </dl>
   </div>
 </section>
 
-<section class="pblock">
-  <div class="shell">
-    <h2 class="pblock__h" data-reveal>Overview</h2>
-    <p class="lead" data-reveal>Today, more than ever, usability is essential for making interfaces accessible to everyone. As humans, we each have unique needs, and technology should reflect that. With this in mind, a research study was conducted to evaluate the Uber app's compliance with WCAG standards.</p>
-    <p class="" data-reveal>The current Uber app was analyzed, identifying its strengths and weaknesses, and exploring ways to make it more appealing and accessible for senior users.</p>
-  </div>
-</section>
+<nav class="psteps" aria-label="In this case study">
+  <div class="shell"><ol><li><a href="#problem"><span class="mono">01</span>Problem</a></li><li><a href="#approach"><span class="mono">02</span>Approach</a></li><li><a href="#solution"><span class="mono">03</span>Solution</a></li></ol></div>
+</nav>
 
-<section class="pblock">
+<section class="pblock pstage" id="problem">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Findings</h2>
-    <p class="" data-reveal>Bad legibility. Unclear actions. Arrival times that aren't clear. No obvious way to change a payment method. Small frictions that add up for any rider, and add up faster for a senior one.</p>
-    <div class="fcar" data-fcar data-reveal>
+    <div class="pstage__k mono" data-reveal><span>01</span>Problem</div>
+    <h2 class="pblock__h" data-reveal>An app that works for most riders, and quietly fails older ones</h2>
+    <p class="lead" data-reveal>In a self-initiated study, I evaluated the Uber app against WCAG, the international accessibility standard, with one audience in mind: senior users.</p>
+    <p data-reveal>The findings added up to a clear pattern. Bad legibility. Unclear actions. Arrival times that aren't clear. No obvious way to change a payment method. Small frictions that affect every rider, and affect senior riders sooner.</p>
+<div class="fcar" data-fcar data-reveal>
       <div class="fcar__shots">
         <figure class="fcar__shot is-on" data-fcar-shot>
           <img src="assets/projects/wcag/analysis-1.png" alt="Uber&#39;s home screen, annotated: &ldquo;Lack of focus on the action to call an Uber.&rdquo;" loading="lazy" decoding="async" />
@@ -139,22 +137,22 @@
         <div class="fcar__copies">
         <div class="fcar__copy is-on" data-fcar-copy id="fcar-p1" role="tabpanel" aria-labelledby="fcar-t1" tabindex="0">
           <span class="fcar__screen mono">Home</span>
-          <p class="fcar__finding">Lack of focus on the action to call a ride.</p>
+          <h3 class="fcar__finding">Lack of focus on the action to call a ride.</h3>
           <p class="fcar__detail">The primary action sits below a promotional banner and four category tiles, so the thing most riders opened the app to do is the hardest thing to find.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="fcar-p2" role="tabpanel" aria-labelledby="fcar-t2" tabindex="0">
           <span class="fcar__screen mono">Ride selection</span>
-          <p class="fcar__finding">Bad legibility, and actions that aren&rsquo;t clear.</p>
+          <h3 class="fcar__finding">Bad legibility, and actions that aren&rsquo;t clear.</h3>
           <p class="fcar__detail">Map labels are hard to read, the ride tiers carry no explanation of what separates them, the arrival time is ambiguous, and nothing signals that the payment method can be changed.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="fcar-p3" role="tabpanel" aria-labelledby="fcar-t3" tabindex="0">
           <span class="fcar__screen mono">Account menu</span>
-          <p class="fcar__finding">The app doesn&rsquo;t work properly with a bigger font.</p>
+          <h3 class="fcar__finding">The app doesn&rsquo;t work properly with a bigger font.</h3>
           <p class="fcar__detail">At the system font sizes a senior user is most likely to have set, labels truncate mid-word and the panel collides with the content behind it.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="fcar-p4" role="tabpanel" aria-labelledby="fcar-t4" tabindex="0">
           <span class="fcar__screen mono">Address search</span>
-          <p class="fcar__finding">The &ldquo;from&rdquo; field arrives already filled in.</p>
+          <h3 class="fcar__finding">The &ldquo;from&rdquo; field arrives already filled in.</h3>
           <p class="fcar__detail">Pre-filling the origin moves faster than a senior rider expects, and the list below it falls under the contrast ratio WCAG asks for.</p>
         </div>
         </div>
@@ -203,20 +201,14 @@
     </div>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="approach">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>What WCAG is</h2>
-    <p class="" data-reveal>WCAG (Web Content Accessibility Guidelines) is a set of international standards created by the W3C to make digital content more accessible to people with disabilities. It provides guidance on how to design websites and apps that are usable by everyone, including users with visual, auditory, motor, or cognitive impairments. In this particular research, the primary focus was on senior users.</p>
-  </div>
-</section>
-
-<section class="pblock">
-  <div class="shell">
-    <h2 class="pblock__h" data-reveal>Guidelines applied</h2>
-    <ol class="pnum">
-      <li data-reveal><span class="pnum__n mono">1.4.3</span><h3 class="pnum__t">Contrast (minimum)</h3><p class="pnum__d">Text and interactive elements were checked against WCAG's minimum contrast ratio, so content stays legible for users with low vision.</p></li>
-      <li data-reveal><span class="pnum__n mono">1.3.5</span><h3 class="pnum__t">Identify input purpose</h3><p class="pnum__d">Form fields were labeled so their purpose can be determined programmatically, helping autofill and assistive technology do their job.</p></li>
+    <div class="pstage__k mono" data-reveal><span>02</span>Approach</div>
+    <h2 class="pblock__h" data-reveal>Use WCAG as the yardstick, and design to its criteria</h2>
+    <p class="lead" data-reveal>Three criteria from WCAG, the W3C's accessibility guidelines, shaped the redesign directly. I then rebuilt the request flow as wireframes, one step per screen.</p>
+<ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">1.4.3</span><h3 class="pnum__t">Contrast (minimum)</h3><p class="pnum__d">I checked text and interactive elements against WCAG's minimum contrast ratio, so content stays legible for users with low vision.</p></li>
+      <li data-reveal><span class="pnum__n mono">1.3.5</span><h3 class="pnum__t">Identify input purpose</h3><p class="pnum__d">I labeled form fields so their purpose can be determined programmatically, helping autofill and assistive technology do their job.</p></li>
       <li data-reveal><span class="pnum__n mono">2.4.6</span><h3 class="pnum__t">Headings &amp; labels</h3><p class="pnum__d">Headings and labels describe topic or purpose clearly, so screen reader users can navigate without guessing.</p></li>
     </ol>
     <div class="ftrack" data-ftrack data-reveal>
@@ -224,15 +216,15 @@
            aria-label="Wireframes of the redesigned flow — scrollable" tabindex="0">
         <figure class="pshot ftrack__item">
           <img src="assets/projects/wcag/wireframe-1.png" alt="Wireframe of the home screen: a map above a single primary &ldquo;Pedir Uber&rdquo; button, with delivery, parcel and grocery tiles demoted below it." loading="lazy" decoding="async" />
-          <figcaption>Home — one primary action</figcaption>
+          <figcaption>Home: one primary action</figcaption>
         </figure>
         <figure class="pshot ftrack__item">
           <img src="assets/projects/wcag/wireframe-2.png" alt="Wireframe of the origin picker, headed &ldquo;Onde estamos?&rdquo;, with a search field and a list of saved places." loading="lazy" decoding="async" />
-          <figcaption>Origin — where we are</figcaption>
+          <figcaption>Origin: where we are</figcaption>
         </figure>
         <figure class="pshot ftrack__item">
           <img src="assets/projects/wcag/wireframe-3.png" alt="Wireframe of the destination picker, headed &ldquo;Para onde vamos?&rdquo;, with tabs for suggestions, recent trips and favourites." loading="lazy" decoding="async" />
-          <figcaption>Destination — where we&rsquo;re going</figcaption>
+          <figcaption>Destination: where we&rsquo;re going</figcaption>
         </figure>
         <figure class="pshot ftrack__item">
           <img src="assets/projects/wcag/wireframe-4.png" alt="Wireframe of the ride selection, headed &ldquo;Selecione a modalidade&rdquo;, listing each ride type with its arrival time, price and the payment method." loading="lazy" decoding="async" />
@@ -254,12 +246,12 @@
     </div>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="solution">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Proposal</h2>
-    <p class="" data-reveal>Bigger touch targets, clearer primary actions, larger type. The redesigned interface carries those changes through to a screen that is ready to ship, across the request flow, the origin and destination pickers, and ride confirmation.</p>
-    <div class="fcar" data-fcar data-reveal>
+    <div class="pstage__k mono" data-reveal><span>03</span>Solution</div>
+    <h2 class="pblock__h" data-reveal>Larger targets, plainer words, and nothing that breaks at a bigger font</h2>
+    <p class="lead" data-reveal>Bigger touch targets, clearer primary actions and larger type, carried through the request flow, the origin and destination pickers, and ride confirmation.</p>
+<div class="fcar" data-fcar data-reveal>
       <div class="fcar__shots">
         <figure class="fcar__shot is-on" data-fcar-shot>
           <img src="assets/projects/wcag/proposal-1.png" alt="The current home screen beside the suggestion, annotated: &ldquo;Main focus in requesting a Uber&rdquo; and &ldquo;Bigger touch area&rdquo;." loading="lazy" decoding="async" />
@@ -274,7 +266,7 @@
           <img src="assets/projects/wcag/proposal-4.png" alt="The current destination search beside the suggestion, annotated: &ldquo;Clear Steps&rdquo;, &ldquo;Better contrast (4.5:1)&rdquo; and &ldquo;Clear option to go back&rdquo;." loading="lazy" decoding="async" />
         </figure>
         <figure class="fcar__shot" data-fcar-shot>
-          <img src="assets/projects/wcag/proposal-5.png" alt="The current origin picker beside the suggestion, annotated: &ldquo;Clear Steps&rdquo;, &ldquo;Better contrast (4.5:1)&rdquo; and &ldquo;Clear option to get back&rdquo;." loading="lazy" decoding="async" />
+          <img class="is-onwhite" src="assets/projects/wcag/proposal-5.png" alt="The current origin picker beside the suggestion, annotated: &ldquo;Clear Steps&rdquo;, &ldquo;Better contrast (4.5:1)&rdquo; and &ldquo;Clear option to get back&rdquo;." loading="lazy" decoding="async" />
         </figure>
       </div>
 
@@ -282,27 +274,27 @@
         <div class="fcar__copies">
         <div class="fcar__copy is-on" data-fcar-copy id="pcar-p1" role="tabpanel" aria-labelledby="pcar-t1" tabindex="0">
           <span class="fcar__screen mono">Home</span>
-          <p class="fcar__finding">One primary action, and a bigger target.</p>
+          <h3 class="fcar__finding">One primary action, and a bigger target.</h3>
           <p class="fcar__detail">Requesting a ride becomes the largest thing on the screen, and the remaining services drop to secondary tiles with more room to hit.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="pcar-p2" role="tabpanel" aria-labelledby="pcar-t2" tabindex="0">
           <span class="fcar__screen mono">Destination</span>
-          <p class="fcar__finding">Behaves properly at a bigger font.</p>
+          <h3 class="fcar__finding">Behaves properly at a bigger font.</h3>
           <p class="fcar__detail">Labels wrap instead of truncating, so the screen still works at the system font sizes a senior rider is most likely to have set.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="pcar-p3" role="tabpanel" aria-labelledby="pcar-t3" tabindex="0">
           <span class="fcar__screen mono">Ride selection</span>
-          <p class="fcar__finding">Better legibility, and the action spelled out.</p>
+          <h3 class="fcar__finding">Better legibility, and the action spelled out.</h3>
           <p class="fcar__detail">Arrival is stated in plain words with a helper beside it, prices and times sit clear of one another, the payment method is given its own section, and there is an obvious way back.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="pcar-p4" role="tabpanel" aria-labelledby="pcar-t4" tabindex="0">
           <span class="fcar__screen mono">Destination search</span>
-          <p class="fcar__finding">Contrast raised to 4.5:1.</p>
+          <h3 class="fcar__finding">Contrast raised to 4.5:1.</h3>
           <p class="fcar__detail">The results list meets the minimum contrast ratio, the step names itself at the top, and going back is a visible option rather than a guess.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="pcar-p5" role="tabpanel" aria-labelledby="pcar-t5" tabindex="0">
           <span class="fcar__screen mono">Origin picker</span>
-          <p class="fcar__finding">The step names itself, and nothing arrives pre-filled.</p>
+          <h3 class="fcar__finding">The step names itself, and nothing arrives pre-filled.</h3>
           <p class="fcar__detail">&ldquo;Where we are?&rdquo; asks the question outright and the rider chooses from the list, at the same 4.5:1 contrast, with the way back always in view.</p>
         </div>
         </div>
@@ -356,7 +348,8 @@
         </div>
       </div>
     </div>
-    <div class="ftrack ftrack--final" data-ftrack data-reveal>
+    <p data-reveal>The final screens, end to end.</p>
+<div class="ftrack ftrack--final" data-ftrack data-reveal>
       <div class="ftrack__scroller" data-ftrack-scroller role="group"
            aria-label="The shipped screens — scrollable" tabindex="0">
         <figure class="pshot ftrack__item">
@@ -403,7 +396,17 @@
   </div>
 </section>
 
-<section class="cta cta--plain" id="contact">
+<section class="cta" id="contact">
+  <!-- The looping rocket, as on the home page. The browser plays the first
+       source it can and downloads only that one; main.js loads it only as it
+       nears the screen. -->
+  <div class="cta__rocket" aria-hidden="true">
+    <video class="cta__vid" poster="assets/rocket-loop-poster.jpg"
+           muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source src="assets/rocket-loop.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
+      <source src="assets/rocket-loop.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="shell">
     <h2 class="cta__title">
       <span class="line"><span class="line__in">Have a company</span></span>

@@ -107,20 +107,30 @@
   </div>
 </section>
 
-<section class="pblock">
+<nav class="psteps" aria-label="In this case study">
+  <div class="shell"><ol><li><a href="#problem"><span class="mono">01</span>Problem</a></li><li><a href="#approach"><span class="mono">02</span>Approach</a></li><li><a href="#solution"><span class="mono">03</span>Solution</a></li><li><a href="#results"><span class="mono">04</span>Results</a></li></ol></div>
+</nav>
+
+<section class="pblock pstage" id="problem">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Overview</h2>
-    <p class="lead" data-reveal>Gym&amp;Bet is a mobile app for monitoring health and fitness progress, with social betting to encourage exercise participation.</p>
-    <p class="" data-reveal>Regular exercise is crucial for maintaining both physical and mental wellbeing. This is where betting with friends can make a significant difference. By turning exercise into a social activity and incorporating an element of friendly competition, it becomes more dynamic and enjoyable.</p>
+    <div class="pstage__k mono" data-reveal><span>01</span>Problem</div>
+    <h2 class="pblock__h" data-reveal>Staying consistent with exercise is hard on your own</h2>
+    <p class="lead" data-reveal>Regular exercise matters for both physical and mental wellbeing, but keeping it up is the hard part.</p>
+    <p data-reveal>Gym&amp;Bet set out to help: a mobile app that tracks health and fitness progress, and turns it into a friendly bet with friends, so exercise becomes social and a little competitive.</p>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="approach">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Scope</h2>
-    <p class="" data-reveal>The design project took 2 weeks to complete, focusing solely on essential features to deliver value to the user before being implemented by the engineering team.</p>
-    </div>
-
+    <div class="pstage__k mono" data-reveal><span>02</span>Approach</div>
+    <h2 class="pblock__h" data-reveal>Two weeks, and only the features that mattered</h2>
+    <p class="lead" data-reveal>The project had two weeks, so I cut the scope to the essential features that would deliver value to users, ready for the engineering team to implement. I worked out each flow as a wireframe first.</p>
+<ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Home</h3><p class="pnum__d">Weekly activity rings, streaks, and a single check in.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Bet detail</h3><p class="pnum__d">Daily progress against the terms both sides agreed to.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Group bet</h3><p class="pnum__d">Responding to an invitation from the group.</p></li>
+      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">New bet</h3><p class="pnum__d">Setting the terms, the stake, and who is in.</p></li>
+    </ol>
+      </div>
   <div class="ftrack ftrack--bleed" data-ftrack data-reveal>
     <div class="ftrack__scroller" data-ftrack-scroller role="group"
          aria-label="Wireframes of the flow — scrollable" tabindex="0">
@@ -153,17 +163,12 @@
     </div>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="solution">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Screens</h2>
-    <ol class="pnum">
-      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Home</h3><p class="pnum__d">Weekly activity rings, streaks, and a single check in.</p></li>
-      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Bet detail</h3><p class="pnum__d">Daily progress against the terms both sides agreed to.</p></li>
-      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Group bet</h3><p class="pnum__d">Responding to an invitation from the group.</p></li>
-      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">New bet</h3><p class="pnum__d">Setting the terms, the stake, and who is in.</p></li>
-    </ol>
-    <div class="fcar" data-fcar data-reveal>
+    <div class="pstage__k mono" data-reveal><span>03</span>Solution</div>
+    <h2 class="pblock__h" data-reveal>The bet, built into the daily check-in</h2>
+    <p class="lead" data-reveal>The final interface puts activity, streaks and the running bet on the same screens, with friends and requests one tap away.</p>
+<div class="fcar" data-fcar data-reveal>
       <div class="fcar__shots">
         <figure class="fcar__shot is-on" data-fcar-shot>
           <img src="assets/projects/gymbet/final-1.jpg" alt="The home screen: activity rings for the day, a date strip, and one check-in button." loading="lazy" decoding="async" />
@@ -244,6 +249,14 @@
   </div>
 </section>
 
+<section class="pblock pstage" id="results">
+  <div class="shell">
+    <div class="pstage__k mono" data-reveal><span>04</span>Results</div>
+    <h2 class="pblock__h" data-reveal>Designed in two weeks, and shipped</h2>
+<p data-reveal>I handed the scoped design to the engineering team, and the app shipped.</p>
+  </div>
+</section>
+
 <section class="pnext">
   <div class="shell">
     <nav class="pnext__pair">
@@ -259,7 +272,17 @@
   </div>
 </section>
 
-<section class="cta cta--plain" id="contact">
+<section class="cta" id="contact">
+  <!-- The looping rocket, as on the home page. The browser plays the first
+       source it can and downloads only that one; main.js loads it only as it
+       nears the screen. -->
+  <div class="cta__rocket" aria-hidden="true">
+    <video class="cta__vid" poster="assets/rocket-loop-poster.jpg"
+           muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source src="assets/rocket-loop.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
+      <source src="assets/rocket-loop.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="shell">
     <h2 class="cta__title">
       <span class="line"><span class="line__in">Have a company</span></span>

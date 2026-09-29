@@ -1665,3 +1665,109 @@ em{ font-style:italic; color:var(--fg); }
   .hero__sub{ opacity:1; }
   [data-reveal],.bento__item,.tl,.cap{ opacity:1; transform:none; }
 }
+
+/* ══════════ CASE STUDY STRUCTURE ══════════
+   Every case study runs Problem → Approach → Solution → Results: a rail under
+   the facts strip names the parts and jumps to them, and each part opens with
+   a numbered mono label above a headline written as a sentence. */
+/* the rail: the case study's structure, stated up front */
+.psteps{ padding-block:0 clamp(8px,2vh,20px); }
+.psteps ol{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  border-top:1px solid var(--line);
+}
+.psteps a{
+  position:relative;
+  display:flex; align-items:baseline; gap:10px;
+  padding:16px 2px 4px;
+  color:var(--fg-2);
+  font-family:var(--display); font-variation-settings:"wdth" 106,"wght" 600;
+  font-size:clamp(15px,1.25vw,17px); letter-spacing:-.02em;
+  transition:color .3s var(--ease);
+}
+.psteps a .mono{ color:var(--accent); font-size:10.5px; letter-spacing:.14em; }
+.psteps a::before{
+  content:""; position:absolute; left:0; right:14px; top:-1px; height:1px;
+  background:var(--accent);
+  transform:scaleX(0); transform-origin:0 50%;
+  transition:transform .6s var(--ease);
+}
+.psteps a:hover{ color:var(--fg); }
+.psteps a:hover::before{ transform:scaleX(1); }
+.psteps a:focus-visible{ outline:2px solid var(--accent-2); outline-offset:4px; }
+
+/* each part: a numbered label, then the headline as a sentence */
+.pstage{ scroll-margin-top:clamp(84px,11vh,110px); border-top:1px solid var(--line); }
+.pstage__k{
+  display:flex; align-items:baseline; gap:12px;
+  margin-bottom:clamp(14px,2.2vh,22px);
+  color:var(--fg-3); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+}
+.pstage__k span{ color:var(--accent); }
+/* headlines are sentences here, not single words, so they get a little more
+   leading than the one-word headings they replace. One measure for all of
+   them, so the ones that wrap break at the same right edge; `pretty` rather
+   than `balance`, which halved two-line headlines and left them visibly
+   narrower than single-line ones. */
+.pstage .pblock__h{ max-width:20em; line-height:1.06; text-wrap:pretty; }
+
+/* a sub-part inside a stage (e.g. Foundations inside the approach) */
+.pstage__sub{
+  margin:clamp(54px,8vh,92px) 0 clamp(14px,2vh,20px);
+  font-family:var(--display); font-variation-settings:"wdth" 108,"wght" 650;
+  font-size:clamp(20px,1.9vw,26px); letter-spacing:-.03em; line-height:1.1;
+  color:var(--fg);
+}
+
+/* spacing between prose and the blocks that follow it inside a stage */
+.pstage .pnum,
+.pstage .fcar,
+.pstage > .shell > .ftrack{ margin-top:clamp(28px,4.5vh,48px); }
+.pstage .ppair:first-of-type{ margin-top:clamp(28px,4.5vh,48px); }
+.pstage .ptry{ margin-top:clamp(40px,6vh,72px); }
+/* only shots stacked straight in the stage: frames in a track or a photo grid
+   are .pshot too, but sit side by side and must share a top edge */
+.pstage > .shell > p + .pshot,
+.pstage > .shell > .pshot + .pshot{ margin-top:clamp(28px,4.5vh,48px); }
+/* the results stage opens on its number, so it needs no extra top air */
+.pstage .stats__line:first-of-type{ margin-top:0; }
+
+/* wide foundation slides (design system): 16:9 with small type is unreadable
+   at half the shell, so the slide takes the full width and the copy sits
+   under it, beside the tabs */
+.fcar--wide{ grid-template-columns:1fr; gap:clamp(26px,3.6vh,38px); }
+.fcar--wide .fcar__shot{ height:auto; aspect-ratio:16 / 9; padding:0; }
+.fcar--wide .fcar__shot img{ width:100%; height:100%; border-radius:0; }
+.fcar--wide .fcar__side{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:auto 1fr;
+  column-gap:clamp(28px,4vw,52px);
+  padding-top:0;
+}
+.fcar--wide .fcar__copies{ grid-row:1 / 3; }
+.fcar--wide .fcar__tabs{ grid-column:2; margin-top:0; }
+.fcar--wide .fcar__nav{ grid-column:2; }
+@media (max-width:900px){
+  .fcar--wide .fcar__side{ display:flex; }
+  .fcar--wide .fcar__tabs{ margin-top:clamp(28px,4vh,42px); }
+}
+/* a screenshot followed by the theme slider needs the same gap as elsewhere */
+.pstage .pshot + .cmpfig{ margin-top:clamp(28px,4.5vh,48px); }
+
+/* h4 has no reset in the shared sheet: drop the browser's top margin so the
+   class rules (.pnum__t, .fcar__finding) set the spacing, as they do on h3 */
+.pstage h4{ margin-top:0; }
+
+/* The try-it card closes the case study on its own, right before prev/next */
+.pend{ border-top:1px solid var(--line); }
+
+/* A slide exported with a transparent background (WCAG proposal 5): its black
+   text disappears on the dark panel, so give it the white it was drawn on */
+.fcar__shot img.is-onwhite{ background:#fff; }
+
+/* The Element result's 20% now closes the section, after the feedback shot */
+.pstage .pshot + .stats__line,
+.pstage .pgrid + .stats__line{ margin-top:clamp(40px,6vh,72px); }
+.pstage p + .stats__line{ margin-top:clamp(28px,4.5vh,48px); }

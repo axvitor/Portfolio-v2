@@ -107,23 +107,37 @@
   </div>
 </section>
 
-<section class="pblock">
+<nav class="psteps" aria-label="In this case study">
+  <div class="shell"><ol><li><a href="#problem"><span class="mono">01</span>Problem</a></li><li><a href="#approach"><span class="mono">02</span>Approach</a></li><li><a href="#solution"><span class="mono">03</span>Solution</a></li><li><a href="#results"><span class="mono">04</span>Results</a></li></ol></div>
+</nav>
+
+<section class="pblock pstage" id="problem">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>Overview</h2>
-    <p class="lead" data-reveal>The interfaces were developed to fit any screen with any aspect ratio, including landscape, portrait, bar, or square, so responsiveness was crucial to every one of these projects. Apps, as they're called on the OnSign platform, are a powerful way to present dynamic content on screens.</p>
-    <p class="" data-reveal>More than 40 interfaces were designed for the most variable content, including weather, news, exchange rates, menu boards, and many others. All of them 100% responsive.</p>
+    <div class="pstage__k mono" data-reveal><span>01</span>Problem</div>
+    <h2 class="pblock__h" data-reveal>One app, every shape of screen</h2>
+    <p class="lead" data-reveal>Apps, as the OnSign platform calls them, put dynamic content on digital screens: weather, news, exchange rates, menu boards and much more. Every one of them had to run on any screen, whatever its aspect ratio.</p>
+    <p data-reveal>Landscape, portrait, a long thin bar or a square. A layout drawn for one of those breaks on the others, so responsiveness couldn't be a finishing touch. It was the brief.</p>
   </div>
 </section>
-
-<section class="pblock">
+<section class="pblock pstage" id="approach">
   <div class="shell">
-    <h2 class="pblock__h" data-reveal>By the numbers</h2>
-    <p class="stats__line" data-reveal>
-      <b>40<em>+</em></b> interfaces,
-      <b>100<em>%</em></b> responsive, across
-      <b>4</b> screen orientations.
-    </p>
-    <div class="fcar" data-fcar data-reveal>
+    <div class="pstage__k mono" data-reveal><span>02</span>Approach</div>
+    <h2 class="pblock__h" data-reveal>Design every app to reflow across four orientations</h2>
+    <p class="lead" data-reveal>I laid out each app for all four orientations a screen can take, rather than drawing it for one and stretching it to fit the rest.</p>
+    <ol class="pnum">
+      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Landscape</h3><p class="pnum__d">The standard wide screen, where the content has the most room.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Portrait</h3><p class="pnum__d">Tall screens, where the same content has to stack.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Long bar</h3><p class="pnum__d">A thin strip, where only the essentials fit.</p></li>
+      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">Square</h3><p class="pnum__d">Neither wide nor tall, so the layout has to balance both.</p></li>
+    </ol>
+  </div>
+</section>
+<section class="pblock pstage" id="solution">
+  <div class="shell">
+    <div class="pstage__k mono" data-reveal><span>03</span>Solution</div>
+    <h2 class="pblock__h" data-reveal>Forty-plus apps, each at home on any screen</h2>
+    <p class="lead" data-reveal>I designed more than 40 interfaces, for the most variable content there is. A selection of them, running:</p>
+<div class="fcar" data-fcar data-reveal>
       <div class="fcar__shots">
         <figure class="fcar__shot is-on" data-fcar-shot>
           <video src="assets/projects/signage/gif5.mp4" poster="assets/projects/signage/gif5-poster.jpg"
@@ -225,6 +239,18 @@
     </div>
   </div>
 </section>
+<section class="pblock pstage" id="results">
+  <div class="shell">
+    <div class="pstage__k mono" data-reveal><span>04</span>Results</div>
+    <h2 class="pblock__h" data-reveal>Every app, fully responsive</h2>
+<p data-reveal>Each app reflows across landscape, portrait, long bar and square, so it runs on any screen the OnSign platform drives.</p>
+<p class="stats__line" data-reveal>
+      <b>40<em>+</em></b> interfaces,
+      <b>100<em>%</em></b> responsive, across
+      <b>4</b> screen orientations.
+    </p>
+  </div>
+</section>
 
 <section class="pnext">
   <div class="shell">
@@ -241,7 +267,17 @@
   </div>
 </section>
 
-<section class="cta cta--plain" id="contact">
+<section class="cta" id="contact">
+  <!-- The looping rocket, as on the home page. The browser plays the first
+       source it can and downloads only that one; main.js loads it only as it
+       nears the screen. -->
+  <div class="cta__rocket" aria-hidden="true">
+    <video class="cta__vid" poster="assets/rocket-loop-poster.jpg"
+           muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source src="assets/rocket-loop.hevc.mp4" type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
+      <source src="assets/rocket-loop.mp4" type="video/mp4" />
+    </video>
+  </div>
   <div class="shell">
     <h2 class="cta__title">
       <span class="line"><span class="line__in">Have a company</span></span>
