@@ -393,7 +393,7 @@ function bootTick(){
 
   if (real >= 1 || elapsed > 6) shown = lerp(shown, 1, 0.28);
 
-  bootFill.style.width = (shown * 100).toFixed(1) + '%';
+  bootFill.style.transform = 'scaleX(' + shown.toFixed(3) + ')';
   bootPct.textContent  = String(Math.round(shown * 100)).padStart(3, '0');
 
   if (shown > 0.995){ finishBoot(); return; }
@@ -403,7 +403,7 @@ function bootTick(){
 function finishBoot(){
   if (booted) return;
   booted = true;
-  bootFill.style.width = '100%';
+  bootFill.style.transform = 'scaleX(1)';
   bootPct.textContent = '100';
   boot.classList.add('is-done');
   document.documentElement.classList.remove('is-booting');
@@ -599,7 +599,7 @@ function scrubTimeline(){
   const r = tlEl.getBoundingClientRect();
   if (r.bottom < 0 || r.top > innerHeight) return;
   const p = clamp((innerHeight * 0.65 - r.top) / r.height);
-  const v = (p * 100).toFixed(2) + '%';
+  const v = p.toFixed(4);   /* 0 to 1: the line's scaleY */
   if (v !== tlLast){ tlEl.style.setProperty('--tl', v); tlLast = v; }
 }
 

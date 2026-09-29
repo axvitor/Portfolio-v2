@@ -129,10 +129,13 @@ em{ font-style:italic; color:var(--fg); }
 }
 .boot__pct{ color:var(--fg); font-size:13px; }
 .boot__track{ height:1px; background:var(--line); overflow:hidden; }
+/* Full width, scaled from the left: main.js sets scaleX, which the compositor
+   animates without re-laying out the page on every step. */
 .boot__fill{
-  display:block; height:100%; width:0%;
+  display:block; height:100%; width:100%;
   background:var(--fg);
-  transition:width .25s linear;
+  transform:scaleX(0); transform-origin:0 50%;
+  transition:transform .25s linear;
 }
 
 /* ══════════ SKIP LINK ══════════
@@ -169,11 +172,17 @@ em{ font-style:italic; color:var(--fg); }
   position:fixed; top:0; left:0; right:0; z-index:100;
   display:flex; justify-content:center;
   padding:16px var(--pad);
-  transition:padding .7s var(--ease);
+  /* the 2px lift when it sticks is a translate, not a padding change */
+  transition:translate .7s var(--ease);
   pointer-events:none;              /* the empty rail must not eat clicks */
+  /* The pill below contracts by animating max-width and padding: its contents
+     genuinely reflow, which no transform can fake without squashing the type.
+     Layout containment keeps that relayout inside the nav, so the 0.75s
+     transition never makes the browser re-lay out the page behind it. */
+  contain:layout;
 }
 .nav > *{ pointer-events:auto; }
-.nav.is-stuck{ padding-top:14px; }
+.nav.is-stuck{ translate:0 -2px; }
 
 .nav__shell{
   display:flex; align-items:center; justify-content:space-between;
@@ -211,6 +220,10 @@ em{ font-style:italic; color:var(--fg); }
   text-transform:uppercase;
   letter-spacing:.08em;
   white-space:nowrap;
+  /* Archivo leaves more room above its capitals than below them, so an
+     all-caps line centred by its box reads ~1px high in the pill. Measured:
+     cap middle at 39.2px against a pill middle of 40.4px. */
+  translate:0 1px;
   transition:opacity .3s, padding .75s var(--ease);
 }
 .nav.is-stuck .nav__mark{ padding-left:0; }
@@ -644,13 +657,18 @@ em{ font-style:italic; color:var(--fg); }
   left:0; top:8px; bottom:8px; width:1px;
   background:var(--line);
 }
+/* Drawn at full length and scaled down from the top. main.js writes the
+   progress (0 to 1) into --tl on every scroll frame, and scaleY lets the
+   compositor draw it without a relayout. The gradient scales with the line,
+   so it still runs accent to faint over whatever length is showing. */
 .timeline::after{
   content:""; position:absolute;
   left:0; top:8px; width:1px;
-  height:var(--tl,0%);
+  height:100%;
   background:linear-gradient(to bottom,var(--accent),rgba(74,134,255,.15));
   box-shadow:0 0 12px rgba(74,134,255,.4);
-  transition:height .15s linear;
+  transform:scaleY(var(--tl,0)); transform-origin:50% 0;
+  transition:transform .15s linear;
 }
 .tl{
   position:relative;
@@ -1185,10 +1203,13 @@ em{ font-style:italic; color:var(--fg); }
   border-bottom:1px solid var(--line);
   color:var(--fg-3);
   font-size:15px; line-height:1.4;
-  transition:color .45s var(--ease), padding-left .55s var(--ease);
+  transition:color .45s var(--ease);
 }
 .fcar__tab:hover{ color:var(--fg); }
-.fcar__tab.is-on{ color:var(--fg); padding-left:14px; }
+.fcar__tab.is-on{ color:var(--fg); }
+/* the selected tab's nudge is a translate on its contents, not padding */
+.fcar__tab > *{ transition:translate .55s var(--ease); }
+.fcar__tab.is-on > *{ translate:14px 0; }
 .fcar__n{ flex:none; color:var(--fg-3); transition:color .45s var(--ease); }
 .fcar__tab.is-on .fcar__n{ color:var(--accent); }
 
@@ -1219,6 +1240,7 @@ em{ font-style:italic; color:var(--fg); }
   .fcar__shot,
   .fcar__copy,
   .fcar__tab,
+  .fcar__tab > *,
   .fcar__n,
   .fcar__arrow{ transition:none; }
 }
