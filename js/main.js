@@ -661,7 +661,7 @@ $$('a', drawer).forEach(a => a.addEventListener('click', () => {
 
 /* active section in nav */
 /* document order matters: activeLink takes the last section past the line */
-const sections = ['about', 'experience', 'work'].map(id => $('#' + id)).filter(Boolean);
+const sections = ['about', 'experience', 'work', 'testimonials'].map(id => $('#' + id)).filter(Boolean);
 const navLinks = $$('.nav__links a');
 function activeLink(){
   let cur = '';
