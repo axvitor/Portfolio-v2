@@ -1115,8 +1115,11 @@ function stackTestimonials(){
     /* fallback entrance, same curves as the CSS version */
     const s = smoothstep(clamp((vh - top) / (vh - tskSolidBy(i, vh))));
     const c = smoothstep(clamp((vh - top) / (vh - tskTops[i])));
-    tskSet(card, 'opacity', s.toFixed(3));
-    tskSet(card, 'translate', `0 ${((1 - s) * 80).toFixed(1)}px`);
+    /* same curves as the CSS: the first card rises from nothing, the later ones
+       from half there, so their top edge can peek under the card above */
+    const [o0, y0] = i === 0 ? [0, 80] : [.55, 8];
+    tskSet(card, 'opacity', (o0 + (1 - o0) * s).toFixed(3));
+    tskSet(card, 'translate', `0 ${((1 - s) * y0).toFixed(1)}px`);
     tskLines[i].forEach((line, k) => {
       const t = clamp(c * 1.6 - k * .3);
       tskSet(line, 'opacity', t.toFixed(3));

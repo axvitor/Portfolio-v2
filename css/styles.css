@@ -1430,11 +1430,23 @@ em{ font-style:italic; color:var(--fg); }
    Three cards that stack as you scroll. Each is a sticky <li> landing a little
    lower than the one before; main.js fades each one in and shrinks and dims
    the ones it covers. */
-.tsk{ --stack-top:clamp(96px,14vh,140px); --peek:22px; --hold:16vh; --n:3; padding-bottom:clamp(40px,8vh,100px); }
-.tsk .sec__head{ margin-bottom:clamp(28px,5vh,56px); }
-/* the gap sets the scroll distance between arrivals. It is not part of any card's
-   margin box, so it does not change how long a card stays stuck. */
-.tsk__list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12vh; }
+.tsk{
+  --stack-top:clamp(96px,14vh,140px); --peek:22px; --hold:16vh; --n:3;
+  padding-bottom:clamp(40px,8vh,100px);
+  /* the menu jump lands with the heading just starting to slide under the
+     floating nav, which lifts the first card enough for the next to peek */
+  scroll-margin-top:40px;
+}
+.tsk .sec__head{ margin-bottom:clamp(16px,2vh,24px); }
+/* The gap sets the scroll distance between arrivals. It is kept short so the top
+   of the next card shows under the one you are reading: the stack says there is
+   more before anyone has to guess. It is not part of any card's margin box, so
+   it does not change how long a card stays stuck. */
+.tsk__list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:clamp(16px,2.5vh,28px); }
+/* --hold, the beat with all three settled, lives here after the last card
+   rather than in every card's margin: the stack still leaves as one piece,
+   but the cards no longer sit a hold apart from each other */
+.tsk__list::after{ content:""; flex:none; height:var(--hold); }
 /* the sticky element is the <li>; transforms go on the card inside it, so
    scaling a covered card never disturbs where it is stuck */
 .tsk__item{
@@ -1443,8 +1455,8 @@ em{ font-style:italic; color:var(--fg); }
   /* A sticky box stays stuck only while its margin box fits in the list. Earlier
      cards stick higher, so they get one extra peek of margin per card after them:
      every margin box then ends at the same line and the stack leaves as one piece,
-     offsets intact. --hold is the beat with all three settled. */
-  margin-bottom:calc(var(--hold) + (var(--n) - 1 - var(--i)) * var(--peek));
+     offsets intact. */
+  margin-bottom:calc((var(--n) - 1 - var(--i)) * var(--peek));
 }
 .tsk__card{
   position:relative; margin:0;
@@ -1491,6 +1503,7 @@ em{ font-style:italic; color:var(--fg); }
 .tsk__q--long p:last-child{ margin-bottom:0; }
 /* a card too tall for the stack (main.js decides): a plain column instead */
 .tsk__list--flat .tsk__item{ position:static; margin-bottom:0; }
+.tsk__list--flat::after{ display:none; }
 .tsk__who{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
 .tsk__av{
   flex:none; width:46px; height:46px; border-radius:50%;
@@ -1543,6 +1556,14 @@ em{ font-style:italic; color:var(--fg); }
   }
 }
 @keyframes tsk-rise{ from{ opacity:0; translate:0 80px; } }
+/* The cards after the first arrive already half there: their top edge is the
+   peek that says the stack goes on, so it cannot start out invisible. */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: view()){
+    .tsk__item:not(:first-child) .tsk__card{ animation-name:tsk-rise-next; }
+  }
+}
+@keyframes tsk-rise-next{ from{ opacity:.55; translate:0 8px; } }
 @keyframes tsk-line{ from{ opacity:0; translate:0 22px; } }
 
 @media (prefers-reduced-motion:reduce){
