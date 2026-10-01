@@ -112,7 +112,7 @@ const PROJECTS = [
 const TIMELINE = [
   { yr: '2023 to Now',  role: 'Senior Product Designer', co: 'Awesomic',        type: 'Design talent marketplace',
     /* the 1% line moved to the points below, where it read twice otherwise */
-    note: 'Awesomic can be described as a Trello with top talent embedded inside. Companies from all around the world create diverse tasks, and designers work to deliver the best possible results.',
+    note: 'Awesomic can be described as a Trello with top talent embedded inside. Companies from all around the world create diverse tasks, and designers work to deliver the best results.',
     points: [
       "Rebuilt a client's analytics dashboard around the metrics that drive decisions, and added a real-time sales and disputes monitor. Contributed to 20% more conversions, with users reporting stronger confidence and legibility.",
       'Partnered with engineering and QA through implementation so what shipped matched the approved designs.',
@@ -120,7 +120,7 @@ const TIMELINE = [
     ] },
   { yr: '2022 to 2023', role: 'Product Designer',        co: 'Soap Health',     type: 'Healthtech',
     /* the intake/risk/SOAP sentence moved to the points, where it read twice */
-    note: 'Aimed at a better patient history, and better medical decisions taken from it.',
+    note: 'Worked with the company\u2019s solutions to track risk assessments and patient history, helping reduce diagnostic errors and highlight potential conditions before the doctor\u2019s appointment.',
     points: [
       'Integrated patient intake, risk assessment and SOAP note recording into a single flow built to cut diagnostic mistakes.',
       'Paired with engineering through implementation so the clinical detail survived the build.'

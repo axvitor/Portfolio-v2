@@ -1860,6 +1860,13 @@ em{ font-style:italic; color:var(--fg); }
   color:var(--fg-3); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
 }
 .pstage__k span{ color:var(--accent); }
+/* a label that opens a sub-part (Final UI) rather than a stage */
+.pstage__k.pstage__k--sub{ margin:clamp(54px,8vh,92px) 0 10px; }
+.pstage__k--sub + .pstage__sub{ margin-top:0; }
+/* a lead-in word inside a stage paragraph (Price:, People:, The offer:) */
+.pstage p b{ color:var(--fg); font-weight:600; }
+/* a carousel panel with more than one paragraph */
+.fcar .fcar__detail + .fcar__detail{ margin-top:12px; }
 /* headlines are sentences here, not single words, so they get a little more
    leading than the one-word headings they replace. One measure for all of
    them, so the ones that wrap break at the same right edge; `pretty` rather

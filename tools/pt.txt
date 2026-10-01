@@ -121,7 +121,7 @@ EN: About me
 PT: Sobre mim
 EN: I'm Vitor Xavier, a Senior Product Designer. For ten years I've worked where clarity is the whole job: dashboards people make decisions from, screens read from a bus stop, and design systems other teams build on.
 PT: Sou o Vitor Xavier, product designer sênior. Há dez anos trabalho em projetos onde clareza é tudo: dashboards que embasam decisões, telas digitais em ponto de ônibus e design systems.
-EN: I design for everyone who has to use the product, so accessibility goes in from the start rather than as an audit at the end, and I judge the work by what it changes, not just how it looks. Based in Florianópolis, Brazil, I'm looking for a full-time role on a team where that matters.
+EN: I design for everyone who uses the product, which means accessibility is considered from the start rather than treated as an audit at the end. I measure my work by the impact it creates, not just by how it looks. Based in Florianópolis, Brazil, I’m looking for a full-time role on a team where these principles matter.
 PT: Crio designs para a maior gama de usuários que vai usar o produto, então a acessibilidade entra desde o começo, e não como uma checagem no final. Avalio o trabalho pelos dados, não só pela aparência. Moro em Florianópolis e busco uma vaga full-time.
 EN: Based
 PT: Onde estou
@@ -159,11 +159,11 @@ PT: Francisco Hames, OnSign, no LinkedIn (abre em nova aba)
 # ─── careers page ───
 EN: Careers Page — Creator marketplace hiring · Vitor Xavier
 PT: Página de Carreiras — Contratações para um marketplace de criadores · Vitor Xavier
-EN: Built for a creator marketplace scaling fast, ahead of a platform pivot — a case study by Vitor Xavier, senior product designer.
+EN: Built for a creator marketplace scaling quickly, just before a major platform pivot — a case study by Vitor Xavier, senior product designer.
 PT: Uma página de carreiras para um marketplace de criadores em plena expansão, às vésperas de um pivot — case de Vitor Xavier, product designer sênior.
 EN: Careers Page — Creator marketplace hiring
 PT: Página de Carreiras — Contratações para um marketplace de criadores
-EN: Built for a creator marketplace scaling fast, ahead of a platform pivot
+EN: Built for a creator marketplace scaling quickly, just before a major platform pivot.
 PT: Para um marketplace de criadores em plena expansão, às vésperas de um pivot
 EN: The StarBasis careers page open on a laptop: the headline "Working at StarBasis" with a Check Positions button, and job cards floating around it.
 PT: A página de carreiras da StarBasis aberta em um notebook: o título "Working at StarBasis", o botão Check Positions e cards de vagas flutuando em volta.
@@ -171,65 +171,65 @@ EN: Hero, Benefits, Team, and Open Positions
 PT: Hero, Benefícios, Time e Vagas
 EN: Responsive web, designed in Figma
 PT: Web responsiva, feita no Figma
-EN: A company mid-pivot, hiring the team to get it there
+EN: A company in transition, hiring for what came next
 PT: Uma empresa em pleno pivot, contratando o time que ia levá-la até lá
-EN: StarBasis is a name changed here for confidentiality. It ran a platform where fans booked paid experiences, calls and shout-outs with well-known people. After closing a new funding round, it was preparing to pivot into a broader platform for creators, adding payments and tools for webinars, communities and other online products.
+EN: StarBasis is a pseudonym used for confidentiality. The company ran a platform where fans could book paid experiences, calls, and shout-outs with well-known people. After securing a new funding round, it was preparing to expand into a broader creator platform with payments, webinars, communities, and other digital products.
 PT: StarBasis é um nome fictício, por confidencialidade. A empresa tinha uma plataforma em que fãs compravam experiências, chamadas e vídeos personalizados com famosos. Depois de fechar uma nova rodada de investimento, ela se preparava para virar uma plataforma mais completa para criadores, com pagamentos e ferramentas para webinars, comunidades e outros produtos digitais.
-EN: That shift needed new people, and the careers page was where they would meet the company first. It had to present a business in the middle of changing, make its culture legible, and reach candidates on whatever device they happened to open it on.
+EN: The company needed to grow its team, making the careers page an important first touchpoint for potential candidates. The page needed to communicate the company's culture, attract the right people, and work seamlessly across devices.
 PT: Essa virada exigia gente nova, e a página de carreiras seria o primeiro contato dessas pessoas com a empresa. Ela precisava apresentar um negócio em plena mudança, deixar a cultura clara e funcionar bem em qualquer dispositivo.
-EN: Study how others show a culture, then settle the structure before the surface
+EN: Research first, structure before visual design
 PT: Entender como outras empresas mostram sua cultura e resolver a estrutura antes do visual
-EN: I took the page through a full process in Figma, settling the structure at low fidelity before styling any of it.
+EN: I took the page through a full design process in Figma, focusing on the structure and content before moving into visual design.
 PT: Conduzi a página por um processo completo no Figma e validei o wireframe em baixa fidelidade antes de partir para o visual.
-EN: Studied how other companies in the space present their culture, their team and their benefits.
+EN: Studied how companies in the space presented their culture, teams, benefits, and open positions.
 PT: Analisei como outras empresas do setor apresentam cultura, time e benefícios.
 EN: Sketches
 PT: Rascunhos
-EN: Sketched different ways to show the team and the benefits before committing to one.
+EN: Explored different ways to present the team and benefits before settling on a direction.
 PT: Rascunhei formas diferentes de mostrar o time e os benefícios antes de escolher um caminho.
-EN: Wireframe
+EN: Wireframes
 PT: Wireframe
-EN: Settled the structure at low fidelity: hero, benefits, team and open positions.
+EN: Defined the page structure around four core sections: hero, benefits, team, and open positions.
 PT: Fechei a estrutura em baixa fidelidade: hero, benefícios, time e vagas.
-EN: Ran a round of validation on the structure before the final pass.
+EN: Validated the structure before moving into the final UI.
 PT: Validei a estrutura antes de partir para a versão final.
-EN: Designed every section at every breakpoint, fully responsive.
+EN: Designed every section across desktop, tablet, and mobile breakpoints.
 PT: Desenhei todas as seções em todos os breakpoints, 100% responsivas.
-EN: Four sections, each doing one job
+EN: Four sections, each with a clear purpose
 PT: Quatro seções, cada uma com um papel
-EN: I delivered the Figma file, covering every section at every breakpoint. Beyond the original brief, I also built a coded interactive version with Claude.
+EN: I delivered the complete Figma file, covering every section and breakpoint. Beyond the original brief, I also built a coded, interactive version with Claude.
 PT: Entreguei o arquivo do Figma com todas as seções em todos os breakpoints. E, além do que o briefing pedia, construí uma versão interativa em código com o Claude.
 EN: The StarBasis careers page: the headline "Working at StarBasis" over a Check Positions button, with role cards floating around it.
 PT: A página de carreiras da StarBasis: o título "Working at StarBasis" acima do botão Check Positions, com cards de vagas flutuando em volta.
-EN: Job cards drift with the cursor while a soft capsule shape breathes behind them.
+EN: Interactive job cards respond to the cursor, with a soft capsule shape creating movement in the background.
 PT: Os cards de vagas acompanham o cursor enquanto uma cápsula suave pulsa ao fundo.
 EN: The benefits section, headed "Freedom", explaining that nearly every role is remote, beside a circular photo of two people working outdoors.
 PT: A seção de benefícios, com o título "Freedom", explicando que quase todas as vagas são remotas, ao lado de uma foto redonda de duas pessoas trabalhando ao ar livre.
 EN: Benefits
 PT: Benefícios
-EN: One clear reason to join, framed inside a ringed portrait that reuses the hero's shape language.
+EN: A clear reason to join the company, presented alongside a portrait that carries the same visual language as the hero.
 PT: Um motivo claro para fazer parte do time, dentro de um retrato com anéis que retoma as formas do hero.
 EN: The team section, headed "Great Team", with staff portraits orbiting a central point on concentric rings.
 PT: A seção do time, com o título "Great Team", com fotos da equipe orbitando um ponto central em anéis concêntricos.
 EN: Team
 PT: Time
-EN: The whole team, orbiting. Every face rides its own ring at its own speed.
+EN: The team is presented through an orbital layout, with each person moving along their own ring.
 PT: O time inteiro em órbita, cada rosto no seu anel e no seu ritmo.
 EN: The Open Positions list, filtered by search and role, grouped under Engineering, Product, Growth, Operations and Other.
 PT: A lista de vagas, com busca e filtro por área, agrupada em Engineering, Product, Growth, Operations e Other.
 EN: Open Positions
 PT: Vagas
-EN: A real, filterable list. Search by title or narrow by department.
+EN: A functional list of available roles with search and department filters, making it easy for candidates to find relevant opportunities.
 PT: Uma lista com filtros. Dá para buscar pelo cargo ou filtrar por área.
-EN: The page did the job it was built for
+EN: A careers page that supported the company's next chapter
 PT: A página cumpriu o que prometia
-EN: The roles were filled, and the new product reached a full release.
+EN: The page helped the company attract and hire the people it needed for the pivot, and the new creator platform went on to launch.
 PT: As vagas foram preenchidas, e o novo produto foi lançado por completo.
-EN: The company hired the people it needed for the pivot, and the broader creator platform went on to launch in full.
+EN: The final experience combined clear information with a distinctive visual identity, giving candidates a better sense of the company, its people, and the opportunities available.
 PT: A empresa contratou quem precisava para o pivot, e a nova plataforma para criadores foi lançada por completo.
 EN: See it in motion
 PT: Veja funcionando
-EN: The parallax hero, the orbiting team, and a working search across the open roles, live.
+EN: Explore the live experience, including the interactive hero, orbiting team section, and searchable open positions.
 PT: O hero com parallax, o time em órbita e a busca de vagas funcionando de verdade.
 EN: View interactive build
 PT: Ver versão interativa
@@ -751,11 +751,11 @@ PT: Entreguei o design já com o escopo fechado para o time de engenharia, e o a
 # ─── Design system ───
 EN: Design System — Neutral, white-label ready · Vitor Xavier
 PT: Design System — Neutro e pronto para white label · Vitor Xavier
-EN: A neutral design system for a whole product, built to be re-skinned — a case study by Vitor Xavier, senior product designer.
+EN: A white-label system for the entire product, designed with future-proofing in mind — a case study by Vitor Xavier, senior product designer.
 PT: Um sistema white label para todo o produto, com future proof em mente — case de Vitor Xavier, product designer sênior.
 EN: Design System — Neutral, white-label ready
 PT: Design System — Neutro e pronto para white label
-EN: A neutral system for the whole product, built to be re-skinned
+EN: A white-label system for the entire product, designed with future-proofing in mind.
 PT: Um sistema white label para todo o produto, com future proof em mente
 EN: A Design System title card reading "Components, typography, colors and variables", over three overlapping sheets from the file: the icon set, the badges, and the checkbox states.
 PT: A capa do Design System, com o texto "Components, typography, colors and variables", sobre três páginas do arquivo: os ícones, os badges e os estados de checkbox.
@@ -789,8 +789,8 @@ EN: Made to be maintained
 PT: Feito para durar
 EN: I organised the file to be added to rather than admired.
 PT: Organizei o arquivo para ser usado e evoluído, não só admirado.
-EN: Every decision has one page to change it on. Tokens are named as scales (shadow-md to shadow-3xl, numbered color steps), so they survive a rebrand, and with color held as variables a new theme is a single edit.
-PT: Todos os elementos principais vivem em uma página só, onde é possível ser alterada. Os tokens têm nomes em escala (de shadow-md a shadow-3xl, tons de cor numerados), então sobrevivem a um rebrand, e, com as cores em variáveis, aplicar um tema novo é possível com uma única alteração.
+EN: Tokens are named as scales (shadow-md to shadow-3xl, numbered color steps), so they survive a rebrand, and with color held as variables a new theme is a single edit.
+PT: Os tokens têm nomes em escala (de shadow-md a shadow-3xl, tons de cor numerados), então sobrevivem a um rebrand, e, com as cores em variáveis, aplicar um tema novo é possível com uma única alteração.
 EN: Foundations, two themes, components, and screens built from them
 PT: Fundações, dois temas, componentes e as telas feitas com eles
 EN: Foundations
@@ -849,7 +849,7 @@ EN: Drag the handle. One screen, both themes: nothing moves but the palette.
 PT: Arraste o controle. Uma tela, dois temas: só a paleta muda.
 EN: Components
 PT: Componentes
-EN: I designed the components to cover the product's future cases as well as the screens that existed on the day.
+EN: I designed the components to support future use cases while also covering the screens and requirements that existed at the time.
 PT: Desenhei os componentes pensando também nos casos futuros do produto, e não só nas telas que já existiam.
 EN: Everything was fully responsive, and I specified interactions like drag and drop in the component rather than leaving them for engineering to interpret.
 PT: Tudo era 100% responsivo, e especifiquei interações como drag and drop no próprio componente, em vez de deixar para os devs interpretarem.
@@ -881,7 +881,7 @@ EN: Component sheets
 PT: Páginas de componentes
 EN: The system in use
 PT: O sistema na prática
-EN: I assembled the product’s screens from the library rather than drawing them beside it.
+EN: I assembled the product’s screens from the library rather than drawing them one by one on each screen.
 PT: Montei as telas do produto com a biblioteca, em vez de criá-las independentemente.
 EN: Stat cards, toggles, selects, tags, approve and reject buttons: every piece is a library component. The green change indicators are the success badge, so they agree with every other badge in the product.
 PT: Cards de indicadores, toggles, selects, tags, botões de aprovar e recusar: tudo é componente da biblioteca. Os indicadores verdes de variação são o badge de sucesso, então batem com todos os outros badges do produto.
@@ -895,7 +895,7 @@ EN: Requests. The same components again, carrying a completely different job.
 PT: Solicitações. Os mesmos componentes, com uma função completamente diferente.
 EN: It shipped, and outlived the product it was built for
 PT: Foi para produção, e influenciou a próxima etapa do produto para o qual foi criado
-EN: It was approved, implemented and ran live for several months. When the company pivoted, several of its ideas were carried straight into the new product’s design system. The engineers said the library helped most: building a new screen became assembly rather than reinvention. The client called the interface clean enough that nothing competed with the data, and the change night and day.
+EN: It was approved, implemented, and ran live for several months. When the company pivoted, several of its ideas were carried directly into the new product’s design system. The engineers said the component library made the biggest difference: building a new screen became an exercise in assembly rather than reinvention. The client described the interface as clean enough that nothing competed with the data, calling the difference “night and day.”
 PT: O sistema foi aprovado, implementado e ficou no ar por vários meses. Quando a empresa pivotou, várias das ideias foram direto para o design system do novo produto. Os devs disseram que a biblioteca foi o que mais ajudou: criar uma tela nova virou montar peças, e não reinventar a roda. O cliente disse que a interface ficou tão limpa que nada disputava atenção com os dados, e que a diferença foi da água para o vinho.
 
 # ─── MUNI ───

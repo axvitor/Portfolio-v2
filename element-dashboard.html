@@ -120,29 +120,31 @@
 <section class="pblock pstage" id="problem">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>01</span>Problem</div>
-    <h2 class="pblock__h" data-reveal>The numbers that mattered were buried</h2>
-    <p class="lead" data-reveal>Element is a name changed here for confidentiality. Its dashboard was dated, and the numbers that actually drove a user's decisions sat a few clicks deep, behind a flat wall of data.</p>
-    <p data-reveal>Activity on the platform was just as hard to follow. There was no way to watch sales and disputes as they happened, so users had to dig for them after the fact.</p>
+    <h2 class="pblock__h" data-reveal>The information users needed was buried</h2>
+    <p class="lead" data-reveal>Element is a name changed here for confidentiality. Its dashboard had become dated, and the information users relied on to make decisions was several clicks away, hidden inside a dense collection of data.</p>
+    <p data-reveal>The problem extended beyond the visual design. Users also had limited visibility into what was happening on the platform in real time. Sales and disputes could not be monitored as they happened, making it harder to react quickly to changes.</p>
+    <p data-reveal>The redesign needed to make the most important information immediately visible while giving users a clearer picture of what was happening across the platform.</p>
   </div>
 </section>
 <section class="pblock pstage" id="approach">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>02</span>Approach</div>
-    <h2 class="pblock__h" data-reveal>Find the numbers that drive decisions, and build around them</h2>
-    <p class="lead" data-reveal>I ran the redesign across 2024 and 2025, starting from the numbers rather than the layout.</p>
+    <h2 class="pblock__h" data-reveal>Identify what drives decisions before redesigning the interface</h2>
+    <p class="lead" data-reveal>I started by understanding which metrics users actually relied on and which information was adding noise without helping them make decisions.</p>
+    <p data-reveal>From there, I rebuilt the dashboard structure around those priorities and introduced a real time activity view to bring important events closer to the surface.</p>
 <ol class="pnum">
-      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Research</h3><p class="pnum__d">Worked out which numbers actually drove a decision, and which ones just filled space.</p></li>
-      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Wireframing</h3><p class="pnum__d">Rebuilt the structure around those numbers, with room for live activity.</p></li>
-      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Validation</h3><p class="pnum__d">Put the new layout in front of users before any of it got styled.</p></li>
-      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">Final UI</h3><p class="pnum__d">Locked the type, color, and chart styling into the screens that shipped.</p></li>
+      <li data-reveal><span class="pnum__n mono">01</span><h3 class="pnum__t">Research</h3><p class="pnum__d">Identified the metrics and information users relied on most when monitoring performance and making decisions.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h3 class="pnum__t">Wireframing</h3><p class="pnum__d">Reworked the dashboard hierarchy around those priorities, creating space for both key metrics and live platform activity.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h3 class="pnum__t">Validation</h3><p class="pnum__d">Tested the new structure with users before moving into visual design, using their feedback to refine the information hierarchy and layout.</p></li>
+      <li data-reveal><span class="pnum__n mono">04</span><h3 class="pnum__t">Final UI</h3><p class="pnum__d">Translated the validated structure into the final responsive interface, including the typography, color system, charts, cards, and responsive states.</p></li>
     </ol>
   </div>
 </section>
 <section class="pblock pstage" id="solution">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>03</span>Solution</div>
-    <h2 class="pblock__h" data-reveal>Decision numbers up front, and the platform live beside them</h2>
-    <p class="lead" data-reveal>I moved the numbers that drive decisions to the front, and added a real-time activity monitor beside them, so users can watch sales, disputes and other events as they happen.</p>
+    <h2 class="pblock__h" data-reveal>Key metrics up front, with live activity alongside them</h2>
+    <p class="lead" data-reveal>The redesigned dashboard brings the information users need most to the first level of the experience, while giving them a way to monitor activity as it happens.</p>
 <div class="fcar" data-fcar data-reveal>
       <div class="fcar__shots">
         <figure class="fcar__shot is-on" data-fcar-shot>
@@ -157,11 +159,14 @@
         <div class="fcar__copies">
         <div class="fcar__copy is-on" data-fcar-copy id="wcar-p1" role="tabpanel" aria-labelledby="wcar-t1" tabindex="0">
           <h3 class="fcar__finding">Overview</h3>
-          <p class="fcar__detail">Sidebar navigation, three stat cards that count up on load, and a year of revenue in one chart.</p>
+          <p class="fcar__detail">The main dashboard opens with three key metrics, followed by a revenue chart covering the selected period.</p>
+          <p class="fcar__detail">The hierarchy makes the most important information visible immediately instead of requiring users to navigate through multiple screens.</p>
+          <p class="fcar__detail">The stat cards also animate on load, giving the dashboard a sense of activity without distracting from the information itself.</p>
         </div>
         <div class="fcar__copy" data-fcar-copy id="wcar-p2" role="tabpanel" aria-labelledby="wcar-t2" tabindex="0">
           <h3 class="fcar__finding">Mobile</h3>
-          <p class="fcar__detail">Its own design, not a squeeze, with the period toggle and chart reflowed into one sheet.</p>
+          <p class="fcar__detail">The mobile experience was designed as its own layout rather than simply compressing the desktop interface.</p>
+          <p class="fcar__detail">The period selector and chart were reorganized into a single sheet, preserving the hierarchy while making the information easier to scan on a smaller screen.</p>
         </div>
         </div>
 
@@ -198,14 +203,14 @@
 <section class="pblock pstage" id="results">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>04</span>Results</div>
-    <h2 class="pblock__h" data-reveal>A measurable lift, and a verdict on day one</h2>
-    <p class="statement" data-reveal>Within the first day of going live, the clients were already calling it a huge upgrade.</p>
-    <p data-reveal>The response was immediate, and users reported stronger confidence in the numbers and found them easier to read.</p>
+    <h2 class="pblock__h" data-reveal>A clearer dashboard with measurable impact</h2>
+    <p class="lead" data-reveal>The redesigned dashboard received strong feedback immediately after launch. Within the first day, clients described it as a significant improvement, while users reported greater confidence in the information and found the new interface easier to understand.</p>
 <figure class="pshot" data-reveal>
         <img src="assets/projects/dashboard/feedback.png" alt="The client's own team, the first days after launch. Names blurred." loading="lazy" decoding="async" />
         <figcaption>The client's own team, the first days after launch. Names blurred.</figcaption>
       </figure>
-    <p class="stats__line" data-reveal>The redesign contributed to <b>20<em>%</em></b> more conversions.</p>
+    <p class="stats__line" data-reveal>The redesign contributed to a <b>20<em>%</em></b> increase in conversions.</p>
+    <p data-reveal>Beyond the visual refresh, the project changed how users interacted with the platform by putting decision making information where they could see it immediately and giving them better visibility into ongoing activity.</p>
   </div>
 </section>
 

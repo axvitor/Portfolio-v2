@@ -21,6 +21,11 @@ PAGES = ['index', 'careers-page', 'wcag-study', 'creatorhub', 'element-dashboard
          'digital-signage', 'gym-and-bet', 'design-system', 'muni']
 HTML_PAGES = {f'{p}.html' for p in PAGES}
 
+# Pages whose Portuguese is left exactly as it is: the English text was
+# rewritten and the Portuguese has not been (yet), so the build neither
+# regenerates nor checks them. Remove a page from here to translate it again.
+FROZEN = {'wcag-study', 'creatorhub', 'element-dashboard', 'digital-signage', 'gym-and-bet'}
+
 # names and labels that read the same in Portuguese
 KEEP = {
     'Vitor Xavier', 'LinkedIn', 'MUNI', 'OnSign', 'CreatorHub', 'Gym&Bet', 'UFSC',
@@ -152,6 +157,7 @@ def main():
     os.makedirs(os.path.join(ROOT, 'pt'), exist_ok=True)
     built = {}
     for p in PAGES:
+        if p in FROZEN: continue
         src = open(os.path.join(ROOT, f'{p}.html'), encoding='utf-8').read()
         built[p] = localise(translate_page(src, p), p)
     if missing:
@@ -160,7 +166,7 @@ def main():
         sys.exit(1)
     for p, doc in built.items():
         open(os.path.join(ROOT, 'pt', f'{p}.html'), 'w', encoding='utf-8').write(doc)
-    print(f'built {len(built)} pages into pt/')
+    print(f'built {len(built)} pages into pt/ (left as they are: {", ".join(sorted(FROZEN)) or "none"})')
 
 if __name__ == '__main__':
     main()
