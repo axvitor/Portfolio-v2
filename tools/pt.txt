@@ -121,7 +121,7 @@ EN: About me
 PT: Sobre mim
 EN: I'm Vitor Xavier, a Senior Product Designer. For ten years I've worked where clarity is the whole job: dashboards people make decisions from, screens read from a bus stop, and design systems other teams build on.
 PT: Sou o Vitor Xavier, product designer sênior. Há dez anos trabalho em projetos onde clareza é tudo: dashboards que embasam decisões, telas digitais em ponto de ônibus e design systems.
-EN: I design for everyone who uses the product, which means accessibility is considered from the start rather than treated as an audit at the end. I measure my work by the impact it creates, not just by how it looks. Based in Florianópolis, Brazil, I’m looking for a full-time role on a team where these principles matter.
+EN: I design for everyone who uses the product, so accessibility goes in from the start rather than being treated as an audit at the end. I judge my work by what it changes, not just by how it looks. Based in Florianópolis, Brazil, I'm looking for a full-time role on a team where that matters.
 PT: Crio designs para a maior gama de usuários que vai usar o produto, então a acessibilidade entra desde o começo, e não como uma checagem no final. Avalio o trabalho pelos dados, não só pela aparência. Moro em Florianópolis e busco uma vaga full-time.
 EN: Based
 PT: Onde estou
