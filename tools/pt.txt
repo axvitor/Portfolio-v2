@@ -1,0 +1,1005 @@
+# Portuguese (pt-BR) for every translatable string on the site.
+# Each entry is an "EN:" line and the "PT:" line that replaces it. The EN text
+# is matched on its whitespace-collapsed form, exactly as tools/build-pt.py
+# finds it in the English pages. Names, brands and the testimonial quotes are
+# not listed: they stay as written.
+#
+# Write the PT the way a Brazilian designer would write their own portfolio,
+# not as a word-for-word rendering of the English: "case", "product designer
+# sênior", "de ponta a ponta", short direct sentences.
+
+# ─── shared: nav, footer, closing CTA, case-study chrome ───
+EN: Skip to content
+PT: Pular para o conteúdo
+EN: Home
+PT: Início
+EN: Primary
+PT: Principal
+EN: About
+PT: Sobre
+EN: Experience
+PT: Experiência
+EN: Work
+PT: Projetos
+EN: Testimonials
+PT: Depoimentos
+EN: Open menu
+PT: Abrir menu
+EN: Contact
+PT: Contato
+EN: Have a company
+PT: Sua empresa está
+EN: worth skyrocketing?
+PT: pronta para decolar?
+EN: I'm open to full-time roles and looking to join a team where I can bring a decade of product design and make a meaningful impact. If you're hiring, I'd love to hear about what you're building.
+PT: Estou disponível para vagas full-time e procuro um time onde eu possa somar dez anos de experiência em product design e gerar impacto de verdade. Se vocês estão contratando, vou adorar saber o que estão construindo.
+EN: Connect on LinkedIn
+PT: Fale comigo no LinkedIn
+EN: © 2026 Vitor Xavier · Product Designer
+PT: © 2026 Vitor Xavier · Product Designer
+EN: Back to top
+PT: Voltar ao topo
+EN: All work
+PT: Todos os projetos
+EN: Careers Page
+PT: Página de Carreiras
+EN: Role
+PT: Atuação
+EN: Sole Product Designer, end to end
+PT: Único product designer, de ponta a ponta
+EN: Scope
+PT: Escopo
+EN: Timeline
+PT: Período
+EN: Platform
+PT: Plataforma
+EN: In this case study
+PT: Neste case
+EN: Problem
+PT: Problema
+EN: Approach
+PT: Abordagem
+EN: Solution
+PT: Solução
+EN: Results
+PT: Resultados
+EN: Research
+PT: Pesquisa
+EN: Validation
+PT: Validação
+EN: Final UI
+PT: UI final
+EN: Hero
+PT: Hero
+EN: Try it yourself
+PT: Teste você mesmo
+EN: Previous project
+PT: Projeto anterior
+EN: Design System
+PT: Design System
+EN: Next project
+PT: Próximo projeto
+EN: WCAG Study
+PT: Estudo WCAG
+EN: Scroll wireframes left
+PT: Ver wireframes anteriores
+EN: Scroll wireframes right
+PT: Ver próximos wireframes
+EN: Responsive web
+PT: Web responsiva
+EN: Wireframing
+PT: Wireframes
+EN: View live prototype
+PT: Ver protótipo
+EN: Element Dashboard
+PT: Dashboard Element
+EN: Digital Signage Interfaces
+PT: Interfaces para Sinalização Digital
+
+# ─── home ───
+EN: Vitor Xavier — Senior Product Designer
+PT: Vitor Xavier — Product Designer Sênior
+EN: Senior product designer in Florianópolis, Brazil. Ten years and 100+ projects across transit, healthcare, marketplaces and accessibility.
+PT: Product designer sênior em Florianópolis. Dez anos de carreira e mais de 100 projetos em mobilidade urbana, saúde, marketplaces e acessibilidade.
+EN: Ten years and 100+ projects across transit, healthcare, marketplaces and accessibility. Looking for a full-time role, and a team to build the next decade with.
+PT: Dez anos de carreira e mais de 100 projetos em mobilidade urbana, saúde, marketplaces e acessibilidade. Em busca de uma vaga full-time e de um time para construir a próxima década.
+EN: Senior product designer with ten years and 100+ projects across transit, healthcare, marketplaces and accessibility.
+PT: Product designer sênior com dez anos de carreira e mais de 100 projetos em mobilidade urbana, saúde, marketplaces e acessibilidade.
+EN: Preparing launch sequence
+PT: Preparando a decolagem
+EN: Let's
+PT: Vamos
+EN: skyrocket
+PT: decolar
+EN: your company.
+PT: sua empresa.
+EN: Senior product designer making complex products clear and accessible.
+PT: Product designer sênior. Torno produtos complexos mais claros e acessíveis.
+EN: Improving conversion & retention · Open to full‑time roles
+PT: Foco em conversão e retenção · Disponível para vagas full‑time
+EN: About me
+PT: Sobre mim
+EN: I'm Vitor Xavier, a Senior Product Designer. For ten years I've worked where clarity is the whole job: dashboards people make decisions from, screens read from a bus stop, and design systems other teams build on.
+PT: Sou o Vitor Xavier, product designer sênior. Há dez anos trabalho em projetos onde clareza é tudo: dashboards que embasam decisões, telas digitais em ponto de ônibus e design systems.
+EN: I design for everyone who has to use the product, so accessibility goes in from the start rather than as an audit at the end, and I judge the work by what it changes, not just how it looks. Based in Florianópolis, Brazil, I'm looking for a full-time role on a team where that matters.
+PT: Crio designs para a maior gama de usuários que vai usar o produto, então a acessibilidade entra desde o começo, e não como uma checagem no final. Avalio o trabalho pelos dados, não só pela aparência. Moro em Florianópolis e busco uma vaga full-time.
+EN: Based
+PT: Onde estou
+EN: Florianópolis, Brazil · Working globally
+PT: Florianópolis · Trabalho remoto para o mundo todo
+EN: Tools
+PT: Ferramentas
+EN: Figma · Photoshop · WCAG · AI Driven · a bit of code
+PT: Figma · Photoshop · WCAG · IA no dia a dia · um pouco de código
+EN: Off hours
+PT: Nas horas vagas
+EN: Photography · Surfing · Gym
+PT: Fotografia · Surf · Academia
+EN: The route so far.
+PT: O caminho até aqui.
+EN: projects for
+PT: projetos para
+EN: clients across
+PT: clientes em
+EN: years.
+PT: anos.
+EN: Selected work.
+PT: Projetos selecionados.
+EN: In their words.
+PT: O que dizem sobre mim.
+EN: Awesomic · 2023 – Now
+PT: Awesomic · 2023 – Atual
+EN: Jay J, PM at Commas (Awesomic), on LinkedIn (opens in a new tab)
+PT: Jay J, PM na Commas (Awesomic), no LinkedIn (abre em nova aba)
+EN: Cristiano Clesar, Checklist Fácil, on LinkedIn (opens in a new tab)
+PT: Cristiano Clesar, Checklist Fácil, no LinkedIn (abre em nova aba)
+EN: Francisco Hames, OnSign, on LinkedIn (opens in a new tab)
+PT: Francisco Hames, OnSign, no LinkedIn (abre em nova aba)
+
+# ─── careers page ───
+EN: Careers Page — Creator marketplace hiring · Vitor Xavier
+PT: Página de Carreiras — Contratações para um marketplace de criadores · Vitor Xavier
+EN: Built for a creator marketplace scaling fast, ahead of a platform pivot — a case study by Vitor Xavier, senior product designer.
+PT: Uma página de carreiras para um marketplace de criadores em plena expansão, às vésperas de um pivot — case de Vitor Xavier, product designer sênior.
+EN: Careers Page — Creator marketplace hiring
+PT: Página de Carreiras — Contratações para um marketplace de criadores
+EN: Built for a creator marketplace scaling fast, ahead of a platform pivot
+PT: Para um marketplace de criadores em plena expansão, às vésperas de um pivot
+EN: The StarBasis careers page open on a laptop: the headline "Working at StarBasis" with a Check Positions button, and job cards floating around it.
+PT: A página de carreiras da StarBasis aberta em um notebook: o título "Working at StarBasis", o botão Check Positions e cards de vagas flutuando em volta.
+EN: Hero, Benefits, Team, and Open Positions
+PT: Hero, Benefícios, Time e Vagas
+EN: Responsive web, designed in Figma
+PT: Web responsiva, feita no Figma
+EN: A company mid-pivot, hiring the team to get it there
+PT: Uma empresa em pleno pivot, contratando o time que ia levá-la até lá
+EN: StarBasis is a name changed here for confidentiality. It ran a platform where fans booked paid experiences, calls and shout-outs with well-known people. After closing a new funding round, it was preparing to pivot into a broader platform for creators, adding payments and tools for webinars, communities and other online products.
+PT: StarBasis é um nome fictício, por confidencialidade. A empresa tinha uma plataforma em que fãs compravam experiências, chamadas e vídeos personalizados com famosos. Depois de fechar uma nova rodada de investimento, ela se preparava para virar uma plataforma mais completa para criadores, com pagamentos e ferramentas para webinars, comunidades e outros produtos digitais.
+EN: That shift needed new people, and the careers page was where they would meet the company first. It had to present a business in the middle of changing, make its culture legible, and reach candidates on whatever device they happened to open it on.
+PT: Essa virada exigia gente nova, e a página de carreiras seria o primeiro contato dessas pessoas com a empresa. Ela precisava apresentar um negócio em plena mudança, deixar a cultura clara e funcionar bem em qualquer dispositivo.
+EN: Study how others show a culture, then settle the structure before the surface
+PT: Entender como outras empresas mostram sua cultura e resolver a estrutura antes do visual
+EN: I took the page through a full process in Figma, settling the structure at low fidelity before styling any of it.
+PT: Conduzi a página por um processo completo no Figma e validei o wireframe em baixa fidelidade antes de partir para o visual.
+EN: Studied how other companies in the space present their culture, their team and their benefits.
+PT: Analisei como outras empresas do setor apresentam cultura, time e benefícios.
+EN: Sketches
+PT: Rascunhos
+EN: Sketched different ways to show the team and the benefits before committing to one.
+PT: Rascunhei formas diferentes de mostrar o time e os benefícios antes de escolher um caminho.
+EN: Wireframe
+PT: Wireframe
+EN: Settled the structure at low fidelity: hero, benefits, team and open positions.
+PT: Fechei a estrutura em baixa fidelidade: hero, benefícios, time e vagas.
+EN: Ran a round of validation on the structure before the final pass.
+PT: Validei a estrutura antes de partir para a versão final.
+EN: Designed every section at every breakpoint, fully responsive.
+PT: Desenhei todas as seções em todos os breakpoints, 100% responsivas.
+EN: Four sections, each doing one job
+PT: Quatro seções, cada uma com um papel
+EN: I delivered the Figma file, covering every section at every breakpoint. Beyond the original brief, I also built a coded interactive version with Claude.
+PT: Entreguei o arquivo do Figma com todas as seções em todos os breakpoints. E, além do que o briefing pedia, construí uma versão interativa em código com o Claude.
+EN: The StarBasis careers page: the headline "Working at StarBasis" over a Check Positions button, with role cards floating around it.
+PT: A página de carreiras da StarBasis: o título "Working at StarBasis" acima do botão Check Positions, com cards de vagas flutuando em volta.
+EN: Job cards drift with the cursor while a soft capsule shape breathes behind them.
+PT: Os cards de vagas acompanham o cursor enquanto uma cápsula suave pulsa ao fundo.
+EN: The benefits section, headed "Freedom", explaining that nearly every role is remote, beside a circular photo of two people working outdoors.
+PT: A seção de benefícios, com o título "Freedom", explicando que quase todas as vagas são remotas, ao lado de uma foto redonda de duas pessoas trabalhando ao ar livre.
+EN: Benefits
+PT: Benefícios
+EN: One clear reason to join, framed inside a ringed portrait that reuses the hero's shape language.
+PT: Um motivo claro para fazer parte do time, dentro de um retrato com anéis que retoma as formas do hero.
+EN: The team section, headed "Great Team", with staff portraits orbiting a central point on concentric rings.
+PT: A seção do time, com o título "Great Team", com fotos da equipe orbitando um ponto central em anéis concêntricos.
+EN: Team
+PT: Time
+EN: The whole team, orbiting. Every face rides its own ring at its own speed.
+PT: O time inteiro em órbita, cada rosto no seu anel e no seu ritmo.
+EN: The Open Positions list, filtered by search and role, grouped under Engineering, Product, Growth, Operations and Other.
+PT: A lista de vagas, com busca e filtro por área, agrupada em Engineering, Product, Growth, Operations e Other.
+EN: Open Positions
+PT: Vagas
+EN: A real, filterable list. Search by title or narrow by department.
+PT: Uma lista com filtros. Dá para buscar pelo cargo ou filtrar por área.
+EN: The page did the job it was built for
+PT: A página cumpriu o que prometia
+EN: The roles were filled, and the new product reached a full release.
+PT: As vagas foram preenchidas, e o novo produto foi lançado por completo.
+EN: The company hired the people it needed for the pivot, and the broader creator platform went on to launch in full.
+PT: A empresa contratou quem precisava para o pivot, e a nova plataforma para criadores foi lançada por completo.
+EN: See it in motion
+PT: Veja funcionando
+EN: The parallax hero, the orbiting team, and a working search across the open roles, live.
+PT: O hero com parallax, o time em órbita e a busca de vagas funcionando de verdade.
+EN: View interactive build
+PT: Ver versão interativa
+
+# ─── WCAG study ───
+EN: WCAG Study — Accessible ride-app redesign · Vitor Xavier
+PT: Estudo WCAG — Redesign acessível de app de mobilidade · Vitor Xavier
+EN: A WCAG compliant redesign of Uber, for senior users — a case study by Vitor Xavier, senior product designer.
+PT: Um redesign do Uber seguindo a WCAG, pensado para pessoas idosas — case de Vitor Xavier, product designer sênior.
+EN: WCAG Study — Accessible ride-app redesign
+PT: Estudo WCAG — Redesign acessível de app de mobilidade
+EN: A WCAG compliant redesign of Uber, for senior users
+PT: Um redesign do Uber seguindo a WCAG, pensado para pessoas idosas
+EN: Three phones angled side by side, each showing a screen of the redesigned, WCAG-compliant ride-booking flow.
+PT: Três celulares lado a lado, cada um com uma tela do novo fluxo de pedido de corrida, redesenhado seguindo a WCAG.
+EN: UX Researcher & Designer, solo
+PT: UX Researcher e Designer, projeto solo
+EN: Focus
+PT: Foco
+EN: WCAG 2.1 accessibility audit
+PT: Auditoria de acessibilidade WCAG 2.1
+EN: Mobile app · Uber
+PT: App mobile · Uber
+EN: An app that works for most riders, and quietly fails older ones
+PT: Um app que funciona para a maioria, mas deixa os mais idosos para trás
+EN: In a self-initiated study, I evaluated the Uber app against WCAG, the international accessibility standard, with one audience in mind: senior users.
+PT: Num estudo, avaliei o app do Uber com base na WCAG, o padrão internacional de acessibilidade, pensando em um público específico: pessoas idosas.
+EN: The findings added up to a clear pattern. Bad legibility. Unclear actions. Arrival times that aren't clear. No obvious way to change a payment method. Small frictions that affect every rider, and affect senior riders sooner.
+PT: Os problemas seguiam um padrão claro. Textos difíceis de ler. Ações confusas. Tempo de chegada pouco claro. Nenhuma forma óbvia de trocar o pagamento. Pequenos atritos que afetam todo mundo, mas principalmente os mais idosos.
+EN: Uber's home screen, annotated: “Lack of focus on the action to call an Uber.”
+PT: A tela inicial do Uber, com a anotação: “Falta de foco na ação de chamar um Uber.”
+EN: The ride selection screen, annotated: bad legibility, unclear actions, no explanation of the ride types, unclear arrival time, and no sign the payment method can be changed.
+PT: A tela de escolha da corrida, com as anotações: textos difíceis de ler, ações confusas, nenhuma explicação sobre os tipos de corrida, tempo de chegada pouco claro e nenhum sinal de que dá para trocar o pagamento.
+EN: The account menu at a large system font size, annotated: “The app does not work properly with a bigger font.”
+PT: O menu da conta com a fonte do sistema aumentada, com a anotação: “O app não funciona direito com a fonte maior.”
+EN: The address search screen, annotated: the “from” field arrives pre-filled, and the results list fails the contrast ratio.
+PT: A tela de busca de endereço, com as anotações: o campo de origem já vem preenchido, e a lista de resultados não tem o contraste mínimo.
+EN: Lack of focus on the action to call a ride.
+PT: Falta foco na ação de chamar uma corrida.
+EN: The primary action sits below a promotional banner and four category tiles, so the thing most riders opened the app to do is the hardest thing to find.
+PT: A ação principal fica abaixo de um banner promocional e de quatro atalhos, então justamente o que a maioria procura ao abrir o app está mais difícil de achar.
+EN: Ride selection
+PT: Escolha da corrida
+EN: Bad legibility, and actions that aren’t clear.
+PT: Textos difíceis de ler e ações confusas.
+EN: Map labels are hard to read, the ride tiers carry no explanation of what separates them, the arrival time is ambiguous, and nothing signals that the payment method can be changed.
+PT: Os nomes no mapa são difíceis de ler, nada explica a diferença entre as categorias, o tempo de chegada é ambíguo e nada indica que dá para trocar o pagamento.
+EN: Account menu
+PT: Menu da conta
+EN: The app doesn’t work properly with a bigger font.
+PT: O app não funciona direito com a fonte maior.
+EN: At the system font sizes a senior user is most likely to have set, labels truncate mid-word and the panel collides with the content behind it.
+PT: Com a fonte no tamanho que uma pessoa idosa costuma usar, os textos são cortados no meio da palavra e o painel se sobrepõe ao conteúdo.
+EN: Address search
+PT: Busca de endereço
+EN: The “from” field arrives already filled in.
+PT: O campo de origem já vem preenchido.
+EN: Pre-filling the origin moves faster than a senior rider expects, and the list below it falls under the contrast ratio WCAG asks for.
+PT: Preencher a origem sozinho vai rápido demais para uma pessoa idosa, e a lista logo abaixo fica com contraste abaixo do que a WCAG pede.
+EN: Findings
+PT: Problemas encontrados
+EN: No focus on the primary action
+PT: Ação principal sem destaque
+EN: Legibility, actions, payment
+PT: Leitura, ações e pagamento
+EN: Breaks at a bigger font
+PT: Quebra com fonte maior
+EN: Pre-filled field, low contrast
+PT: Campo pré-preenchido, contraste baixo
+EN: Previous finding
+PT: Problema anterior
+EN: Next finding
+PT: Próximo problema
+EN: Use WCAG as the yardstick, and design to its criteria
+PT: Usar a WCAG como referência e planejar as telas a partir dos seus critérios
+EN: Three criteria from WCAG, the W3C's accessibility guidelines, shaped the redesign directly. I then rebuilt the request flow as wireframes, one step per screen.
+PT: Três critérios da WCAG, as diretrizes de acessibilidade do W3C, guiaram o redesign. A partir deles, refiz o fluxo de pedido em wireframes, uma etapa por tela.
+EN: Contrast (minimum)
+PT: Contraste mínimo
+EN: I checked text and interactive elements against WCAG's minimum contrast ratio, so content stays legible for users with low vision.
+PT: Conferi o contraste de textos e elementos interativos com o mínimo da WCAG, para que tudo continue legível para quem tem baixa visão.
+EN: Identify input purpose
+PT: Propósito dos campos
+EN: I labeled form fields so their purpose can be determined programmatically, helping autofill and assistive technology do their job.
+PT: Identifiquei os campos dos formulários de um jeito que leitores de tela entendam para que servem, o que ajuda o preenchimento automático e as tecnologias assistivas.
+EN: Headings & labels
+PT: Títulos e rótulos
+EN: I wrote headings and labels that describe their topic or purpose clearly, so screen reader users can navigate without guessing.
+PT: Escrevi títulos e rótulos que dizem com clareza do que se trata cada parte, para quem usa leitor de tela poder navegar sem precisar adivinhar.
+EN: Wireframes of the redesigned flow — scrollable
+PT: Wireframes do novo fluxo (role para ver todos)
+EN: Wireframe of the home screen: a map above a single primary “Pedir Uber” button, with delivery, parcel and grocery tiles demoted below it.
+PT: Wireframe da tela inicial: um mapa acima de um único botão principal, “Pedir Uber”, com os atalhos de entregas, envios e mercado em segundo plano logo abaixo.
+EN: Home: one primary action
+PT: Início: uma ação principal
+EN: Wireframe of the origin picker, headed “Onde estamos?”, with a search field and a list of saved places.
+PT: Wireframe da escolha de origem, com o título “Onde estamos?”, um campo de busca e uma lista de lugares salvos.
+EN: Origin: where we are
+PT: Origem: onde estamos
+EN: Wireframe of the destination picker, headed “Para onde vamos?”, with tabs for suggestions, recent trips and favourites.
+PT: Wireframe da escolha de destino, com o título “Para onde vamos?” e abas de sugestões, viagens recentes e favoritos.
+EN: Destination: where we’re going
+PT: Destino: para onde vamos
+EN: Wireframe of the ride selection, headed “Selecione a modalidade”, listing each ride type with its arrival time, price and the payment method.
+PT: Wireframe da escolha da corrida, com o título “Selecione a modalidade”, listando cada tipo de corrida com tempo de chegada, preço e forma de pagamento.
+EN: Ride type, time and payment
+PT: Tipo de corrida, tempo e pagamento
+EN: Wireframe of the confirmation screen, summarising origin, destination and total, with a way to correct the details.
+PT: Wireframe da tela de confirmação, com origem, destino e valor total, e a opção de corrigir os dados.
+EN: Confirm, or go back and correct
+PT: Confirmar, ou voltar e corrigir
+EN: Larger targets, plainer words, and nothing that breaks at a bigger font
+PT: Botões maiores, textos mais simples e nada que quebre com a fonte maior
+EN: I carried bigger touch targets, clearer primary actions and larger type through the request flow, the origin and destination pickers, and ride confirmation.
+PT: Trouxe áreas de toque maiores, ações principais mais claras e textos maiores para todo o fluxo: pedido, escolha de origem e destino e confirmação da corrida.
+EN: The current home screen beside the suggestion, annotated: “Main focus in requesting a Uber” and “Bigger touch area”.
+PT: A tela inicial atual ao lado da proposta, com as anotações: “Foco principal em pedir um Uber” e “Área de toque maior”.
+EN: The current account menu beside the suggested destination screen, annotated: “Better behavior with bigger fonts”.
+PT: O menu da conta atual ao lado da proposta para a tela de destino, com a anotação: “Funciona melhor com fontes maiores”.
+EN: The current ride selection beside the suggestion, annotated: better legibility, the expected action described with a helper, clearer information, a highlighted section, and a clear way back.
+PT: A escolha da corrida atual ao lado da proposta, com as anotações: leitura mais fácil, a ação esperada explicada em um texto de apoio, informações mais claras, uma seção em destaque e um jeito claro de voltar.
+EN: The current destination search beside the suggestion, annotated: “Clear Steps”, “Better contrast (4.5:1)” and “Clear option to go back”.
+PT: A busca de destino atual ao lado da proposta, com as anotações: “Etapas claras”, “Contraste melhor (4.5:1)” e “Opção clara de voltar”.
+EN: The current origin picker beside the suggestion, annotated: “Clear Steps”, “Better contrast (4.5:1)” and “Clear option to get back”.
+PT: A escolha de origem atual ao lado da proposta, com as anotações: “Etapas claras”, “Contraste melhor (4.5:1)” e “Opção clara de voltar”.
+EN: One primary action, and a bigger target.
+PT: Uma ação principal, com área de toque maior.
+EN: Requesting a ride becomes the largest thing on the screen, and the remaining services drop to secondary tiles with more room to hit.
+PT: Pedir uma corrida vira o maior destaque da tela, e os outros serviços passam para atalhos secundários, com mais espaço para o toque.
+EN: Destination
+PT: Destino
+EN: Behaves properly at a bigger font.
+PT: Funciona bem com a fonte maior.
+EN: Labels wrap instead of truncating, so the screen still works at the system font sizes a senior rider is most likely to have set.
+PT: Os textos quebram linha em vez de serem cortados, e a tela continua funcionando no tamanho de fonte que uma pessoa idosa costuma usar.
+EN: Better legibility, and the action spelled out.
+PT: Leitura mais fácil e a ação bem explicada.
+EN: Arrival is stated in plain words with a helper beside it, prices and times sit clear of one another, the payment method is given its own section, and there is an obvious way back.
+PT: O tempo de chegada aparece em linguagem simples, com um texto de apoio ao lado, preço e tempo ficam bem separados, o pagamento ganha uma seção própria e sempre há um jeito claro de voltar.
+EN: Destination search
+PT: Busca de destino
+EN: Contrast raised to 4.5:1.
+PT: Contraste aumentado para 4.5:1.
+EN: The results list meets the minimum contrast ratio, the step names itself at the top, and going back is a visible option rather than a guess.
+PT: A lista de resultados atinge o contraste mínimo, a etapa de escolher destino aparece identificada no topo e voltar é uma opção visível, não um chute.
+EN: Origin picker
+PT: Escolha de origem
+EN: The step names itself, and nothing arrives pre-filled.
+PT: A etapa diz onde você está, e nada vem pré-preenchido.
+EN: “Where we are?” asks the question outright and the rider chooses from the list, at the same 4.5:1 contrast, with the way back always in view.
+PT: “Onde estamos?” faz a pergunta direta e sem dúvidas e a pessoa escolhe na lista, com o mesmo contraste de 4.5:1 e a opção de voltar sempre à vista.
+EN: Proposed changes
+PT: Mudanças propostas
+EN: Focus and touch area
+PT: Foco e área de toque
+EN: Holds up at a bigger font
+PT: Funciona com fonte maior
+EN: Legibility and clearer actions
+PT: Leitura e ações mais claras
+EN: Contrast and clear steps
+PT: Contraste e etapas claras
+EN: Named step, no pre-fill
+PT: Etapa identificada, sem pré-preenchimento
+EN: Previous change
+PT: Mudança anterior
+EN: Next change
+PT: Próxima mudança
+EN: The final screens I designed, end to end.
+PT: As telas finais que desenhei, de ponta a ponta.
+EN: The shipped screens — scrollable
+PT: As telas finais (role para ver todas)
+EN: The shipped home screen: a map above a single, full-width request button.
+PT: A tela inicial final: um mapa acima de um único botão de pedido ocupando toda a largura.
+EN: Home: request flow
+PT: Início: fluxo de pedido
+EN: The shipped origin picker, with the step named at the top and a list of nearby places.
+PT: A escolha de origem final, com a etapa identificada no topo e uma lista de lugares próximos.
+EN: The shipped destination picker, with suggestions, recent trips and favourites.
+PT: A escolha de destino final, com sugestões, viagens recentes e favoritos.
+EN: Destination picker
+PT: Escolha de destino
+EN: The shipped confirmation screen, summarising the ride, the price and the payment method.
+PT: A tela de confirmação final, com o resumo da corrida, o preço e a forma de pagamento.
+EN: Ride confirmation
+PT: Confirmação da corrida
+EN: Scroll screens left
+PT: Ver telas anteriores
+EN: Scroll screens right
+PT: Ver próximas telas
+
+# ─── CreatorHub ───
+EN: CreatorHub — Creator experience marketplace · Vitor Xavier
+PT: CreatorHub — Marketplace de experiências com criadores · Vitor Xavier
+EN: A marketplace built to feel cleaner, and worth trusting with a booking — a case study by Vitor Xavier, senior product designer.
+PT: Um marketplace elegante, que passa confiança — case de Vitor Xavier, product designer sênior.
+EN: CreatorHub — Creator experience marketplace
+PT: CreatorHub — Marketplace de experiências com criadores
+EN: A marketplace built to feel cleaner, and worth trusting with a booking
+PT: Um marketplace elegante, que passa confiança
+EN: The CreatorHub marketplace open on a laptop: a featured listing for an Instagram followback by Marcus Vale, with subject categories below it.
+PT: O marketplace CreatorHub aberto em um notebook: um destaque para um followback no Instagram com Marcus Vale e as categorias logo abaixo.
+EN: Marketplace UI
+PT: UI de marketplace
+EN: A marketplace asking for trust it hadn't earned yet
+PT: Um marketplace pedindo uma confiança que ainda não tinha conquistado
+EN: CreatorHub is a name changed here for confidentiality. The company sold experiences with well-known people, alongside courses, webinars and other digital products, and the marketplace was where all of it met the customer. In 2025, it needed to work harder.
+PT: CreatorHub é um nome fictício, por confidencialidade. A empresa vendia experiências com famosos, além de cursos, webinars e outros produtos digitais, e era no marketplace que tudo isso chegava ao cliente. Em 2025, ele precisava performar melhor.
+EN: Trust was the problem underneath the visual one. People were being asked to pay real money for time with someone they only knew from a screen. My work aimed at three things: a better experience end to end, a stronger conversion rate, and a marketplace that felt like the company behind it could be relied on.
+PT: Por trás do problema visual, havia um problema de confiança. As pessoas precisavam pagar caro por um tempo com alguém que só conheciam pela tela. Meu trabalho tinha três objetivos: uma experiência melhor de ponta a ponta, mais conversão e um marketplace que passasse a sensação de que dava para confiar na empresa.
+EN: Learn what buyers need before they pay, and test it before it looks finished
+PT: Entender o que o comprador precisa antes de pagar, e teste antes de beleza
+EN: My research pointed to three principles: the price up front, real photography rather than stock, and a clear read on who a creator is and what you actually get. I validated the structure with the company and its users before styling anything.
+PT: A pesquisa apontou três princípios: preço à vista logo de cara, fotos reais em vez de banco de imagens, e deixar claro quem é o criador e o que você leva. Validei a estrutura com a empresa e com os usuários antes de partir para o visual.
+EN: Studied how other marketplaces present this kind of offer, and what buyers expect before they part with money.
+PT: Analisei como outros marketplaces apresentam esse tipo de oferta e o que o comprador espera antes de pôr a mão no bolso.
+EN: Laid out the structure at low fidelity, so the ideas could be argued about before anything looked finished.
+PT: Montei a estrutura em baixa fidelidade, para discutir as ideias antes de investir mais tempo em uma ideia errada.
+EN: Took the wireframes to both the company and its users, and changed what the feedback said to change.
+PT: Levei os wireframes para a empresa e para os usuários, e ajustei o que os feedbacks indicaram.
+EN: Built the approved structure out into the finished interface, type, imagery and all.
+PT: Transformei a estrutura aprovada na interface final, com tipografia, imagens e tudo mais.
+EN: Five sections, built around the price, the person and the proof
+PT: Cinco seções construídas em torno do preço, da pessoa e da prova social
+EN: I designed every section to make the offer legible before the click: who the creator is, what you get, and what it costs.
+PT: Desenhei cada seção para deixar a oferta clara antes do clique: quem é o criador, o que você leva e quanto custa.
+EN: The CreatorHub home page: a featured listing for an Instagram followback by Marcus Vale at $200, over a search field and category filters.
+PT: A home do CreatorHub: um destaque para um followback no Instagram com Marcus Vale por $200, acima da busca e dos filtros de categoria.
+EN: A featured experience, priced up front, with real photography.
+PT: Uma experiência em destaque, com preço à vista e foto real.
+EN: The Latest releases row: four course cards with cover art, creator, rating and price, from $45 to $120.
+PT: A fileira de lançamentos: quatro cards de cursos com capa, criador, nota e preço, de $45 a $120.
+EN: Latest Releases
+PT: Lançamentos
+EN: Fresh drops from creators a member already follows, rated and priced before the click.
+PT: Novidades de criadores que a pessoa já segue, com nota e preço antes do clique.
+EN: The Browse by craft section: a bento of five category tiles — visual arts, future tech, interface design, 3D modeling — beside an Explore all categories panel.
+PT: A seção Explore por área: um grid bento com cinco categorias, entre elas artes visuais, tecnologia, design de interfaces e modelagem 3D, ao lado de um painel para ver todas as categorias.
+EN: Browse by Craft
+PT: Explore por Área
+EN: Five rooms, one door each. A dark bento grid built for browsing by feeling.
+PT: Cinco opções, uma porta para cada. Um grid bento escuro para explorar sem pressa.
+EN: The Exclusive experiences row: four bookable sessions with a creator, from a $75 workshop seat to a $1,200 photo walk.
+PT: A fileira de experiências exclusivas: quatro sessões com criadores para reservar, de uma vaga em workshop por $75 a um passeio fotográfico por $1,200.
+EN: Exclusive Experiences
+PT: Experiências Exclusivas
+EN: Private calls, code reviews, and small group workshops, each with a real seat price.
+PT: Cards individuais, revisões de estrutura e experiências, todos com o preço real da vaga.
+EN: The Top three this month leaderboard, ranking creators by bookings alongside their portraits.
+PT: O ranking dos três destaques do mês, ordenando os criadores por reservas, com suas fotos.
+EN: Top Creators
+PT: Top Criadores
+EN: A leaderboard ranked by bookings, repeat buyers, and the reviews people actually wrote.
+PT: Um ranking por reservas, clientes recorrentes e avaliações escritas por quem comprou de verdade.
+EN: Validated, approved, and built out in full
+PT: Validado, aprovado e construído por completo
+EN: The final design landed well with the company's team.
+PT: O design final foi muito bem recebido pelo time da empresa.
+EN: After validating it with the company and its users, I built the approved structure out in full.
+PT: Depois de validar com a empresa e com os usuários, construí a estrutura aprovada por completo.
+EN: Browse the marketplace
+PT: Navegue pelo marketplace
+EN: The hero carousel, the category rails, and the creator leaderboard, live and scrollable.
+PT: O carrossel do hero, as fileiras de categorias e o ranking de criadores, funcionando de verdade.
+
+# ─── Element dashboard ───
+EN: Element Dashboard — SaaS dashboard redesign · Vitor Xavier
+PT: Dashboard Element — Redesign de dashboard SaaS · Vitor Xavier
+EN: A dashboard refresh built around the numbers users actually needed — a case study by Vitor Xavier, senior product designer.
+PT: Um dashboard redesenhado em torno dos números que os usuários realmente precisavam — case de Vitor Xavier, product designer sênior.
+EN: Element Dashboard — SaaS dashboard redesign
+PT: Dashboard Element — Redesign de dashboard SaaS
+EN: A dashboard refresh built around the numbers users actually needed
+PT: Um dashboard redesenhado em torno dos números que os usuários realmente precisavam
+EN: The Element dashboard open on a laptop: sidebar navigation, three stat cards, a year of revenue as a bar chart, and the overview panel below.
+PT: O dashboard Element aberto em um notebook: menu lateral, três cards de indicadores, a receita do ano em um gráfico de barras e o painel de visão geral logo abaixo.
+EN: Dashboard redesign
+PT: Redesign de dashboard
+EN: 2024 to 2025
+PT: 2024 a 2025
+EN: The numbers that mattered were buried
+PT: Os números que importavam estavam escondidos
+EN: Element is a name changed here for confidentiality. Its dashboard was dated, and the numbers that actually drove a user's decisions sat a few clicks deep, behind a flat wall of data.
+PT: Element é um nome fictício, por confidencialidade. O dashboard estava datado, e os números que realmente pesavam nas decisões ficavam a vários cliques de distância, perdidos em um mar de dados.
+EN: Activity on the platform was just as hard to follow. There was no way to watch sales and disputes as they happened, so users had to dig for them after the fact.
+PT: Acompanhar o que acontecia na plataforma também era difícil. Não dava para ver vendas e disputas em tempo real, então os usuários precisavam garimpar essas informações depois.
+EN: Find the numbers that drive decisions, and build around them
+PT: Descobrir os números que movem as decisões e construir tudo em volta deles
+EN: I ran the redesign across 2024 and 2025, starting from the numbers rather than the layout.
+PT: Conduzi o redesign entre 2024 e 2025, começando pelos números, e não pelo layout.
+EN: Worked out which numbers actually drove a decision, and which ones just filled space.
+PT: Mapeei quais números levavam de fato a uma decisão e quais só ocupavam espaço.
+EN: Rebuilt the structure around those numbers, with room for live activity.
+PT: Reestruturei a tela em torno desses números, com espaço para a atividade em tempo real.
+EN: Put the new layout in front of users before any of it got styled.
+PT: Testei o novo layout com usuários antes de partir para o visual.
+EN: Locked the type, color, and chart styling into the screens that shipped.
+PT: Fechei tipografia, cores e estilo dos gráficos nas telas que foram para produção.
+EN: Decision numbers up front, and the platform live beside them
+PT: Os números que importam em destaque, e a plataforma em tempo real ao lado
+EN: I moved the numbers that drive decisions to the front, and added a real-time activity monitor beside them, so users can watch sales, disputes and other events as they happen.
+PT: Trouxe para o primeiro plano os números que movem as decisões e criei, ao lado deles, um monitor de atividade em tempo real, para os usuários acompanharem vendas, disputas e outros eventos na hora em que acontecem.
+EN: The redesigned overview screen: sidebar navigation, three stat cards, and a year of revenue as a bar chart.
+PT: A nova tela de visão geral: menu lateral, três cards de indicadores e a receita do ano em um gráfico de barras.
+EN: The mobile layout, with the period toggle and chart reflowed into a single sheet.
+PT: O layout mobile, com o seletor de período e o gráfico reorganizados em uma única tela.
+EN: Overview
+PT: Visão geral
+EN: Sidebar navigation, three stat cards that count up on load, and a year of revenue in one chart.
+PT: Menu lateral, três cards de indicadores com contagem animada e a receita do ano em um único gráfico.
+EN: Mobile
+PT: Mobile
+EN: Its own design, not a squeeze, with the period toggle and chart reflowed into one sheet.
+PT: Um design pensado para o mobile, e não uma versão espremida, com o seletor de período e o gráfico em uma única tela.
+EN: Walkthrough steps
+PT: Etapas
+EN: Previous step
+PT: Etapa anterior
+EN: Next step
+PT: Próxima etapa
+EN: A measurable lift, and a verdict on day one
+PT: Resultado mensurável, e aprovação já no primeiro dia
+EN: Within the first day of going live, the clients were already calling it a huge upgrade.
+PT: No primeiro dia no ar, os clientes já falavam que era um salto enorme.
+EN: The response was immediate, and users reported stronger confidence in the numbers and found them easier to read.
+PT: A resposta foi imediata: os usuários disseram confiar mais nos números e achar tudo mais fácil de ler.
+EN: The client's own team, the first days after launch. Names blurred.
+PT: O próprio time do cliente, nos primeiros dias após o lançamento. Nomes desfocados.
+EN: The redesign contributed to
+PT: O redesign contribuiu para
+EN: more conversions.
+PT: a mais em conversões.
+EN: See the numbers move
+PT: Veja os números em ação
+EN: Switch between Today, Week, Month, and Year and watch the chart redraw, hover a row to spotlight its line, or just watch the stat cards count up.
+PT: Alterne entre Today, Week, Month e Year e veja o gráfico se redesenhar, passe o mouse sobre uma linha para destacá-la ou só acompanhe os indicadores subindo.
+
+# ─── Digital signage ───
+EN: Digital Signage — 40+ responsive screen apps · Vitor Xavier
+PT: Sinalização Digital — Mais de 40 apps responsivos · Vitor Xavier
+EN: 40+ responsive apps for screens of any shape — a case study by Vitor Xavier, senior product designer.
+PT: Mais de 40 apps responsivos para telas de todos os formatos — case de Vitor Xavier, product designer sênior.
+EN: Digital Signage — 40+ responsive screen apps
+PT: Sinalização Digital — Mais de 40 apps responsivos
+EN: 40+ responsive apps for screens of any shape
+PT: Mais de 40 apps responsivos para telas de todos os formatos
+EN: A spread of signage screens on a blue field, showing weather, news, social and menu-board layouts at different shapes and sizes.
+PT: Várias telas de sinalização sobre um fundo azul, com layouts de clima, notícias, redes sociais e cardápio em formatos e tamanhos diferentes.
+EN: Sole UI/UX Designer, all 40+ apps
+PT: Único UI/UX designer, nos 40+ apps
+EN: 40+ responsive signage apps
+PT: Mais de 40 apps responsivos
+EN: One app, every shape of screen
+PT: Um app, todos os formatos de tela
+EN: Apps, as the OnSign platform calls them, put dynamic content on digital screens: weather, news, exchange rates, menu boards and much more. Every one of them had to run on any screen, whatever its aspect ratio.
+PT: Na OnSign, "apps" são o que leva conteúdo dinâmico para as telas: clima, notícias, cotações, cardápios e muito mais. Todos precisavam funcionar em qualquer tela, independentemente da proporção.
+EN: Landscape, portrait, a long thin bar or a square. A layout drawn for one of those breaks on the others, so responsiveness couldn't be a finishing touch. It was the brief.
+PT: Horizontal, vertical, uma barra comprida ou um quadrado. Um layout pensado para um formato quebra nos outros, então a responsividade não podia ser um detalhe de acabamento. Ela era o próprio briefing.
+EN: Design every app to reflow across four orientations
+PT: Desenhar cada app para se adaptar a quatro orientações
+EN: I laid out each app for all four orientations a screen can take, rather than drawing it for one and stretching it to fit the rest.
+PT: Desenhei cada app para os quatro formatos que uma tela pode ter, em vez de criar para um e esticar para caber nos outros.
+EN: Landscape
+PT: Horizontal
+EN: The standard wide screen, where the content has the most room.
+PT: A tela larga tradicional, onde o conteúdo tem mais espaço.
+EN: Portrait
+PT: Vertical
+EN: Tall screens, where the same content has to stack.
+PT: Telas altas, onde o mesmo conteúdo precisa ser empilhado.
+EN: Long bar
+PT: Barra
+EN: A thin strip, where only the essentials fit.
+PT: Uma faixa estreita, onde só cabe o essencial.
+EN: Square
+PT: Quadrada
+EN: Neither wide nor tall, so the layout has to balance both.
+PT: Nem larga nem alta, então o layout precisa equilibrar as duas coisas.
+EN: Forty-plus apps, each at home on any screen
+PT: Mais de 40 apps, cada um totalmente responsivo para qualquer tela
+EN: I designed more than 40 interfaces, for the most variable content there is. A selection of them, running:
+PT: Criei mais de 40 interfaces, para conteúdos dos mais variados. Alguns deles, funcionando:
+EN: Social Wall app, a live social feed on a signage screen.
+PT: App Social Wall, um feed de redes sociais em tempo real numa tela de sinalização.
+EN: News RSS app, reflowed for a landscape screen.
+PT: App News RSS, adaptado para uma tela horizontal.
+EN: Twitter app, laid out for a landscape screen.
+PT: App Twitter, montado para uma tela horizontal.
+EN: Exchange Rate app, reflowed for landscape, long bar, square and portrait screens.
+PT: App Exchange Rate, adaptado para telas horizontais, em barra, quadradas e verticais.
+EN: Countdown app, counting down to a launch date.
+PT: App Countdown, em contagem regressiva para um lançamento.
+EN: A social feed widget, transitioning live between posts.
+PT: Um widget de redes sociais, alternando entre posts em tempo real.
+EN: An RSS-driven news app, reflowing onto a landscape screen.
+PT: Um app de notícias via RSS, se adaptando a uma tela horizontal.
+EN: A Twitter feed, laid out for a landscape screen.
+PT: Um feed do Twitter, montado para uma tela horizontal.
+EN: Live currency rates, reflowed onto landscape, long bar, square and portrait screens.
+PT: Cotações de moedas em tempo real, adaptadas para telas horizontais, em barra, quadradas e verticais.
+EN: A launch countdown running as a full-screen app.
+PT: Uma contagem regressiva para um lançamento, em tela cheia.
+EN: Signage apps
+PT: Apps de sinalização
+EN: Previous app
+PT: App anterior
+EN: Next app
+PT: Próximo app
+EN: Pause video
+PT: Pausar vídeo
+EN: Every app, fully responsive
+PT: Todos os apps, 100% responsivos
+EN: Each app reflows across landscape, portrait, long bar and square, so it runs on any screen the OnSign platform drives.
+PT: Cada app se adapta aos formatos horizontal, vertical, barra e quadrado, e funciona em qualquer tela conectada à OnSign.
+EN: interfaces,
+PT: interfaces,
+EN: responsive, across
+PT: responsivas, em
+EN: screen orientations.
+PT: formatos de tela.
+
+# ─── Gym&Bet ───
+EN: Gym&Bet — Fitness betting with friends · Vitor Xavier
+PT: Gym&Bet — Apostas fitness entre amigos · Vitor Xavier
+EN: Betting with friends to make fitness fun — a case study by Vitor Xavier, senior product designer.
+PT: Apostas entre amigos para deixar o treino mais divertido — case de Vitor Xavier, product designer sênior.
+EN: Gym&Bet — Fitness betting with friends
+PT: Gym&Bet — Apostas fitness entre amigos
+EN: Betting with friends to make fitness fun
+PT: Apostas entre amigos para deixar o treino mais divertido
+EN: Several phones angled across a pale surface, each showing a screen of the Gym&Bet app.
+PT: Vários celulares sobre uma superfície clara, cada um com uma tela do app Gym&Bet.
+EN: Wireframes to final UI, mobile app
+PT: Do wireframe à UI final, app mobile
+EN: 2 weeks
+PT: 2 semanas
+EN: Mobile app · iOS
+PT: App mobile · iOS
+EN: Staying consistent with exercise is hard on your own
+PT: Manter a rotina de exercícios sozinho é difícil
+EN: Regular exercise matters for both physical and mental wellbeing, but keeping it up is the hard part.
+PT: Se exercitar com frequência faz bem para o corpo e para a cabeça, mas o difícil é manter o ritmo.
+EN: Gym&Bet set out to help: a mobile app that tracks health and fitness progress, and turns it into a friendly bet with friends, so exercise becomes social and a little competitive.
+PT: O Gym&Bet nasceu para ajudar nisso: um app que acompanha sua evolução e transforma tudo em uma aposta entre amigos, deixando o exercício mais social e com um pouco de competição.
+EN: Two weeks, and only the features that mattered
+PT: Duas semanas, e só o que realmente importava
+EN: The project had two weeks, so I cut the scope to the essential features that would deliver value to users, ready for the engineering team to implement. I worked out each flow as a wireframe first.
+PT: O projeto tinha duas semanas, então enxuguei o escopo para as funcionalidades essenciais, que entregariam valor para os usuários e estariam prontas para o time de engenharia desenvolver. Resolvi cada fluxo primeiro em wireframe.
+EN: Weekly activity rings, streaks, and a single check in.
+PT: Anéis de atividade da semana, sequências e check-in.
+EN: Bet detail
+PT: Detalhes da aposta
+EN: Daily progress against the terms both sides agreed to.
+PT: O progresso de cada dia em relação à aposta.
+EN: Group bet
+PT: Aposta em grupo
+EN: Responding to an invitation from the group.
+PT: Responder a um convite do grupo.
+EN: New bet
+PT: Nova aposta
+EN: Setting the terms, the stake, and who is in.
+PT: Definir as regras, o valor e quem participa.
+EN: Wireframes of the flow — scrollable
+PT: Wireframes do fluxo (role para ver todos)
+EN: The home screen: a month strip, activity rings for the day, step and distance totals, and the friends list.
+PT: A tela inicial: o calendário do mês, os anéis de atividade do dia, total de passos e distância e a lista de amigos.
+EN: Home & friends
+PT: Início e amigos
+EN: A running bet: steps against target, the stake, a day-by-day breakdown, heart rate and map.
+PT: Uma aposta em andamento: passos em relação à meta, o valor apostado, o resumo dia a dia, batimentos e mapa.
+EN: Bet detail: progress
+PT: Detalhes da aposta: progresso
+EN: A group bet invitation: terms, dates, every member's progress, and accept or refuse.
+PT: Um convite para aposta em grupo: regras, datas, o progresso de cada participante e as opções de aceitar ou recusar.
+EN: Group bet: response
+PT: Aposta em grupo: resposta
+EN: Starting a bet: pick the challenge type, then continue.
+PT: Criando uma aposta: escolha o tipo de desafio e siga em frente.
+EN: New bet: setup
+PT: Nova aposta: configuração
+EN: The bet, built into the daily check-in
+PT: A aposta dentro do check-in diário
+EN: I put activity, streaks and the running bet on the same screens, with friends and requests one tap away.
+PT: Juntei atividade, sequências e a aposta em andamento nas mesmas telas, com amigos e convites a um toque de distância.
+EN: The home screen: activity rings for the day, a date strip, and one check-in button.
+PT: A tela inicial: os anéis de atividade do dia, o calendário e um botão de check-in.
+EN: The profile screen, listing bet requests, friend requests and current friends.
+PT: A tela de perfil, com convites para apostas, pedidos de amizade e amigos.
+EN: A bet detail screen: steps against target, the stake, and a day-by-day list.
+PT: A tela de detalhes da aposta: passos em relação à meta, o valor apostado e a lista dia a dia.
+EN: The friends screen, with suggestions, contact list and friends tabs over a search field.
+PT: A tela de amigos, com abas de sugestões, contatos e amigos acima da busca.
+EN: Weekly activity & streaks
+PT: Atividade da semana e sequências
+EN: Activity rings for the day, a week-by-week date strip, and a single check-in button.
+PT: Anéis de atividade do dia, o calendário da semana e um botão de check-in.
+EN: Profile & requests
+PT: Perfil e convites
+EN: Incoming bet invitations and friend requests, each accepted or added in one tap.
+PT: Convites para apostas e pedidos de amizade, aceitos com um toque.
+EN: Bet detail, daily progress
+PT: Detalhes da aposta, progresso diário
+EN: Steps against the target for a running bet, with the stake and a day-by-day breakdown.
+PT: Os passos em relação à meta de uma aposta em andamento, com o valor apostado e o resumo dia a dia.
+EN: Manage your friends
+PT: Seus amigos
+EN: Suggestions, contacts and current friends in one searchable list.
+PT: Sugestões, contatos e amigos em uma única lista com busca.
+EN: Screens
+PT: Telas
+EN: Previous screen
+PT: Tela anterior
+EN: Next screen
+PT: Próxima tela
+EN: Designed in two weeks, and shipped
+PT: Desenhado em duas semanas, e lançado
+EN: I handed the scoped design to the engineering team, and the app shipped.
+PT: Entreguei o design já com o escopo fechado para o time de engenharia, e o app foi lançado.
+
+# ─── Design system ───
+EN: Design System — Neutral, white-label ready · Vitor Xavier
+PT: Design System — Neutro e pronto para white label · Vitor Xavier
+EN: A neutral design system for a whole product, built to be re-skinned — a case study by Vitor Xavier, senior product designer.
+PT: Um sistema white label para todo o produto, com future proof em mente — case de Vitor Xavier, product designer sênior.
+EN: Design System — Neutral, white-label ready
+PT: Design System — Neutro e pronto para white label
+EN: A neutral system for the whole product, built to be re-skinned
+PT: Um sistema white label para todo o produto, com future proof em mente
+EN: A Design System title card reading "Components, typography, colors and variables", over three overlapping sheets from the file: the icon set, the badges, and the checkbox states.
+PT: A capa do Design System, com o texto "Components, typography, colors and variables", sobre três páginas do arquivo: os ícones, os badges e os estados de checkbox.
+EN: Design system, foundations to components
+PT: Design system, das fundações aos componentes
+EN: 2 to 3 months
+PT: 2 a 3 meses
+EN: Responsive web, built on Figma variables
+PT: Web responsiva, com variáveis do Figma
+EN: An outdated product, with nothing underneath holding it together
+PT: Um produto datado, sem documentação e design system como base
+EN: EC Affiliates is a name changed here for confidentiality. Its interface was outdated, and there was no system underneath holding it together.
+PT: EC Affiliates é um nome fictício, por confidencialidade. A interface estava datada, e não havia nenhum design system dando consistência a ela.
+EN: Every screen was assembled by hand, so the same button, table row and input existed in slightly different versions. Engineers had to interpret each screen on its own, and every inconsistency became a question, and often rework. The goal was a consistent design language first, and a new interface built inside it.
+PT: Cada tela era montada na mão, então o mesmo botão, a mesma linha de tabela e o mesmo campo existiam em versões um pouco diferentes. Os devs precisavam interpretar tela por tela, e cada inconsistência virava uma dúvida, e muitas vezes retrabalho. O objetivo era primeiro criar uma linguagem de design consistente, e construir uma nova interface em cima dela.
+EN: Stay neutral, build accessibility in, and make it easy to maintain
+PT: Neutro, acessível e fácil de manter
+EN: Deliberately neutral
+PT: Neutro de propósito
+EN: The company wanted the option to white label the product later, so the system couldn’t depend on one brand’s personality. It had to be clean, direct and quiet enough for another brand to move in.
+PT: A empresa queria ter a opção de vender o produto como white label no futuro, então o sistema não podia depender da personalidade de uma marca. Ele precisava ser limpo, direto e discreto o suficiente para receber outra marca.
+EN: Without a brand to lean on, I built clarity from structure: consistent spacing, contrast that holds across palettes, and components that behave the same whatever colors they use.
+PT: Sem uma marca para me apoiar, a clareza veio da estrutura: espaçamentos consistentes, contraste que funciona em qualquer paleta e componentes que se comportam do mesmo jeito, sejam quais forem as cores.
+EN: Accessibility, built in
+PT: Acessibilidade desde a base
+EN: I checked the interface against WCAG as I designed it, rather than auditing it afterwards.
+PT: Fui checando a interface utilizando o padrão WCAG enquanto projetava, em vez de auditar tudo no final.
+EN: Every color family is a full tonal ramp, so contrast is settled once by which steps sit together. On a dashboard people read numbers off, legibility is the difference between the product working and not.
+PT: Cada família de cor é uma escala tonal completa, então o contraste é resolvido uma vez só, na combinação dos tons. Num dashboard em que as pessoas leem números o tempo todo, legibilidade é o que separa um produto que funciona de um que não funciona.
+EN: Made to be maintained
+PT: Feito para durar
+EN: I organised the file to be added to rather than admired.
+PT: Organizei o arquivo para ser usado e evoluído, não só admirado.
+EN: Every decision has one page to change it on. Tokens are named as scales (shadow-md to shadow-3xl, numbered color steps), so they survive a rebrand, and with color held as variables a new theme is a single edit.
+PT: Todos os elementos principais vivem em uma página só, onde é possível ser alterada. Os tokens têm nomes em escala (de shadow-md a shadow-3xl, tons de cor numerados), então sobrevivem a um rebrand, e, com as cores em variáveis, aplicar um tema novo é possível com uma única alteração.
+EN: Foundations, two themes, components, and screens built from them
+PT: Fundações, dois temas, componentes e as telas feitas com eles
+EN: Foundations
+PT: Fundações
+EN: I built color, type, icons, spacing, shadows, grids and radius, each as its own page in the file, and each a decision made once instead of on every screen.
+PT: Criei cores, tipografia, ícones, espaçamentos, sombras, grids e radius, cada um em uma página própria do arquivo.
+EN: The type page: Outfit set as a specimen with its four weights, Regular 400 to Bold 700, beside eleven sizes from Display 2xl at 72px over 90px down to Text xs at 12px over 18px.
+PT: A página de tipografia: a Outfit com seus quatro pesos, de Regular 400 a Bold 700, ao lado de onze tamanhos, do Display 2xl (72px sobre 90px) ao Text xs (12px sobre 18px).
+EN: Three scales side by side: spacing from 2px to 32px on a 4px base unit, radius from None at 0px through MD, LG and 2XL to Full at 999px, and two shadows with the focus ring.
+PT: Três escalas lado a lado: espaçamentos de 2px a 32px com base de 4px, raios do None (0px) ao Full (999px), passando por MD, LG e 2XL, e duas sombras com o anel de foco.
+EN: The color page: the brand ramp from Brand 500 at #fd3363 to its tint beside Orange 400, eight cool neutrals from Gray 900 to Surface, and the four status colors, success, warning, error and info, each with its hex value.
+PT: A página de cores: a escala da marca, do Brand 500 (#fd3363) ao tom mais claro, ao lado do Orange 400, oito neutros frios do Gray 900 ao Surface e as quatro cores de status (sucesso, alerta, erro e informação), cada uma com seu código hexadecimal.
+EN: Status color in use: a Ban Affiliate confirmation dialog with a brand-colored Confirm button, beside five selected date items marked with primary, success, warning, danger and info bars.
+PT: Cores de status na prática: um modal de confirmação Ban Affiliate com o botão Confirm na cor da marca, ao lado de cinco datas selecionadas, marcadas com barras nas cores principal, sucesso, alerta, perigo e informação.
+EN: Typography
+PT: Tipografia
+EN: Outfit, in eleven sizes and four weights, from Display 2xl at 72px to Text xs at 12px, each with its own line height.
+PT: Outfit em onze tamanhos e quatro pesos, do Display 2xl (72px) ao Text xs (12px), cada um com sua altura de linha.
+EN: Space, shape and depth
+PT: Espaço, forma e profundidade
+EN: A 4px base unit for every gap, corners from None to Full, and two soft shadows with a focus ring for depth.
+PT: Uma base de 4px para todos os espaçamentos, border radius do None ao Full e duas sombras suaves com um anel de foco para dar profundidade.
+EN: Color
+PT: Cores
+EN: One brand color on a cool neutral base, and four status colors, each with a matching background tint.
+PT: Uma cor de marca sobre uma base de neutros frios, e quatro cores de status, cada uma com um tom de fundo correspondente.
+EN: Status colors
+PT: Cores de status
+EN: The same status palette runs through dialogs, date items and the metric trend badges.
+PT: A mesma paleta de status aparece nos modais, nas datas e nos badges de tendência das métricas.
+EN: Foundation pages
+PT: Páginas das fundações
+EN: Previous page
+PT: Página anterior
+EN: Next page
+PT: Próxima página
+EN: One set of variables, two themes
+PT: Um conjunto de variáveis, dois temas
+EN: I made every color a variable, so light and dark are two modes of the same set.
+PT: Transformei todas as cores em variáveis, então o tema claro e o escuro são dois modos do mesmo conjunto.
+EN: A screen is designed once, and the variables decide which theme it renders in. Each is named for its job rather than its color (Title Color, Border Secondary, Background Modal) and grouped by what uses it, so one edit reaches everywhere that family appears.
+PT: A tela é desenhada uma vez, e as variáveis decidem em qual tema ela aparece. Cada variável tem o nome da sua função, e não da cor (Title Color, Border Secondary, Background Modal), e fica agrupada por onde é usada, então uma alteração chega a todos os lugares onde aquela família aparece.
+EN: The Figma variables panel: 146 variables grouped by what uses them, each row mapping a semantic name such as Title Color or Border Secondary to one color token in the Light column and a different one in the Dark column.
+PT: O painel de variáveis do Figma: 146 variáveis agrupadas por onde são usadas, cada linha ligando um nome semântico, como Title Color ou Border Secondary, a um token de cor na coluna Light e a outro na coluna Dark.
+EN: 146 variables, each naming a job rather than a color, and each resolved twice.
+PT: 146 variáveis, cada uma com o nome de uma função, não de uma cor, e cada uma resolvida duas vezes.
+EN: The requests screen shown in both themes at once: the light theme fills the left of the frame and the dark theme the right, split by a draggable handle.
+PT: A tela de solicitações nos dois temas ao mesmo tempo: o claro à esquerda e o escuro à direita, separados por um controle que dá para arrastar.
+EN: Compare the two themes: drag right to reveal the light theme, left to reveal the dark theme
+PT: Compare os dois temas: arraste para a direita para ver o tema claro, e para a esquerda para ver o escuro
+EN: Light
+PT: Claro
+EN: Dark
+PT: Escuro
+EN: Drag the handle. One screen, both themes: nothing moves but the palette.
+PT: Arraste o controle. Uma tela, dois temas: só a paleta muda.
+EN: Components
+PT: Componentes
+EN: I designed the components to cover the product's future cases as well as the screens that existed on the day.
+PT: Desenhei os componentes pensando também nos casos futuros do produto, e não só nas telas que já existiam.
+EN: Everything was fully responsive, and I specified interactions like drag and drop in the component rather than leaving them for engineering to interpret.
+PT: Tudo era 100% responsivo, e especifiquei interações como drag and drop no próprio componente, em vez de deixar para os devs interpretarem.
+EN: The checkbox and radio sheet: every control drawn in its default, hover, focused and disabled state, at two sizes.
+PT: A página de checkboxes e radio buttons: cada controle nos estados padrão, hover, foco e desabilitado, em dois tamanhos.
+EN: The button sheet: filled and outlined buttons at three sizes, with a leading icon, a trailing icon and neither, each in default, hover, focused and disabled.
+PT: A página de botões: botões preenchidos e com contorno em três tamanhos, com ícone à esquerda, à direita ou sem ícone, cada um nos estados padrão, hover, foco e desabilitado.
+EN: The badge sheet: one badge in every color family the palette carries, at three sizes, with a leading icon, a trailing icon and neither.
+PT: A página de badges: um badge para cada família de cor da paleta, em três tamanhos, com ícone à esquerda, à direita ou sem ícone.
+EN: The alert sheet: success, warning, error and hint messages, each shown with and without a Learn more link.
+PT: A página de alertas: mensagens de sucesso, alerta, erro e dica, cada uma com e sem o link Learn more.
+EN: States
+PT: Estados
+EN: Checkboxes and radios in default, hover, focused and disabled, at both sizes. Focus is part of the component, not a note for later.
+PT: Checkboxes e radio buttons nos estados padrão, hover, foco e desabilitado, nos dois tamanhos. O foco faz parte do componente, não fica para depois.
+EN: Buttons
+PT: Botões
+EN: Filled and outlined, at three sizes, with or without an icon, each in every state.
+PT: Preenchidos e com contorno, em três tamanhos, com ou sem ícone, e em todos os estados.
+EN: Badges
+PT: Badges
+EN: One badge in every color family, at three sizes. The ramp does the work, so the badge itself never changes.
+PT: Um badge para cada família de cor, em três tamanhos. Quem faz o trabalho é a escala de cor, então o badge em si nunca muda.
+EN: Alerts
+PT: Alertas
+EN: Success, warning, error and hint. An icon and a word carry the state as well as color, so it reads without telling green from red.
+PT: Sucesso, alerta, erro e dica. Além da cor, um ícone e uma palavra indicam o estado, então a mensagem é entendida mesmo por quem não diferencia verde de vermelho.
+EN: Component sheets
+PT: Páginas de componentes
+EN: The system in use
+PT: O sistema na prática
+EN: I assembled the product’s screens from the library rather than drawing them beside it.
+PT: Montei as telas do produto com a biblioteca, em vez de criá-las independentemente.
+EN: Stat cards, toggles, selects, tags, approve and reject buttons: every piece is a library component. The green change indicators are the success badge, so they agree with every other badge in the product.
+PT: Cards de indicadores, toggles, selects, tags, botões de aprovar e recusar: tudo é componente da biblioteca. Os indicadores verdes de variação são o badge de sucesso, então batem com todos os outros badges do produto.
+EN: The affiliate dashboard: a sidebar, an Earnings and Performance toggle, a filter row, four stat cards showing total sales, earnings, clicks and earnings per click, and a twelve-month earnings chart with a hover tooltip.
+PT: O dashboard de afiliados: menu lateral, um toggle Earnings e Performance, uma linha de filtros, quatro cards com total de vendas, ganhos, cliques e ganho por clique, e um gráfico de ganhos de doze meses com tooltip.
+EN: The affiliate dashboard. Stat cards, toggles, selects and badges, all straight from the library.
+PT: O dashboard de afiliados. Cards de indicadores, toggles, selects e badges, todos direto da biblioteca.
+EN: The requests screen: incoming affiliate requests as cards, each with an avatar, a platform tag, commission and audience details, the applicant's message, and approve and reject buttons.
+PT: A tela de solicitações: pedidos de afiliados em cards, cada um com avatar, tag da plataforma, detalhes de comissão e audiência, a mensagem do candidato e os botões de aprovar e recusar.
+EN: Requests. The same components again, carrying a completely different job.
+PT: Solicitações. Os mesmos componentes, com uma função completamente diferente.
+EN: It shipped, and outlived the product it was built for
+PT: Foi para produção, e influenciou a próxima etapa do produto para o qual foi criado
+EN: It was approved, implemented and ran live for several months. When the company pivoted, several of its ideas were carried straight into the new product’s design system. The engineers said the library helped most: building a new screen became assembly rather than reinvention. The client called the interface clean enough that nothing competed with the data, and the change night and day.
+PT: O sistema foi aprovado, implementado e ficou no ar por vários meses. Quando a empresa pivotou, várias das ideias foram direto para o design system do novo produto. Os devs disseram que a biblioteca foi o que mais ajudou: criar uma tela nova virou montar peças, e não reinventar a roda. O cliente disse que a interface ficou tão limpa que nada disputava atenção com os dados, e que a diferença foi da água para o vinho.
+
+# ─── MUNI ───
+EN: MUNI — Digital signage for SF transit · Vitor Xavier
+PT: MUNI — Sinalização digital para o transporte público de SF · Vitor Xavier
+EN: Digital signage for San Francisco's transit riders — a case study by Vitor Xavier, senior product designer.
+PT: Sinalização digital para quem usa o transporte público de San Francisco — case de Vitor Xavier, product designer sênior.
+EN: MUNI — Digital signage for SF transit
+PT: MUNI — Sinalização digital para o transporte público de SF
+EN: Digital signage for San Francisco's transit riders
+PT: Sinalização digital para quem usa o transporte público de San Francisco
+EN: The Golden Gate Bridge seen from the San Francisco shoreline on a clear day.
+PT: A Golden Gate vista da orla de San Francisco em um dia de céu limpo.
+EN: Sole UI/UX Designer, end to end
+PT: Único UI/UX designer, de ponta a ponta
+EN: Client
+PT: Cliente
+EN: Digital signage hardware company, San Francisco
+PT: Empresa de hardware para sinalização digital, San Francisco
+EN: Three months in design, live since 2022
+PT: Três meses de design, no ar desde 2022
+EN: Delivery
+PT: Formato
+EN: Fully remote
+PT: 100% remoto
+EN: Transit information every rider can read, from the curb
+PT: Informação que qualquer passageiro consegue ler, direto da calçada
+EN: The client, a San Francisco company specializing in hardware for digital signage, needed an interface for screens at bus stops across the city. The deadline was three months, and the whole project ran remotely.
+PT: O cliente, uma empresa de San Francisco especializada em hardware para sinalização digital, precisava de uma interface para telas em pontos de ônibus de toda a cidade. O prazo era de três meses, e o projeto foi todo remoto.
+EN: A bus stop screen is public infrastructure. It has to be legible at street distance, stay readable for riders with low vision or color vision deficiency, and win approval from the city as well as the client.
+PT: Uma tela em ponto de ônibus é infraestrutura pública. Ela precisa ser legível da rua, funcionar para quem tem baixa visão ou daltonismo e ser aprovada pela prefeitura, além do cliente.
+EN: Riding the network: San Francisco, seen from a MUNI car
+PT: San Francisco vista de dentro de um vagão do MUNI
+EN: Settle every constraint before drawing a screen
+PT: Resolver todas as restrições antes de desenhar qualquer tela
+EN: Before sketching a single screen, I asked the client the questions that would shape everything else.
+PT: Antes de rascunhar qualquer tela, fiz ao cliente as perguntas que iam definir todo o resto.
+EN: Which information do we need to display?
+PT: Que informações precisamos mostrar?
+EN: What are the government's requirements?
+PT: Quais são as exigências do governo?
+EN: Does it need to be ADA compliant?
+PT: Precisa seguir as normas da ADA?
+EN: Where will it run, and on which hardware?
+PT: Onde vai rodar, e em qual hardware?
+EN: ADA requirements
+PT: Exigências da ADA
+EN: Font size & scale
+PT: Tamanho e escala da fonte
+EN: I sized the type to stay legible at street distance, to the Americans with Disabilities Act's accessible design standards.
+PT: Defini os tamanhos de fonte para garantir a leitura da rua, seguindo os padrões de design acessível da ADA (Americans with Disabilities Act).
+EN: Contrast ratios
+PT: Contraste
+EN: I checked every pairing of text and background against ADA contrast requirements before it shipped.
+PT: Conferi cada combinação de texto e fundo com as exigências de contraste da ADA antes de ir para produção.
+EN: A palette for colorblind riders
+PT: Uma paleta pensada para daltônicos
+EN: I chose route colors and status states to stay distinguishable for riders with color vision deficiency.
+PT: Escolhi as cores das linhas e dos status para que continuassem fáceis de diferenciar por quem tem daltonismo.
+EN: From constraints to rollout
+PT: Das restrições à implantação
+EN: Understanding the constraints
+PT: Entender as restrições
+EN: Gathered the government, hardware, and accessibility requirements the interface would have to satisfy before any screen was drawn.
+PT: Levantei as exigências do governo, do hardware e de acessibilidade que a interface precisaria atender, antes de desenhar qualquer tela.
+EN: Working the layout by hand
+PT: Layout no papel
+EN: Explored arrangements for routes, arrival times, and maps at low fidelity, before committing to any single direction.
+PT: Explorei em baixa fidelidade formas de organizar linhas, horários de chegada e mapas antes de escolher um caminho.
+EN: Building the real UI
+PT: A UI de verdade
+EN: Turned the strongest sketches into detailed, polished screens, applying type, contrast, and color that met every ADA requirement.
+PT: Transformei os melhores rascunhos em telas detalhadas e bem acabadas, com tipografia, contraste e cores dentro de todas as exigências da ADA.
+EN: Client and government approval
+PT: Aprovação do cliente e da prefeitura
+EN: Reviewed the mockups with both the client and the local government to confirm the design met every accessibility standard.
+PT: Revisei os mockups com o cliente e com a prefeitura para confirmar que o design atendia a todos os padrões de acessibilidade.
+EN: From mockup to build
+PT: Do mockup ao desenvolvimento
+EN: Handed off specs and assets, working closely through implementation to keep the shipped screens faithful to the design.
+PT: Fiz o handoff de especificações e assets e acompanhei de perto o desenvolvimento, para as telas finais ficarem fiéis ao design.
+EN: Approved and deployed
+PT: Aprovado e implantado
+EN: A final round of approval from the client and the city cleared the interface for rollout across the network.
+PT: Uma última rodada de aprovação com o cliente e a prefeitura liberou a interface para ser implantada em toda a rede.
+EN: An arrivals board and a route map, built to ADA standards
+PT: Um painel de chegadas e um mapa de linhas, dentro das normas da ADA
+EN: I sized the type for street distance, checked the contrast of every pairing, and chose a palette that stays distinguishable for colorblind riders.
+PT: Defini a fonte para ser lida da rua, conferi o contraste de cada combinação e escolhi uma paleta fácil de diferenciar para quem tem daltonismo.
+EN: Arrivals board
+PT: Painel de chegadas
+EN: Route map
+PT: Mapa de linhas
+EN: Approved by the city, and running since 2022
+PT: Aprovado pela prefeitura e funcionando desde 2022
+EN: The screens run in various locations across the city, bus stops among them.
+PT: As telas estão em vários pontos da cidade, inclusive em pontos de ônibus.
+EN: Routes 19 & 31, daylight
+PT: Linhas 19 e 31, de dia
+EN: Arrivals and map, close up
+PT: Chegadas e mapa, de perto
+EN: Route 49 stop, dusk
+PT: Ponto da linha 49, ao entardecer
+EN: Route 49, daylight
+PT: Linha 49, de dia
+EN: screens deployed, approved by the client and the City of SF, operational since
+PT: telas instaladas, aprovadas pelo cliente e pela prefeitura de SF, funcionando desde

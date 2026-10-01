@@ -1,43 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.axvitor.com/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/" />
   </url>
   <url>
     <loc>https://www.axvitor.com/careers-page.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/careers-page.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/careers-page.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/careers-page.html" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/careers-page.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/careers-page.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/careers-page.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/careers-page.html" />
   </url>
   <url>
     <loc>https://www.axvitor.com/wcag-study.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/wcag-study.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/wcag-study.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/wcag-study.html" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/wcag-study.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/wcag-study.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/wcag-study.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/wcag-study.html" />
   </url>
   <url>
     <loc>https://www.axvitor.com/creatorhub.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/creatorhub.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/creatorhub.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/creatorhub.html" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/creatorhub.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/creatorhub.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/creatorhub.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/creatorhub.html" />
   </url>
   <url>
     <loc>https://www.axvitor.com/element-dashboard.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/element-dashboard.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/element-dashboard.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/element-dashboard.html" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/element-dashboard.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/element-dashboard.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/element-dashboard.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/element-dashboard.html" />
   </url>
   <url>
     <loc>https://www.axvitor.com/digital-signage.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/digital-signage.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/digital-signage.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/digital-signage.html" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/digital-signage.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/digital-signage.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/digital-signage.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/digital-signage.html" />
   </url>
   <url>
     <loc>https://www.axvitor.com/gym-and-bet.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/gym-and-bet.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/gym-and-bet.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/gym-and-bet.html" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/gym-and-bet.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/gym-and-bet.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/gym-and-bet.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/gym-and-bet.html" />
   </url>
   <url>
     <loc>https://www.axvitor.com/design-system.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/design-system.html" />
+  </url>
+  <url>
+    <loc>https://www.axvitor.com/pt/design-system.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.axvitor.com/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.axvitor.com/pt/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.axvitor.com/design-system.html" />
   </url>
 </urlset>

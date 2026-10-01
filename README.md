@@ -126,3 +126,20 @@ Each project card's visual is generated as inline SVG by a function in the `ART`
 in `js/main.js` (`mesh`, `orbit`, `stack`, `wave`, `flow`). They're deliberately abstract
 rather than fake product screenshots. Swap any of them for a real image by replacing the
 `${ART[p.art]()}` call in the `#projects` template with an `<img>` or `<video>`.
+
+## Portuguese version (pt/)
+
+The site is in English at the root and in Brazilian Portuguese under `pt/`.
+English is the source: the `pt/` pages are generated from it, never edited by hand.
+
+After changing any English page:
+
+1. Add or update the matching `EN:` / `PT:` lines in `tools/pt.txt`.
+2. Run `python3 tools/build-pt.py`.
+
+The build stops and lists any English text it has no translation for, so nothing
+ships half-translated. Text that `js/main.js` renders itself (the work cards,
+the timeline, a few screen-reader labels) has its Portuguese in `main.js`
+(`PROJECTS_PT`, `TIMELINE_PT`, `L()`). The testimonials stay in the words their
+authors wrote. Each page links its twin with `hreflang`, and the EN / PT pill in
+the nav switches between them.

@@ -144,6 +144,67 @@ const TIMELINE = [
     note: 'Development of a new website and visual ID for the LIBRAS department at Universidade Federal de Santa Catarina (Federal University of Santa Catarina).' }
 ];
 
+/* ═══════════ PORTUGUESE ═══════════
+   The pt/ pages are built from the English ones by tools/build-pt.py; what
+   this file renders itself is swapped here. PT pages sit one folder down, so
+   shared images are reached with UP. */
+const PT = (document.documentElement.lang || '').toLowerCase().startsWith('pt');
+const UP = PT ? '../' : '';
+const L  = (en, pt) => PT ? pt : en;
+
+const PROJECTS_PT = {
+  'design-system.html':      { outcome: 'O sistema sobreviveu ao produto para o qual foi criado.' },
+  'careers-page.html':       { name: 'Página de Carreiras', client: 'StarBasis · Marketplace de criadores',
+                               outcome: 'As vagas foram preenchidas, e o produto foi lançado por completo.' },
+  'wcag-study.html':         { name: 'Estudo WCAG', client: 'Uber · Iniciativa própria',
+                               desc: 'Redesign acessível do app do Uber, pensado para pessoas idosas.' },
+  'creatorhub.html':         { client: 'Marketplace de experiências',
+                               outcome: 'Validado com a empresa e os usuários e construído por completo.' },
+  'element-dashboard.html':  { name: 'Dashboard Element', year: '2024 a 2025',
+                               outcome: 'O redesign contribuiu para 20% a mais em conversões.' },
+  'digital-signage.html':    { name: 'Interfaces de Sinalização Digital', client: 'OnSign · Sinalização digital',
+                               outcome: 'Mais de 40 interfaces, todas 100% responsivas.' },
+  'gym-and-bet.html':        { client: 'Saúde e fitness',
+                               desc: 'Um app que transforma exercício em aposta entre amigos.' }
+};
+
+const TIMELINE_PT = [
+  { yr: '2023 até hoje', role: 'Senior Product Designer', co: 'Awesomic', type: 'Marketplace de talentos de design', loc: 'EUA',
+    note: 'A Awesomic funciona como um Trello com talentos de ponta: empresas do mundo todo criam demandas variadas, e os designers trabalham para entregar o melhor resultado.',
+    points: [
+      'Redesenhei o dashboard de um cliente em torno das métricas que realmente orientam decisões e criei um monitor de vendas e disputas em tempo real. O resultado: 20% a mais em conversões, com usuários relatando mais confiança e facilidade de leitura e interpretação dos dados.',
+      'Acompanhei os desenvolvedores e QA durante o desenvolvimento para garantir que o que foi para produção seguisse o design aprovado.',
+      'A Awesomic aprova só cerca de 1% dos designers que se candidatam.'
+    ] },
+  { yr: '2022 a 2023', role: 'Product Designer', co: 'Soap Health', type: 'Healthtech', loc: 'EUA',
+    note: 'O foco era desenvolver uma plataforma onde seria possível analisar e obter um histórico do paciente mais completo, para auxiliar nas decisões médicas a partir dele e apontar possíveis problemas de saúde antes mesmo da consulta.',
+    points: [
+      'Integrei o cadastro de paciente, a avaliação de risco e o fluxo de perguntas em um único fluxo, pensado para reduzir erros de diagnóstico.',
+      'Acompanhei os desenvolvedores para que nenhum detalhe clínico se perdesse no caminho.'
+    ] },
+  { yr: '2021 a 2022', role: 'UI/UX Designer', co: 'Checklist Fácil', type: 'SaaS B2B', loc: 'BRA',
+    note: 'Atuei no time de produto, com foco principal em experiência do usuário.',
+    points: [
+      'Liderei iniciativas de Product-Led Growth que aumentaram as conversões em 30%.',
+      'Conduzi projetos de inovação e integrações com terceiros junto aos times de produto e engenharia.',
+      'Ampliei o design system conforme o produto crescia.'
+    ] },
+  { yr: '2017 a 2021', role: 'UI/UX Designer', co: 'OnSign', type: 'Sinalização digital', loc: 'BRA/HK',
+    note: 'Head de design, responsável por todos os produtos digitais da empresa, incluindo os widgets da plataforma OnSign, o site e o redesign do sistema.',
+    points: [
+      'Projetei uma interface acessível, dentro das normas da ADA, que hoje roda em mais de 800 telas em San Francisco, Califórnia, EUA.',
+      'Entreguei mais de 40 apps de sinalização digital responsivos para a plataforma.',
+      'Comecei como estagiário e cresci até definir a direção de design do produto.'
+    ] },
+  { yr: '2014 a 2015', role: 'Projeto de pesquisa', co: 'UFSC', type: 'Pesquisa universitária', loc: 'BRA',
+    note: 'Criação de um novo site e de uma identidade visual para o departamento de LIBRAS da Universidade Federal de Santa Catarina.' }
+];
+
+if (PT){
+  PROJECTS.forEach(p => Object.assign(p, PROJECTS_PT[p.url] || {}));
+  TIMELINE.splice(0, TIMELINE.length, ...TIMELINE_PT);
+}
+
 /* ═══════════ GENERATIVE PROJECT ART ═══════════
    Abstract, on-brand visuals — no stock imagery. */
 
@@ -312,8 +373,8 @@ const ART = {
 
 if ($('#projects')) $('#projects').innerHTML = PROJECTS.map((p, i) => `
   <li class="bento__item" style="--w:${p.w};--h:${p.h}">
-    <a class="bento__link" href="${p.url}" aria-label="${p.name} case study">
-      <img class="bento__img" src="${p.img}" alt="" loading="lazy" decoding="async" />
+    <a class="bento__link" href="${p.url}" aria-label="${L(`${p.name} case study`, `Estudo de caso: ${p.name}`)}">
+      <img class="bento__img" src="${UP}${p.img}" alt="" loading="lazy" decoding="async" />
       <span class="bento__scrim" aria-hidden="true"></span>
       <span class="bento__idx mono">${String(i + 1).padStart(2, '0')}</span>
       <span class="bento__body">
@@ -329,7 +390,7 @@ if ($('#timeline')) $('#timeline').innerHTML = TIMELINE.map(t => `
     <span class="tl__yr mono">${t.yr}</span>
     <div>
       <h3 class="tl__role">${t.role}</h3>
-      <span class="tl__co"><b>${t.co}</b> · ${t.type}</span>
+      <span class="tl__co"><b>${t.co}</b>${t.loc ? ' (' + t.loc + ')' : ''} · ${t.type}</span>
       <p class="tl__note">${t.note}</p>
       ${t.points ? `<ul class="tl__points">${t.points.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
     </div>
@@ -749,7 +810,7 @@ function initFindings(root){
   const paintToggle = () => {
     if (!toggle) return;
     toggle.querySelector('path').setAttribute('d', paused ? PLAY_ICON : PAUSE_ICON);
-    toggle.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+    toggle.setAttribute('aria-label', paused ? L('Play video', 'Reproduzir vídeo') : L('Pause video', 'Pausar vídeo'));
   };
   if (toggle){
     toggle.addEventListener('click', () => {
@@ -899,7 +960,7 @@ function initLightbox(){
       const h1 = $('.ph__title');
       if (h1) return h1.textContent.trim() + ', hero image';
     }
-    return 'Project image';
+    return L('Project image', 'Imagem do projeto');
   };
 
   const dlg = document.createElement('dialog');
@@ -910,13 +971,13 @@ function initLightbox(){
       '<video class="lbox__vid" controls loop muted playsinline hidden></video>' +
       '<p class="lbox__cap mono" aria-hidden="true"></p>' +
     '</div>' +
-    '<button class="lbox__close" type="button" aria-label="Close image">' +
+    `<button class="lbox__close" type="button" aria-label="${L('Close image', 'Fechar imagem')}">` +
       '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" /></svg>' +
     '</button>' +
-    '<button class="lbox__step lbox__step--prev" type="button" aria-label="Previous image">' +
+    `<button class="lbox__step lbox__step--prev" type="button" aria-label="${L('Previous image', 'Imagem anterior')}">` +
       '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" /></svg>' +
     '</button>' +
-    '<button class="lbox__step lbox__step--next" type="button" aria-label="Next image">' +
+    `<button class="lbox__step lbox__step--next" type="button" aria-label="${L('Next image', 'Próxima imagem')}">` +
       '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" /></svg>' +
     '</button>';
   document.body.append(dlg);
@@ -1020,7 +1081,7 @@ function initLightbox(){
     img.classList.add('zoom');
     img.setAttribute('role', 'button');
     img.tabIndex = 0;
-    img.setAttribute('aria-label', 'Enlarge: ' + names.get(img));
+    img.setAttribute('aria-label', L('Enlarge: ', 'Ampliar: ') + names.get(img));
     img.addEventListener('click', () => open(img));
     img.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); }
