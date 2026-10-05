@@ -24,7 +24,7 @@ HTML_PAGES = {f'{p}.html' for p in PAGES}
 # Pages whose Portuguese is left exactly as it is: the English text was
 # rewritten and the Portuguese has not been (yet), so the build neither
 # regenerates nor checks them. Remove a page from here to translate it again.
-FROZEN = {'wcag-study', 'creatorhub', 'element-dashboard', 'digital-signage', 'gym-and-bet'}
+FROZEN = {'wcag-study', 'creatorhub', 'element-dashboard', 'digital-signage', 'gym-and-bet', 'muni'}
 
 # names and labels that read the same in Portuguese
 KEEP = {

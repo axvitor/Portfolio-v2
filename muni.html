@@ -96,7 +96,7 @@
   <div class="shell">
     <a href="index.html#work" class="ph__back mono"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>All work</a>
     <h1 class="ph__title">MUNI</h1>
-    <p class="ph__lede">Digital signage for San Francisco's transit riders</p>
+    <p class="ph__lede">Digital signage designed for San Francisco transit riders</p>
     <figure class="ph__art ph__art--photo ph__art--band">
       <img src="assets/projects/muni/thumbnail.jpg" width="1600" height="900" alt="The Golden Gate Bridge seen from the San Francisco shoreline on a clear day." loading="eager" decoding="async" />
     </figure>
@@ -108,7 +108,7 @@
     <dl>
       <div><dt>Role</dt><dd>Sole UI/UX Designer, end&nbsp;to&nbsp;end</dd></div>
       <div><dt>Client</dt><dd>Digital signage hardware company, San Francisco</dd></div>
-      <div><dt>Timeline</dt><dd>Three months in design, live since 2022</dd></div>
+      <div><dt>Timeline</dt><dd>Six months in design, live since 2022</dd></div>
       <div><dt>Delivery</dt><dd>Fully remote</dd></div>
     </dl>
   </div>
@@ -121,9 +121,10 @@
 <section class="pblock pstage" id="problem">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>01</span>Problem</div>
-    <h2 class="pblock__h" data-reveal>Transit information every rider can read, from the curb</h2>
-    <p class="lead" data-reveal>The client, a San Francisco company specializing in hardware for digital signage, needed an interface for screens at bus stops across the city. The deadline was three months, and the whole project ran remotely.</p>
-    <p data-reveal>A bus stop screen is public infrastructure. It has to be legible at street distance, stay readable for riders with low vision or color vision deficiency, and win approval from the city as well as the client.</p>
+    <h2 class="pblock__h" data-reveal>Designing transit information people can read from the curb</h2>
+    <p class="lead" data-reveal>The client, a San Francisco company specializing in digital signage hardware, needed an interface for screens installed at bus stops across the city.</p>
+    <p data-reveal>The project had a six month deadline and was conducted entirely remotely. But the biggest challenge was not simply designing a clear interface. The screens were part of public infrastructure, which meant the information needed to remain readable from the street, work for people with different visual abilities, and meet the requirements set by the client and the city.</p>
+    <p data-reveal>Before designing the interface, I needed to understand the environment where it would actually be used.</p>
 <figure class="pshot" data-reveal>
         <img src="assets/projects/muni/bus-stop.jpg" alt="Riding the network: San Francisco, seen from a MUNI car" loading="lazy" decoding="async" />
         <figcaption>Riding the network: San Francisco, seen from a MUNI car</figcaption>
@@ -133,36 +134,42 @@
 <section class="pblock pstage" id="approach">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>02</span>Approach</div>
-    <h2 class="pblock__h" data-reveal>Settle every constraint before drawing a screen</h2>
-    <p class="lead" data-reveal>Before sketching a single screen, I asked the client the questions that would shape everything else.</p>
+    <h2 class="pblock__h" data-reveal>Understand the constraints before designing the interface</h2>
+    <p class="lead" data-reveal>Before sketching the first screen, I worked with the client to define the requirements that would shape the design.</p>
+    <p data-reveal>These questions helped establish the design constraints before moving into the interface itself.</p>
 <ul class="pquotes" data-reveal>
-      <li>Which information do we need to display?</li>
-      <li>What are the government's requirements?</li>
-      <li>Does it need to be ADA compliant?</li>
-      <li>Where will it run, and on which hardware?</li>
+      <li>What information needs to be displayed?</li>
+      <li>What are the city's requirements?</li>
+      <li>What accessibility requirements does the interface need to meet?</li>
+      <li>Where will the screens be installed, and what hardware will they use?</li>
     </ul>
-    <h3 class="pstage__sub" data-reveal>ADA requirements</h3>
+    <h3 class="pstage__sub" data-reveal>Accessibility was part of the design from the start</h3>
 <ol class="pnum">
-      <li data-reveal><span class="pnum__n mono">01</span><h4 class="pnum__t">Font size &amp; scale</h4><p class="pnum__d">I sized the type to stay legible at street distance, to the Americans with Disabilities Act's accessible design standards.</p></li>
-      <li data-reveal><span class="pnum__n mono">02</span><h4 class="pnum__t">Contrast ratios</h4><p class="pnum__d">I checked every pairing of text and background against ADA contrast requirements before it shipped.</p></li>
-      <li data-reveal><span class="pnum__n mono">03</span><h4 class="pnum__t">A palette for colorblind riders</h4><p class="pnum__d">I chose route colors and status states to stay distinguishable for riders with color vision deficiency.</p></li>
+      <li data-reveal><span class="pnum__n mono">01</span><h4 class="pnum__t">Font size and scale</h4><p class="pnum__d">Type needed to remain legible from street distance, so sizing and hierarchy were designed around the accessibility requirements of the installation.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h4 class="pnum__t">Contrast</h4><p class="pnum__d">Text and background combinations were checked to ensure sufficient contrast and maintain readability in different conditions.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h4 class="pnum__t">Color</h4><p class="pnum__d">Route colors and status states were selected to remain distinguishable for riders with color vision deficiencies, rather than relying on color alone.</p></li>
     </ol>
-    <h3 class="pstage__sub" data-reveal>From constraints to rollout</h3>
+    <h3 class="pstage__sub" data-reveal>From requirements to implementation</h3>
 <ol class="pnum">
-      <li data-reveal><span class="pnum__n mono">01</span><h4 class="pnum__t">Understanding the constraints</h4><p class="pnum__d">Gathered the government, hardware, and accessibility requirements the interface would have to satisfy before any screen was drawn.</p></li>
-      <li data-reveal><span class="pnum__n mono">02</span><h4 class="pnum__t">Working the layout by hand</h4><p class="pnum__d">Explored arrangements for routes, arrival times, and maps at low fidelity, before committing to any single direction.</p></li>
-      <li data-reveal><span class="pnum__n mono">03</span><h4 class="pnum__t">Building the real UI</h4><p class="pnum__d">Turned the strongest sketches into detailed, polished screens, applying type, contrast, and color that met every ADA requirement.</p></li>
-      <li data-reveal><span class="pnum__n mono">04</span><h4 class="pnum__t">Client and government approval</h4><p class="pnum__d">Reviewed the mockups with both the client and the local government to confirm the design met every accessibility standard.</p></li>
-      <li data-reveal><span class="pnum__n mono">05</span><h4 class="pnum__t">From mockup to build</h4><p class="pnum__d">Handed off specs and assets, working closely through implementation to keep the shipped screens faithful to the design.</p></li>
-      <li data-reveal><span class="pnum__n mono">06</span><h4 class="pnum__t">Approved and deployed</h4><p class="pnum__d">A final round of approval from the client and the city cleared the interface for rollout across the network.</p></li>
+      <li data-reveal><span class="pnum__n mono">01</span><h4 class="pnum__t">Research</h4><p class="pnum__d">Gathered the government, hardware, and accessibility requirements the interface needed to satisfy.</p></li>
+      <li data-reveal><span class="pnum__n mono">02</span><h4 class="pnum__t">Sketches</h4><p class="pnum__d">Explored different ways to organize routes, arrival times, and maps before committing to a visual direction.</p></li>
+      <li data-reveal><span class="pnum__n mono">03</span><h4 class="pnum__t">UI design</h4><p class="pnum__d">Turned the strongest concepts into detailed screens, establishing typography, hierarchy, contrast, color, and layout.</p></li>
+      <li data-reveal><span class="pnum__n mono">04</span><h4 class="pnum__t">Validation</h4><p class="pnum__d">Reviewed the designs with the client and local government representatives to make sure the proposed solution met the required standards.</p></li>
+      <li data-reveal><span class="pnum__n mono">05</span><h4 class="pnum__t">Development</h4><p class="pnum__d">Provided specifications and assets and worked closely with the development team throughout implementation.</p></li>
+      <li data-reveal><span class="pnum__n mono">06</span><h4 class="pnum__t">Final validation</h4><p class="pnum__d">Reviewed the implemented interface before final approval and deployment across the network.</p></li>
     </ol>
   </div>
 </section>
 <section class="pblock pstage" id="solution">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>03</span>Solution</div>
-    <h2 class="pblock__h" data-reveal>An arrivals board and a route map, built to ADA standards</h2>
-    <p class="lead" data-reveal>I sized the type for street distance, checked the contrast of every pairing, and chose a palette that stays distinguishable for colorblind riders.</p>
+    <h2 class="pblock__h" data-reveal>Two interfaces built around the way riders use transit information</h2>
+    <p class="lead" data-reveal>The final solution focused on two primary experiences: quickly checking when the next vehicle would arrive, and following a specific route on a map.</p>
+    <h3 class="pstage__sub" data-reveal>Arrivals board</h3>
+    <p data-reveal>The arrivals board was designed for riders who need an answer at a glance.</p>
+    <p data-reveal>Route information, destinations, and arrival times were given a clear hierarchy so riders could understand the next departures without having to interpret a dense interface.</p>
+    <h3 class="pstage__sub" data-reveal>Route map</h3>
+    <p data-reveal>The route map provided a more detailed view for riders who needed to understand where a vehicle was and how it related to the surrounding streets.</p>
 <div class="pgrid pgrid--2">
       <figure class="pshot" data-reveal>
         <img src="assets/projects/muni/final-result-2.png" alt="Arrivals board" loading="lazy" decoding="async" />
@@ -173,13 +180,15 @@
         <figcaption>Route map</figcaption>
       </figure>
     </div>
+    <p data-reveal>Both interfaces used the same accessibility principles established during the initial research, including readable typography, sufficient contrast, and color choices that remained distinguishable for riders with color vision deficiencies.</p>
   </div>
 </section>
 <section class="pblock pstage" id="results">
   <div class="shell">
     <div class="pstage__k mono" data-reveal><span>04</span>Results</div>
-    <h2 class="pblock__h" data-reveal>Approved by the city, and running since 2022</h2>
-<p data-reveal>The screens run in various locations across the city, bus stops among them.</p>
+    <h2 class="pblock__h" data-reveal>Approved by the city and deployed across San Francisco</h2>
+    <p class="lead" data-reveal>The interface was approved by both the client and the City of San Francisco and began operating in 2022.</p>
+    <p data-reveal>The screens were deployed across multiple locations throughout the city, including bus stops, where they continue to provide real time transit information to riders.</p>
 <div class="pgrid">
       <figure class="pshot" data-reveal>
         <img src="assets/projects/muni/impl-1.jpg" alt="Routes 19 & 31, daylight" loading="lazy" decoding="async" />
@@ -200,9 +209,13 @@
     </div>
 <p class="stats__line" data-reveal>
       <b>800<em>+</em></b> screens deployed,
-      approved by the client and the City of SF,
+      approved by the client and the City of San Francisco,
       operational since <b>2022</b>.
     </p>
+    <h3 class="pstage__sub" data-reveal>What I learned</h3>
+    <p class="lead" data-reveal>Designing for public screens changed the way I think about accessibility.</p>
+    <p data-reveal>On a typical digital product, a user can move closer to the screen, increase the font size, zoom, or adjust their device settings. A bus stop screen does not offer those options. The interface has to work for the person standing several meters away, in daylight, in motion, and with different visual abilities.</p>
+    <p data-reveal>That made accessibility less of a checklist and more of a fundamental part of the design itself.</p>
   </div>
 </section>
 

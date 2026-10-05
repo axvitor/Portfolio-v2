@@ -1932,4 +1932,5 @@ em{ font-style:italic; color:var(--fg); }
 /* The Element result's 20% now closes the section, after the feedback shot */
 .pstage .pshot + .stats__line,
 .pstage .pgrid + .stats__line{ margin-top:clamp(40px,6vh,72px); }
+.pstage .pgrid + p{ margin-top:clamp(28px,4vh,44px); }
 .pstage p + .stats__line{ margin-top:clamp(28px,4.5vh,48px); }
