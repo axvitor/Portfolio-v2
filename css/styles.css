@@ -1639,6 +1639,11 @@ em{ font-style:italic; color:var(--fg); }
   color:var(--fg-2);
   font-size:clamp(15px,1.1vw,17px);
 }
+/* the secondary action: an outline that fills with the accent on hover */
+.btn--ghost{
+  --btn-bg:transparent; --btn-fg:var(--fg);
+  box-shadow:inset 0 0 0 1px var(--line-2);
+}
 .cta__actions{
   display:flex; align-items:center; gap:clamp(20px,3vw,40px);
   flex-wrap:wrap;

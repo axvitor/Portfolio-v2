@@ -133,6 +133,8 @@ def localise(doc, page):
     url_en = f'{SITE}/' if page == 'index' else f'{SITE}/{page}.html'
     url_pt = f'{SITE}/pt/' if page == 'index' else f'{SITE}/pt/{page}.html'
     doc = doc.replace('<html lang="en">', '<html lang="pt-BR">', 1)
+    # the contact email opens with a Portuguese subject line
+    doc = doc.replace('mailto:contact@axvitor.com?subject=Hello%20Vitor', 'mailto:contact@axvitor.com?subject=Ol%C3%A1%20Vitor')
     doc = doc.replace(f'<link rel="canonical" href="{url_en}" />', f'<link rel="canonical" href="{url_pt}" />', 1)
     doc = doc.replace(f'<meta property="og:url" content="{url_en}" />',
                       f'<meta property="og:url" content="{url_pt}" />\n<meta property="og:locale" content="pt_BR" />\n<meta property="og:locale:alternate" content="en_US" />', 1)

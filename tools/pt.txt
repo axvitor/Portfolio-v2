@@ -1003,3 +1003,12 @@ EN: Route 49, daylight
 PT: Linha 49, de dia
 EN: screens deployed, approved by the client and the City of SF, operational since
 PT: telas instaladas, aprovadas pelo cliente e pela prefeitura de SF, funcionando desde
+
+EN: Get in touch
+PT: Contato
+
+EN: Send me an email
+PT: Me envie um e-mail
+
+EN: Email
+PT: E-mail

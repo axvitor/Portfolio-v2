@@ -735,6 +735,26 @@ function activeLink(){
 $('#toTop').addEventListener('click', () =>
   scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' }));
 
+/* "Get in touch" jumps to the contact section at the end of the page. On
+   the case studies, lazy images load during the long scroll and push the
+   section further down, so once the scroll settles it aims again until it
+   lands (or the page can scroll no further). */
+const contact = $('#contact');
+if (contact) $$('a[href="#contact"]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  history.pushState(null, '', '#contact');
+  const go = () => contact.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
+  let tries = 0, lastY = -1;
+  const settle = () => {
+    if (scrollY !== lastY){ lastY = scrollY; setTimeout(settle, 160); return; }
+    const off = contact.getBoundingClientRect().top;
+    const atEnd = scrollY + innerHeight >= document.documentElement.scrollHeight - 2;
+    if (Math.abs(off) > 4 && !atEnd && ++tries < 5){ go(); lastY = -1; setTimeout(settle, 160); }
+  };
+  go();
+  setTimeout(settle, 160);
+}));
+
 /* ═══════════ MAGNETIC BUTTONS ═══════════ */
 
 if (!REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches){
