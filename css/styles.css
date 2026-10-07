@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════
    VITOR — Portfolio
-   Type: Archivo (variable width display) / Instrument Sans / JetBrains Mono
+   Type: Archivo (variable width display) / Instrument Sans / Red Hat Text (labels)
    ══════════════════════════════════════════════════════════ */
 
 :root{
@@ -20,7 +20,7 @@
   /* type */
   --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --sans:    "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
-  --mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --mono:    "Red Hat Text", "Helvetica Neue", Arial, sans-serif;   /* the label face (was a monospace; the name stayed) */
 
   /* rhythm */
   --shell: 1320px;
@@ -127,7 +127,7 @@ em{ font-style:italic; color:var(--fg); }
   display:flex; justify-content:space-between; align-items:baseline;
   margin-bottom:14px; color:var(--fg-3);
 }
-.boot__pct{ color:var(--fg); font-size:13px; }
+.boot__pct{ color:var(--fg); font-size:13px; font-variant-numeric:tabular-nums; }
 .boot__track{ height:1px; background:var(--line); overflow:hidden; }
 /* Full width, scaled from the left: main.js sets scaleX, which the compositor
    animates without re-laying out the page on every step. */

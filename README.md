@@ -104,7 +104,7 @@ Anything near 40+ for a 10s clip is fine. A result of 2 means you shipped the br
 |---|---|---|
 | Display | **Archivo** (variable) | Set at `wdth 112–118`, `wght 700–800`. The expanded width axis is what creates the editorial poster scale. |
 | Body / UI | **Instrument Sans** | Normal width — the contrast against expanded display carries the hierarchy. |
-| Micro-labels | **JetBrains Mono** | Section indices, years, meta keys, the hero HUD readout. |
+| Micro-labels | **Red Hat Text** | Section indices, years, meta keys, the hero HUD readout. |
 
 Accent is a single ember orange (`--accent: #FF4D1C`), picked up from the rocket exhaust
 and used sparingly — indicators, impact labels, hover states, the timeline progress line.

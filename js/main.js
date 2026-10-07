@@ -755,6 +755,64 @@ if (contact) $$('a[href="#contact"]').forEach(a => a.addEventListener('click', e
   setTimeout(settle, 160);
 }));
 
+/* ═══════════ SMOOTH WHEEL SCROLLING ═══════════
+   A mouse wheel moves the page in ~100px jumps, which reads as choppy. Each
+   wheel step now moves a target instead, and the page eases towards it every
+   frame, so notches run together into one glide (the way smooth-scroll
+   libraries do it, without one). Only the wheel is touched: keyboard,
+   scrollbar, touch and the in-page links keep the browser's own scrolling,
+   and anything else that scrolls the page cancels the glide. Off for
+   reduced motion, pinch-zoom, sideways scrolls, the preloader, the open
+   menu, the lightbox, and anything inside its own scrolling box. */
+if (!REDUCED){
+  const root = document.documentElement;
+  const TAU = 110;   /* ms: how quickly the page catches up with the wheel */
+
+  let target = 0, current = 0, expected = -1, raf = 0, last = 0;
+  const max = () => root.scrollHeight - innerHeight;
+  const stop = () => { if (raf) cancelAnimationFrame(raf); raf = 0; expected = -1; };
+
+  const step = now => {
+    const dt = Math.min(64, now - last); last = now;
+    current += (target - current) * (1 - Math.exp(-dt / TAU));
+    if (Math.abs(target - current) < .5) current = target;
+    expected = Math.round(current);
+    scrollTo({ top: current, behavior: 'instant' });
+    raf = current === target ? 0 : requestAnimationFrame(step);
+    if (!raf) expected = -1;
+  };
+
+  /* does something under the pointer scroll on its own in this direction? */
+  const ownScroller = (el, dy) => {
+    for (; el && el !== document.body && el !== root; el = el.parentElement){
+      const oy = getComputedStyle(el).overflowY;
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1){
+        if (dy > 0 ? el.scrollTop + el.clientHeight < el.scrollHeight - 1 : el.scrollTop > 0) return true;
+      }
+    }
+    return false;
+  };
+
+  addEventListener('wheel', e => {
+    if (e.ctrlKey || e.defaultPrevented) return;
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    if (root.classList.contains('is-booting') || document.body.style.overflow === 'hidden') return;
+    if (document.querySelector('dialog[open]') || ownScroller(e.target, e.deltaY)) return;
+
+    const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
+    e.preventDefault();
+    if (!raf){ current = target = scrollY; last = performance.now(); }
+    target = Math.max(0, Math.min(max(), target + dy));
+    if (!raf) raf = requestAnimationFrame(step);
+  }, { passive: false });
+
+  /* any scroll that is not ours (keys, scrollbar, a link's own glide) wins */
+  addEventListener('scroll', () => {
+    if (raf && expected >= 0 && Math.abs(scrollY - expected) > 3) stop();
+  }, { passive: true });
+  ['keydown', 'pointerdown', 'touchstart'].forEach(ev => addEventListener(ev, stop, { passive: true }));
+}
+
 /* ═══════════ MAGNETIC BUTTONS ═══════════ */
 
 if (!REDUCED && matchMedia('(hover:hover) and (pointer:fine)').matches){
