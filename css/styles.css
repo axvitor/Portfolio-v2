@@ -487,6 +487,33 @@ em{ font-style:italic; color:var(--fg); }
 }
 @keyframes heroFocus{ to{ opacity:1; filter:blur(0); transform:none; } }
 
+/* Brushed metal: each word is painted with the same light-to-dark sweep,
+   lined up across its line by main.js (--lw, --wx), with a little shade at
+   the foot of the letters. The text shadow sits on the line instead, since a
+   shadow on clipped text would be drawn over the gradient. */
+.hero__title{
+  --metal:
+    linear-gradient(180deg, rgba(255,255,255,0) 45%, rgba(5,5,6,.22) 100%),
+    linear-gradient(100deg, #7E838A 0%, #B9BDC3 26%, #F4F3F0 50%, #FFFFFF 60%, #CDD0D4 82%, #9EA2A8 100%);
+}
+.hero__title .w{
+  background-image:var(--metal);
+  background-size:var(--lw, 100%) 100%;
+  background-position:calc(var(--wx, 0px) * -1) 0;
+  background-repeat:no-repeat;
+  /* clipped text only shows where the box has background, so the box reaches
+     past the glyphs (descenders, the italic's overhang) and the negative
+     margin hands the room straight back to the layout */
+  padding:.08em .14em .32em;
+  margin:-.08em -.14em -.32em;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  text-shadow:none;
+}
+.hero__title .line__in{ filter:drop-shadow(0 4px 30px rgba(0,0,0,.5)); }
+
 .hero__sub{
   margin:clamp(24px,3.6vh,40px) auto 0;
   max-width:56ch;
@@ -507,7 +534,7 @@ em{ font-style:italic; color:var(--fg); }
 
 
 /* ══════════ WORK ══════════ */
-.work{ padding-block:var(--sec-y); border-top:1px solid var(--line); }
+.work{ padding-block:var(--sec-y); }
 
 /* Bento: tile size carries the hierarchy, so the strongest work reads first.
    The spans (set per project as --w/--h) tile a 4-column grid exactly. */
@@ -624,7 +651,7 @@ em{ font-style:italic; color:var(--fg); }
   line-height:.96;
   letter-spacing:-.04em;
 }
-.about__lead{ position:sticky; top:120px; align-self:start; }
+.about__lead{ align-self:start; }
 
 .about__photo{
   margin:clamp(30px,5vh,54px) 0 0;
@@ -670,7 +697,7 @@ em{ font-style:italic; color:var(--fg); }
 .facts__v{ color:var(--fg); font-size:15px; }
 
 /* ══════════ TIMELINE ══════════ */
-.xp{ padding-block:var(--sec-y); border-top:1px solid var(--line); }
+.xp{ padding-block:var(--sec-y); }
 .timeline{ position:relative; padding-left:clamp(0px,4vw,60px); }
 .timeline::before{
   content:""; position:absolute;
@@ -749,7 +776,7 @@ em{ font-style:italic; color:var(--fg); }
 }
 
 /* ══════════ NUMBERS ══════════ */
-.stats{ padding-block:var(--sec-y); border-top:1px solid var(--line); }
+.stats{ padding-block:var(--sec-y); }
 
 /* The figures are the claim, not a widget: they sit inside a sentence at
    display scale, with the connecting words dropped back so the numbers carry
@@ -776,6 +803,15 @@ em{ font-style:italic; color:var(--fg); }
   font-style:normal;
   color:var(--accent);
 }
+
+/* ══════════ STATS LINE: count-up ══════════
+   main.js counts the figures up as the line arrives and keeps the finished
+   sentence for screen readers in .vh. */
+.vh{
+  position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0;
+  overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;
+}
+
 /* Reused on a project page, where `.pblock p` is (0,1,1) and would otherwise
    win over this single class and drop the line back to body copy. */
 .pblock .stats__line{
@@ -1479,8 +1515,16 @@ em{ font-style:italic; color:var(--fg); }
   box-sizing:border-box;
   display:flex; flex-direction:column; justify-content:space-between; gap:24px;
   padding:clamp(28px,3.4vw,56px);
-  background:#0e0e11;
-  border:1px solid var(--line-2); border-radius:10px;
+  /* frosted glass: a thin, mostly clear tint over a strong blur, so the sky
+     and the card underneath in the stack show through softly, with a faint
+     sheen from the top-left and a lit top edge */
+  background:
+    linear-gradient(155deg, rgba(255,255,255,.06), rgba(255,255,255,.012) 38%, rgba(255,255,255,0) 70%),
+    rgba(14,14,18,.4);
+  -webkit-backdrop-filter:blur(22px) saturate(140%);
+  backdrop-filter:blur(22px) saturate(140%);
+  border:1px solid rgba(255,255,255,.1); border-radius:10px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 24px 60px -30px rgba(0,0,0,.8);
   overflow:hidden;
   transform-origin:50% 0;
   will-change:translate, scale, opacity;
@@ -1498,7 +1542,6 @@ em{ font-style:italic; color:var(--fg); }
   display:flex; justify-content:space-between; gap:16px;
   font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-3);
 }
-.tsk__idx{ color:var(--accent); }
 .tsk__q{ margin:0; }
 
 .tsk__q p{
@@ -1797,7 +1840,6 @@ em{ font-style:italic; color:var(--fg); }
   .nav__shell{ padding:6px 6px 6px 14px; }
   .nav.is-stuck .nav__shell{ padding:6px 10px 6px 18px; }
   .about__grid{ grid-template-columns:1fr; }
-  .about__lead{ position:static; }
 }
 @media (max-width:720px){
   .hero__track{ height:380vh; }
@@ -1939,3 +1981,193 @@ em{ font-style:italic; color:var(--fg); }
 .pstage .pgrid + .stats__line{ margin-top:clamp(40px,6vh,72px); }
 .pstage .pgrid + p{ margin-top:clamp(28px,4vh,44px); }
 .pstage p + .stats__line{ margin-top:clamp(28px,4.5vh,48px); }
+
+/* ══════════ THE ROUTE SO FAR ══════════
+   The title holds still on the left, a star sits on a centre line at the
+   middle of the screen, and the roles scroll past on the right, lighting up
+   as they cross the star. main.js splits every line of text into words and
+   writes --w on each (0 to 1), so the whole section lights up word by word.
+   The older timeline rules above still style the roles' text; the ones here
+   take its line, dots and fade-in away. */
+
+.xp--split .rsf{
+  display:grid;
+  grid-template-columns:max-content 48px minmax(0,1fr);
+  column-gap:clamp(16px,2.4vw,36px);
+}
+
+/* left: the title, held at the middle of the screen while the roles pass.
+   It sits on the page's left edge, in line with "About me", and its column
+   is only as wide as the title, so the roles get the rest. */
+.rsf__lead{ position:relative; }
+/* centred on the screen by its own height (--sh, from main.js) rather
+   than a transform, so it lets go at the same moment as the star */
+.rsf__stick{
+  position:sticky; top:calc(50% - var(--sh, 0px) / 2);
+  display:flex; flex-direction:column; align-items:flex-start;
+  text-align:left;
+  padding-block:40px;
+}
+.rsf__title{
+  font-size:clamp(34px,4vw,60px);
+  max-width:none;
+}
+/* every word starts dim and comes up to its own colour as the scroll
+   reaches it (opacity, so the accent company names keep their blue) */
+.xp--split .rw{
+  opacity:calc(.06 + var(--w, 0) * .94);
+  transition:opacity .2s linear;
+}
+.rsf__cta{ margin-top:28px; }
+
+/* centre: a hairline the height of the section, and the star pinned to the
+   middle of the screen on it */
+.rsf__axis{ position:relative; }
+/* The line is the star's trail: it is drawn down from the top of the
+   section only as far as the star has travelled (--lp, 0 to 1, from
+   main.js), brightest where the star is, and it fades in with the
+   star (--li). Scaled rather than resized, so it never relays out. */
+.rsf__axis::before{
+  content:""; position:absolute; left:calc(50% - .5px); top:0; bottom:0; width:1px;
+  background:linear-gradient(to bottom, transparent, var(--line-2) 18%, rgba(200,215,255,.45) 100%);
+  transform:scaleY(var(--lp, 1)); transform-origin:50% 0;
+  opacity:var(--li, 1);
+}
+/* A star as it looks from the ground: a small round point of light with a
+   soft halo, twinkling. Two flicker cycles of different, unrelated lengths
+   (core and halo) keep the twinkle from ever looking like a loop, and the
+   halo drifts between cool and warm white the way a low star does. */
+.rsf__star{
+  position:sticky; top:50%;
+  display:block; width:8px; height:8px;
+  margin:-4px auto 0;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:
+    0 0 2px 1px rgba(255,255,255,.95),
+    0 0 8px 2px rgba(225,235,255,.75),
+    0 0 22px 6px rgba(120,160,255,.35);
+  animation:rsfTwinkle 3.7s linear infinite;
+  /* --s (0 to 1, from main.js) brings it up with the scroll: it grows
+     out of the line and fades in, then goes out the same way at the end.
+     opacity and scale here sit on top of the twinkle, which animates its
+     own opacity and transform underneath. */
+  --s:1;
+  scale:calc(.15 + var(--s) * .85);
+  filter:opacity(var(--s));
+}
+.rsf__star::after{
+  content:""; position:absolute; left:50%; top:50%;
+  width:60px; height:60px; margin:-30px 0 0 -30px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(235,242,255,.55), rgba(160,190,255,.18) 35%, transparent 70%);
+  animation:rsfHalo 5.3s ease-in-out infinite;
+  pointer-events:none;
+}
+/* the faint wide haze, like light on the line */
+.rsf__star::before{
+  content:""; position:absolute; left:50%; top:50%;
+  width:300px; height:300px; margin:-150px 0 0 -150px;
+  background:radial-gradient(circle, rgba(74,134,255,.12), rgba(74,134,255,.04) 40%, transparent 70%);
+  pointer-events:none;
+}
+@keyframes rsfTwinkle{
+  0%,100%{ opacity:1;   transform:scale(1); }
+  6%     { opacity:.72; transform:scale(.86); }
+  11%    { opacity:1;   transform:scale(1.06); }
+  19%    { opacity:.84; transform:scale(.94); }
+  31%    { opacity:1;   transform:scale(1); }
+  38%    { opacity:.66; transform:scale(.84); }
+  43%    { opacity:.95; transform:scale(1.02); }
+  57%    { opacity:1;   transform:scale(1.1); }
+  66%    { opacity:.78; transform:scale(.9); }
+  79%    { opacity:1;   transform:scale(1); }
+  88%    { opacity:.86; transform:scale(.95); }
+}
+@keyframes rsfHalo{
+  0%,100%{ opacity:.9;  transform:scale(1);    filter:hue-rotate(0deg); }
+  23%    { opacity:.55; transform:scale(.8); }
+  48%    { opacity:1;   transform:scale(1.18); filter:hue-rotate(-28deg) saturate(.7); }
+  71%    { opacity:.65; transform:scale(.9); }
+}
+
+/* right: the roles. The old line, dots and fade-in step aside. */
+.xp--split .timeline{
+  padding:8vh 0 14vh;
+}
+.xp--split .timeline::before,
+.xp--split .timeline::after,
+.xp--split .tl::before{ display:none; }
+.xp--split .tl{
+  display:block;
+  opacity:1; transform:none;
+  padding:0 0 clamp(72px,12vh,128px);
+  border:0;
+}
+.xp--split .tl:last-child{ padding-bottom:0; }
+.xp--split .tl__yr{ display:block; padding:0 0 12px; color:var(--fg-2); }
+/* Each point is marked by a small point of light instead of the accent
+   rule: a quieter echo of the star on the line, with a soft glow and a slow,
+   faint twinkle (each one out of step with the next). It comes up with the
+   first word of its point. */
+.xp--split .tl__points li::before{
+  left:2px; top:calc(.79em - 2.5px);
+  width:5px; height:5px; border-radius:50%;
+  background:rgba(235,240,255,.85);
+  box-shadow:0 0 4px 1px rgba(210,225,255,.45), 0 0 10px 2px rgba(74,134,255,.25);
+  opacity:calc(.06 + var(--d, 0) * .94);
+  animation:rsfDot 4.6s ease-in-out infinite;
+}
+.xp--split .tl__points li:nth-child(2)::before{ animation-delay:-1.7s; animation-duration:5.3s; }
+.xp--split .tl__points li:nth-child(3)::before{ animation-delay:-3.1s; animation-duration:4.1s; }
+@keyframes rsfDot{ 50%{ filter:brightness(.7); scale:.85; } }
+.xp--split .tl__note,
+.xp--split .tl__points{ max-width:76ch; }
+
+/* phones: one column, the line and star on the left edge */
+@media (max-width:720px){
+  .xp--split .rsf{ grid-template-columns:22px minmax(0,1fr); column-gap:18px; }
+  .rsf__lead{ grid-column:1 / -1; }
+  .rsf__stick{ position:static; align-items:flex-start; text-align:left; padding:0 0 40px; }
+  .rsf__axis{ grid-column:1; }
+  .xp--split .timeline{ grid-column:2; padding:20vh 0 30vh; }
+  .rsf__star::before{ width:200px; height:200px; margin:-100px 0 0 -100px; }
+}
+
+/* reduced motion: everything lit, nothing moves */
+@media (prefers-reduced-motion:reduce){
+  .xp--split .rw{ --w:1 !important; transition:none; }
+  .xp--split .tl__points li::before{ --d:1 !important; }
+  .rsf__star, .rsf__star::after{ animation:none; }
+  .xp--split .timeline{ padding-block:10vh; }
+}
+
+/* the home page's sections run into each other with no hairline between
+   them (the case studies keep theirs above the closing rocket) */
+.tsk + .cta{ border-top:0; }
+
+/* ══════════ FAINT SKY (home page) ══════════
+   A few dim, softly glowing points of light behind the page, so the black
+   between the hero and the closing rocket reads as one sky. main.js draws two
+   layers once (far and near) on canvases and only shifts them as the page
+   scrolls, the near one a little faster, for depth; a few points twinkle. */
+body{ background:transparent; }          /* html keeps the page colour; the sky sits between them */
+.about{ background:transparent; }        /* the hero frame is trimmed to About's top edge instead */
+.sky{
+  position:fixed; inset:0; z-index:-1;
+  overflow:hidden; pointer-events:none;
+}
+.sky__layer{
+  position:absolute; left:0; top:0; width:100%;
+  will-change:transform;
+}
+.sky__layer canvas{ display:block; width:100%; height:100%; }
+.sky__tw{
+  position:absolute; width:2.5px; height:2.5px; margin:-1.25px 0 0 -1.25px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 3px 1px rgba(255,255,255,.7), 0 0 10px 3px rgba(150,185,255,.35);
+  opacity:.18;
+  animation:skyTw var(--d, 6s) ease-in-out var(--o, 0s) infinite;
+}
+@keyframes skyTw{ 0%,100%{ opacity:.18; } 50%{ opacity:var(--peak, .7); } }

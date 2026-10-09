@@ -438,6 +438,21 @@ if (HAS_HERO){
       }
     });
   });
+
+  /* The metal finish in styles.css is one gradient per line, but each word
+     paints its own copy, so every word gets the line's width (--lw) and its
+     own offset into it (--wx) and the sheen runs on unbroken across the line.
+     offsetLeft ignores the entrance's scale, so this can run at any time. */
+  const metal = () => $$('.hero__title .line__in').forEach(line => {
+    const ws = $$('.w', line);
+    if (!ws.length) return;
+    const x0 = ws[0].offsetLeft, last = ws[ws.length - 1];
+    line.style.setProperty('--lw', (last.offsetLeft + last.offsetWidth - x0) + 'px');
+    ws.forEach(w => w.style.setProperty('--wx', (w.offsetLeft - x0) + 'px'));
+  });
+  metal();
+  if (document.fonts) document.fonts.ready.then(metal);
+  addEventListener('resize', metal, { passive: true });
 }
 
 let shown = 0, booted = false;
@@ -694,6 +709,217 @@ function scrubTimeline(){
   if (v !== tlLast){ tlEl.style.setProperty('--tl', v); tlLast = v; }
 }
 
+/* ═══════════ THE ROUTE SO FAR ═══════════
+   Every line of text in the section is split into words (span.rw) and the
+   scroll writes --w (0 to 1) on each, so the text comes up word by word, in
+   reading order, as it reaches the star on the centre line. */
+(() => {
+  const sec = document.querySelector('.xp--split');
+  if (!sec) return;
+
+  /* wrap each word of every text node under root in span.rw, leaving the
+     elements themselves (the company's <b>, the list items) in place */
+  const split = root => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) if (walker.currentNode.textContent.trim()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)){ frag.append(part); return; }
+        const w = document.createElement('span');
+        w.className = 'rw'; w.textContent = part;
+        frag.append(w);
+      });
+      n.replaceWith(frag);
+    });
+    return [...root.querySelectorAll('.rw')];
+  };
+
+  /* the title keeps one clean label for screen readers */
+  const title = sec.querySelector('.rsf__title');
+  title.setAttribute('aria-label', title.textContent.replace(/\s+/g, ' ').trim());
+  const titleWords = split(title);
+  titleWords.forEach(w => w.setAttribute('aria-hidden', 'true'));
+
+  const tl = sec.querySelector('#timeline');
+  const star = sec.querySelector('.rsf__star');
+  const axis = sec.querySelector('.rsf__axis');
+  const words = split(tl);
+  /* each point's accent rule comes up with the first word of its item */
+  const rules = [...tl.querySelectorAll('.tl__points li')].map(li => ({ li, w: li.querySelector('.rw') }));
+
+  /* the sticky title is centred by its height, measured here */
+  const stick = sec.querySelector('.rsf__stick');
+  const size = () => stick.style.setProperty('--sh', stick.offsetHeight + 'px');
+  size();
+  if (document.fonts) document.fonts.ready.then(size);
+  addEventListener('resize', size, { passive: true });
+
+  if (REDUCED) return;
+
+  /* ── the reading line ──────────────────────────────────────────────────
+     One line sweeps down the roles as you scroll, just under the star, and
+     lights whatever it has passed. Each word gets a reading position: its
+     line's top, plus how far along the line it sits (as a fraction of a
+     line height), so the sweep runs left to right along a line before it
+     drops to the next, strictly in reading order. Nothing further down can
+     light before everything above it has. Positions are cached in page
+     coordinates and re-measured whenever the layout changes. */
+  const LINE = .58;     /* the reading line, as a fraction of the screen height */
+  const SOFT = 46;      /* px of scroll over which a word comes up */
+  let keys = [];
+  const measure = () => {
+    const box = tl.getBoundingClientRect();
+    const left = box.left, width = box.width || 1;
+    keys = words.map(w => {
+      const r = w.getBoundingClientRect();
+      return r.top + scrollY + ((r.left - left) / width) * r.height;
+    });
+    queue();
+  };
+
+  const set = (el, prop, v) => { if (el._v !== v){ el.style.setProperty(prop, v); el._v = v; } };
+
+  let raf = 0;
+  const paint = () => {
+    raf = 0;
+    const vh = innerHeight;
+    const r = sec.getBoundingClientRect();
+    if (r.bottom < -vh || r.top > vh * 2) return;
+
+    /* title: word by word as the section top climbs from the bottom of the
+       screen to a little above the middle */
+    const head = clamp((vh - r.top) / (vh * .6)) * (titleWords.length + 2);
+    titleWords.forEach((w, i) => set(w, '--w', clamp((head - i) / 2).toFixed(2)));
+
+    /* the star comes up as the first role rises towards it, and goes out
+       once the last role has passed well above it */
+    const roles = tl.children;
+    const first = roles[0].getBoundingClientRect(), last = roles[roles.length - 1].getBoundingClientRect();
+    const ease = v => v * v * (3 - 2 * v);
+    const rise = clamp((vh * .8 - first.top) / (vh * .3));
+    const on = Math.min(rise, clamp((last.bottom - vh * .12) / (vh * .25)));
+    set(star, '--s', ease(on).toFixed(3));
+
+    /* the line follows the star down: drawn from the top of the section to
+       wherever the star sits, so it grows as the star travels; it comes up
+       with the star and then stays, as the path the light has taken */
+    const ax = axis.getBoundingClientRect();
+    set(axis, '--lp', clamp((vh * .5 - ax.top) / (ax.height || 1)).toFixed(4));
+    set(axis, '--li', ease(rise).toFixed(3));
+
+    const line = scrollY + vh * LINE;
+    words.forEach((w, i) => set(w, '--w', clamp((line - keys[i]) / SOFT).toFixed(2)));
+    rules.forEach(({ li, w }) => set(li, '--d', w._v || '0'));
+  };
+  const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', measure, { passive: true });
+  /* images loading above, or fonts arriving, move everything: re-measure */
+  new ResizeObserver(measure).observe(document.body);
+  if (document.fonts) document.fonts.ready.then(measure);
+  measure();
+})();
+
+/* ═══════════ FAINT SKY (home page) ═══════════
+   Two layers of tiny dim points, drawn once on canvases twice the screen
+   height (the second half repeats the first), so shifting a layer by
+   scroll × depth, wrapped at one screen, never shows a seam. Only transforms
+   change on scroll. A handful of points twinkle (CSS). The hero video sits on
+   top of the sky; as About slides over it, the video is trimmed at About's top
+   edge so the sky shows through About instead of the last frame. */
+if (HAS_HERO) (() => {
+  const sky = document.createElement('div');
+  sky.className = 'sky'; sky.setAttribute('aria-hidden', 'true');
+  document.body.prepend(sky);
+
+  /* a seeded random, so the sky is the same on every visit */
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+
+  /* fewer, brighter points, each with a soft halo, so they read as distant
+     stars rather than specks: per = screen area (px²) per point, core = the
+     bright centre's radius, glow = how far the halo reaches (× core) */
+  const LAYERS = [
+    { depth: .035, per: 52000, core: [.45, .8], alpha: [.26, .46], glow: 4.5 },  /* far */
+    { depth: .09,  per: 140000, core: [.7, 1.2], alpha: [.45, .75], glow: 6 }     /* near */
+  ];
+  let W = 0, H = 0;
+  const layers = LAYERS.map(cfg => {
+    const el = document.createElement('div'); el.className = 'sky__layer';
+    const cv = document.createElement('canvas'); el.append(cv); sky.append(el);
+    return { cfg, el, cv };
+  });
+
+  const draw = () => {
+    W = innerWidth; H = innerHeight;
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    seed = 7;
+    layers.forEach(({ cfg, el, cv }, li) => {
+      el.style.height = (H * 2) + 'px';
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * 2 * dpr);
+      const g = cv.getContext('2d'); g.scale(dpr, dpr);
+      const n = Math.round(W * H / cfg.per);
+      for (let i = 0; i < n; i++){
+        const x = rnd() * W, y = rnd() * H;
+        const r = cfg.core[0] + rnd() * (cfg.core[1] - cfg.core[0]);
+        const a = cfg.alpha[0] + rnd() * (cfg.alpha[1] - cfg.alpha[0]);
+        const c = rnd() < .35 ? '190,210,255' : '255,255,255';
+        const R = r * cfg.glow;
+        for (const yy of [y, y + H]){
+          const grad = g.createRadialGradient(x, yy, 0, x, yy, R);
+          grad.addColorStop(0, `rgba(${c},${a.toFixed(3)})`);
+          grad.addColorStop(r / R, `rgba(${c},${(a * .8).toFixed(3)})`);
+          grad.addColorStop(Math.min(.95, r / R * 2.2), `rgba(${c},${(a * .22).toFixed(3)})`);
+          grad.addColorStop(1, `rgba(${c},0)`);
+          g.fillStyle = grad;
+          g.beginPath(); g.arc(x, yy, R, 0, Math.PI * 2); g.fill();
+        }
+      }
+      /* the few that twinkle live on the near layer */
+      el.querySelectorAll('.sky__tw').forEach(t => t.remove());
+      if (li === 1) for (let i = 0; i < Math.round(W * H / 320000); i++){
+        const x = rnd() * W, y = rnd() * H;
+        const d = (5 + rnd() * 6).toFixed(1) + 's', o = (-rnd() * 10).toFixed(1) + 's';
+        const peak = (.55 + rnd() * .35).toFixed(2);
+        for (const yy of [y, y + H]){
+          const t = document.createElement('i'); t.className = 'sky__tw';
+          t.style.cssText = `left:${x}px;top:${yy}px;--d:${d};--o:${o};--peak:${peak}`;
+          el.append(t);
+        }
+      }
+    });
+    move();
+  };
+
+  const stage = document.querySelector('.hero__stage');
+  const about = document.querySelector('.about');
+  let cut = -1;
+  const move = () => {
+    if (!REDUCED) layers.forEach(({ cfg, el }) => {
+      const off = (scrollY * cfg.depth) % H;
+      el.style.transform = `translate3d(0,${(-off).toFixed(1)}px,0)`;
+    });
+    if (stage && about){
+      const c = Math.max(0, Math.round(stage.getBoundingClientRect().bottom - about.getBoundingClientRect().top));
+      if (c !== cut){ stage.style.clipPath = c ? `inset(0 0 ${c}px 0)` : ''; cut = c; }
+    }
+  };
+
+  let raf = 0;
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; move(); }); }, { passive: true });
+  /* redraw only when the width changes or the height grows (a phone's address
+     bar coming and going should not reshuffle the sky) */
+  let rt = 0;
+  addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => { if (innerWidth !== W || innerHeight > H + 80) draw(); else move(); }, 150);
+  }, { passive: true });
+  draw();
+})();
+
 /* ═══════════ NAV ═══════════ */
 
 const nav = $('#nav');
@@ -721,13 +947,15 @@ $$('a', drawer).forEach(a => a.addEventListener('click', () => {
 }));
 
 /* active section in nav */
-/* document order matters: activeLink takes the last section past the line */
+/* the active section is the lowest one whose top has passed the line, by
+   position on the page, so the sections can sit in any order */
 const sections = ['about', 'experience', 'work', 'testimonials'].map(id => $('#' + id)).filter(Boolean);
 const navLinks = $$('.nav__links a');
 function activeLink(){
-  let cur = '';
+  let cur = '', best = -Infinity;
   sections.forEach(s => {
-    if (s.getBoundingClientRect().top <= innerHeight * 0.4) cur = s.id;
+    const top = s.getBoundingClientRect().top;
+    if (top <= innerHeight * 0.4 && top > best){ best = top; cur = s.id; }
   });
   navLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + cur));
 }
@@ -1267,6 +1495,43 @@ function stackTestimonials(){
   });
 }
 tskMeasure();
+
+/* ═══════════ STATS LINE ═══════════
+   The figures count up from zero, once, as the line arrives. */
+const statsLine = $('.stats__line');
+if (statsLine && !statsLine.closest('.pblock') && !REDUCED){
+  /* read the sentence now, before the count-up resets the figures to zero */
+  const said = statsLine.textContent.replace(/\s+/g, ' ').trim();
+  const figures = $$('b', statsLine).map(b => {
+    const node = [...b.childNodes].find(n => n.nodeType === 3 && /\d/.test(n.textContent));
+    return node ? { node, to: parseInt(node.textContent, 10) } : null;
+  }).filter(Boolean);
+  figures.forEach(f => { f.node.textContent = '0'; });
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    const t0 = performance.now();
+    const tick = now => {
+      let done = true;
+      figures.forEach((f, i) => {
+        const t = clamp((now - t0 - i * 140) / 1500);
+        if (t < 1) done = false;
+        f.node.textContent = String(Math.round(f.to * (1 - Math.pow(1 - t, 3))));
+      });
+      if (!done) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, { threshold: .5 }).observe(statsLine);
+
+  /* the figures are mid-count while it runs, so screen readers get the
+     finished sentence instead */
+  const visual = document.createElement('span');
+  visual.setAttribute('aria-hidden', 'true');
+  visual.append(...statsLine.childNodes);
+  const vh = document.createElement('span');
+  vh.className = 'vh'; vh.textContent = said;
+  statsLine.append(visual, vh);
+}
 
 /* ═══════════ CTA ROCKET ═══════════
    The closing rocket loop downloads nothing until it is near the screen, plays

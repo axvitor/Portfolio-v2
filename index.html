@@ -84,8 +84,8 @@
 
   <nav class="nav__links" aria-label="Primary">
     <a href="#about" data-nav>About</a>
-    <a href="#experience" data-nav>Experience</a>
     <a href="#work" data-nav>Work</a>
+    <a href="#experience" data-nav>Experience</a>
     <a href="#testimonials" data-nav>Testimonials</a>
   </nav>
 
@@ -104,8 +104,8 @@
 
 <div class="drawer" id="drawer" aria-hidden="true">
   <a href="#about" data-nav><span class="mono">01</span> About</a>
-  <a href="#experience" data-nav><span class="mono">02</span> Experience</a>
-  <a href="#work" data-nav><span class="mono">03</span> Work</a>
+  <a href="#work" data-nav><span class="mono">02</span> Work</a>
+  <a href="#experience" data-nav><span class="mono">03</span> Experience</a>
   <a href="#testimonials" data-nav><span class="mono">04</span> Testimonials</a>
   <a href="#contact" data-nav><span class="mono">05</span> Contact</a>
   <a class="drawer__lang" href="pt/" hreflang="pt-BR" lang="pt-BR">Ver em português</a>
@@ -132,7 +132,7 @@
       <div class="hero__copy" id="heroCopy">
         <h1 class="hero__title">
           <span class="line"><span class="line__in">Let's <em>skyrocket</em></span></span>
-          <span class="line"><span class="line__in">your company.</span></span>
+          <span class="line"><span class="line__in">your company</span></span>
         </h1>
 
         <p class="hero__sub">
@@ -179,17 +179,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
-<section class="xp" id="experience">
-  <div class="shell">
-    <div class="sec__head">
-      <h2 class="sec__title" data-reveal>The route so far.</h2>
-    </div>
-
-    <ol class="timeline" id="timeline"></ol>
-  </div>
-</section>
-
 <!-- ═══════════════════ NUMBERS ═══════════════════ -->
 <section class="stats" id="numbers">
   <div class="shell">
@@ -214,6 +203,24 @@
   </div>
 </section>
 
+<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+<section class="xp xp--split" id="experience">
+  <div class="shell">
+    <div class="rsf">
+      <div class="rsf__lead">
+        <div class="rsf__stick">
+          <h2 class="sec__title rsf__title">The route<br>so far.</h2>
+          <a class="btn btn--sm btn--ghost rsf__cta" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="rsf__axis" aria-hidden="true">
+        <span class="rsf__star"></span>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
 <!-- Recommendations from the people named, in their own words. -->
 <section class="tsk" id="testimonials" aria-labelledby="tsk-h">
@@ -227,7 +234,7 @@
       <li class="tsk__item" style="--i:0">
         <figure class="tsk__card tsk__card--long" data-tsk-card>
           <span class="tsk__shade" aria-hidden="true"></span>
-          <div class="tsk__top mono"><span class="tsk__idx">01 / 03</span><span>Awesomic · 2023 – Now</span></div>
+          <div class="tsk__top mono"><span>Awesomic · 2023 – Now</span></div>
           <!-- The recommendation as written, in body text. -->
           <blockquote class="tsk__q tsk__q--long">
             <div class="tsk__full">
@@ -247,7 +254,7 @@
       <li class="tsk__item" style="--i:1">
         <figure class="tsk__card tsk__card--long" data-tsk-card>
           <span class="tsk__shade" aria-hidden="true"></span>
-          <div class="tsk__top mono"><span class="tsk__idx">02 / 03</span><span>Checklist Fácil · 2021 – 2022</span></div>
+          <div class="tsk__top mono"><span>Checklist Fácil · 2021 – 2022</span></div>
           <!-- The recommendation as written, in body text. -->
           <blockquote class="tsk__q tsk__q--long">
             <div class="tsk__full">
@@ -266,7 +273,7 @@
       <li class="tsk__item" style="--i:2">
         <figure class="tsk__card tsk__card--long" data-tsk-card>
           <span class="tsk__shade" aria-hidden="true"></span>
-          <div class="tsk__top mono"><span class="tsk__idx">03 / 03</span><span>OnSign · 2017 – 2021</span></div>
+          <div class="tsk__top mono"><span>OnSign · 2017 – 2021</span></div>
           <!-- The recommendation as written, in body text. -->
           <blockquote class="tsk__q tsk__q--long">
             <div class="tsk__full">

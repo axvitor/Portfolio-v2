@@ -1012,3 +1012,12 @@ PT: Me envie um e-mail
 
 EN: Email
 PT: E-mail
+
+EN: The route
+PT: O caminho
+
+EN: so far.
+PT: até aqui.
+
+EN: your company
+PT: sua empresa
