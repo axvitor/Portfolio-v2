@@ -129,8 +129,8 @@ EN: Florianópolis, Brazil · Working globally
 PT: Florianópolis · Trabalho remoto para o mundo todo
 EN: Tools
 PT: Ferramentas
-EN: Figma · Photoshop · WCAG · AI Driven · a bit of code
-PT: Figma · Photoshop · WCAG · IA no dia a dia · um pouco de código
+EN: Figma · Photoshop · WCAG · Analytics · AI Driven · a bit of code
+PT: Figma · Photoshop · WCAG · Analytics · IA · um pouco de código
 EN: Off hours
 PT: Nas horas vagas
 EN: Photography · Surfing · Gym

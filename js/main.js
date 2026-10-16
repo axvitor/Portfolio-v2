@@ -118,7 +118,7 @@ const TIMELINE = [
       'Partnered with engineering and QA through implementation so what shipped matched the approved designs.',
       'Awesomic accepts roughly 1% of the designers who apply.'
     ] },
-  { yr: '2022 to 2023', role: 'Product Designer',        co: 'Soap Health',     type: 'Healthtech',
+  { yr: '2022 to 2023', role: 'Senior Product Designer', co: 'Soap Health',     type: 'Healthtech',
     /* the intake/risk/SOAP sentence moved to the points, where it read twice */
     note: 'Worked with the company\u2019s solutions to track risk assessments and patient history, helping reduce diagnostic errors and highlight potential conditions before the doctor\u2019s appointment.',
     points: [
@@ -176,7 +176,7 @@ const TIMELINE_PT = [
       'Acompanhei os desenvolvedores e QA durante o desenvolvimento para garantir que o que foi para produção seguisse o design aprovado.',
       'A Awesomic aprova só cerca de 1% dos designers que se candidatam.'
     ] },
-  { yr: '2022 a 2023', role: 'Product Designer', co: 'Soap Health', type: 'Healthtech', loc: 'EUA',
+  { yr: '2022 a 2023', role: 'Senior Product Designer', co: 'Soap Health', type: 'Healthtech', loc: 'EUA',
     note: 'O foco era desenvolver uma plataforma onde seria possível analisar e obter um histórico do paciente mais completo, para auxiliar nas decisões médicas a partir dele e apontar possíveis problemas de saúde antes mesmo da consulta.',
     points: [
       'Integrei o cadastro de paciente, a avaliação de risco e o fluxo de perguntas em um único fluxo, pensado para reduzir erros de diagnóstico.',
